@@ -239,7 +239,10 @@
 			margin: 0; padding: 0; list-style: none;
 		}
 		.sa-text-content li {
-			font-size: 1rem; margin-bottom: 0.75rem; display: flex; align-items: flex-start; justify-content: flex-start; text-align: left;
+			font-size: 1rem; margin-bottom: 0.75rem;
+			text-align: left;
+			position: relative;
+			padding-left: 2rem;
 		}
 		.sa-text-content .sa-title {
 			position: relative; padding-bottom: 5px; display: inline-block;
@@ -251,7 +254,12 @@
 			width: 100%;
 		}
 		.sa-text-content li::before {
-			content: '→'; color: var(--accent-color); margin-right: 1rem; font-weight: 600;
+			content: \'→\';
+			color: var(--accent-color);
+			font-weight: 600;
+			position: absolute;
+			left: 0;
+			top: 0;
 		}
 		.sa-text-content .list-style-none li {
 			display: block;
@@ -489,7 +497,7 @@
 							<div class="card-content">
 
 								<ul>
-									<li>Created and implemented <a href="https://media.lrsd.net/media/Default/medialib/gbef-jicj-use-of-cell-phones-in-schools.18d32447583.pdf" target="_blank" rel="noopener noreferrer">Policy JICI/GBEF - Use of Cell Phones in Schools</a> to support learning environments.</li>
+									<li><span>Created and implemented <a href="https://media.lrsd.net/media/Default/medialib/gbef-jicj-use-of-cell-phones-in-schools.18d32447583.pdf" target="_blank" rel="noopener noreferrer">Policy JICI/GBEF - Use of Cell Phones in Schools</a> to support learning environments.</span></li>
 								</ul>
 							</div></div></div>
 					<div class="card"><img src="https://media.lrsd.net/media/Default/frl/0/iStock-2163352306.jpg" alt="A flowchart for a teaching framework" class="card-image fr-fil fr-dib">
