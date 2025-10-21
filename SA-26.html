@@ -282,38 +282,28 @@
 		.overview-title {
 			font-family: var(--header-font); font-size: 1.8rem; font-weight: 700; text-transform: uppercase; color: var(--primary-color); margin: 0 0 1.5rem 0; text-align: center;
 		}
-		.overview-interactive {
-			display: flex; flex-direction: column; margin-bottom: 3rem; border: 1px solid rgba(38, 78, 116, 0.15); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-light); transition: box-shadow 0.3s ease; max-width: var(--max-width); margin-left: auto; margin-right: auto;
+		.overview-cards-container {
+			display: flex; flex-direction: column; gap: 1.5rem; max-width: var(--max-width); margin-left: auto; margin-right: auto;
 		}
-		.overview-interactive:hover {
+		.overview-card {
+			background: var(--white); border: 1px solid rgba(38, 78, 116, 0.15); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-light); transition: box-shadow 0.3s ease;
+		}
+		.overview-card:hover {
 			box-shadow: var(--shadow-medium);
 		}
-		.overview-menu {
-			display: flex; flex-direction: column; position: relative;
+		.overview-card-header {
+			background: var(--light-blue); padding: 1.2rem 1.5rem; border-bottom: 1px solid rgba(38, 78, 116, 0.08);
 		}
-		.overview-menu button {
-			background: transparent; border: none; padding: 1.2rem 1.5rem; text-align: left; font-size: 1.1rem; font-weight: 400; color: var(--primary-color); cursor: pointer; border-bottom: 1px solid rgba(38, 78, 116, 0.08); transition: all 0.3s ease; position: relative; overflow: hidden; display: flex; align-items: center;
+		.overview-card-title {
+			font-size: 1.3rem; font-weight: 600; color: var(--primary-color); margin: 0;
 		}
-		.overview-menu button.active,
-		.overview-menu button:hover {
-			background: var(--white); color: var(--primary-color); transform: translateX(3px); box-shadow: inset 4px 0 0 var(--accent-color); font-weight: 600;
+		.overview-card-content {
+			padding: 2rem; background: var(--white);
 		}
-		.overview-menu button.active {
-			background: rgba(255, 255, 255, 0.95);
-		}
-		.overview-content {
-			padding: 2rem; background: var(--white); position: relative; max-height: 400px; overflow-y: auto;
-		}
-		.overview-content>div {
-			display: none;
-		}
-		.overview-content>div.active {
-			display: block;
-		}
-		.overview-content ul {
+		.overview-card-content ul {
 			padding-left: 1.2rem; margin: 0; text-align: left;
 		}
-		.overview-content li {
+		.overview-card-content li {
 			margin-bottom: 0.75rem; font-size: 1rem;
 		}
 		/* Mobile Nav */
@@ -582,28 +572,35 @@
 			</div>
 			<section class="sa-section overview-section">
 				<div class="sa-content-wrapper">
-					<div class="overview-interactive sa-anim">
 
-						<h2 class="overview-title">Strategic Overview</h2>
-						<div class="overview-menu">
-							<button id="tab-progress" class="active"><span>Progress So Far</span></button>
-							<button id="tab-future"><span>Future Plans</span></button>
-						</div>
-						<div class="overview-content">
-							<div id="content-progress" class="active">
+					<h2 class="overview-title">Strategic Overview</h2>
+					<div class="overview-cards-container sa-anim">
+						<div class="overview-card">
+							<div class="overview-card-header">
+								<h3 class="overview-card-title">Progress So Far</h3>
+							</div>
+							<div class="overview-card-content">
 
 								<ul>
-									<li>Communicated professional learning opportunities for teaching French in the English program to all staff.</li>
+<li>Communicated professional learning opportunities for teaching French in the English program to all staff.</li>
 								</ul>
 							</div>
-							<div id="content-future">
+						</div>
+						<div class="overview-card">
+							<div class="overview-card-header">
+								<h3 class="overview-card-title">Future Plans</h3>
+							</div>
+							<div class="overview-card-content">
 
 								<ul>
-									<li>Connect teachers of French in the English program to create opportunities for collaboration and professional learning.</li>
+<li>Connect teachers of French in the English program to create opportunities for collaboration and professional learning.</li>
 									<li>Develop a comprehensive approach to teacher learning to support a cohesive instructional model.</li>
 									<li>Enhance elementary teaching practices to increase the number of students choosing French in high school.</li>
 								</ul>
-							</div></div></div></div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</section>
 		</div></div></div>
 <script>
