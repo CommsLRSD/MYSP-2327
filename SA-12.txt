@@ -1,0 +1,1148 @@
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@400;600&display=swap');:root {
+		--primary-color: #264e74; --accent-color: #c6302c; --light-blue: #f5f7fa; --light-bg: #f5f7fa; --border-color: #ccc; --text-color: #222; --white: #fff; --max-width: 1200px; --header-font: 'Montserrat', sans-serif; --body-font: 'Poppins', sans-serif; --shadow-light: 0 2px 6px rgba(34, 60, 80, 0.08); --shadow-medium: 0 8px 20px rgba(0, 0, 0, 0.14), 0 3px 6px rgba(0, 0, 0, 0.10); --animation-duration: 0.8s;
+	}
+	
+	html,
+	body {
+		margin: 0; padding: 0; font-family: var(--body-font); font-size: 16px; background: var(--white); color: var(--text-color); line-height: 1.6; overflow-x: hidden;
+	}
+	
+	#sa-container-wrapper * {
+		box-sizing: border-box;
+	}
+	
+	#sa-container-wrapper h1,
+	#sa-container-wrapper h2,
+	#sa-container-wrapper h3,
+	#sa-container-wrapper h4,
+	#sa-container-wrapper h5,
+	#sa-container-wrapper h6 {
+		font-family: var(--header-font); color: var(--primary-color);
+	}
+	
+	#sa-container-wrapper h1 em,
+	#sa-container-wrapper h2 em,
+	#sa-container-wrapper h3 em {
+		color: var(--accent-color); font-style: normal;
+	}
+	
+	.desktop-view {
+		display: block;
+	}
+	
+	.mobile-scrolling-view {
+		display: none;
+	}
+	/* Unified Flip Animation */
+	
+	@keyframes flipIn {
+		from {
+			transform: perspective(1000px) rotateY(90deg); opacity: 0;
+		}
+		to {
+			transform: perspective(1000px) rotateY(0); opacity: 1;
+		}
+	}
+	/* --- Preview Mode --- */
+	
+	#sa-container-wrapper:not(.js-active) .hero-icon {
+		opacity: 1; animation: flipIn 1s ease-out forwards;/* optional; remove if you want just static icon */
+	}
+	/* --- DESKTOP STYLES --- */
+	
+	@media (min-width: 993px) {
+		.page-wrapper {
+			max-width: var(--max-width); margin: 0 auto; padding: 0 1rem; display: grid; grid-template-columns: 1fr 340px; gap: 3rem;
+		}
+		.main-content {
+			grid-column: 1 / 2;
+		}
+		.sidebar {
+			grid-column: 2 / 3; padding-top: 2rem;
+		}
+		.hero-section {
+			display: flex; align-items: center; gap: 2rem; padding: 2rem 0 3rem 0;
+		}
+		.hero-icon {
+			flex: 0 0 150px; width: 150px; height: 150px; opacity: 0;
+		}
+		.hero-icon img {
+			width: 100%; height: 100%; object-fit: contain;
+		}
+		.hero-content {
+			flex: 1;
+		}
+		.hero-title {
+			font-size: 2.2rem; font-weight: 700; margin: 0 0 0.5rem; line-height: 1.2;
+		}
+		.hero-subtitle {
+			font-size: 1.1rem; font-weight: 400; color: #555; margin: 0; line-height: 1.4;
+		}
+		.js-active .hero-icon {
+			animation: flipIn 1s ease-out forwards;
+		}
+		.stats-interactive {
+			display: flex; margin-bottom: 3rem; border: 1px solid rgba(38, 78, 116, 0.15); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-light);
+		}
+		.stats-menu {
+			flex: 0 0 250px; background: var(--light-blue); display: flex; flex-direction: column;
+		}
+		.stats-menu button {
+			background: transparent; border: none; padding: 1.2rem 1.5rem; text-align: left; font-size: 1.1rem; font-family: var(--body-font); font-weight: 600; color: var(--primary-color); cursor: pointer; border-bottom: 1px solid rgba(38, 78, 116, 0.08); transition: all 0.3s ease; flex: 1;
+		}
+		.stats-menu button:hover,
+		.stats-menu button.active {
+			background: var(--white); box-shadow: inset 4px 0 0 var(--accent-color); font-weight: 700;
+		}
+		.stats-content {
+			flex: 1; padding: 2rem; background: var(--white);
+		}
+		.stats-content>div {
+			display: none;
+		}
+		.stats-content>div.active {
+			display: block;
+		}
+		.stats-content h3 {
+			margin-top: 0; font-size: 1.4rem;
+		}
+		.stats-content ul {
+			padding-left: 1.2rem;
+		}
+		#content-schools ul {
+			column-count: 2;
+		}
+		.section-title {
+			font-size: 1.8rem; font-weight: 600; margin: 3rem 0 1.5rem 0; padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent-color);
+		}
+		.cards-grid {
+			display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;
+		}
+		.cards-grid .card:only-child {
+			max-width: calc(50% - 10px);
+		}
+		.card {
+			background: var(--white); border-radius: 8px; box-shadow: var(--shadow-light); border: 1px solid rgba(38, 78, 116, 0.1); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+		.card:hover {
+			transform: translateY(-5px); box-shadow: var(--shadow-medium);
+		}
+		.card-image {
+			width: 100%; height: 180px; object-fit: cover;
+		}
+		.card-body {
+			padding: 1.5rem; flex-grow: 1;
+		}
+		.card-title {
+			font-size: 1.25rem; font-weight: 600; margin: 0 0 1rem 0;
+		}
+		.card-content ul {
+			margin: 0; padding-left: 1.2rem;
+		}
+		.card-content li {
+			margin-bottom: 0.75rem;
+		}
+		.sidebar-box {
+			background: var(--light-blue); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;
+		}
+		.sidebar-box h3 {
+			font-size: 1.5rem; font-weight: 600; margin: 0 0 1rem;
+		}
+		.sidebar-box p {
+			margin: 0 0 1.5rem;
+		}
+		.sidebar-btn {
+			display: block; text-align: center; padding: 0.75rem 1.5rem; border: 1px solid var(--primary-color); border-radius: 4px; color: var(--primary-color); text-decoration: none; font-family: var(--header-font); font-weight: 600; transition: background-color 0.3s, color 0.3s;
+		}
+		.sidebar-btn:hover {
+			background-color: var(--primary-color); color: var(--white);
+		}
+		hr.sidebar-divider {
+			border: none; border-top: 1px solid rgba(38, 78, 116, 0.2); margin: 1.5rem 0;
+		}
+		.action-item {
+			position: relative; margin-bottom: 10px;
+		}
+		.action-item:last-child {
+			margin-bottom: 0;
+		}
+		.action-btn {
+			width: 100%; background: var(--white); color: var(--primary-color); border: 1px solid var(--border-color); border-radius: 4px; padding: 0.5rem; font-family: var(--header-font); font-weight: 600; font-size: 1.1rem; cursor: pointer; text-align: left; transition: all 0.2s ease; height: 70px; display: flex; align-items: center; gap: 1rem;
+		}
+		.action-btn-icon {
+			height: 100%; width: 60px; background: transparent; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+		}
+		.action-btn-icon img {
+			max-width: 100%; max-height: 100%; object-fit: contain;
+		}
+		.action-btn-text {
+			flex-grow: 1;
+		}
+		.action-item:hover .action-btn {
+			border-color: var(--accent-color); box-shadow: var(--shadow-light);
+		}
+		.action-links {
+			display: none; position: absolute; right: 100%; top: 0; width: 320px; background: var(--white); border-radius: 8px; box-shadow: var(--shadow-medium); z-index: 100; margin-right: 0.5rem; border: 1px solid var(--border-color); padding: 0.5rem 0;
+		}
+		.action-item:hover .action-links {
+			display: block;
+		}
+		.dropdown-link {
+			display: flex; gap: 0.75rem; align-items: center; padding: 0.75rem 1rem; text-decoration: none; color: var(--text-color); font-size: 0.9rem;
+		}
+		.dropdown-link:hover {
+			background-color: var(--light-blue); color: var(--primary-color);
+		}
+		.dropdown-number {
+			font-weight: 600; color: var(--primary-color); min-width: 2rem;
+		}
+		.dropdown-link.disabled {
+			opacity: 0.5; cursor: not-allowed;
+		}
+		.dropdown-link.disabled:hover {
+			background-color: transparent; color: var(--text-color);
+		}
+	}
+	/* --- MOBILE STYLES --- */
+	
+	@media (max-width: 992px) {
+		.desktop-view {
+			display: none;
+		}
+		.mobile-scrolling-view {
+			display: block;
+		}
+		.sa-section {
+			min-height: 80vh; display: flex; align-items: center; justify-content: center; width: 100%; padding: 3rem 1.5rem; position: relative; flex-direction: column;
+		}
+		.sa-content-wrapper {
+			width: 100%; max-width: var(--max-width); display: flex; align-items: center; flex-direction: column; text-align: center; gap: 1.5rem;
+		}
+		.mobile-dynamic-section .sa-content-wrapper {
+			gap: 2rem;
+		}
+		.sa-text-content {
+			flex: 1 1 auto; order: 2; width: 100%;
+		}
+		.sa-text-content p {
+			text-align: left;
+		}
+		.sa-image-content {
+			flex: 1 1 auto; width: 100%; max-width: 450px; aspect-ratio: 16 / 10; order: 1;
+		}
+		.sa-image-content img {
+			width: 100%; height: 100%; object-fit: cover; border-radius: 12px; box-shadow: var(--shadow-medium);
+		}
+		.sa-title {
+			font-size: clamp(1.5rem, 6vw, 2.2rem) !important; text-transform: uppercase; letter-spacing: 1.5px; line-height: 1.2; margin: 0 0 1rem;
+		}
+		.sa-text-content ul {
+			margin: 0; padding: 0; list-style: none;
+		}
+		.sa-text-content li {
+			font-size: 1rem; margin-bottom: 0.75rem; display: flex; align-items: flex-start; justify-content: flex-start; text-align: left;
+		}
+		.sa-text-content .sa-title {
+			position: relative; padding-bottom: 5px; display: inline-block;
+		}
+		.sa-text-content .sa-title::after {
+			content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--accent-color); transition: width 0.6s ease-out 0.5s;
+		}
+		.js-active .sa-section.is-visible .sa-text-content .sa-title::after {
+			width: 100%;
+		}
+		.sa-text-content li::before {
+			content: '→'; color: var(--accent-color); margin-right: 1rem; font-weight: 600;
+		}
+		.sa-text-content .list-style-none li {
+			display: block;
+		}
+		.sa-text-content .list-style-none li::before {
+			content: none;
+		}
+		.sa-hero-subtitle {
+			font-size: 1rem; max-width: 600px; margin-top: 1rem; color: #555; text-align: center !important;
+		}
+		.sa-hero-icon {
+			width: 150px; height: 150px; margin: 0 auto 1.5rem auto;
+		}
+		.sa-hero-icon img {
+			width: 100%; height: 100%; object-fit: contain;
+		}
+		.overview-section {
+			padding: 3rem 1rem; width: 100%;
+		}
+		.overview-title {
+			font-family: var(--header-font); font-size: 1.8rem; font-weight: 700; text-transform: uppercase; color: var(--primary-color); margin: 0 0 1.5rem 0; text-align: center;
+		}
+		.overview-interactive {
+			display: flex; flex-direction: column; margin-bottom: 3rem; border: 1px solid rgba(38, 78, 116, 0.15); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-light); transition: box-shadow 0.3s ease; max-width: var(--max-width); margin-left: auto; margin-right: auto;
+		}
+		.overview-interactive:hover {
+			box-shadow: var(--shadow-medium);
+		}
+		.overview-menu {
+			display: flex; flex-direction: column; position: relative;
+		}
+		.overview-menu button {
+			background: transparent; border: none; padding: 1.2rem 1.5rem; text-align: left; font-size: 1.1rem; font-weight: 400; color: var(--primary-color); cursor: pointer; border-bottom: 1px solid rgba(38, 78, 116, 0.08); transition: all 0.3s ease; position: relative; overflow: hidden; display: flex; align-items: center;
+		}
+		.overview-menu button.active,
+		.overview-menu button:hover {
+			background: var(--white); color: var(--primary-color); transform: translateX(3px); box-shadow: inset 4px 0 0 var(--accent-color); font-weight: 600;
+		}
+		.overview-menu button.active {
+			background: rgba(255, 255, 255, 0.95);
+		}
+		.overview-content {
+			padding: 2rem; background: var(--white); position: relative; max-height: 400px; overflow-y: auto;
+		}
+		.overview-content>div {
+			display: none;
+		}
+		.overview-content>div.active {
+			display: block;
+		}
+		.overview-content ul {
+			padding-left: 1.2rem; margin: 0; text-align: left;
+		}
+		.overview-content li {
+			margin-bottom: 0.75rem; font-size: 1rem;
+		}
+		/* Mobile Nav */
+		.strategic-nav {
+			display: flex; max-width: 500px; flex-wrap: wrap; justify-content: space-around; margin: 2rem auto 0; position: relative; width: 100%;
+		}
+		.mobile-nav-item {
+			flex: 1 1 23%; max-width: 23%; position: static; aspect-ratio: 1;
+		}
+		.mobile-nav-btn {
+			width: 100%; height: 100%; background: transparent; border: 2px solid transparent; border-radius: 8px; padding: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.15s ease-out, filter 0.15s ease-out;
+		}
+		.mobile-nav-btn.tapped {
+			transform: scale(0.9); filter: brightness(0.8);
+		}
+		.mobile-nav-btn img {
+			max-width: 100%; max-height: 100%; padding: 5px;
+		}
+		.mobile-nav-dropdown {
+			display: none; position: absolute; top: 100%; left: 0; width: 90vw; max-width: 320px; background: var(--white); border-radius: 8px; box-shadow: var(--shadow-medium); padding: 0; z-index: 1000; border: 1px solid rgba(38, 78, 116, 0.1); margin-top: 0.5rem; overflow: hidden;
+		}
+		.mobile-nav-dropdown.active {
+			display: block;
+		}
+		.mobile-nav-dropdown .dropdown-menu-title {
+			padding: 0.75rem 1rem; font-weight: 700; color: var(--primary-color); font-size: 1rem; border-bottom: 1px solid var(--border-color); text-align: center; background: var(--light-bg); text-transform: uppercase;
+		}
+		.mobile-nav-dropdown .dropdown-link {
+			display: flex; align-items: center; padding: 0.75rem 1rem; text-decoration: none; color: var(--text-color); font-size: 0.875rem; font-weight: 400; transition: background-color 0.2s; gap: 0.75rem; border-top: 1px solid rgba(0, 0, 0, 0.05);
+		}
+		.mobile-nav-dropdown .dropdown-link:first-of-type {
+			border-top: none;
+		}
+		.mobile-nav-dropdown .dropdown-link:hover {
+			background-color: var(--light-bg); color: var(--primary-color);
+		}
+		.mobile-nav-dropdown .dropdown-link.disabled {
+			opacity: 0.5; cursor: not-allowed;
+		}
+		.mobile-nav-dropdown .dropdown-link.disabled:hover {
+			background-color: transparent; color: var(--text-color);
+		}
+		.mobile-nav-dropdown .dropdown-number {
+			font-size: 1rem; font-weight: 600; color: var(--primary-color); min-width: 2rem;
+		}
+		.mobile-nav-dropdown .dropdown-title {
+			flex: 1; line-height: 1.3; font-weight: 400;
+		}
+		.mobile-nav-dropdown .home-link {
+			font-weight: 700; color: var(--primary-color); justify-content: center; font-size: 0.9rem;
+		}
+		/* Mobile Animations */
+		.js-active .sa-hero-icon {
+			opacity: 0;
+		}
+		.js-active .sa-section.is-visible .sa-hero-icon {
+			animation: flipIn 1s ease-out forwards 0.2s;
+		}
+		.js-active .sa-anim {
+			transition: opacity 0.8s ease-out, transform 0.8s ease-out; opacity: 0; transform: translateY(50px);
+		}
+		.js-active .sa-section.is-visible .sa-anim {
+			opacity: 1; transform: translateY(0);
+		}
+		.js-active .sa-section.is-visible .sa-anim.sa-delay-1 {
+			transition-delay: 0.2s;
+		}
+		.js-active .sa-section.is-visible .sa-anim.sa-delay-2 {
+			transition-delay: 0.4s;
+		}
+		.js-active .sa-section.is-visible .sa-anim.sa-delay-3 {
+			transition-delay: 0.6s;
+		}
+		.js-active .sa-text-content li {
+			transition: opacity 0.6s ease, transform 0.6s ease; opacity: 0; transform: translateX(-30px);
+		}
+		.js-active .sa-section.is-visible .sa-text-content li {
+			opacity: 1; transform: translateX(0);
+		}
+		.js-active .sa-section.is-visible .sa-text-content li:nth-child(1) {
+			transition-delay: 0.8s;
+		}
+		.js-active .sa-section.is-visible .sa-text-content li:nth-child(2) {
+			transition-delay: 0.9s;
+		}
+		.js-active .sa-section.is-visible .sa-text-content li:nth-child(3) {
+			transition-delay: 1s;
+		}
+		.js-active .sa-section.is-visible .sa-text-content li:nth-child(4) {
+			transition-delay: 1.1s;
+		}
+		.js-active .sa-section.is-visible .sa-text-content li:nth-child(5) {
+			transition-delay: 1.2s;
+		}
+		.js-active .sa-section.is-visible .sa-text-content li:nth-child(6) {
+			transition-delay: 1.3s;
+		}
+		.js-active .sa-section.is-visible .sa-text-content li:nth-child(7) {
+			transition-delay: 1.4s;
+		}
+		.js-active .sa-section.is-visible .sa-text-content li:nth-child(8) {
+			transition-delay: 1.5s;
+		}
+		.js-active .sa-section.is-visible .sa-text-content li:nth-child(9) {
+			transition-delay: 1.6s;
+		}
+		.js-active .sa-section.is-visible .sa-text-content li:nth-child(10) {
+			transition-delay: 1.7s;
+		}
+		/* Brick Wall Animation */
+		.brick-wall-container {
+			width: 100%; max-width: 220px; margin-bottom: 1.5rem;
+		}
+		.brick-row {
+			display: flex;
+		}
+		.brick-spacer {
+			width: 12.5%; flex-shrink: 0;
+		}
+		.brick {
+			width: 25%; padding-bottom: 12.5%;/* 2:1 aspect ratio */
+			background-color: var(--accent-color); border: 1px solid #fff; box-sizing: border-box; flex-shrink: 0; opacity: 0; transform: translateY(-50px);
+		}
+		.js-active .sa-section.is-visible .brick {
+			animation: buildWall 0.5s ease-out forwards;
+		}
+		@keyframes buildWall {
+			to {
+				opacity: 1; transform: translateY(0);
+			}
+		}
+		/* Health Cross Animation */
+		.health-cross-container {
+			width: 100%; max-width: 180px; margin-bottom: 1.5rem; opacity: 0; transform: scale(0.5); transition: transform 1s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.8s ease;
+		}
+		.js-active .sa-section.is-visible .health-cross-container {
+			opacity: 1; transform: scale(1);
+		}
+		.health-cross-container .heart {
+			fill: var(--accent-color);
+		}
+		.health-cross-container .cross-arm {
+			fill: white; transform-origin: center center; transform: scale(0); transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+		}
+		.js-active .sa-section.is-visible .health-cross-container .cross-arm {
+			transform: scale(1);
+		}
+		.js-active .sa-section.is-visible .health-cross-container .cross-arm:nth-child(2) {
+			transition-delay: 0.4s;
+		}
+		.js-active .sa-section.is-visible .health-cross-container .cross-arm:nth-child(3) {
+			transition-delay: 0.5s;
+		}
+		.js-active .sa-section.is-visible .health-cross-container .cross-arm:nth-child(4) {
+			transition-delay: 0.6s;
+		}
+		.js-active .sa-section.is-visible .health-cross-container .cross-arm:nth-child(5) {
+			transition-delay: 0.7s;
+		}
+		/* Telescope Animation */
+		.extending-telescope-container {
+			width: 100%; max-width: 180px; margin-bottom: 1.5rem;
+		}
+		.tripod {
+			fill: var(--accent-color);
+		}
+		.telescope-circle {
+			fill: #3c516b;
+		}
+		.telescope-body {
+			fill: var(--accent-color);
+		}
+		.telescope-body {
+			transform-origin: 36.03px 30.72px;
+		}
+		.js-active .sa-section.is-visible .telescope-body {
+			animation: rotate-scope 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) .2s forwards;
+		}
+		@keyframes rotate-scope {
+			from {
+				transform: rotate(0deg);
+			}
+			to {
+				transform: rotate(-50deg);
+			}
+		}
+	}
+
+</style>
+<div id="sa-container-wrapper">
+	<!-- DESKTOP VIEW -->
+	<div class="desktop-view">
+		<div class="page-wrapper" id="page-container">
+			<main class="main-content">
+				<section class="hero-section">
+					<div class="hero-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.2-Comprehensive%20WSH%20Program-4.png" alt="Workplace Safety and Health Icon" class="fr-fil fr-dib"></div>
+					<div class="hero-content">
+
+						<h1 class="hero-title">Strategic Action 1.2: <em>Workplace Safety &amp; Health</em></h1>
+
+						<p class="hero-subtitle">Create a comprehensive Workplace Safety and Health Program to promote and support employee wellness to better nurture student wellness.</p>
+					</div>
+				</section>
+				<section class="stats-interactive">
+					<div class="stats-menu">
+						<button id="tab-about" class="active" data-mobile-title="About the Program"><span>About the Program</span></button>
+						<button id="tab-initiatives" data-mobile-title="Key Initiatives"><span>Key Initiatives</span></button>
+					</div>
+					<div class="stats-content">
+						<div id="content-about" class="active">
+
+							<h3>Fostering a Culture of <em>Well-being</em></h3>
+
+							<p>Our goal is to cultivate an environment where both the physical and psychological well-being of every staff member is paramount. By developing a robust, data-informed Workplace Safety and Health (WSH) Program, we are taking proactive steps to ensure our schools and offices are safe, supportive, and healthy places to work. This commitment to employee wellness is foundational to creating a positive and nurturing atmosphere for our students.</p>
+						</div>
+						<div id="content-initiatives">
+
+							<h3>Key <em>Initiatives</em></h3>
+
+							<ul>
+								<li><strong>Well at Work by EdCan:</strong> Partnered to evaluate and improve staff psychological well-being using the Guarding Minds at Work survey.</li>
+								<li><strong>Online Incident Reporting:</strong> Launched a new system to increase access, transparency, and data analysis for safety incidents.</li>
+								<li><strong>Communication Policy:</strong> Drafted a new policy to support better work-life balance for all staff.</li>
+								<li><strong>Attendance Support Program:</strong> Created a program focused on early intervention to promote employee wellness.</li>
+							</ul>
+						</div></div>
+				</section>
+
+				<h2 class="section-title" data-mobile-title="What We've Accomplished">What We&#39;ve <em>Accomplished</em></h2>
+				<div class="cards-grid" data-mobile-section="accomplished">
+					<div class="card" data-mobile-anim="health-cross"><img class="card-image fr-fil fr-dib" src="https://media.lrsd.net/media/Default/frl/0/iStock-1320966128.jpg" alt="Safety Checklist">
+						<div class="card-body">
+
+							<h3 class="card-title">Workplace Safety and Health <em>Program</em></h3>
+							<div class="card-content">
+
+								<ul>
+									<li>Refined the existing Workplace Safety and Health Program.</li>
+									<li>Engaged in regular consultations with the divisional Workplace Safety and Health (WSH) committee.</li>
+								</ul>
+							</div></div></div>
+					<div class="card"><img class="card-image fr-fil fr-dib" src="https://media.lrsd.net/media/Default/frl/0/iStock-2224235754.jpg" alt="Teacher with young students at low table">
+						<div class="card-body">
+
+							<h3 class="card-title">Well at Work by <em>EdCan</em></h3>
+							<div class="card-content">
+
+								<ul>
+									<li>Partnered with Well at Work by EdCan to evaluate staff psychological state, set baseline data, and inform next steps.</li>
+									<li>Reviewed Employee Assistance Program (EAP) data for non-teaching staff and Workplace Safety and Health Manitoba data to inform the decision to pursue Well at Work.</li>
+									<li>Facilitated participation of over 2,000 staff in the Guarding Minds at Work survey in February &amp; March 2024.</li>
+									<li>Conducted one-on-one anonymous employee interviews with Well at Work Advisor in Nov/Dec 2024 to gain deeper perspectives.</li>
+									<li>Collaborated with Leadership Team and Board to explore Guarding Minds and Well at Work nationally to support next steps.</li>
+								</ul>
+							</div></div></div>
+					<div class="card"><img class="card-image fr-fil fr-dib" src="https://media.lrsd.net/media/Default/frl/0/iStock-1347104425.jpg" alt="Rocks stacked neatly on table with writing pad and coffee cup">
+						<div class="card-body">
+
+							<h3 class="card-title">Wellness <em>Resources</em></h3>
+							<div class="card-content">
+
+								<ul>
+									<li>Added more resources to the &ldquo;Wellness Resources&rdquo; section of My Site and promoted them in staff newsletters</li>
+									<li>Promoted the Member and Family Assistance Program (MFAP) for teachers and the Employee Assistance Program (EAP) for non-teaching staff in newsletters and labor relations communications.</li>
+								</ul>
+							</div></div></div>
+					<div class="card"><img class="card-image fr-fil fr-dib" src="https://media.lrsd.net/media/Default/frl/0/iStock-1911745019.jpg" alt="stock image person on computer with clipboard graphics overlaid">
+						<div class="card-body">
+
+							<h3 class="card-title">Incident <em>Reporting</em></h3>
+							<div class="card-content">
+
+								<ul>
+									<li>Moved the Employee Incident Reporting system online to increase access, transparency, and data analysis.</li>
+								</ul>
+							</div></div></div>
+					<div class="card">
+						<div class="card-body">
+
+							<h3 class="card-title"><em>Policy</em></h3>
+							<div class="card-content">
+
+								<ul>
+									<li>Drafted a communication policy to support work-life balance.</li>
+								</ul>
+							</div></div></div>
+					<div class="card">
+						<div class="card-body">
+
+							<h3 class="card-title"><em>Training</em></h3>
+							<div class="card-content">
+
+								<ul>
+									<li>Provided annual training via Smarter U, including Workplace Safety and Health and Managing Conflict, to increase accessibility.</li>
+								</ul>
+							</div></div></div>
+					<div class="card">
+						<div class="card-body">
+
+							<h3 class="card-title">Attendance <em>Support</em></h3>
+							<div class="card-content">
+
+								<ul>
+									<li>Drafted an Attendance Support Program, recognizing early intervention as a strategy to promote employee wellness.</li>
+								</ul>
+							</div></div></div>
+					<div class="card">
+						<div class="card-body">
+
+							<h3 class="card-title">Employee <em>Recognition</em></h3>
+							<div class="card-content">
+
+								<ul>
+									<li>Recognized all retiring employees online in December and June to include the broader community in celebrations.</li>
+								</ul>
+							</div></div></div></div>
+
+				<h2 class="section-title" data-mobile-title="Where We're Going">Where We&#39;re <em>Going</em></h2>
+				<div class="cards-grid" data-mobile-section="going">
+					<div class="card"><img class="card-image fr-fil fr-dib" src="https://media.lrsd.net/media/Default/frl/0/iStock-2210187547.jpg" alt="puzzle pieces with text Safe Work Practices">
+						<div class="card-body">
+
+							<h3 class="card-title">Robust Workplace Safety and Health <em>Program</em></h3>
+							<div class="card-content">
+
+								<ul>
+									<li>Develop a robust, data-informed Workplace Safety and Health Program promoting both physical and psychological safety and health.</li>
+									<li>Use concrete next steps drawn from the Guarding Minds survey.</li>
+									<li>Determine concrete wellness measures.</li>
+									<li>Provide ongoing leadership training.</li>
+									<li>Conduct employee awareness campaigns.</li>
+									<li>Gather and incorporate union feedback.</li>
+									<li>Review the benefits plan.</li>
+								</ul>
+							</div></div></div>
+					<div class="card"><img class="card-image fr-fil fr-dib" src="https://media.lrsd.net/media/Default/frl/0/iStock-2174073385-modified-6a2a5790-e53e-4037-b98e-9bfbf55cb117.jpg" alt="wooden blocks with people icons and handshake icon printed on them.">
+						<div class="card-body">
+
+							<h3 class="card-title">Continue <em>Partnerships</em></h3>
+							<div class="card-content">
+
+								<ul>
+									<li>Maintain and strengthen the partnership with Well at Work by EdCan, implementing scheduled administration of the Guarding Minds survey every four years.</li>
+									<li>Strengthen collaboration with benefits providers, including but not limited to MTS Disability and Blue Cross.</li>
+								</ul>
+							</div></div></div>
+					<div class="card"><img class="card-image fr-fil fr-dib" src="https://media.lrsd.net/media/Default/frl/0/iStock-2200831949.jpg" alt="Graphic of well-being icons over greenery background">
+						<div class="card-body">
+
+							<h3 class="card-title">Implement Policy and <em>Programs</em></h3>
+							<div class="card-content">
+
+								<ul>
+									<li>Develop and revise policies as needed.</li>
+									<li>Implement and promote the Communication policy.</li>
+									<li>Implement and follow the Attendance Support Program.</li>
+									<li>Further develop staff recognition opportunities beyond retirement announcements, such as board meeting presentations and broader promotion of Trustee/Senior Leadership Team news.</li>
+								</ul>
+							</div></div></div>
+					<div class="card"><img class="card-image fr-fil fr-dib" src="https://media.lrsd.net/media/Default/frl/0/iStock-922106956.jpg" alt="Wood blocks making a wall that has hole burst through it and red arrow through the hole">
+						<div class="card-body">
+
+							<h3 class="card-title">Increase <em>Access</em></h3>
+							<div class="card-content">
+
+								<ul>
+									<li>Remove barriers and increase access to members of Staff Services, for example, by introducing paperless leave forms for easier tracking and faster response times.</li>
+								</ul>
+							</div></div></div></div>
+			</main>
+			<aside class="sidebar">
+				<div class="sidebar-box">
+
+					<h3>MYSP <em>Homepage</em></h3>
+
+					<p>Return to the main Multi-Year Strategic Plan page to explore all strategic priorities.</p><a href="https://www.lrsd.net/page/26539/multi-year-strategic-plan-2023-2027" class="sidebar-btn">Return to MYSP</a>
+					<hr class="sidebar-divider">
+
+					<h3>Explore <em>Actions</em></h3>
+					<div id="action-nav">
+						<div class="action-item">
+							<button class="action-btn"><span class="action-btn-icon"><img src="https://media.lrsd.net/media/Default/frl/0/Belonging-icononly@2x-8-2.png" alt="Belonging" class="fr-dib"></span><span class="action-btn-text">Belonging</span></button>
+							<div class="action-links"><a class="dropdown-link" href="https://www.lrsd.net/page/51244/1-1-community-schools-network"><span class="dropdown-number">1.1</span> Community Schools Network</a><a class="dropdown-link" href="https://www.lrsd.net/page/51224/1-2-staff-wellness-to-support-student-wellness"><span class="dropdown-number">1.2</span> Workplace Safety &amp; Health</a><a class="dropdown-link" href="https://www.lrsd.net/page/51213/1-3-reinforce-trauma-responsive-practices"><span class="dropdown-number">1.3</span> Trauma-Responsive Practices</a><a class="dropdown-link" href="https://www.lrsd.net/page/50955/1-4-indigenous-languages"><span class="dropdown-number">1.4</span> Indigenous Language Nests</a><a class="dropdown-link" href="https://www.lrsd.net/page/51078/1-5-decolonization-indigenization"><span class="dropdown-number">1.5</span> Indigenous Curriculum Focus</a><a class="dropdown-link" href="https://www.lrsd.net/page/51455/1-6-international-heritage-languages"><span class="dropdown-number">1.6</span> Int&#39;l &amp; Heritage Languages</a></div></div>
+						<div class="action-item">
+							<button class="action-btn"><span class="action-btn-icon"><img src="https://media.lrsd.net/media/Default/frl/0/Mastery-icononly@2x-8-1.png" alt="Mastery" class="fr-dib"></span><span class="action-btn-text">Mastery</span></button>
+							<div class="action-links"><a class="dropdown-link disabled" href="#"><span class="dropdown-number">2.1</span> Learner-Centred Approach</a><a class="dropdown-link" href="https://www.lrsd.net/page/51227/2-2-neurodiversity-and-diverse-abilities"><span class="dropdown-number">2.2</span> Neurodiversity Framework</a><a class="dropdown-link" href="https://www.lrsd.net/page/50954/2-3-universal-early-screening-monitoring"><span class="dropdown-number">2.3</span> Early Screening &amp; Monitoring</a><a class="dropdown-link" href="https://www.lrsd.net/page/51229/2-4-social-and-emotional-competencies"><span class="dropdown-number">2.4</span> Social &amp; Emotional Competencies</a><a class="dropdown-link" href="https://www.lrsd.net/page/51462/2-5-access-to-french-immersion"><span class="dropdown-number">2.5</span> Access to French Immersion</a><a class="dropdown-link" href="https://www.lrsd.net/page/51463/2-6-french-in-english-program-schools"><span class="dropdown-number">2.6</span> French in English Program</a></div></div>
+						<div class="action-item">
+							<button class="action-btn"><span class="action-btn-icon"><img src="https://media.lrsd.net/media/Default/frl/0/Independence-icononly@2x-8-1.png" alt="Independence" class="fr-dib"><p><br></p></span><span class="action-btn-text">Independence</span></button>
+							<div class="action-links"><a class="dropdown-link" href="https://www.lrsd.net/page/51460/3-1-assessment-for-learning"><span class="dropdown-number">3.1</span> Learner Agency &amp; Assessment</a><a class="dropdown-link" href="https://www.lrsd.net/page/51232/3-2-student-voice-agency"><span class="dropdown-number">3.2</span> Student Voice &amp; Agency</a><a class="dropdown-link" href="https://www.lrsd.net/page/51330/3-3-information-literacy"><span class="dropdown-number">3.3</span> Information Literacy</a><a class="dropdown-link" href="https://www.lrsd.net/page/50964/3-4-multilingual-learners"><span class="dropdown-number">3.4</span> Multilingual Learners</a><a class="dropdown-link" href="https://www.lrsd.net/page/51234/3-5-specialized-learning-spaces"><span class="dropdown-number">3.5</span> Specialized Learning Spaces</a><a class="dropdown-link" href="https://www.lrsd.net/page/51250/3-6-enhance-project-based-learning"><span class="dropdown-number">3.6</span> Hands-On &amp; Career Learning</a></div></div>
+						<div class="action-item">
+							<button class="action-btn"><span class="action-btn-icon"><img src="https://media.lrsd.net/media/Default/frl/0/Generosity-icononly@2x-8-1.png" alt="Generosity" class="fr-dib"></span><span class="action-btn-text">Generosity</span></button>
+							<div class="action-links"><a class="dropdown-link" href="https://www.lrsd.net/page/50958/4-1-safe-modern-accessible-spaces"><span class="dropdown-number">4.1</span> Safe &amp; Accessible Spaces</a><a class="dropdown-link" href="https://www.lrsd.net/page/51467/4-2-safe-active-transportation"><span class="dropdown-number">4.2</span> Active Transportation</a><a class="dropdown-link" href="https://www.lrsd.net/page/51260/4-3-full-day-kindergarten-and-childcare"><span class="dropdown-number">4.3</span> Full-Day Kinder &amp; Childcare</a><a class="dropdown-link" href="https://www.lrsd.net/page/51022/4-4-universal-nutrition-program"><span class="dropdown-number">4.4</span> Universal Nutrition Program</a><a class="dropdown-link" href="https://www.lrsd.net/page/51215/4-5-united-nations-sdgs-and-the-undrip"><span class="dropdown-number">4.5</span> United Nations SDGs</a><a class="dropdown-link" href="https://www.lrsd.net/page/51471/4-6-employment-equity"><span class="dropdown-number">4.6</span> Employment Equity</a><a class="dropdown-link" href="https://www.lrsd.net/page/52788/4-7-teacher-development-program"><span class="dropdown-number">4.7</span> Teacher Development Program</a></div></div></div></div>
+			</aside>
+		</div></div>
+	<!-- MOBILE VIEW -->
+	<div class="mobile-scrolling-view">
+		<div class="content-body">
+			<section class="sa-section mobile-hero-section">
+				<div class="sa-content-wrapper">
+					<div class="sa-hero-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.2-Comprehensive%20WSH%20Program-4.png" alt="Workplace Safety and Health Icon" class="fr-fil fr-dib"></div>
+
+					<h1 class="sa-title sa-anim sa-delay-1">
+						<br>
+					</h1>
+
+					<p class="sa-hero-subtitle sa-anim sa-delay-2">
+						<br>
+					</p>
+					<nav class="strategic-nav">
+						<div class="mobile-nav-item">
+							<button class="mobile-nav-btn"><img src="https://media.lrsd.net/media/Default/frl/0/Belonging-icononly@2x-8-2.png" alt="Belonging" class="fr-fil fr-dib"></button>
+							<div class="mobile-nav-dropdown">
+								<div class="dropdown-menu-title">Belonging</div><a class="dropdown-link home-link" href="https://www.lrsd.net/page/26539/multi-year-strategic-plan-2023-2027">MYSP Homepage</a> <a class="dropdown-link" href="https://www.lrsd.net/page/51244/1-1-community-schools-network"><span class="dropdown-number">1.1</span> <span class="dropdown-title">Community Schools Network</span></a> <a class="dropdown-link" href="https://www.lrsd.net/page/51224/1-2-staff-wellness-to-support-student-wellness"><span class="dropdown-number">1.2</span> <span class="dropdown-title">Workplace Safety &amp; Health</span></a> <a class="dropdown-link" href="https://www.lrsd.net/page/51213/1-3-reinforce-trauma-responsive-practices"><span class="dropdown-number">1.3</span> <span class="dropdown-title">Trauma-Responsive Practices</span></a> <a class="dropdown-link" href="https://www.lrsd.net/page/50955/1-4-indigenous-languages"><span class="dropdown-number">1.4</span> <span class="dropdown-title">Indigenous Language Nests</span></a> <a class="dropdown-link" href="https://www.lrsd.net/page/51078/1-5-decolonization-indigenization"><span class="dropdown-number">1.5</span> <span class="dropdown-title">Indigenous Curriculum Focus</span></a> <a class="dropdown-link" href="https://www.lrsd.net/page/51455/1-6-international-heritage-languages"><span class="dropdown-number">1.6</span> <span class="dropdown-title">Int&#39;l &amp; Heritage Languages</span></a></div></div>
+						<div class="mobile-nav-item">
+							<button class="mobile-nav-btn"><img src="https://media.lrsd.net/media/Default/frl/0/Mastery-icononly@2x-8-1.png" alt="Mastery" class="fr-dib"></button>
+							<div class="mobile-nav-dropdown">
+								<div class="dropdown-menu-title">Mastery</div><a class="dropdown-link home-link" href="https://www.lrsd.net/page/26539/multi-year-strategic-plan-2023-2027">MYSP Homepage</a> <a class="dropdown-link disabled" href="#"><span class="dropdown-number">2.1</span> <span class="dropdown-title">Learner-Centred Approach</span></a> <a class="dropdown-link" href="https://www.lrsd.net/page/51227/2-2-neurodiversity-and-diverse-abilities"><span class="dropdown-number">2.2</span> <span class="dropdown-title">Neurodiversity Framework</span></a> <a class="dropdown-link" href="https://www.lrsd.net/chs/page/62195/mysp-test-23"><span class="dropdown-number">2.3</span> <span class="dropdown-title">Early Screening &amp; Monitoring</span></a> <a class="dropdown-link" href="https://www.lrsd.net/page/51229/2-4-social-and-emotional-competencies"><span class="dropdown-number">2.4</span> <span class="dropdown-title">Social &amp; Emotional Competencies</span></a> <a class="dropdown-link" href="https://www.lrsd.net/page/51462/2-5-access-to-french-immersion"><span class="dropdown-number">2.5</span> <span class="dropdown-title">Access to French Immersion</span></a> <a class="dropdown-link" href="https://www.lrsd.net/page/51463/2-6-french-in-english-program-schools"><span class="dropdown-title">French in English Program</span></a></div></div>
+						<div class="mobile-nav-item">
+							<button class="mobile-nav-btn"><img src="https://media.lrsd.net/media/Default/frl/0/Independence-icononly@2x-8-1.png" alt="Independence" class="fr-fil fr-dib"></button>
+							<div class="mobile-nav-dropdown">
+								<div class="dropdown-menu-title">Independence</div><a class="dropdown-link home-link" href="https://www.lrsd.net/page/26539/multi-year-strategic-plan-2023-2027">MYSP Homepage</a> <a class="dropdown-link" href="https://www.lrsd.net/page/51460/3-1-assessment-for-learning"><span class="dropdown-number">3.1</span> <span class="dropdown-title">Learner Agency &amp; Assessment</span></a> <a class="dropdown-link" href="https://www.lrsd.net/page/51232/3-2-student-voice-agency"><span class="dropdown-number">3.2</span> <span class="dropdown-title">Student Voice &amp; Agency</span></a> <a class="dropdown-link" href="https://www.lrsd.net/page/51330/3-3-information-literacy"><span class="dropdown-number">3.3</span> <span class="dropdown-title">Information Literacy</span></a> <a class="dropdown-link" href="https://www.lrsd.net/page/50964/3-4-multilingual-learners"><span class="dropdown-number">3.4</span> <span class="dropdown-title">Multilingual Learners</span></a> <a class="dropdown-link" href="https://www.lrsd.net/page/51234/3-5-specialized-learning-spaces"><span class="dropdown-number">3.5</span> <span class="dropdown-title">Specialized Learning Spaces</span></a> <a class="dropdown-link" href="https://www.lrsd.net/page/51250/3-6-enhance-project-based-learning"><span class="dropdown-number">3.6</span> <span class="dropdown-title">Hands-On &amp; Career Learning</span></a></div></div>
+						<div class="mobile-nav-item">
+							<button class="mobile-nav-btn"><img src="https://media.lrsd.net/media/Default/frl/0/Generosity-icononly@2x-8-1.png" alt="Generosity" class="fr-fil fr-dib"></button>
+							<div class="mobile-nav-dropdown">
+								<div class="dropdown-menu-title">Generosity</div><a class="dropdown-link home-link" href="https://www.lrsd.net/page/26539/multi-year-strategic-plan-2023-2027">MYSP Homepage</a> <a class="dropdown-link" href="https://www.lrsd.net/page/50958/4-1-safe-modern-accessible-spaces"><span class="dropdown-number">4.1</span> <span class="dropdown-title">Safe &amp; Accessible Spaces</span></a> <a class="dropdown-link" href="https://www.lrsd.net/page/51467/4-2-safe-active-transportation"><span class="dropdown-number">4.2</span> <span class="dropdown-title">Active Transportation</span></a> <a class="dropdown-link" href="https://www.lrsd.net/page/51260/4-3-full-day-kindergarten-and-childcare"><span class="dropdown-number">4.3</span> <span class="dropdown-title">Full-Day Kinder &amp; Childcare</span></a> <a class="dropdown-link" href="https://www.lrsd.net/page/51022/4-4-universal-nutrition-program"><span class="dropdown-number">4.4</span> <span class="dropdown-title">Universal Nutrition Program</span></a> <a class="dropdown-link" href="https://www.lrsd.net/page/51215/4-5-united-nations-sdgs-and-the-undrip"><span class="dropdown-number">4.5</span> <span class="dropdown-title">United Nations SDGs</span></a> <a class="dropdown-link" href="https://www.lrsd.net/page/51471/4-6-employment-equity"><span class="dropdown-number">4.6</span> <span class="dropdown-title">Employment Equity</span></a> <a class="dropdown-link" href="https://www.lrsd.net/page/52788/4-7-teacher-development-program"><span class="dropdown-number">4.7</span> <span class="dropdown-title">Teacher Development Program</span></a></div></div>
+					</nav>
+				</div>
+			</section>
+			<div id="mobile-stats-sections-container">
+				<br>
+			</div>
+			<div id="mobile-dynamic-sections">
+				<br>
+			</div>
+			<section class="sa-section overview-section">
+				<div class="sa-content-wrapper">
+					<div class="overview-interactive sa-anim">
+
+						<h2 class="overview-title">Strategic Overview</h2>
+						<div class="overview-menu">
+							<button id="tab-progress" class="active"><span>Progress So Far</span></button>
+							<button id="tab-future"><span>Future Plans</span></button>
+						</div>
+						<div class="overview-content">
+							<div id="content-progress" class="active">
+
+								<ul>
+									<li>Refined WSH Program and engaged WSH committee.</li>
+									<li>Partnered with Well at Work by EdCan, surveying over 2,000 staff.</li>
+									<li>Enhanced wellness resources and promotion of MFAP/EAP.</li>
+									<li>Moved incident reporting online and drafted new policies.</li>
+								</ul>
+							</div>
+							<div id="content-future">
+
+								<ul>
+									<li>Develop a robust, data-informed WSH Program.</li>
+									<li>Strengthen partnerships with Well at Work and benefits providers.</li>
+									<li>Implement new Communication and Attendance Support policies.</li>
+									<li>Expand staff recognition and increase access to Staff Services.</li>
+								</ul>
+							</div></div></div></div>
+			</section>
+		</div></div></div>
+<script>
+	if (!window.saMergedScriptLoaded)
+	{
+		window.saMergedScriptLoaded = true;
+
+		const buildHealthCrossIcon = (container) =>
+		{
+			const svgNS = "http://www.w3.org/2000/svg";
+			const iconContainer = document.createElement('div');
+			iconContainer.className = 'health-cross-container sa-anim';
+
+			const svg = document.createElementNS(svgNS, 'svg');
+			svg.setAttribute('viewBox', '0 0 727.5 648');
+			svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+
+			const heartPath = document.createElementNS(svgNS, 'path');
+			heartPath.setAttribute('class', 'heart');
+			heartPath.setAttribute('d', 'M693.24,196.62C655.85,4.34,421.46,1.12,363.67,180.87,305.87,1.13,71.48,4.34,34.09,196.62,0.16,371.06,363.67,646.28,363.67,646.28S727.17,371.06,693.24,196.62Z');
+
+			const crossGroup = document.createElementNS(svgNS, 'g');
+
+			const crossPath = "M322.32,320V274.07c0-22.52,18.25-40.76,40.76-40.76.19,0,.37,0,.56,0,10.86,0,21.27,4.31,28.95,12,7.68,7.67,12,18.09,12,28.95V320h45.71c10.85,0,21.27,4.32,28.95,12,7.68,7.67,12,18.09,12,28.95,0,.14,0,.26,0,.38,0,10.86-4.32,21.28-12,28.95-7.68,7.68-18.1,12-28.95,12H404.58v45.72c0,10.86-4.32,21.27-12,28.95-7.68,7.67-18.09,12-28.95,12-.12,0-.25,0-.37,0-10.86,0-21.27-4.32-28.95-12-7.68-7.67-12-18.09-12-28.95V402.21h-45.9c-22.5,0-40.75-18.24-40.75-40.76,0-.19,0-.38,0-.57,0-10.85,4.31-21.27,12-28.95,7.68-7.67,18.09-12,28.95-12Z";
+
+			const crossArm = document.createElementNS(svgNS, 'path');
+			crossArm.setAttribute('class', 'cross-arm');
+			crossArm.setAttribute('d', crossPath);
+
+			crossGroup.appendChild(crossArm);
+
+			svg.appendChild(heartPath);
+			svg.appendChild(crossGroup);
+			iconContainer.appendChild(svg);
+			container.appendChild(iconContainer);
+		};
+
+		const initDesktop = () =>
+		{
+			const container = document.getElementById('sa-container-wrapper');
+			if (container) setTimeout(() =>
+			{
+				container.classList.add('js-active');
+			}, 100);
+
+			const statsMenu = document.querySelector('.stats-menu');
+			if (statsMenu)
+			{
+				statsMenu.addEventListener('click', (e) =>
+				{
+					const button = e.target.closest('button');
+					if (button && !button.classList.contains('active'))
+					{
+						document.querySelectorAll('.stats-menu button').forEach(b => b.classList.remove('active'));
+						document.querySelectorAll('.stats-content > div').forEach(c => c.classList.remove('active'));
+						button.classList.add('active');
+						document.getElementById(button.id.replace('tab-', 'content-')).classList.add('active');
+					}
+				});
+			}
+		};
+
+		const initMobile = () =>
+		{
+			const container = document.getElementById('sa-container-wrapper');
+			if (container) container.classList.add('js-active');
+
+			const desktopHeroTitle = document.querySelector('.desktop-view .hero-title');
+			const mobileHeroTitle = document.querySelector('.mobile-scrolling-view .sa-title');
+			if (desktopHeroTitle && mobileHeroTitle)
+			{
+				mobileHeroTitle.innerHTML = desktopHeroTitle.innerHTML;
+			}
+
+			const desktopHeroSubtitle = document.querySelector('.desktop-view .hero-subtitle');
+			const mobileHeroSubtitle = document.querySelector('.mobile-scrolling-view .sa-hero-subtitle');
+			if (desktopHeroSubtitle && mobileHeroSubtitle)
+			{
+				mobileHeroSubtitle.innerHTML = desktopHeroSubtitle.innerHTML;
+			}
+
+			let mobileSectionCounter = 0;
+			const mobileStatsContainer = document.getElementById('mobile-stats-sections-container');
+			const desktopStatsButtons = document.querySelectorAll('.stats-menu button');
+			const desktopStatsContent = document.querySelectorAll('.stats-content > div');
+
+			if (mobileStatsContainer && desktopStatsContent.length > 0)
+			{
+				// Section 1: "About the Program" with animation
+				const aboutContentDiv = desktopStatsContent[0];
+				const aboutButton = desktopStatsButtons[0];
+
+				if (aboutContentDiv && aboutButton && aboutButton.dataset.mobileTitle)
+				{
+					const aboutSection = document.createElement('section');
+					aboutSection.className = 'sa-section mobile-dynamic-section';
+					if (mobileSectionCounter % 2 !== 0)
+					{
+						aboutSection.style.backgroundColor = 'var(--light-bg)';
+					}
+					mobileSectionCounter++;
+
+					const contentWrapper = document.createElement('div');
+					contentWrapper.className = 'sa-content-wrapper';
+
+					const textContent = document.createElement('div');
+					textContent.className = 'sa-text-content sa-anim';
+
+					buildHealthCrossIcon(contentWrapper);
+
+					const mobileCardTitle = document.createElement('h3');
+					mobileCardTitle.className = 'sa-title';
+					mobileCardTitle.innerHTML = `<em>${aboutButton.dataset.mobileTitle}</em>`;
+					textContent.appendChild(mobileCardTitle);
+
+					const contentBody = aboutContentDiv.querySelector('p, ul');
+					if (contentBody)
+					{
+						const mobileContentBody = contentBody.cloneNode(true);
+						textContent.appendChild(mobileContentBody);
+					}
+
+					contentWrapper.appendChild(textContent);
+					aboutSection.appendChild(contentWrapper);
+					mobileStatsContainer.appendChild(aboutSection);
+				}
+
+				// Create sections for the rest of the stats content
+				for (let i = 1; i < desktopStatsContent.length; i++)
+				{
+					const contentDiv = desktopStatsContent[i];
+					const desktopButton = desktopStatsButtons[i];
+
+					const mobileSection = document.createElement('section');
+					mobileSection.className = 'sa-section mobile-dynamic-section';
+					if (mobileSectionCounter % 2 !== 0)
+					{
+						mobileSection.style.backgroundColor = 'var(--light-bg)';
+					}
+					mobileSectionCounter++;
+
+					const contentWrapper = document.createElement('div');
+					contentWrapper.className = 'sa-content-wrapper';
+
+					const textContent = document.createElement('div');
+					textContent.className = 'sa-text-content sa-anim';
+
+					if (desktopButton && desktopButton.dataset.mobileTitle)
+					{
+						const mobileCardTitle = document.createElement('h3');
+						mobileCardTitle.className = 'sa-title';
+						mobileCardTitle.innerHTML = `<em>${desktopButton.dataset.mobileTitle}</em>`;
+						textContent.appendChild(mobileCardTitle);
+					}
+
+					const contentBody = contentDiv.querySelector('p, ul');
+					if (contentBody)
+					{
+						const mobileContentBody = contentBody.cloneNode(true);
+							// Add a class to this specific list to override the default flex styles
+						if (mobileContentBody.tagName === 'UL')
+						{
+							mobileContentBody.classList.add('list-style-none');
+						}
+						textContent.appendChild(mobileContentBody);
+					}
+
+					contentWrapper.appendChild(textContent);
+					mobileSection.appendChild(contentWrapper);
+					mobileStatsContainer.appendChild(mobileSection);
+				}
+			}
+
+
+			const dynamicContentContainer = document.getElementById('mobile-dynamic-sections');
+			if (dynamicContentContainer)
+			{
+				const desktopSections = document.querySelectorAll('.desktop-view .section-title');
+				desktopSections.forEach((titleElement) =>
+				{
+
+					const titleSection = document.createElement('section');
+					titleSection.className = 'sa-section sa-layout-text-center';
+					if (mobileSectionCounter % 2 !== 0)
+					{
+						titleSection.style.backgroundColor = 'var(--light-bg)';
+					}
+					mobileSectionCounter++;
+
+					const titleWrapper = document.createElement('div');
+					titleWrapper.className = 'sa-content-wrapper';
+
+					const mobileTitle = document.createElement('h2');
+					mobileTitle.className = 'sa-title sa-anim';
+					mobileTitle.innerHTML = titleElement.innerHTML;
+					titleWrapper.appendChild(mobileTitle);
+					titleSection.appendChild(titleWrapper);
+					dynamicContentContainer.appendChild(titleSection);
+
+					const cardGrid = titleElement.nextElementSibling;
+					if (cardGrid && cardGrid.classList.contains('cards-grid'))
+					{
+						const cards = cardGrid.querySelectorAll('.card');
+						cards.forEach((card, index) =>
+						{
+							const mobileSection = document.createElement('section');
+							mobileSection.className = 'sa-section mobile-dynamic-section';
+							if (mobileSectionCounter % 2 !== 0)
+							{
+								mobileSection.style.backgroundColor = 'var(--light-bg)';
+							}
+							mobileSectionCounter++;
+
+							const contentWrapper = document.createElement('div');
+							contentWrapper.className = 'sa-content-wrapper';
+
+							const imageContent = document.createElement('div');
+							imageContent.className = 'sa-image-content sa-anim';
+							const desktopImage = card.querySelector('.card-image');
+							if (desktopImage)
+							{
+								const mobileImage = document.createElement('img');
+								mobileImage.src = desktopImage.src;
+								mobileImage.alt = desktopImage.alt;
+								imageContent.appendChild(mobileImage);
+							}
+							contentWrapper.appendChild(imageContent);
+
+
+							const textContent = document.createElement('div');
+							textContent.className = 'sa-text-content sa-anim';
+							const desktopTitle = card.querySelector('.card-title');
+							if (desktopTitle)
+							{
+								const mobileCardTitle = document.createElement('h3');
+								mobileCardTitle.className = 'sa-title';
+								mobileCardTitle.innerHTML = desktopTitle.innerHTML;
+								textContent.appendChild(mobileCardTitle);
+							}
+
+							const desktopList = card.querySelector('.card-content ul');
+							if (desktopList)
+							{
+								const mobileList = desktopList.cloneNode(true);
+								textContent.appendChild(mobileList);
+							}
+
+							contentWrapper.appendChild(textContent);
+							mobileSection.appendChild(contentWrapper);
+							dynamicContentContainer.appendChild(mobileSection);
+						});
+					}
+				});
+				const overviewSection = document.querySelector('.mobile-scrolling-view .overview-section');
+				if (overviewSection && mobileSectionCounter % 2 !== 0)
+				{
+					overviewSection.style.backgroundColor = 'var(--light-bg)';
+				}
+			}
+
+
+			const allSections = document.querySelectorAll('.sa-section');
+			if (allSections.length > 0)
+			{
+				const animationObserver = new IntersectionObserver((entries) =>
+				{
+					entries.forEach(entry =>
+					{
+						if (entry.isIntersecting)
+						{
+							entry.target.classList.add('is-visible');
+						}
+					});
+				},
+				{
+					threshold: 0.35
+				});
+				allSections.forEach(section => animationObserver.observe(section));
+			}
+
+			const mobileNavItems = document.querySelectorAll('.strategic-nav .mobile-nav-item');
+
+			const closeAllDropdowns = () =>
+			{
+				document.querySelectorAll('.mobile-nav-dropdown.active').forEach(d => d.classList.remove('active'));
+			};
+
+			mobileNavItems.forEach(item =>
+			{
+				const button = item.querySelector('.mobile-nav-btn');
+				const dropdown = item.querySelector('.mobile-nav-dropdown');
+
+				if (button && dropdown)
+				{
+					button.addEventListener('click', (event) =>
+					{
+						event.preventDefault();
+						event.stopPropagation();
+						const wasActive = dropdown.classList.contains('active');
+
+						closeAllDropdowns();
+
+						if (!wasActive)
+						{
+							dropdown.classList.add('active');
+						}
+
+						button.classList.add('tapped');
+						setTimeout(() =>
+						{
+							button.classList.remove('tapped');
+						}, 200);
+					});
+				}
+			});
+
+			window.addEventListener('scroll', closeAllDropdowns,
+			{
+				passive: true
+			});
+			document.body.addEventListener('click', (event) =>
+			{
+				if (!event.target.closest('.strategic-nav'))
+				{
+					closeAllDropdowns();
+				}
+			});
+
+
+			const overviewMenu = document.querySelector('.overview-menu');
+			if (overviewMenu)
+			{
+				overviewMenu.addEventListener('click', (e) =>
+				{
+					const button = e.target.closest('button');
+					if (button && !button.classList.contains('active'))
+					{
+						document.querySelectorAll('.overview-menu button').forEach(b => b.classList.remove('active'));
+						document.querySelectorAll('.overview-content > div').forEach(c => c.classList.remove('active'));
+						button.classList.add('active');
+						const panelId = button.id.replace('tab-', 'content-');
+						document.getElementById(panelId).classList.add('active');
+					}
+				});
+			}
+		};
+
+		const runInits = () =>
+		{
+			const urlParams = new URLSearchParams(window.location.search);
+			if (urlParams.get('preview') === 'true')
+			{
+				document.getElementById('sa-container-wrapper').classList.add('preview-mode');
+			}
+
+			if (window.innerWidth > 992)
+			{
+				initDesktop();
+			}
+			else
+			{
+				initMobile();
+			}
+		}
+
+		if (document.readyState === 'loading')
+		{
+			document.addEventListener('DOMContentLoaded', runInits);
+		}
+		else
+		{
+			runInits();
+		}
+	}
+
+</script>
