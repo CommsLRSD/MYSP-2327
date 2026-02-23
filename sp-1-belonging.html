@@ -38,7 +38,7 @@
 
     /* ── Wrapper ── */
     #sp1-wrapper {
-      max-width: 900px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 0 1.25rem 3rem;
     }
@@ -132,7 +132,6 @@
       background: var(--white);
       border-radius: 12px;
       box-shadow: var(--shadow-medium);
-      border-left: 5px solid var(--primary); /* overridden per card */
       overflow: hidden;
       opacity: 0;
       transform: translateY(20px);
@@ -142,12 +141,43 @@
       animation: fadeSlideIn 0.55s ease-out forwards;
     }
 
+    /* ── Progress bar ── */
+    .card-progress-bar {
+      display: flex;
+      width: 100%;
+      height: 6px;
+      border-radius: 3px 3px 0 0;
+      overflow: hidden;
+    }
+    .card-progress-bar .seg {
+      flex: 1;
+      opacity: 0.2;
+    }
+    .card-progress-bar .seg.active {
+      opacity: 1;
+    }
+    .seg-green  { background: #2e7d32; }
+    .seg-yellow { background: #f9a825; }
+    .seg-blue   { background: #1565c0; }
+    .seg-red    { background: #c62828; }
+
     .card-header {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
       gap: 1rem;
       padding: 1.25rem 1.5rem 0.75rem;
+    }
+
+    .card-icon {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+    }
+    .card-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .card-number {
@@ -192,6 +222,13 @@
       text-transform: uppercase;
       color: var(--primary);
       margin: 0 0 0.4rem;
+    }
+
+    .card-summary {
+      margin: 0 0 0.75rem;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #333;
     }
 
     .card-body ul {
@@ -263,21 +300,47 @@
       line-height: 1.55;
     }
 
+    .details-images {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 0.75rem 0;
+    }
+    .details-images img {
+      width: 200px;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .details-link {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+      border: 1.5px solid var(--primary);
+      border-radius: 6px;
+      padding: 0.35rem 0.85rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .details-link:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+
     /* ── Status colour classes ── */
     .status-operational  { --status-color: var(--green);  }
     .status-in-progress  { --status-color: var(--yellow); }
     .status-planned      { --status-color: var(--blue);   }
     .status-at-risk      { --status-color: var(--red);    }
 
-    .scorecard.status-operational { border-left-color: var(--green);  }
-    .scorecard.status-in-progress { border-left-color: var(--yellow); }
-    .scorecard.status-planned     { border-left-color: var(--blue);   }
-    .scorecard.status-at-risk     { border-left-color: var(--red);    }
-
-    .legend-dot.status-operational { background: var(--green);  }
-    .legend-dot.status-in-progress { background: var(--yellow); }
-    .legend-dot.status-planned     { background: var(--blue);   }
-    .legend-dot.status-at-risk     { background: var(--red);    }
+    .legend-dot.status-operational { background: #2e7d32; }
+    .legend-dot.status-in-progress { background: #f9a825; }
+    .legend-dot.status-planned     { background: #1565c0; }
+    .legend-dot.status-at-risk     { background: #c62828; }
 
     /* Badge: light text on dark bg for green/blue/red; dark text on yellow */
     .status-badge.status-operational,
@@ -317,9 +380,11 @@
       .page-header-icon { flex: 0 0 70px; width: 70px; height: 70px; }
       .page-header-text h1 { font-size: 1.35rem; }
       .card-header { flex-direction: column; gap: 0.5rem; }
+      .card-icon { width: 36px; height: 36px; }
       .card-number { font-size: 1.6rem; }
       .status-badge { align-self: flex-start; }
       .legend { gap: 0.6rem 1rem; }
+      .details-images img { width: 100%; height: auto; }
     }
   </style>
 </head>
@@ -370,7 +435,16 @@
 
     <!-- 1.1 — In Progress (yellow) -->
     <article class="scorecard status-in-progress" aria-label="Strategic Action 1.1">
+      <div class="card-progress-bar">
+        <div class="seg seg-green"></div>
+        <div class="seg seg-yellow active"></div>
+        <div class="seg seg-blue"></div>
+        <div class="seg seg-red"></div>
+      </div>
       <div class="card-header">
+        <div class="card-icon">
+          <img src="https://media.lrsd.net/media/Default/medialib/47478-lr-icons_1-1-community-schools-network.8f627b62151.png" alt="Community Schools Network icon" />
+        </div>
         <div class="card-number">1.1</div>
         <p class="card-action-text">
           Expand the LRSD Community Schools Network at the René Deleurme Centre to serve more schools and families.
@@ -382,30 +456,52 @@
       </div>
       <div class="card-body">
         <p class="progress-label">Progress So Far</p>
-        <ul>
-          <li>Renovated the René Deleurme Centre (RDC), adding a commercial-grade commissary kitchen to support nutrition programming for all 41 LRSD schools.</li>
-          <li>Formed a working committee with diverse stakeholders to assess programming and collect feedback from Windsor Park, Nelson McIntyre, and Collège Béliveau communities.</li>
-          <li>Reviewed northern division spaces to identify opportunities for network expansion and new facilities.</li>
-          <li>Identified a satellite location and adopted Culturally and Linguistically Responsive Teaching to value multilingual learners and promote asset-based perspectives.</li>
-          <li>Established a new satellite Service Hub at Nelson McIntyre Collegiate, providing access to settlement services, food security, Manitoba Housing, and clothing/laundry resources.</li>
-        </ul>
+        <p class="card-summary">Renovated the René Deleurme Centre with a commissary kitchen serving 41 schools, established a working committee with community stakeholders, and opened a new satellite Service Hub at Nelson McIntyre Collegiate.</p>
       </div>
       <details class="card-details">
         <summary>View Details</summary>
         <div class="details-inner">
+          <h4>What We've Accomplished</h4>
+          <ul>
+            <li>Renovated the René Deleurme Centre (RDC), adding a commercial-grade commissary kitchen to support nutrition programming for all 41 LRSD schools.</li>
+            <li>Formed a working committee with diverse stakeholders to assess programming and collect feedback from Windsor Park, Nelson McIntyre, and Collège Béliveau communities.</li>
+            <li>Reviewed northern division spaces to identify opportunities for network expansion and new facilities.</li>
+            <li>Identified a satellite location and adopted Culturally and Linguistically Responsive Teaching to value multilingual learners and promote asset-based perspectives.</li>
+            <li>Established a new satellite Service Hub at Nelson McIntyre Collegiate, providing access to settlement services, food security, Manitoba Housing, and clothing/laundry resources.</li>
+          </ul>
+          <div class="details-images">
+            <img src="https://media.lrsd.net/media/Default/frl/0/image.jpeg" alt="Ramadan hamper at RDC" />
+            <img src="https://media.lrsd.net/media/Default/frl/0/Nelson-McIntyre-Collegiate-2-1.jpg" alt="Nelson McIntyre Collegiate" />
+          </div>
+          <h4>About the Network</h4>
+          <ul>
+            <li>The René Deleurme Centre (RDC) provides equity-based programming tailored to meet the needs of the community, initially serving Lavallee, Victor Mager, and Victor Wyatt school communities, now expanded to include St. George School, Hastings School, and École Varennes.</li>
+            <li>Community Stakeholders include: Newcomer Settlement Services Team, School &amp; Family Community Connector, Morrow Avenue Early Childhood Learning Centre, and EDGE (literacy and adult EAL programs).</li>
+            <li>Core Network Schools: Lavallee, Victor Mager, Victor Wyatt, St. George, Hastings, École Varennes, Marion, Archwood, École Provencher, École Henri-Bergeron.</li>
+          </ul>
           <h4>Where We're Going</h4>
           <ul>
             <li>Continue strengthening wraparound services for families through expanded partnerships and ongoing community engagement.</li>
             <li>Use stakeholder and community feedback to guide the development of new programming and services as needs evolve.</li>
             <li>Maintain our commitment to improving support for families and schools by fostering comprehensive resources and helping every student and family thrive.</li>
           </ul>
+          <a class="details-link" href="https://www.lrsd.net/page/51244/1-1-community-schools-network">View full SA 1.1 page →</a>
         </div>
       </details>
     </article>
 
     <!-- 1.2 — In Progress (yellow) -->
     <article class="scorecard status-in-progress" aria-label="Strategic Action 1.2">
+      <div class="card-progress-bar">
+        <div class="seg seg-green"></div>
+        <div class="seg seg-yellow active"></div>
+        <div class="seg seg-blue"></div>
+        <div class="seg seg-red"></div>
+      </div>
       <div class="card-header">
+        <div class="card-icon">
+          <img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.2-Comprehensive%20WSH%20Program-4.png" alt="Workplace Safety and Health Program icon" />
+        </div>
         <div class="card-number">1.2</div>
         <p class="card-action-text">
           Create a comprehensive Workplace Safety and Health Program to promote and support employee wellness to better nurture student wellness.
@@ -417,30 +513,46 @@
       </div>
       <div class="card-body">
         <p class="progress-label">Progress So Far</p>
-        <ul>
-          <li>Refined WSH Program and engaged WSH committee.</li>
-          <li>Partnered with Well at Work by EdCan, surveying over 2,000 staff.</li>
-          <li>Enhanced wellness resources and promotion of MFAP/EAP.</li>
-          <li>Moved incident reporting online and drafted new policies.</li>
-        </ul>
+        <p class="card-summary">Refined the Workplace Safety &amp; Health Program, partnered with Well at Work by EdCan to survey 2,000+ staff, enhanced wellness resources, and moved incident reporting online.</p>
       </div>
       <details class="card-details">
         <summary>View Details</summary>
         <div class="details-inner">
+          <h4>What We've Accomplished</h4>
+          <ul>
+            <li>Refined the WSH Program structure and engaged the WSH committee for oversight and guidance.</li>
+            <li>Partnered with Well at Work by EdCan, surveying over 2,000 staff members to gather baseline wellness data.</li>
+            <li>Enhanced wellness resources and increased promotion of MFAP/EAP services across the division.</li>
+            <li>Moved incident reporting online, streamlining processes and improving data collection.</li>
+            <li>Drafted new Communication and Attendance Support policies.</li>
+          </ul>
+          <div class="details-images">
+            <img src="https://media.lrsd.net/media/Default/frl/0/iStock-2177746077.jpg" alt="Diverse group of staff" />
+          </div>
           <h4>Where We're Going</h4>
           <ul>
-            <li>Develop a robust, data-informed WSH Program.</li>
-            <li>Strengthen partnerships with Well at Work and benefits providers.</li>
-            <li>Implement new Communication and Attendance Support policies.</li>
-            <li>Expand staff recognition and increase access to Staff Services.</li>
+            <li>Develop a robust, data-informed WSH Program that proactively addresses staff wellness needs.</li>
+            <li>Strengthen partnerships with Well at Work and benefits providers to expand resources.</li>
+            <li>Implement new Communication and Attendance Support policies division-wide.</li>
+            <li>Expand staff recognition programs and increase access to Staff Services.</li>
           </ul>
+          <a class="details-link" href="https://www.lrsd.net/page/51224/1-2-staff-wellness-to-support-student-wellness">View full SA 1.2 page →</a>
         </div>
       </details>
     </article>
 
     <!-- 1.3 — Operational (green) -->
     <article class="scorecard status-operational" aria-label="Strategic Action 1.3">
+      <div class="card-progress-bar">
+        <div class="seg seg-green active"></div>
+        <div class="seg seg-yellow"></div>
+        <div class="seg seg-blue"></div>
+        <div class="seg seg-red"></div>
+      </div>
       <div class="card-header">
+        <div class="card-icon">
+          <img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.3-Trauma%20Responsive-1.png" alt="Trauma-responsive practices icon" />
+        </div>
         <div class="card-number">1.3</div>
         <p class="card-action-text">
           Reinforce trauma-responsive practices.
@@ -452,28 +564,40 @@
       </div>
       <div class="card-body">
         <p class="progress-label">Progress So Far</p>
-        <ul>
-          <li>Began developing a professional learning framework for trauma-responsive practices.</li>
-          <li>Adopted the Therapeutic Crisis Intervention (TCI) model from Cornell University.</li>
-          <li>Scheduled TCI trainer training for key staff for the 2024–2025 school year.</li>
-        </ul>
+        <p class="card-summary">Developed a professional learning framework for trauma-responsive practices, adopted the Therapeutic Crisis Intervention (TCI) model from Cornell University, and trained key staff.</p>
       </div>
       <details class="card-details">
         <summary>View Details</summary>
         <div class="details-inner">
+          <h4>What We've Accomplished</h4>
+          <ul>
+            <li>Began developing a professional learning framework for trauma-responsive practices across the division.</li>
+            <li>Adopted the Therapeutic Crisis Intervention (TCI) model from Cornell University as the division-wide approach.</li>
+            <li>Scheduled TCI trainer training for key staff for the 2024–2025 school year to build internal capacity.</li>
+          </ul>
           <h4>Where We're Going</h4>
           <ul>
             <li>Implement a comprehensive professional learning model division-wide.</li>
             <li>Deliver TCI training to all school-based staff.</li>
             <li>Establish a sustainability plan for TCI certifications and reviews.</li>
           </ul>
+          <a class="details-link" href="https://www.lrsd.net/page/51213/1-3-reinforce-trauma-responsive-practices">View full SA 1.3 page →</a>
         </div>
       </details>
     </article>
 
     <!-- 1.4 — In Progress (yellow) -->
     <article class="scorecard status-in-progress" aria-label="Strategic Action 1.4">
+      <div class="card-progress-bar">
+        <div class="seg seg-green"></div>
+        <div class="seg seg-yellow active"></div>
+        <div class="seg seg-blue"></div>
+        <div class="seg seg-red"></div>
+      </div>
       <div class="card-header">
+        <div class="card-icon">
+          <img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.4-Indigenous%20Language-1.png" alt="Indigenous Language Nests icon" />
+        </div>
         <div class="card-number">1.4</div>
         <p class="card-action-text">
           Introduce Indigenous Language Nests for preschool-aged children in our family centres.<br />
@@ -486,28 +610,40 @@
       </div>
       <div class="card-body">
         <p class="progress-label">Progress So Far</p>
-        <ul>
-          <li>Expanded K–3 curriculum, providing language instruction to K/1 classes.</li>
-          <li>Implemented language programs at two high schools.</li>
-          <li>Trained staff on the "Moe the Mouse" framework for Language Nests.</li>
-        </ul>
+        <p class="card-summary">Expanded K–3 Indigenous language curriculum, implemented language programs at two high schools, and trained staff on the "Moe the Mouse" framework for Language Nests in family centres.</p>
       </div>
       <details class="card-details">
         <summary>View Details</summary>
         <div class="details-inner">
+          <h4>What We've Accomplished</h4>
+          <ul>
+            <li>Expanded K–3 Indigenous language curriculum, providing language instruction to Kindergarten and Grade 1 classes.</li>
+            <li>Implemented Indigenous language programs at two high schools.</li>
+            <li>Trained staff on the "Moe the Mouse" framework for Language Nests in family centres.</li>
+          </ul>
           <h4>Where We're Going</h4>
           <ul>
-            <li>Expand the language program to include all K–4 classes.</li>
+            <li>Expand the language program to include all K–4 classes across the division.</li>
             <li>Establish Indigenous language programs in all high schools.</li>
-            <li>Complete the introduction of Language Nests in family centres.</li>
+            <li>Complete the introduction of Language Nests in all family centres.</li>
           </ul>
+          <a class="details-link" href="https://www.lrsd.net/page/50955/1-4-indigenous-languages">View full SA 1.4 page →</a>
         </div>
       </details>
     </article>
 
     <!-- 1.5 — Operational (green) -->
     <article class="scorecard status-operational" aria-label="Strategic Action 1.5">
+      <div class="card-progress-bar">
+        <div class="seg seg-green active"></div>
+        <div class="seg seg-yellow"></div>
+        <div class="seg seg-blue"></div>
+        <div class="seg seg-red"></div>
+      </div>
       <div class="card-header">
+        <div class="card-icon">
+          <img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.5-Indigenous%20Focus-1.png" alt="Indigenous literature and perspectives icon" />
+        </div>
         <div class="card-number">1.5</div>
         <p class="card-action-text">
           Reframe the Grade 11 English Language Arts curriculum to focus on Indigenous literature and perspectives while ensuring the Grade 11 History curriculum thoroughly explores Indigenous histories and perspectives.
@@ -519,26 +655,38 @@
       </div>
       <div class="card-body">
         <p class="progress-label">Progress So Far</p>
-        <ul>
-          <li>Began planning to reframe the Grade 11 ELA curriculum to focus on Indigenous literature and perspectives.</li>
-          <li>Continued reframing the Grade 11 History curriculum by forming a teacher committee and holding workshops focused on shifting practices that reflect harms of the past.</li>
-        </ul>
+        <p class="card-summary">Began planning to reframe Grade 11 ELA curriculum for Indigenous literature; continued reframing Grade 11 History with a teacher committee and workshops.</p>
       </div>
       <details class="card-details">
         <summary>View Details</summary>
         <div class="details-inner">
+          <h4>What We've Accomplished</h4>
+          <ul>
+            <li>Began planning to reframe the Grade 11 ELA curriculum to focus on Indigenous literature and perspectives.</li>
+            <li>Continued reframing the Grade 11 History curriculum by forming a teacher committee and holding workshops focused on shifting practices that reflect harms of the past.</li>
+          </ul>
           <h4>Where We're Going</h4>
           <ul>
             <li>By 2025: Ensure the Grade 11 History curriculum thoroughly explores Indigenous histories and perspectives, framed with Indigenous pedagogies.</li>
             <li>By 2027: Reframe the Grade 11 ELA curriculum to focus on Indigenous literature, authors, and storytelling traditions.</li>
           </ul>
+          <a class="details-link" href="https://www.lrsd.net/page/51078/1-5-decolonization-indigenization">View full SA 1.5 page →</a>
         </div>
       </details>
     </article>
 
     <!-- 1.6 — In Progress (yellow) -->
     <article class="scorecard status-in-progress" aria-label="Strategic Action 1.6">
+      <div class="card-progress-bar">
+        <div class="seg seg-green"></div>
+        <div class="seg seg-yellow active"></div>
+        <div class="seg seg-blue"></div>
+        <div class="seg seg-red"></div>
+      </div>
       <div class="card-header">
+        <div class="card-icon">
+          <img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.6-Heritage%20Languages-1.png" alt="International and Heritage Languages icon" />
+        </div>
         <div class="card-number">1.6</div>
         <p class="card-action-text">
           Expand International and Heritage Language options in high schools.
@@ -550,17 +698,20 @@
       </div>
       <div class="card-body">
         <p class="progress-label">Progress So Far</p>
-        <ul>
-          <li>Currently, Spanish is offered at Collège Béliveau, Collège Jeanne-Sauvé, and Dakota Collegiate, with multiple sections across grades 9–12.</li>
-        </ul>
+        <p class="card-summary">Spanish is currently offered at Collège Béliveau, Collège Jeanne-Sauvé, and Dakota Collegiate across grades 9–12.</p>
       </div>
       <details class="card-details">
         <summary>View Details</summary>
         <div class="details-inner">
+          <h4>What We've Accomplished</h4>
+          <ul>
+            <li>Spanish is offered at Collège Béliveau, Collège Jeanne-Sauvé, and Dakota Collegiate, with multiple sections across grades 9–12.</li>
+          </ul>
           <h4>Where We're Going</h4>
           <ul>
             <li>By 2027, all high schools in the Louis Riel School Division will offer at least one International/Heritage Language option to students.</li>
           </ul>
+          <a class="details-link" href="https://www.lrsd.net/page/51455/1-6-international-heritage-languages">View full SA 1.6 page →</a>
         </div>
       </details>
     </article>
