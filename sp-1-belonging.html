@@ -351,7 +351,7 @@
     /* ── Two-column detail cards (Accomplished / Going) ── */
     .detail-card-cols {
       display: grid;
-      grid-template-columns: 1fr minmax(160px, 200px);
+      grid-template-columns: 1fr minmax(180px, 240px);
       grid-template-rows: auto 1fr;
       column-gap: 1.25rem;
       row-gap: 0;
@@ -370,18 +370,70 @@
       grid-row: 2;
       float: none;
       width: 100%;
-      height: 160px;
+      height: 220px;
       margin: 0;
       align-self: start;
     }
 
-    /* ── "About" / context cards — visually distinct, shown first ── */
-    .detail-card-about {
-      background: rgba(38,78,116,0.06);
-      border-color: rgba(38,78,116,0.2);
+    /* ── Context / About sections — visually distinct from Accomplished/Going ── */
+    .detail-card-context {
+      background: transparent;
+      border: none;
+      border-radius: 10px;
+      padding: 0;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(38,78,116,0.12);
     }
-    .detail-card-about h4 {
-      color: #1a3a58;
+    .detail-card-context:last-child { margin-bottom: 0; }
+    .context-header {
+      background: var(--primary);
+      color: #fff;
+      padding: 0.65rem 1.1rem;
+      font-family: var(--header-font);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+    .context-body {
+      background: rgba(38,78,116,0.04);
+      border: 1px solid rgba(38,78,116,0.15);
+      border-top: none;
+      border-radius: 0 0 10px 10px;
+      padding: 1rem 1.1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .context-section {
+      flex: 1 1 200px;
+      min-width: 0;
+    }
+    .context-section h5 {
+      font-family: var(--header-font);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 0 0 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .context-section p {
+      font-size: 0.86rem;
+      line-height: 1.6;
+      color: #333;
+      margin: 0;
+    }
+    .context-section ul {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+    .context-section ul li {
+      font-size: 0.86rem;
+      line-height: 1.55;
+      margin-bottom: 0.25rem;
+      color: #333;
     }
 
     /* ── Status colour classes ── */
@@ -452,9 +504,10 @@
       .detail-card-cols ul { grid-column: 1; grid-row: 2; }
       .detail-card-cols .detail-card-img {
         grid-column: 1; grid-row: 3;
-        width: 100%; height: 160px;
+        width: 100%; height: 180px;
         margin-top: 0.75rem;
       }
+      .context-body { flex-direction: column; }
     }
   </style>
 </head>
@@ -522,13 +575,38 @@
       <details class="card-details">
         <summary>View Details</summary>
         <div class="details-inner">
-          <div class="detail-card detail-card-about">
-            <h4>About the Network</h4>
-            <ul>
-              <li>The René Deleurme Centre (RDC) provides equity-based programming tailored to meet the needs of the community, initially serving Lavallee, Victor Mager, and Victor Wyatt school communities, now expanded to include St. George School, Hastings School, and École Varennes.</li>
-              <li>Community Stakeholders include: Newcomer Settlement Services Team, School &amp; Family Community Connector, Morrow Avenue Early Childhood Learning Centre, and EDGE (literacy and adult EAL programs).</li>
-              <li>Core Network Schools: Lavallee, Victor Mager, Victor Wyatt, St. George, Hastings, École Varennes, Marion, Archwood, École Provencher, École Henri-Bergeron.</li>
-            </ul>
+          <div class="detail-card-context">
+            <div class="context-header">About the Network</div>
+            <div class="context-body">
+              <div class="context-section">
+                <h5>About the René Deleurme Centre</h5>
+                <p>The René Deleurme Centre (RDC) provides equity-based programming tailored to meet the needs of the community. Initially serving the Lavallee, Victor Mager, and Victor Wyatt school communities, RDC has since expanded its reach to include St. George School, Hastings School, and École Varennes, as well as schools in the northern part of our division. There is now consideration for establishing a satellite location in the northern part of LRSD.</p>
+              </div>
+              <div class="context-section">
+                <h5>Community Stakeholders</h5>
+                <ul>
+                  <li><strong>Newcomer Settlement Services Team:</strong> Federally funded to support newcomers.</li>
+                  <li><strong>School &amp; Family Community Connector:</strong> Provincially funded through the Community Schools mandate.</li>
+                  <li><strong>Morrow Avenue Early Childhood Learning Centre:</strong> A private childcare provider.</li>
+                  <li><strong>EDGE:</strong> A non-profit organization offering literacy and adult EAL programs, leasing space at RDC.</li>
+                </ul>
+              </div>
+              <div class="context-section">
+                <h5>Core Network Schools</h5>
+                <ul>
+                  <li>Lavallee School</li>
+                  <li>Victor Mager School</li>
+                  <li>Victor Wyatt School</li>
+                  <li>St. George School</li>
+                  <li>Hastings School</li>
+                  <li>École Varennes</li>
+                  <li>Marion School</li>
+                  <li>Archwood School</li>
+                  <li>École Provencher</li>
+                  <li>École Henri-Bergeron</li>
+                </ul>
+              </div>
+            </div>
           </div>
           <div class="detail-card detail-card-cols">
             <h4>What We've Accomplished</h4>
@@ -582,6 +660,24 @@
       <details class="card-details">
         <summary>View Details</summary>
         <div class="details-inner">
+          <div class="detail-card-context">
+            <div class="context-header">About the Program</div>
+            <div class="context-body">
+              <div class="context-section">
+                <h5>Fostering a Culture of Well-being</h5>
+                <p>Our goal is to cultivate an environment where both the physical and psychological well-being of every staff member is paramount. By developing a robust, data-informed Workplace Safety and Health Program, we are taking proactive steps to ensure our schools and offices are safe, supportive, and healthy places to work. This commitment to employee wellness is foundational to creating a positive and nurturing atmosphere for our students.</p>
+              </div>
+              <div class="context-section">
+                <h5>Key Initiatives</h5>
+                <ul>
+                  <li><strong>Well at Work by EdCan:</strong> Partnered to evaluate and improve staff psychological well-being using the Guarding Minds at Work survey.</li>
+                  <li><strong>Online Incident Reporting:</strong> Launched a new system to increase access, transparency, and data analysis for safety incidents.</li>
+                  <li><strong>Communication Policy:</strong> Drafted a new policy to support better work-life balance for all staff.</li>
+                  <li><strong>Attendance Support Program:</strong> Created a program focused on early intervention to promote employee wellness.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
           <div class="detail-card detail-card-cols">
             <h4>What We've Accomplished</h4>
             <ul>
@@ -634,6 +730,23 @@
       <details class="card-details">
         <summary>View Details</summary>
         <div class="details-inner">
+          <div class="detail-card-context">
+            <div class="context-header">Our Approach</div>
+            <div class="context-body">
+              <div class="context-section">
+                <h5>The Ethic of Hospitality</h5>
+                <p>To ensure all students and families—especially those new to our community—feel a true sense of belonging and safety, we have centered our work on the Ethic of Hospitality. This philosophy guides our efforts to create welcoming and inclusive spaces where every individual is valued and supported from the moment they connect with our schools.</p>
+              </div>
+              <div class="context-section">
+                <h5>A Deliberate Framework</h5>
+                <p>A dedicated committee of teachers, clinicians, and school leaders has been established to develop a comprehensive professional learning framework for trauma-responsive practices. This group is researching best practices and defining clear outcomes to ensure a unified and effective approach across the division.</p>
+              </div>
+              <div class="context-section">
+                <h5>Therapeutic Crisis Intervention</h5>
+                <p>In collaboration with Staff Services, we have adopted the TCI model from Cornell University as our division-wide, trauma-responsive intervention model. This evidence-based approach provides staff with the skills to prevent and de-escalate potential crisis situations, fostering a safer environment for everyone.</p>
+              </div>
+            </div>
+          </div>
           <div class="detail-card detail-card-cols">
             <h4>What We've Accomplished</h4>
             <ul>
@@ -684,6 +797,23 @@
       <details class="card-details">
         <summary>View Details</summary>
         <div class="details-inner">
+          <div class="detail-card-context">
+            <div class="context-header">Our Commitment</div>
+            <div class="context-body">
+              <div class="context-section">
+                <h5>Circle of Courage</h5>
+                <p>Inspired by the Circle of Courage, we are committed to a renewed relationship with Indigenous learners and families. We are embedding Indigenous worldviews, practices, and culture into our learning and activities to ensure a holistic educational journey.</p>
+              </div>
+              <div class="context-section">
+                <h5>Community Engagement</h5>
+                <p>Through our Indigenous Education Community Council and Indigenous Parent Program, we build strong partnerships with students, staff, and families. These programs provide safe, supportive spaces for guidance, cultural activities, and shared learning.</p>
+              </div>
+              <div class="context-section">
+                <h5>Innovative Learning</h5>
+                <p>We are proud to offer unique programs like the Manito Ahbee Aki Minecraft world, Powwow Clubs, and the Indigenous Youth Leadership Program. These initiatives provide engaging, authentic opportunities for students to connect with Indigenous culture and perspectives.</p>
+              </div>
+            </div>
+          </div>
           <div class="detail-card detail-card-cols">
             <h4>What We've Accomplished</h4>
             <ul>
@@ -733,6 +863,23 @@
       <details class="card-details">
         <summary>View Details</summary>
         <div class="details-inner">
+          <div class="detail-card-context">
+            <div class="context-header">Our Approach</div>
+            <div class="context-body">
+              <div class="context-section">
+                <h5>A Renewed Relationship</h5>
+                <p>Inspired by the Circle of Courage, we are committed to a renewed relationship with Indigenous learners and families. We are embedding Indigenous worldviews, practices, and culture into our learning and activities to ensure a holistic educational journey.</p>
+              </div>
+              <div class="context-section">
+                <h5>Community Engagement</h5>
+                <p>Through our Indigenous Education Community Council and Indigenous Parent Program, we build strong partnerships with students, staff, and families. These programs provide safe, supportive spaces for guidance, cultural activities, and shared learning.</p>
+              </div>
+              <div class="context-section">
+                <h5>Innovative Learning</h5>
+                <p>We are proud to offer unique programs like the Manito Ahbee Aki Minecraft world, Powwow Clubs, and the Indigenous Youth Leadership Program. These initiatives provide engaging, authentic opportunities for students to connect with Indigenous culture and perspectives.</p>
+              </div>
+            </div>
+          </div>
           <div class="detail-card detail-card-cols">
             <h4>What We've Accomplished</h4>
             <ul>
@@ -781,6 +928,19 @@
       <details class="card-details">
         <summary>View Details</summary>
         <div class="details-inner">
+          <div class="detail-card-context">
+            <div class="context-header">About International &amp; Heritage Languages</div>
+            <div class="context-body">
+              <div class="context-section">
+                <h5>Celebrating Linguistic Diversity</h5>
+                <p>In LRSD, we are proud of the rich tapestry of languages spoken by our students and families. We are committed to creating an environment where this diversity is not only recognized but celebrated. By strengthening our International and Heritage Language programs, we provide students with the opportunity to connect with their heritage, develop valuable linguistic skills, and foster a greater appreciation for global cultures.</p>
+              </div>
+              <div class="context-section">
+                <h5>Enhancing Instruction</h5>
+                <p>We are dedicated to improving the quality and accessibility of our International and Heritage Language instruction. This involves a comprehensive review of our current programs, building stronger partnerships with community language organizations, and developing a clear framework to support our teachers and learners, ensuring a high-quality educational experience for all.</p>
+              </div>
+            </div>
+          </div>
           <div class="detail-card detail-card-cols">
             <h4>What We've Accomplished</h4>
             <ul>
