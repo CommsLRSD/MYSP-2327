@@ -18,10 +18,10 @@
       --shadow-light:  0 2px 6px rgba(34,60,80,0.08);
       --shadow-medium: 0 8px 20px rgba(0,0,0,0.12), 0 3px 6px rgba(0,0,0,0.08);
       /* status colours */
-      --green:  #2e7d32;
-      --yellow: #f9a825;
-      --blue:   #1565c0;
-      --red:    #c62828;
+      --green:  #a3b939;
+      --yellow: #fbad1c;
+      --blue:   #3491cd;
+      --red:    #b33528;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -125,10 +125,10 @@
       padding: 0 0.5rem;
       white-space: nowrap;
     }
-    .legend-at-risk     { background: #c62828; color: #fff; }
-    .legend-planned     { background: #1565c0; color: #fff; }
-    .legend-in-progress { background: #f9a825; color: #333; }
-    .legend-operational { background: #2e7d32; color: #fff; }
+    .legend-at-risk     { background: #b33528; color: #fff; }
+    .legend-planned     { background: #3491cd; color: #fff; }
+    .legend-in-progress { background: #fbad1c; color: #333; }
+    .legend-operational { background: #a3b939; color: #333; }
 
     /* ── Cards ── */
     .cards-list {
@@ -167,23 +167,24 @@
       opacity: 1;
       box-shadow: 0 0 6px 1px rgba(0,0,0,0.25);
     }
-    .seg-green  { background: #2e7d32; }
-    .seg-yellow { background: #f9a825; }
-    .seg-blue   { background: #1565c0; }
-    .seg-red    { background: #c62828; }
+    .seg-green  { background: #a3b939; }
+    .seg-yellow { background: #fbad1c; }
+    .seg-blue   { background: #3491cd; }
+    .seg-red    { background: #b33528; }
 
     .card-header {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
       gap: 1rem;
-      padding: 1.25rem 1.5rem 0.75rem;
+      padding: 1.25rem 1.5rem 1rem;
     }
 
     .card-icon {
       flex-shrink: 0;
       width: 48px;
       height: 48px;
+      align-self: center;
     }
     .card-icon img {
       width: 100%;
@@ -223,7 +224,8 @@
     }
 
     .card-body {
-      padding: 0 1.5rem 0.5rem;
+      padding: 0.75rem 1.5rem 0.5rem;
+      border-top: 1px solid rgba(38,78,116,0.08);
     }
 
     .progress-label {
@@ -311,18 +313,28 @@
       line-height: 1.55;
     }
 
-    .details-images {
+    /* ── Bullet items with inline photo ── */
+    .item-with-img {
       display: flex;
-      flex-wrap: wrap;
       gap: 0.75rem;
-      margin: 0.75rem 0;
+      align-items: flex-start;
+      list-style: none;
+      margin-left: -1.35rem;
+      margin-bottom: 0.5rem;
     }
-    .details-images img {
-      width: 200px;
-      height: 130px;
+    .item-with-img:last-child { margin-bottom: 0; }
+    .item-thumb {
+      flex-shrink: 0;
+      width: 100px;
+      height: 68px;
       object-fit: cover;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      border-radius: 5px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+    }
+    .item-with-img > span {
+      font-size: 0.88rem;
+      line-height: 1.55;
+      padding-top: 0.1rem;
     }
 
     /* ── Status colour classes ── */
@@ -342,13 +354,13 @@
     .detail-card:last-child { margin-bottom: 0; }
     .detail-card h4 { margin: 0 0 0.35rem; }
 
-    /* Badge: light text on dark bg for green/blue/red; dark text on yellow */
-    .status-badge.status-operational,
+    /* Badge: light text on dark bg for blue/red; dark text on green/yellow */
     .status-badge.status-planned,
     .status-badge.status-at-risk {
       background: var(--status-color);
       color: var(--white);
     }
+    .status-badge.status-operational,
     .status-badge.status-in-progress {
       background: var(--status-color);
       color: #333;
@@ -356,11 +368,12 @@
     .status-badge .dot {
       width: 8px; height: 8px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.7);
+      background: rgba(0,0,0,0.2);
       flex-shrink: 0;
     }
-    .status-badge.status-in-progress .dot {
-      background: rgba(0,0,0,0.2);
+    .status-badge.status-planned .dot,
+    .status-badge.status-at-risk .dot {
+      background: rgba(255,255,255,0.7);
     }
 
     /* ── Animations ── */
@@ -384,7 +397,8 @@
       .card-number { font-size: 1.6rem; }
       .status-badge { align-self: flex-start; }
       .legend { gap: 0.6rem 1rem; }
-      .details-images img { width: 100%; height: auto; }
+      .item-with-img { flex-direction: column; margin-left: -1.35rem; }
+      .item-thumb { width: 100%; height: 140px; }
     }
   </style>
 </head>
@@ -454,16 +468,18 @@
           <div class="detail-card">
             <h4>What We've Accomplished</h4>
             <ul>
-              <li>Renovated the René Deleurme Centre (RDC), adding a commercial-grade commissary kitchen to support nutrition programming for all 41 LRSD schools.</li>
+              <li class="item-with-img">
+                <img class="item-thumb" src="https://media.lrsd.net/media/Default/frl/0/image.jpeg" alt="Ramadan hamper at RDC" />
+                <span>Renovated the René Deleurme Centre (RDC), adding a commercial-grade commissary kitchen to support nutrition programming for all 41 LRSD schools.</span>
+              </li>
               <li>Formed a working committee with diverse stakeholders to assess programming and collect feedback from Windsor Park, Nelson McIntyre, and Collège Béliveau communities.</li>
               <li>Reviewed northern division spaces to identify opportunities for network expansion and new facilities.</li>
               <li>Identified a satellite location and adopted Culturally and Linguistically Responsive Teaching to value multilingual learners and promote asset-based perspectives.</li>
-              <li>Established a new satellite Service Hub at Nelson McIntyre Collegiate, providing access to settlement services, food security, Manitoba Housing, and clothing/laundry resources.</li>
+              <li class="item-with-img">
+                <img class="item-thumb" src="https://media.lrsd.net/media/Default/frl/0/Nelson-McIntyre-Collegiate-2-1.jpg" alt="Nelson McIntyre Collegiate" />
+                <span>Established a new satellite Service Hub at Nelson McIntyre Collegiate, providing access to settlement services, food security, Manitoba Housing, and clothing/laundry resources.</span>
+              </li>
             </ul>
-            <div class="details-images">
-              <img src="https://media.lrsd.net/media/Default/frl/0/image.jpeg" alt="Ramadan hamper at RDC" />
-              <img src="https://media.lrsd.net/media/Default/frl/0/Nelson-McIntyre-Collegiate-2-1.jpg" alt="Nelson McIntyre Collegiate" />
-            </div>
           </div>
           <div class="detail-card">
             <h4>About the Network</h4>
@@ -516,17 +532,21 @@
           <div class="detail-card">
             <h4>What We've Accomplished</h4>
             <ul>
-              <li>Refined the WSH Program structure and engaged the WSH committee for oversight and guidance.</li>
-              <li>Partnered with Well at Work by EdCan, surveying over 2,000 staff members to gather baseline wellness data.</li>
-              <li>Enhanced wellness resources and increased promotion of MFAP/EAP services across the division.</li>
+              <li class="item-with-img">
+                <img class="item-thumb" src="https://media.lrsd.net/media/Default/frl/0/iStock-1320966128.jpg" alt="Safety checklist" />
+                <span>Refined the WSH Program structure and engaged the WSH committee for oversight and guidance.</span>
+              </li>
+              <li class="item-with-img">
+                <img class="item-thumb" src="https://media.lrsd.net/media/Default/frl/0/iStock-2224235754.jpg" alt="Teacher with young students at low table" />
+                <span>Partnered with Well at Work by EdCan, surveying over 2,000 staff members to gather baseline wellness data.</span>
+              </li>
+              <li class="item-with-img">
+                <img class="item-thumb" src="https://media.lrsd.net/media/Default/frl/0/iStock-2177746077.jpg" alt="Diverse group of staff" />
+                <span>Enhanced wellness resources and increased promotion of MFAP/EAP services across the division.</span>
+              </li>
               <li>Moved incident reporting online, streamlining processes and improving data collection.</li>
               <li>Drafted new Communication and Attendance Support policies.</li>
             </ul>
-            <div class="details-images">
-              <img src="https://media.lrsd.net/media/Default/frl/0/iStock-2177746077.jpg" alt="Diverse group of staff" />
-              <img src="https://media.lrsd.net/media/Default/frl/0/iStock-2224235754.jpg" alt="Teacher with young students at low table" />
-              <img src="https://media.lrsd.net/media/Default/frl/0/iStock-1320966128.jpg" alt="Safety checklist" />
-            </div>
           </div>
           <div class="detail-card">
             <h4>Where We're Going</h4>
@@ -572,15 +592,19 @@
           <div class="detail-card">
             <h4>What We've Accomplished</h4>
             <ul>
-              <li>Began developing a professional learning framework for trauma-responsive practices across the division.</li>
-              <li>Adopted the Therapeutic Crisis Intervention (TCI) model from Cornell University as the division-wide approach.</li>
-              <li>Scheduled TCI trainer training for key staff for the 2024–2025 school year to build internal capacity.</li>
+              <li class="item-with-img">
+                <img class="item-thumb" src="https://media.lrsd.net/media/Default/frl/0/iStock-2073485467-modified-01c7d6a6-e071-4885-8091-f257b43b24c8.jpg" alt="Hands of people working together" />
+                <span>Began developing a professional learning framework for trauma-responsive practices across the division.</span>
+              </li>
+              <li class="item-with-img">
+                <img class="item-thumb" src="https://media.lrsd.net/media/Default/frl/0/DSC_1553.jpg" alt="Baby in stroller at wellness fair" />
+                <span>Adopted the Therapeutic Crisis Intervention (TCI) model from Cornell University as the division-wide approach.</span>
+              </li>
+              <li class="item-with-img">
+                <img class="item-thumb" src="https://media.lrsd.net/media/Default/frl/0/DSC_1546-1.jpg" alt="Two young people at wellness fair table" />
+                <span>Scheduled TCI trainer training for key staff for the 2024–2025 school year to build internal capacity.</span>
+              </li>
             </ul>
-            <div class="details-images">
-              <img src="https://media.lrsd.net/media/Default/frl/0/iStock-2073485467-modified-01c7d6a6-e071-4885-8091-f257b43b24c8.jpg" alt="Hands of people working together" />
-              <img src="https://media.lrsd.net/media/Default/frl/0/DSC_1546-1.jpg" alt="Two young people at wellness fair table" />
-              <img src="https://media.lrsd.net/media/Default/frl/0/DSC_1553.jpg" alt="Baby in stroller at wellness fair" />
-            </div>
           </div>
           <div class="detail-card">
             <h4>Where We're Going</h4>
@@ -626,15 +650,19 @@
           <div class="detail-card">
             <h4>What We've Accomplished</h4>
             <ul>
-              <li>Expanded K–3 Indigenous language curriculum, providing language instruction to Kindergarten and Grade 1 classes.</li>
-              <li>Implemented Indigenous language programs at two high schools.</li>
-              <li>Trained staff on the "Moe the Mouse" framework for Language Nests in family centres.</li>
+              <li class="item-with-img">
+                <img class="item-thumb" src="https://media.lrsd.net/media/Default/frl/0/DSC_2363.jpg" alt="Indigenous language learning outdoors" />
+                <span>Expanded K–3 Indigenous language curriculum, providing language instruction to Kindergarten and Grade 1 classes.</span>
+              </li>
+              <li class="item-with-img">
+                <img class="item-thumb" src="https://media.lrsd.net/media/Default/frl/0/DSC_2380.jpg" alt="Students at land-based learning event" />
+                <span>Implemented Indigenous language programs at two high schools.</span>
+              </li>
+              <li class="item-with-img">
+                <img class="item-thumb" src="https://media.lrsd.net/media/Default/frl/0/image%20(2).jpeg" alt="Preschool-age girl in tipi feeding doll" />
+                <span>Trained staff on the "Moe the Mouse" framework for Language Nests in family centres.</span>
+              </li>
             </ul>
-            <div class="details-images">
-              <img src="https://media.lrsd.net/media/Default/frl/0/DSC_2363.jpg" alt="Indigenous language learning outdoors" />
-              <img src="https://media.lrsd.net/media/Default/frl/0/DSC_2380.jpg" alt="Students at land-based learning event" />
-              <img src="https://media.lrsd.net/media/Default/frl/0/image%20(2).jpeg" alt="Preschool-age girl in tipi feeding doll" />
-            </div>
           </div>
           <div class="detail-card">
             <h4>Where We're Going</h4>
@@ -679,19 +707,23 @@
           <div class="detail-card">
             <h4>What We've Accomplished</h4>
             <ul>
-              <li>Began planning to reframe the Grade 11 ELA curriculum to focus on Indigenous literature and perspectives.</li>
-              <li>Continued reframing the Grade 11 History curriculum by forming a teacher committee and holding workshops focused on shifting practices that reflect harms of the past.</li>
+              <li class="item-with-img">
+                <img class="item-thumb" src="https://media.lrsd.net/media/Default/frl/0/DSC_2699.jpg" alt="Closeup of hands building tipi" />
+                <span>Began planning to reframe the Grade 11 ELA curriculum to focus on Indigenous literature and perspectives.</span>
+              </li>
+              <li class="item-with-img">
+                <img class="item-thumb" src="https://media.lrsd.net/media/Default/frl/0/DSC_2408.jpg" alt="Tipi at Learning with the Land event" />
+                <span>Continued reframing the Grade 11 History curriculum by forming a teacher committee and holding workshops focused on shifting practices that reflect harms of the past.</span>
+              </li>
             </ul>
-            <div class="details-images">
-              <img src="https://media.lrsd.net/media/Default/frl/0/DSC_2699.jpg" alt="Closeup of hands building tipi" />
-              <img src="https://media.lrsd.net/media/Default/frl/0/DSC_2408.jpg" alt="Tipi at Learning with the Land event" />
-              <img src="https://media.lrsd.net/media/Default/frl/0/JUN_1491.jpg" alt="Dancers at LRSD Grad Powwow" />
-            </div>
           </div>
           <div class="detail-card">
             <h4>Where We're Going</h4>
             <ul>
-              <li>By 2025: Ensure the Grade 11 History curriculum thoroughly explores Indigenous histories and perspectives, framed with Indigenous pedagogies.</li>
+              <li class="item-with-img">
+                <img class="item-thumb" src="https://media.lrsd.net/media/Default/frl/0/JUN_1491.jpg" alt="Dancers at LRSD Grad Powwow" />
+                <span>By 2025: Ensure the Grade 11 History curriculum thoroughly explores Indigenous histories and perspectives, framed with Indigenous pedagogies.</span>
+              </li>
               <li>By 2027: Reframe the Grade 11 ELA curriculum to focus on Indigenous literature, authors, and storytelling traditions.</li>
             </ul>
           </div>
@@ -730,17 +762,19 @@
           <div class="detail-card">
             <h4>What We've Accomplished</h4>
             <ul>
-              <li>Spanish is offered at Collège Béliveau, Collège Jeanne-Sauvé, and Dakota Collegiate, with multiple sections across grades 9–12.</li>
+              <li class="item-with-img">
+                <img class="item-thumb" src="https://media.lrsd.net/media/Default/frl/0/iStock-1218964474.jpg" alt="Hola and Hablas Español in word balloons on wall" />
+                <span>Spanish is offered at Collège Béliveau, Collège Jeanne-Sauvé, and Dakota Collegiate, with multiple sections across grades 9–12.</span>
+              </li>
             </ul>
-            <div class="details-images">
-              <img src="https://media.lrsd.net/media/Default/frl/0/iStock-1218964474.jpg" alt="Hola and Hablas Español in word balloons on wall" />
-              <img src="https://media.lrsd.net/media/Default/frl/0/iStock-493797345.jpg" alt="Pieces of paper with Thank You written in many different languages" />
-            </div>
           </div>
           <div class="detail-card">
             <h4>Where We're Going</h4>
             <ul>
-              <li>By 2027, all high schools in the Louis Riel School Division will offer at least one International/Heritage Language option to students.</li>
+              <li class="item-with-img">
+                <img class="item-thumb" src="https://media.lrsd.net/media/Default/frl/0/iStock-493797345.jpg" alt="Pieces of paper with Thank You written in many different languages" />
+                <span>By 2027, all high schools in the Louis Riel School Division will offer at least one International/Heritage Language option to students.</span>
+              </li>
             </ul>
           </div>
         </div>
