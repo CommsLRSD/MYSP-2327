@@ -354,7 +354,7 @@
     /* ── Two-column detail cards (Accomplished / Going) ── */
     .detail-card-cols {
       display: grid;
-      grid-template-columns: 1fr minmax(180px, 240px);
+      grid-template-columns: 1fr minmax(160px, 200px);
       grid-template-rows: auto 1fr;
       column-gap: 1.25rem;
       row-gap: 0;
@@ -373,7 +373,7 @@
       grid-row: 2;
       float: none;
       width: 100%;
-      height: 220px;
+      height: 200px;
       margin: 0;
       align-self: start;
     }
@@ -477,7 +477,23 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── Responsive ── */
+    /* ── Responsive: collapse detail two-column at 800px ── */
+    @media (max-width: 800px) {
+      .detail-card-cols {
+        display: block;
+      }
+      .detail-card-cols .detail-card-img {
+        float: none;
+        display: block;
+        width: 100%;
+        height: 200px;
+        margin: 0 0 0.85rem;
+        border-radius: 7px;
+      }
+      .context-row { flex-direction: column; }
+    }
+
+    /* ── Responsive: narrow card header at 600px ── */
     @media (max-width: 600px) {
       .page-header { gap: 0.85rem; }
       .page-header-icon { height: 64px; }
@@ -488,18 +504,6 @@
       .card-number { font-size: 2rem; }
       .status-badge { align-self: flex-start; }
       .details-inner { max-width: 100%; }
-      .detail-card-cols {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto;
-      }
-      .detail-card-cols h4 { grid-column: 1; }
-      .detail-card-cols ul { grid-column: 1; grid-row: 2; }
-      .detail-card-cols .detail-card-img {
-        grid-column: 1; grid-row: 3;
-        width: 100%; height: 180px;
-        margin-top: 0.75rem;
-      }
-      .context-row { flex-direction: column; }
     }
   </style>
 </head>
