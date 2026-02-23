@@ -381,17 +381,17 @@
     /* ── Context / About sections — row of individual cards ── */
     .context-row {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       gap: 0.75rem;
       margin-bottom: 0.75rem;
     }
     .context-row:last-child { margin-bottom: 0; }
     .context-card {
-      flex: 1 1 180px;
-      min-width: 0;
-      border-radius: 10px;
+      width: 100%;
+      border-radius: 0 10px 10px 0;
       overflow: hidden;
       box-shadow: 0 2px 10px rgba(38,78,116,0.12);
+      border-left: 6px solid var(--status-color);
     }
     .context-card-header {
       background: var(--primary);
@@ -406,8 +406,9 @@
     .context-card-body {
       background: rgba(38,78,116,0.04);
       border: 1px solid rgba(38,78,116,0.15);
+      border-left: none;
       border-top: none;
-      border-radius: 0 0 10px 10px;
+      border-radius: 0 0 10px 0;
       padding: 0.9rem 1rem;
     }
     .context-card-body p {
@@ -490,7 +491,7 @@
         margin: 0 0 0.85rem;
         border-radius: 7px;
       }
-      .context-row { flex-direction: column; }
+      .context-row { gap: 0.5rem; }
     }
 
     /* ── Responsive: narrow card header at 600px ── */
