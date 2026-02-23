@@ -1,999 +1,881 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Strategic Priority 1: Belonging — LRSD MYSP</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@400;500;600&display=swap');
+<p>
+	<br>
+</p>
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@400;500;600&display=swap');:root {
+		--primary: #264e74; --accent: #b23427; --light-bg: #f5f7fa; --white: #ffffff; --text: #222222; --header-font: 'Montserrat', sans-serif; --body-font: 'Poppins', sans-serif; --shadow-light: 0 2px 6px rgba(34, 60, 80, 0.08); --shadow-medium: 0 8px 20px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.08);
+		/* status colours */
+		--green: #a3b939; --yellow: #fbad1c; --blue: #3491cd; --red: #b33528;
+	}
+	
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+	
+	html,
+	body {
+		margin: 0; padding: 0; font-family: var(--body-font); font-size: 16px; background: var(--white); color: var(--text); line-height: 1.6; overflow-x: hidden;
+	}
+	/* ── Wrapper ── */
+	
+	#sp1-wrapper {
+		max-width: 1100px; margin: 0 auto; padding: 0 1.25rem 3rem;
+	}
+	
+	#sp1-wrapper h1,
+	#sp1-wrapper h2,
+	#sp1-wrapper h3 {
+		font-family: var(--header-font); color: var(--primary);
+	}
+	/* ── Back link ── */
+	
+	.back-link {
+		display: inline-flex; align-items: center; gap: 0.4rem; margin: 0; padding: 0.4rem 0.85rem 0.4rem 0.6rem; font-size: 0.85rem; font-weight: 600; color: #264e74; text-decoration: none; background: rgba(38, 78, 116, 0.07); border-radius: 6px; transition: background 0.2s, color 0.2s;
+	}
+	
+	.back-link:hover {
+		background: rgba(38, 78, 116, 0.14); color: #1a3a58; text-decoration: none;
+	}
+	
+	.back-link svg {
+		flex-shrink: 0;
+	}
+	/* ── Page header ── */
+	
+	.page-header {
+		display: flex; align-items: center; gap: 1.25rem; margin: 1rem 0 1.75rem;
+	}
+	
+	.page-header-icon {
+		flex-shrink: 0; height: 90px; width: auto; opacity: 0; animation: flipIn 0.9s ease-out 0.1s forwards;
+	}
+	
+	.page-header-icon img {
+		height: 100%; width: auto; object-fit: contain;
+	}
+	
+	.page-header-text {
+		display: flex; flex-direction: column; gap: 0;
+	}
+	
+	.page-priority-label {
+		font-family: var(--body-font); font-size: 0.95rem; font-weight: 600; color: #555; line-height: 1.3; margin: 0;
+	}
+	
+	.page-title {
+		font-family: var(--header-font); font-size: 2.8rem; font-weight: 700; color: var(--primary); line-height: 1.05; margin: 0;
+	}
+	
+	.page-subtitle {
+		font-family: var(--body-font); font-size: 0.8rem; color: #777; margin: 0.3rem 0 0;
+	}
+	/* ── Legend ── */
+	
+	.legend {
+		border-radius: 10px; overflow: hidden; margin-bottom: 2rem; box-shadow: var(--shadow-light);
+	}
+	
+	.legend-bar {
+		display: flex; width: 100%; height: 44px;
+	}
+	
+	.legend-seg {
+		flex: 1; display: flex; align-items: center; justify-content: center; font-size: 0.875rem; font-weight: 700; font-family: var(--body-font); text-align: center; padding: 0 0.5rem; white-space: nowrap; opacity: 0.28; transition: opacity 0.2s; cursor: pointer;
+	}
+	
+	.legend-seg:hover {
+		opacity: 1;
+	}
+	
+	.legend-at-risk {
+		background: #b33528; color: #fff;
+	}
+	
+	.legend-planned {
+		background: #3491cd; color: #fff;
+	}
+	
+	.legend-in-progress {
+		background: #fbad1c; color: #333;
+	}
+	
+	.legend-operational {
+		background: #a3b939; color: #333;
+	}
+	/* ── Cards ── */
+	
+	.cards-list {
+		display: flex; flex-direction: column; gap: 1.5rem;
+	}
+	
+	.scorecard {
+		background: var(--white); border-radius: 12px; box-shadow: var(--shadow-medium); overflow: hidden;
+	}
+	
+	.scorecard.js-hidden {
+		opacity: 0; transform: translateY(20px);
+	}
+	
+	.scorecard.visible {
+		animation: fadeSlideIn 0.55s ease-out forwards;
+	}
+	/* ── Progress bar ── */
+	
+	.card-progress-bar {
+		display: flex; width: 100%; height: 12px; border-radius: 3px 3px 0 0; overflow: hidden;
+	}
+	
+	.card-progress-bar .seg {
+		flex: 1; opacity: 0.12;
+	}
+	
+	.card-progress-bar .seg.active {
+		opacity: 1; box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.25);
+	}
+	
+	.seg-green {
+		background: #a3b939;
+	}
+	
+	.seg-yellow {
+		background: #fbad1c;
+	}
+	
+	.seg-blue {
+		background: #3491cd;
+	}
+	
+	.seg-red {
+		background: #b33528;
+	}
+	
+	.card-header {
+		display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; padding: 1.25rem 1.5rem 1rem;
+	}
+	
+	.card-icon {
+		flex-shrink: 0; width: 48px; height: 48px; align-self: center;
+	}
+	
+	.card-icon img {
+		width: 100%; height: 100%; object-fit: contain;
+	}
+	
+	.card-number {
+		font-family: var(--header-font); font-size: 2.6rem; font-weight: 700; color: var(--primary); line-height: 1; flex-shrink: 0;
+	}
+	
+	.card-action-text {
+		flex: 1; font-size: 1.05rem; font-weight: 600; color: #222; margin: 0.2rem 0 0; line-height: 1.5;
+	}
+	
+	.status-badge {
+		flex-shrink: 0; display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.3rem 0.75rem; border-radius: 999px; font-size: 0.78rem; font-weight: 600; font-family: var(--body-font); white-space: nowrap;
+	}
+	
+	.card-body {
+		padding: 0.75rem 1.5rem 0.5rem calc(2.5rem + 48px); border-top: 1px solid rgba(38, 78, 116, 0.08);
+	}
+	
+	.progress-label {
+		font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--primary); margin: 0 0 0.4rem;
+	}
+	
+	.card-summary {
+		margin: 0 0 0.75rem; font-size: 1rem; line-height: 1.65; color: #333; max-width: 65ch;
+	}
+	
+	.card-body ul {
+		margin: 0 0 0.75rem; padding-left: 1.35rem; max-width: 65ch;
+	}
+	
+	.card-body ul li {
+		font-size: 1rem; margin-bottom: 0.3rem; line-height: 1.6;
+	}
+	/* ── Details / expand ── */
+	
+	.card-details {
+		border-top: 1px solid rgba(38, 78, 116, 0.1); margin: 0 1.5rem;
+	}
+	
+	.card-details summary {
+		list-style: none; display: flex; align-items: center; gap: 0.5rem; cursor: pointer; padding: 0.65rem 0; font-size: 1rem; font-weight: 600; color: var(--primary); user-select: none; transition: color 0.2s;
+	}
+	
+	.card-details summary::-webkit-details-marker {
+		display: none;
+	}
+	
+	.card-details summary::before {
+		content: ''; display: inline-block; width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 7px solid var(--primary); transition: transform 0.25s ease; flex-shrink: 0;
+	}
+	
+	.card-details[open] summary::before {
+		transform: rotate(90deg);
+	}
+	
+	.card-details summary:hover {
+		color: var(--accent);
+	}
+	
+	.card-details summary:hover::before {
+		border-left-color: var(--accent);
+	}
+	
+	.details-inner {
+		padding: 0.25rem 0 1rem; max-width: 96%; margin: 0 auto;
+	}
+	
+	.details-inner h4 {
+		font-family: var(--header-font); font-size: 0.9rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 0.35rem;
+	}
+	
+	.details-inner ul {
+		margin: 0 0 0.5rem; padding-left: 1.35rem;
+	}
+	
+	.details-inner ul li {
+		font-size: 0.95rem; margin-bottom: 0.3rem; line-height: 1.6;
+	}
+	/* ── Floated photo in detail cards ── */
+	
+	.detail-card-img {
+		float: right; width: 160px; height: 110px; object-fit: cover; border-radius: 7px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); margin: 0 0 0.5rem 1rem;
+	}
+	
+	.detail-card::after {
+		content: ''; display: block; clear: both;
+	}
+	/* ── Two-column detail cards (Accomplished / Going) ── */
+	
+	.detail-card-cols {
+		display: grid; grid-template-columns: 1fr minmax(160px, 200px); grid-template-rows: auto 1fr; column-gap: 1.25rem; row-gap: 0;
+	}
+	
+	.detail-card-cols h4 {
+		grid-column: 1 / -1;
+	}
+	
+	.detail-card-cols ul {
+		grid-column: 1; grid-row: 2; align-self: start; margin: 0;
+	}
+	
+	.detail-card-cols .detail-card-img {
+		grid-column: 2; grid-row: 2; float: none; width: 100%; height: 200px; margin: 0; align-self: start;
+	}
+	/* ── Context / About sections — row of individual cards ── */
+	
+	.context-row {
+		display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 0.75rem;
+	}
+	
+	.context-row:last-child {
+		margin-bottom: 0;
+	}
+	
+	.context-card {
+		width: 100%; border-radius: 0 10px 10px 0; overflow: hidden; box-shadow: 0 2px 10px rgba(38, 78, 116, 0.12); border-left: 6px solid var(--status-color);
+	}
+	
+	.context-card-header {
+		background: var(--primary); color: #fff; padding: 0.6rem 1rem; font-family: var(--header-font); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+	}
+	
+	.context-card-body {
+		background: rgba(38, 78, 116, 0.04); border: 1px solid rgba(38, 78, 116, 0.15); border-left: none; border-top: none; border-radius: 0 0 10px 0; padding: 0.9rem 1rem;
+	}
+	
+	.context-card-body p {
+		font-size: 0.9rem; line-height: 1.65; color: #333; margin: 0;
+	}
+	
+	.context-card-body ul {
+		margin: 0; padding-left: 1.2rem;
+	}
+	
+	.context-card-body ul li {
+		font-size: 0.9rem; line-height: 1.6; margin-bottom: 0.25rem; color: #333;
+	}
+	/* ── Status colour classes ── */
+	
+	.status-operational {
+		--status-color: var(--green);
+	}
+	
+	.status-in-progress {
+		--status-color: var(--yellow);
+	}
+	
+	.status-planned {
+		--status-color: var(--blue);
+	}
+	
+	.status-at-risk {
+		--status-color: var(--red);
+	}
+	/* ── Detail sub-cards (cards within cards) ── */
+	
+	.detail-card {
+		background: #f8fafc; border: 1px solid rgba(38, 78, 116, 0.1); border-radius: 8px; padding: 0.75rem 1rem; margin-bottom: 0.75rem;
+	}
+	
+	.detail-card:last-child {
+		margin-bottom: 0;
+	}
+	
+	.detail-card h4 {
+		margin: 0 0 0.35rem;
+	}
+	/* Badge: light text on dark bg for blue/red; dark text on green/yellow */
+	
+	.status-badge.status-planned,
+	.status-badge.status-at-risk {
+		background: var(--status-color); color: var(--white);
+	}
+	
+	.status-badge.status-operational,
+	.status-badge.status-in-progress {
+		background: var(--status-color); color: #333;
+	}
+	
+	.status-badge .dot {
+		width: 8px; height: 8px; border-radius: 50%; background: rgba(0, 0, 0, 0.2); flex-shrink: 0;
+	}
+	
+	.status-badge.status-planned .dot,
+	.status-badge.status-at-risk .dot {
+		background: rgba(255, 255, 255, 0.7);
+	}
+	/* ── Animations ── */
+	
+	@keyframes flipIn {
+		from {
+			transform: perspective(900px) rotateY(90deg); opacity: 0;
+		}
+		to {
+			transform: perspective(900px) rotateY(0deg); opacity: 1;
+		}
+	}
+	
+	@keyframes fadeSlideIn {
+		from {
+			opacity: 0; transform: translateY(20px);
+		}
+		to {
+			opacity: 1; transform: translateY(0);
+		}
+	}
+	/* ── Responsive: collapse detail two-column at 800px ── */
+	
+	@media (max-width: 800px) {
+		.detail-card-cols {
+			display: block;
+		}
+		.detail-card-cols .detail-card-img {
+			float: none; display: block; width: 100%; height: 200px; margin: 0 0 0.85rem; border-radius: 7px;
+		}
+		.context-row {
+			gap: 0.5rem;
+		}
+	}
+	/* ── Responsive: narrow card header at 600px ── */
+	
+	@media (max-width: 600px) {
+		.page-header {
+			gap: 0.85rem;
+		}
+		.page-header-icon {
+			height: 64px;
+		}
+		.page-title {
+			font-size: 2rem;
+		}
+		.card-header {
+			flex-direction: column; gap: 0.5rem;
+		}
+		.card-body {
+			padding-left: 1.5rem;
+		}
+		.card-icon {
+			width: 36px; height: 36px;
+		}
+		.card-number {
+			font-size: 2rem;
+		}
+		.status-badge {
+			align-self: flex-start;
+		}
+		.details-inner {
+			max-width: 100%;
+		}
+	}
 
-    :root {
-      --primary:    #264e74;
-      --accent:     #b23427;
-      --light-bg:   #f5f7fa;
-      --white:      #ffffff;
-      --text:       #222222;
-      --header-font: 'Montserrat', sans-serif;
-      --body-font:   'Poppins', sans-serif;
-      --shadow-light:  0 2px 6px rgba(34,60,80,0.08);
-      --shadow-medium: 0 8px 20px rgba(0,0,0,0.12), 0 3px 6px rgba(0,0,0,0.08);
-      /* status colours */
-      --green:  #a3b939;
-      --yellow: #fbad1c;
-      --blue:   #3491cd;
-      --red:    #b33528;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; }
-
-    html, body {
-      margin: 0; padding: 0;
-      font-family: var(--body-font);
-      font-size: 16px;
-      background: var(--white);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* ── Wrapper ── */
-    #sp1-wrapper {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1.25rem 3rem;
-    }
-
-    #sp1-wrapper h1, #sp1-wrapper h2, #sp1-wrapper h3 {
-      font-family: var(--header-font);
-      color: var(--primary);
-    }
-
-    /* ── Back link ── */
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      margin: 0;
-      padding: 0.4rem 0.85rem 0.4rem 0.6rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #264e74;
-      text-decoration: none;
-      background: rgba(38,78,116,0.07);
-      border-radius: 6px;
-      transition: background 0.2s, color 0.2s;
-    }
-    .back-link:hover { background: rgba(38,78,116,0.14); color: #1a3a58; text-decoration: none; }
-    .back-link svg { flex-shrink: 0; }
-
-    /* ── Page header ── */
-    .page-header {
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-      margin: 1rem 0 1.75rem;
-    }
-
-    .page-header-icon {
-      flex-shrink: 0;
-      height: 90px;
-      width: auto;
-      opacity: 0;
-      animation: flipIn 0.9s ease-out 0.1s forwards;
-    }
-    .page-header-icon img {
-      height: 100%; width: auto; object-fit: contain;
-    }
-
-    .page-header-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-    .page-priority-label {
-      font-family: var(--body-font);
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #555;
-      line-height: 1.3;
-      margin: 0;
-    }
-    .page-title {
-      font-family: var(--header-font);
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: var(--primary);
-      line-height: 1.05;
-      margin: 0;
-    }
-    .page-subtitle {
-      font-family: var(--body-font);
-      font-size: 0.8rem;
-      color: #777;
-      margin: 0.3rem 0 0;
-    }
-
-    /* ── Legend ── */
-    .legend {
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 2rem;
-      box-shadow: var(--shadow-light);
-    }
-    .legend-bar {
-      display: flex;
-      width: 100%;
-      height: 44px;
-    }
-    .legend-seg {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.875rem;
-      font-weight: 700;
-      font-family: var(--body-font);
-      text-align: center;
-      padding: 0 0.5rem;
-      white-space: nowrap;
-      opacity: 0.28;
-      transition: opacity 0.2s;
-      cursor: pointer;
-    }
-    .legend-seg:hover {
-      opacity: 1;
-    }
-    .legend-at-risk     { background: #b33528; color: #fff; }
-    .legend-planned     { background: #3491cd; color: #fff; }
-    .legend-in-progress { background: #fbad1c; color: #333; }
-    .legend-operational { background: #a3b939; color: #333; }
-
-    /* ── Cards ── */
-    .cards-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .scorecard {
-      background: var(--white);
-      border-radius: 12px;
-      box-shadow: var(--shadow-medium);
-      overflow: hidden;
-    }
-    .scorecard.js-hidden {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    .scorecard.visible {
-      animation: fadeSlideIn 0.55s ease-out forwards;
-    }
-
-    /* ── Progress bar ── */
-    .card-progress-bar {
-      display: flex;
-      width: 100%;
-      height: 12px;
-      border-radius: 3px 3px 0 0;
-      overflow: hidden;
-    }
-    .card-progress-bar .seg {
-      flex: 1;
-      opacity: 0.12;
-    }
-    .card-progress-bar .seg.active {
-      opacity: 1;
-      box-shadow: 0 0 6px 1px rgba(0,0,0,0.25);
-    }
-    .seg-green  { background: #a3b939; }
-    .seg-yellow { background: #fbad1c; }
-    .seg-blue   { background: #3491cd; }
-    .seg-red    { background: #b33528; }
-
-    .card-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 1.25rem 1.5rem 1rem;
-    }
-
-    .card-icon {
-      flex-shrink: 0;
-      width: 48px;
-      height: 48px;
-      align-self: center;
-    }
-    .card-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .card-number {
-      font-family: var(--header-font);
-      font-size: 2.6rem;
-      font-weight: 700;
-      color: var(--primary);
-      line-height: 1;
-      flex-shrink: 0;
-    }
-
-    .card-action-text {
-      flex: 1;
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: #222;
-      margin: 0.2rem 0 0;
-      line-height: 1.5;
-    }
-
-    .status-badge {
-      flex-shrink: 0;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.45rem 0.95rem;
-      border-radius: 6px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      font-family: var(--body-font);
-      white-space: nowrap;
-      background-image: linear-gradient(to bottom, rgba(255,255,255,0.24) 0%, rgba(0,0,0,0.12) 100%);
-      box-shadow:
-        0 3px 6px rgba(0,0,0,0.22),
-        0 1px 2px rgba(0,0,0,0.16),
-        inset 0 1px 0 rgba(255,255,255,0.32);
-      border-bottom: 1px solid rgba(0,0,0,0.2);
-    }
-
-    .card-body {
-      padding: 0.75rem 1.5rem 0.5rem calc(2.5rem + 48px);
-      border-top: 1px solid rgba(38,78,116,0.08);
-    }
-
-    .progress-label {
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--primary);
-      margin: 0 0 0.4rem;
-    }
-
-    .card-summary {
-      margin: 0 0 0.75rem;
-      font-size: 1rem;
-      line-height: 1.65;
-      color: #333;
-      max-width: 65ch;
-    }
-
-    .card-body ul {
-      margin: 0 0 0.75rem;
-      padding-left: 1.35rem;
-      max-width: 65ch;
-    }
-    .card-body ul li {
-      font-size: 1rem;
-      margin-bottom: 0.3rem;
-      line-height: 1.6;
-    }
-
-    /* ── Details / expand ── */
-    .card-details {
-      border-top: 1px solid rgba(38,78,116,0.1);
-      margin: 0 1.5rem;
-    }
-
-    .card-details summary {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      cursor: pointer;
-      padding: 0.65rem 0;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--primary);
-      user-select: none;
-      transition: color 0.2s;
-    }
-    .card-details summary::-webkit-details-marker { display: none; }
-    .card-details summary::before {
-      content: '';
-      display: inline-block;
-      width: 0;
-      height: 0;
-      border-top: 5px solid transparent;
-      border-bottom: 5px solid transparent;
-      border-left: 7px solid var(--primary);
-      transition: transform 0.25s ease;
-      flex-shrink: 0;
-    }
-    .card-details[open] summary::before {
-      transform: rotate(90deg);
-    }
-    .card-details summary:hover { color: var(--accent); }
-    .card-details summary:hover::before { border-left-color: var(--accent); }
-
-    .details-inner {
-      padding: 0.25rem 0 1rem;
-      max-width: 96%;
-      margin: 0 auto;
-    }
-    .details-inner h4 {
-      font-family: var(--header-font);
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--primary);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin: 0 0 0.35rem;
-    }
-    .details-inner ul {
-      margin: 0 0 0.5rem;
-      padding-left: 1.35rem;
-    }
-    .details-inner ul li {
-      font-size: 0.95rem;
-      margin-bottom: 0.3rem;
-      line-height: 1.6;
-    }
-
-    /* ── Floated photo in detail cards ── */
-    .detail-card-img {
-      float: right;
-      width: 160px;
-      height: 110px;
-      object-fit: cover;
-      border-radius: 7px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-      margin: 0 0 0.5rem 1rem;
-    }
-    .detail-card::after {
-      content: '';
-      display: block;
-      clear: both;
-    }
-
-    /* ── Two-column detail cards (Accomplished / Going) ── */
-    .detail-card-cols {
-      display: grid;
-      grid-template-columns: 1fr minmax(160px, 200px);
-      grid-template-rows: auto 1fr;
-      column-gap: 1.25rem;
-      row-gap: 0;
-    }
-    .detail-card-cols h4 {
-      grid-column: 1 / -1;
-    }
-    .detail-card-cols ul {
-      grid-column: 1;
-      grid-row: 2;
-      align-self: start;
-      margin: 0;
-    }
-    .detail-card-cols .detail-card-img {
-      grid-column: 2;
-      grid-row: 2;
-      float: none;
-      width: 100%;
-      height: 200px;
-      margin: 0;
-      align-self: start;
-    }
-
-    /* ── Context / About sections — row of individual cards ── */
-    .context-row {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      margin-bottom: 0.75rem;
-    }
-    .context-row:last-child { margin-bottom: 0; }
-    .context-card {
-      width: 100%;
-      border-radius: 0 10px 10px 0;
-      overflow: hidden;
-      box-shadow: 0 2px 10px rgba(38,78,116,0.12);
-      border-left: 6px solid var(--status-color);
-    }
-    .context-card-header {
-      background: var(--primary);
-      color: #fff;
-      padding: 0.6rem 1rem;
-      font-family: var(--header-font);
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-    .context-card-body {
-      background: rgba(38,78,116,0.04);
-      border: 1px solid rgba(38,78,116,0.15);
-      border-left: none;
-      border-top: none;
-      border-radius: 0 0 10px 0;
-      padding: 0.9rem 1rem;
-    }
-    .context-card-body p {
-      font-size: 0.9rem;
-      line-height: 1.65;
-      color: #333;
-      margin: 0;
-    }
-    .context-card-body ul {
-      margin: 0;
-      padding-left: 1.2rem;
-    }
-    .context-card-body ul li {
-      font-size: 0.9rem;
-      line-height: 1.6;
-      margin-bottom: 0.25rem;
-      color: #333;
-    }
-
-    /* ── Status colour classes ── */
-    .status-operational  { --status-color: var(--green);  }
-    .status-in-progress  { --status-color: var(--yellow); }
-    .status-planned      { --status-color: var(--blue);   }
-    .status-at-risk      { --status-color: var(--red);    }
-
-    /* ── Detail sub-cards (cards within cards) ── */
-    .detail-card {
-      background: #f8fafc;
-      border: 1px solid rgba(38,78,116,0.1);
-      border-radius: 8px;
-      padding: 0.75rem 1rem;
-      margin-bottom: 0.75rem;
-    }
-    .detail-card:last-child { margin-bottom: 0; }
-    .detail-card h4 { margin: 0 0 0.35rem; }
-
-    /* Badge: light text on dark bg for blue/red; dark text on green/yellow */
-    .status-badge.status-planned,
-    .status-badge.status-at-risk {
-      background-color: var(--status-color);
-      color: var(--white);
-    }
-    .status-badge.status-operational,
-    .status-badge.status-in-progress {
-      background-color: var(--status-color);
-      color: #333;
-    }
-    .status-badge .dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: rgba(0,0,0,0.2);
-      flex-shrink: 0;
-    }
-    .status-badge.status-planned .dot,
-    .status-badge.status-at-risk .dot {
-      background: rgba(255,255,255,0.7);
-    }
-
-    /* ── Animations ── */
-    @keyframes flipIn {
-      from { transform: perspective(900px) rotateY(90deg); opacity: 0; }
-      to   { transform: perspective(900px) rotateY(0deg);  opacity: 1; }
-    }
-
-    @keyframes fadeSlideIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ── Responsive: collapse detail two-column at 800px ── */
-    @media (max-width: 800px) {
-      .detail-card-cols {
-        display: block;
-      }
-      .detail-card-cols .detail-card-img {
-        float: none;
-        display: block;
-        width: 100%;
-        height: 200px;
-        margin: 0 0 0.85rem;
-        border-radius: 7px;
-      }
-      .context-row { gap: 0.5rem; }
-    }
-
-    /* ── Responsive: narrow card header at 600px ── */
-    @media (max-width: 600px) {
-      .page-header { gap: 0.85rem; }
-      .page-header-icon { height: 64px; }
-      .page-title { font-size: 2rem; }
-      .card-header { flex-direction: column; gap: 0.5rem; }
-      .card-body { padding-left: 1.5rem; }
-      .card-icon { width: 36px; height: 36px; }
-      .card-number { font-size: 2rem; }
-      .status-badge { align-self: flex-start; }
-      .details-inner { max-width: 100%; }
-    }
-  </style>
-</head>
-<body>
+</style>
 <div id="sp1-wrapper">
+	<!-- Back link --><a class="back-link" href="https://www.lrsd.net/page/26539/multi-year-strategic-plan-2023-2027">&nbsp;Back to MYSP Home&nbsp;</a>
+	<!-- Page header -->
+	<header class="page-header">
+		<div class="page-header-icon"><img src="https://media.lrsd.net/media/Default/frl/0/Belonging-icononly@2x-8-2.png" alt="Belonging icon" class="fr-fil fr-dib"></div>
+		<div class="page-header-text"><span class="page-priority-label">Strategic Priority 1:</span>
 
-  <!-- Back link -->
-  <a class="back-link" href="https://www.lrsd.net/page/26539/multi-year-strategic-plan-2023-2027">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="M10.5 3L5.5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-    Back to MYSP Home
-  </a>
+			<h1 class="page-title">Belonging</h1>
 
-  <!-- Page header -->
-  <header class="page-header">
-    <div class="page-header-icon">
-      <img src="https://media.lrsd.net/media/Default/frl/0/Belonging-icononly@2x-8-2.png" alt="Belonging icon" />
-    </div>
-    <div class="page-header-text">
-      <span class="page-priority-label">Strategic Priority 1:</span>
-      <h1 class="page-title">Belonging</h1>
-      <p class="page-subtitle">Multi-Year Strategic Plan 2023–2027 &mdash; Louis Riel School Division</p>
-    </div>
-  </header>
+			<p class="page-subtitle">Multi-Year Strategic Plan 2023&ndash;2027 &mdash; Louis Riel School Division</p>
+		</div>
+	</header>
+	<!-- Legend -->
+	<div class="legend">
+		<div class="legend-bar">
+			<div class="legend-seg legend-at-risk">At Risk</div>
+			<div class="legend-seg legend-planned">Planned</div>
+			<div class="legend-seg legend-in-progress">In Progress</div>
+			<div class="legend-seg legend-operational">Operational</div></div></div>
+	<!-- Cards -->
+	<div class="cards-list" id="cards-list">
+		<!-- 1.1 — In Progress (yellow) -->
+		<article class="scorecard status-in-progress">
+			<div class="card-progress-bar">
+				<div class="seg seg-red">
+					<br>
+				</div>
+				<div class="seg seg-blue">
+					<br>
+				</div>
+				<div class="seg seg-yellow active">
+					<br>
+				</div>
+				<div class="seg seg-green">
+					<br>
+				</div></div>
+			<div class="card-header">
+				<div class="card-icon"><img src="https://media.lrsd.net/media/Default/medialib/47478-lr-icons_1-1-community-schools-network.8f627b62151.png" alt="Community Schools Network icon" class="fr-fil fr-dib"></div>
+				<div class="card-number">1.1</div>
 
-  <!-- Legend -->
-  <div class="legend" role="note" aria-label="Status legend">
-    <div class="legend-bar">
-      <div class="legend-seg legend-at-risk">At Risk</div>
-      <div class="legend-seg legend-planned">Planned</div>
-      <div class="legend-seg legend-in-progress">In Progress</div>
-      <div class="legend-seg legend-operational">Operational</div>
-    </div>
-  </div>
+				<p class="card-action-text">Expand the LRSD Community Schools Network at the Ren&eacute; Deleurme Centre to serve more schools and families.</p><span class="status-badge status-in-progress">&nbsp; In Progress&nbsp;</span></div>
+			<div class="card-body">
 
-  <!-- Cards -->
-  <div class="cards-list" id="cards-list">
+				<p class="progress-label">Progress So Far</p>
 
-    <!-- 1.1 — In Progress (yellow) -->
-    <article class="scorecard status-in-progress" aria-label="Strategic Action 1.1">
-      <div class="card-progress-bar">
-        <div class="seg seg-red"></div>
-        <div class="seg seg-blue"></div>
-        <div class="seg seg-yellow active"></div>
-        <div class="seg seg-green"></div>
-      </div>
-      <div class="card-header">
-        <div class="card-icon">
-          <img src="https://media.lrsd.net/media/Default/medialib/47478-lr-icons_1-1-community-schools-network.8f627b62151.png" alt="Community Schools Network icon" />
-        </div>
-        <div class="card-number">1.1</div>
-        <p class="card-action-text">
-          Expand the LRSD Community Schools Network at the René Deleurme Centre to serve more schools and families.
-        </p>
-        <span class="status-badge status-in-progress">
-          <span class="dot"></span>
-          In Progress
-        </span>
-      </div>
-      <div class="card-body">
-        <p class="progress-label">Progress So Far</p>
-        <p class="card-summary">Renovated the René Deleurme Centre with a commissary kitchen serving 41 schools, established a working committee with community stakeholders, and opened a new satellite Service Hub at Nelson McIntyre Collegiate.</p>
-      </div>
-      <details class="card-details">
-        <summary>View Details</summary>
-        <div class="details-inner">
-          <div class="context-row">
-            <div class="context-card">
-              <div class="context-card-header">About the René Deleurme Centre</div>
-              <div class="context-card-body">
-                <p>The René Deleurme Centre (RDC) provides equity-based programming tailored to meet the needs of the community. Initially serving the Lavallee, Victor Mager, and Victor Wyatt school communities, RDC has since expanded its reach to include St. George School, Hastings School, and École Varennes, as well as schools in the northern part of our division. There is now consideration for establishing a satellite location in the northern part of LRSD.</p>
-              </div>
-            </div>
-            <div class="context-card">
-              <div class="context-card-header">Community Stakeholders</div>
-              <div class="context-card-body">
-                <ul>
-                  <li><strong>Newcomer Settlement Services Team:</strong> Federally funded to support newcomers.</li>
-                  <li><strong>School &amp; Family Community Connector:</strong> Provincially funded through the Community Schools mandate.</li>
-                  <li><strong>Morrow Avenue Early Childhood Learning Centre:</strong> A private childcare provider.</li>
-                  <li><strong>EDGE:</strong> A non-profit organization offering literacy and adult EAL programs, leasing space at RDC.</li>
-                </ul>
-              </div>
-            </div>
-            <div class="context-card">
-              <div class="context-card-header">Core Network Schools</div>
-              <div class="context-card-body">
-                <ul>
-                  <li>Lavallee School</li>
-                  <li>Victor Mager School</li>
-                  <li>Victor Wyatt School</li>
-                  <li>St. George School</li>
-                  <li>Hastings School</li>
-                  <li>École Varennes</li>
-                  <li>Marion School</li>
-                  <li>Archwood School</li>
-                  <li>École Provencher</li>
-                  <li>École Henri-Bergeron</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="detail-card detail-card-cols">
-            <h4>What We've Accomplished</h4>
-            <ul>
-              <li>Renovated the René Deleurme Centre (RDC), adding a commercial-grade commissary kitchen to support nutrition programming for all 41 LRSD schools.</li>
-              <li>Formed a working committee with diverse stakeholders to assess programming and collect feedback from Windsor Park, Nelson McIntyre, and Collège Béliveau communities.</li>
-              <li>Reviewed northern division spaces to identify opportunities for network expansion and new facilities.</li>
-              <li>Identified a satellite location and adopted Culturally and Linguistically Responsive Teaching to value multilingual learners and promote asset-based perspectives.</li>
-              <li>Established a new satellite Service Hub at Nelson McIntyre Collegiate, providing access to settlement services, food security, Manitoba Housing, and clothing/laundry resources.</li>
-            </ul>
-            <img class="detail-card-img" src="https://media.lrsd.net/media/Default/frl/0/image.jpeg" alt="Ramadan hamper at RDC" />
-          </div>
-          <div class="detail-card detail-card-cols">
-            <h4>Where We're Going</h4>
-            <ul>
-              <li>Continue strengthening wraparound services for families through expanded partnerships and ongoing community engagement.</li>
-              <li>Use stakeholder and community feedback to guide the development of new programming and services as needs evolve.</li>
-              <li>Maintain our commitment to improving support for families and schools by fostering comprehensive resources and helping every student and family thrive.</li>
-            </ul>
-            <img class="detail-card-img" src="https://media.lrsd.net/media/Default/frl/0/Nelson-McIntyre-Collegiate-2-1.jpg" alt="Nelson McIntyre Collegiate" />
-          </div>
-        </div>
-      </details>
-    </article>
+				<p class="card-summary">Renovated the Ren&eacute; Deleurme Centre with a commissary kitchen serving 41 schools, established a working committee with community stakeholders, and opened a new satellite Service Hub at Nelson McIntyre Collegiate.</p>
+			</div>
+			<details class="card-details" open="">
+				<summary>View Details</summary>
+				<div class="details-inner">
+					<div class="context-row">
+						<div class="context-card">
+							<div class="context-card-header">About the Ren&eacute; Deleurme Centre</div>
+							<div class="context-card-body">
 
-    <!-- 1.2 — In Progress (yellow) -->
-    <article class="scorecard status-in-progress" aria-label="Strategic Action 1.2">
-      <div class="card-progress-bar">
-        <div class="seg seg-red"></div>
-        <div class="seg seg-blue"></div>
-        <div class="seg seg-yellow active"></div>
-        <div class="seg seg-green"></div>
-      </div>
-      <div class="card-header">
-        <div class="card-icon">
-          <img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.2-Comprehensive%20WSH%20Program-4.png" alt="Workplace Safety and Health Program icon" />
-        </div>
-        <div class="card-number">1.2</div>
-        <p class="card-action-text">
-          Create a comprehensive Workplace Safety and Health Program to promote and support employee wellness to better nurture student wellness.
-        </p>
-        <span class="status-badge status-in-progress">
-          <span class="dot"></span>
-          In Progress
-        </span>
-      </div>
-      <div class="card-body">
-        <p class="progress-label">Progress So Far</p>
-        <p class="card-summary">Refined the Workplace Safety &amp; Health Program, partnered with Well at Work by EdCan to survey 2,000+ staff, enhanced wellness resources, and moved incident reporting online.</p>
-      </div>
-      <details class="card-details">
-        <summary>View Details</summary>
-        <div class="details-inner">
-          <div class="context-row">
-            <div class="context-card">
-              <div class="context-card-header">Fostering a Culture of Well-being</div>
-              <div class="context-card-body">
-                <p>Our goal is to cultivate an environment where both the physical and psychological well-being of every staff member is paramount. By developing a robust, data-informed Workplace Safety and Health Program, we are taking proactive steps to ensure our schools and offices are safe, supportive, and healthy places to work. This commitment to employee wellness is foundational to creating a positive and nurturing atmosphere for our students.</p>
-              </div>
-            </div>
-            <div class="context-card">
-              <div class="context-card-header">Key Initiatives</div>
-              <div class="context-card-body">
-                <ul>
-                  <li><strong>Well at Work by EdCan:</strong> Partnered to evaluate and improve staff psychological well-being using the Guarding Minds at Work survey.</li>
-                  <li><strong>Online Incident Reporting:</strong> Launched a new system to increase access, transparency, and data analysis for safety incidents.</li>
-                  <li><strong>Communication Policy:</strong> Drafted a new policy to support better work-life balance for all staff.</li>
-                  <li><strong>Attendance Support Program:</strong> Created a program focused on early intervention to promote employee wellness.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="detail-card detail-card-cols">
-            <h4>What We've Accomplished</h4>
-            <ul>
-              <li>Refined the WSH Program structure and engaged the WSH committee for oversight and guidance.</li>
-              <li>Partnered with Well at Work by EdCan, surveying over 2,000 staff members to gather baseline wellness data.</li>
-              <li>Enhanced wellness resources and increased promotion of MFAP/EAP services across the division.</li>
-              <li>Moved incident reporting online, streamlining processes and improving data collection.</li>
-              <li>Drafted new Communication and Attendance Support policies.</li>
-            </ul>
-            <img class="detail-card-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-2177746077.jpg" alt="Diverse group of staff" />
-          </div>
-          <div class="detail-card">
-            <h4>Where We're Going</h4>
-            <ul>
-              <li>Develop a robust, data-informed WSH Program that proactively addresses staff wellness needs.</li>
-              <li>Strengthen partnerships with Well at Work and benefits providers to expand resources.</li>
-              <li>Implement new Communication and Attendance Support policies division-wide.</li>
-              <li>Expand staff recognition programs and increase access to Staff Services.</li>
-            </ul>
-          </div>
-        </div>
-      </details>
-    </article>
+								<p>The Ren&eacute; Deleurme Centre (RDC) provides equity-based programming tailored to meet the needs of the community. Initially serving the Lavallee, Victor Mager, and Victor Wyatt school communities, RDC has since expanded its reach to include St. George School, Hastings School, and &Eacute;cole Varennes, as well as schools in the northern part of our division. There is now consideration for establishing a satellite location in the northern part of LRSD.</p>
+							</div></div>
+						<div class="context-card">
+							<div class="context-card-header">Community Stakeholders</div>
+							<div class="context-card-body">
 
-    <!-- 1.3 — Operational (green) -->
-    <article class="scorecard status-operational" aria-label="Strategic Action 1.3">
-      <div class="card-progress-bar">
-        <div class="seg seg-red"></div>
-        <div class="seg seg-blue"></div>
-        <div class="seg seg-yellow"></div>
-        <div class="seg seg-green active"></div>
-      </div>
-      <div class="card-header">
-        <div class="card-icon">
-          <img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.3-Trauma%20Responsive-1.png" alt="Trauma-responsive practices icon" />
-        </div>
-        <div class="card-number">1.3</div>
-        <p class="card-action-text">
-          Reinforce trauma-responsive practices.
-        </p>
-        <span class="status-badge status-operational">
-          <span class="dot"></span>
-          Operational
-        </span>
-      </div>
-      <div class="card-body">
-        <p class="progress-label">Progress So Far</p>
-        <p class="card-summary">Developed a professional learning framework for trauma-responsive practices, adopted the Therapeutic Crisis Intervention (TCI) model from Cornell University, and trained key staff.</p>
-      </div>
-      <details class="card-details">
-        <summary>View Details</summary>
-        <div class="details-inner">
-          <div class="context-row">
-            <div class="context-card">
-              <div class="context-card-header">The Ethic of Hospitality</div>
-              <div class="context-card-body">
-                <p>To ensure all students and families—especially those new to our community—feel a true sense of belonging and safety, we have centered our work on the Ethic of Hospitality. This philosophy guides our efforts to create welcoming and inclusive spaces where every individual is valued and supported from the moment they connect with our schools.</p>
-              </div>
-            </div>
-            <div class="context-card">
-              <div class="context-card-header">A Deliberate Framework</div>
-              <div class="context-card-body">
-                <p>A dedicated committee of teachers, clinicians, and school leaders has been established to develop a comprehensive professional learning framework for trauma-responsive practices. This group is researching best practices and defining clear outcomes to ensure a unified and effective approach across the division.</p>
-              </div>
-            </div>
-            <div class="context-card">
-              <div class="context-card-header">Therapeutic Crisis Intervention</div>
-              <div class="context-card-body">
-                <p>In collaboration with Staff Services, we have adopted the TCI model from Cornell University as our division-wide, trauma-responsive intervention model. This evidence-based approach provides staff with the skills to prevent and de-escalate potential crisis situations, fostering a safer environment for everyone.</p>
-              </div>
-            </div>
-          </div>
-          <div class="detail-card detail-card-cols">
-            <h4>What We've Accomplished</h4>
-            <ul>
-              <li>Began developing a professional learning framework for trauma-responsive practices across the division.</li>
-              <li>Adopted the Therapeutic Crisis Intervention (TCI) model from Cornell University as the division-wide approach.</li>
-              <li>Scheduled TCI trainer training for key staff for the 2024–2025 school year to build internal capacity.</li>
-            </ul>
-            <img class="detail-card-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-2073485467-modified-01c7d6a6-e071-4885-8091-f257b43b24c8.jpg" alt="Hands of people working together" />
-          </div>
-          <div class="detail-card">
-            <h4>Where We're Going</h4>
-            <ul>
-              <li>Implement a comprehensive professional learning model division-wide.</li>
-              <li>Deliver TCI training to all school-based staff.</li>
-              <li>Establish a sustainability plan for TCI certifications and reviews.</li>
-            </ul>
-          </div>
-        </div>
-      </details>
-    </article>
+								<ul>
+									<li><strong>Newcomer Settlement Services Team:</strong> Federally funded to support newcomers.</li>
+									<li><strong>School &amp; Family Community Connector:</strong> Provincially funded through the Community Schools mandate.</li>
+									<li><strong>Morrow Avenue Early Childhood Learning Centre:</strong> A private childcare provider.</li>
+									<li><strong>EDGE:</strong> A non-profit organization offering literacy and adult EAL programs, leasing space at RDC.</li>
+								</ul>
+							</div></div>
+						<div class="context-card">
+							<div class="context-card-header">Core Network Schools</div>
+							<div class="context-card-body">
 
-    <!-- 1.4 — In Progress (yellow) -->
-    <article class="scorecard status-in-progress" aria-label="Strategic Action 1.4">
-      <div class="card-progress-bar">
-        <div class="seg seg-red"></div>
-        <div class="seg seg-blue"></div>
-        <div class="seg seg-yellow active"></div>
-        <div class="seg seg-green"></div>
-      </div>
-      <div class="card-header">
-        <div class="card-icon">
-          <img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.4-Indigenous%20Language-1.png" alt="Indigenous Language Nests icon" />
-        </div>
-        <div class="card-number">1.4</div>
-        <p class="card-action-text">
-          Introduce Indigenous Language Nests for preschool-aged children in our family centres.<br />
-          Expand both the Kindergarten to Grade 3 Indigenous Language Exposure curriculum and Grades 9–12 Indigenous Language Options to all schools.
-        </p>
-        <span class="status-badge status-in-progress">
-          <span class="dot"></span>
-          In Progress
-        </span>
-      </div>
-      <div class="card-body">
-        <p class="progress-label">Progress So Far</p>
-        <p class="card-summary">Expanded K–3 Indigenous language curriculum, implemented language programs at two high schools, and trained staff on the "Moe the Mouse" framework for Language Nests in family centres.</p>
-      </div>
-      <details class="card-details">
-        <summary>View Details</summary>
-        <div class="details-inner">
-          <div class="context-row">
-            <div class="context-card">
-              <div class="context-card-header">Circle of Courage</div>
-              <div class="context-card-body">
-                <p>Inspired by the Circle of Courage, we are committed to a renewed relationship with Indigenous learners and families. We are embedding Indigenous worldviews, practices, and culture into our learning and activities to ensure a holistic educational journey.</p>
-              </div>
-            </div>
-            <div class="context-card">
-              <div class="context-card-header">Community Engagement</div>
-              <div class="context-card-body">
-                <p>Through our Indigenous Education Community Council and Indigenous Parent Program, we build strong partnerships with students, staff, and families. These programs provide safe, supportive spaces for guidance, cultural activities, and shared learning.</p>
-              </div>
-            </div>
-            <div class="context-card">
-              <div class="context-card-header">Innovative Learning</div>
-              <div class="context-card-body">
-                <p>We are proud to offer unique programs like the Manito Ahbee Aki Minecraft world, Powwow Clubs, and the Indigenous Youth Leadership Program. These initiatives provide engaging, authentic opportunities for students to connect with Indigenous culture and perspectives.</p>
-              </div>
-            </div>
-          </div>
-          <div class="detail-card detail-card-cols">
-            <h4>What We've Accomplished</h4>
-            <ul>
-              <li>Expanded K–3 Indigenous language curriculum, providing language instruction to Kindergarten and Grade 1 classes.</li>
-              <li>Implemented Indigenous language programs at two high schools.</li>
-              <li>Trained staff on the "Moe the Mouse" framework for Language Nests in family centres.</li>
-            </ul>
-            <img class="detail-card-img" src="https://media.lrsd.net/media/Default/frl/0/DSC_2363.jpg" alt="Indigenous language learning outdoors" />
-          </div>
-          <div class="detail-card">
-            <h4>Where We're Going</h4>
-            <ul>
-              <li>Expand the language program to include all K–4 classes across the division.</li>
-              <li>Establish Indigenous language programs in all high schools.</li>
-              <li>Complete the introduction of Language Nests in all family centres.</li>
-            </ul>
-          </div>
-        </div>
-      </details>
-    </article>
+								<ul>
+									<li>Lavallee School</li>
+									<li>Victor Mager School</li>
+									<li>Victor Wyatt School</li>
+									<li>St. George School</li>
+									<li>Hastings School</li>
+									<li>&Eacute;cole Varennes</li>
+									<li>Marion School</li>
+									<li>Archwood School</li>
+									<li>&Eacute;cole Provencher</li>
+									<li>&Eacute;cole Henri-Bergeron</li>
+								</ul>
+							</div></div></div>
+					<div class="detail-card detail-card-cols">
 
-    <!-- 1.5 — Operational (green) -->
-    <article class="scorecard status-operational" aria-label="Strategic Action 1.5">
-      <div class="card-progress-bar">
-        <div class="seg seg-red"></div>
-        <div class="seg seg-blue"></div>
-        <div class="seg seg-yellow"></div>
-        <div class="seg seg-green active"></div>
-      </div>
-      <div class="card-header">
-        <div class="card-icon">
-          <img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.5-Indigenous%20Focus-1.png" alt="Indigenous literature and perspectives icon" />
-        </div>
-        <div class="card-number">1.5</div>
-        <p class="card-action-text">
-          Reframe the Grade 11 English Language Arts curriculum to focus on Indigenous literature and perspectives while ensuring the Grade 11 History curriculum thoroughly explores Indigenous histories and perspectives.
-        </p>
-        <span class="status-badge status-operational">
-          <span class="dot"></span>
-          Operational
-        </span>
-      </div>
-      <div class="card-body">
-        <p class="progress-label">Progress So Far</p>
-        <p class="card-summary">Began planning to reframe Grade 11 ELA curriculum for Indigenous literature; continued reframing Grade 11 History with a teacher committee and workshops.</p>
-      </div>
-      <details class="card-details">
-        <summary>View Details</summary>
-        <div class="details-inner">
-          <div class="context-row">
-            <div class="context-card">
-              <div class="context-card-header">A Renewed Relationship</div>
-              <div class="context-card-body">
-                <p>Inspired by the Circle of Courage, we are committed to a renewed relationship with Indigenous learners and families. We are embedding Indigenous worldviews, practices, and culture into our learning and activities to ensure a holistic educational journey.</p>
-              </div>
-            </div>
-            <div class="context-card">
-              <div class="context-card-header">Community Engagement</div>
-              <div class="context-card-body">
-                <p>Through our Indigenous Education Community Council and Indigenous Parent Program, we build strong partnerships with students, staff, and families. These programs provide safe, supportive spaces for guidance, cultural activities, and shared learning.</p>
-              </div>
-            </div>
-            <div class="context-card">
-              <div class="context-card-header">Innovative Learning</div>
-              <div class="context-card-body">
-                <p>We are proud to offer unique programs like the Manito Ahbee Aki Minecraft world, Powwow Clubs, and the Indigenous Youth Leadership Program. These initiatives provide engaging, authentic opportunities for students to connect with Indigenous culture and perspectives.</p>
-              </div>
-            </div>
-          </div>
-          <div class="detail-card detail-card-cols">
-            <h4>What We've Accomplished</h4>
-            <ul>
-              <li>Began planning to reframe the Grade 11 ELA curriculum to focus on Indigenous literature and perspectives.</li>
-              <li>Continued reframing the Grade 11 History curriculum by forming a teacher committee and holding workshops focused on shifting practices that reflect harms of the past.</li>
-            </ul>
-            <img class="detail-card-img" src="https://media.lrsd.net/media/Default/frl/0/DSC_2699.jpg" alt="Closeup of hands building tipi" />
-          </div>
-          <div class="detail-card detail-card-cols">
-            <h4>Where We're Going</h4>
-            <ul>
-              <li>By 2025: Ensure the Grade 11 History curriculum thoroughly explores Indigenous histories and perspectives, framed with Indigenous pedagogies.</li>
-              <li>By 2027: Reframe the Grade 11 ELA curriculum to focus on Indigenous literature, authors, and storytelling traditions.</li>
-            </ul>
-            <img class="detail-card-img" src="https://media.lrsd.net/media/Default/frl/0/JUN_1491.jpg" alt="Dancers at LRSD Grad Powwow" />
-          </div>
-        </div>
-      </details>
-    </article>
+						<h4>What We&#39;ve Accomplished</h4>
 
-    <!-- 1.6 — In Progress (yellow) -->
-    <article class="scorecard status-in-progress" aria-label="Strategic Action 1.6">
-      <div class="card-progress-bar">
-        <div class="seg seg-red"></div>
-        <div class="seg seg-blue"></div>
-        <div class="seg seg-yellow active"></div>
-        <div class="seg seg-green"></div>
-      </div>
-      <div class="card-header">
-        <div class="card-icon">
-          <img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.6-Heritage%20Languages-1.png" alt="International and Heritage Languages icon" />
-        </div>
-        <div class="card-number">1.6</div>
-        <p class="card-action-text">
-          Expand International and Heritage Language options in high schools.
-        </p>
-        <span class="status-badge status-in-progress">
-          <span class="dot"></span>
-          In Progress
-        </span>
-      </div>
-      <div class="card-body">
-        <p class="progress-label">Progress So Far</p>
-        <p class="card-summary">Spanish is currently offered at Collège Béliveau, Collège Jeanne-Sauvé, and Dakota Collegiate across grades 9–12.</p>
-      </div>
-      <details class="card-details">
-        <summary>View Details</summary>
-        <div class="details-inner">
-          <div class="context-row">
-            <div class="context-card">
-              <div class="context-card-header">Celebrating Linguistic Diversity</div>
-              <div class="context-card-body">
-                <p>In LRSD, we are proud of the rich tapestry of languages spoken by our students and families. We are committed to creating an environment where this diversity is not only recognized but celebrated. By strengthening our International and Heritage Language programs, we provide students with the opportunity to connect with their heritage, develop valuable linguistic skills, and foster a greater appreciation for global cultures.</p>
-              </div>
-            </div>
-            <div class="context-card">
-              <div class="context-card-header">Enhancing Instruction</div>
-              <div class="context-card-body">
-                <p>We are dedicated to improving the quality and accessibility of our International and Heritage Language instruction. This involves a comprehensive review of our current programs, building stronger partnerships with community language organizations, and developing a clear framework to support our teachers and learners, ensuring a high-quality educational experience for all.</p>
-              </div>
-            </div>
-          </div>
-          <div class="detail-card detail-card-cols">
-            <h4>What We've Accomplished</h4>
-            <ul>
-              <li>Spanish is offered at Collège Béliveau, Collège Jeanne-Sauvé, and Dakota Collegiate, with multiple sections across grades 9–12.</li>
-            </ul>
-            <img class="detail-card-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-1218964474.jpg" alt="Hola and Hablas Español in word balloons on wall" />
-          </div>
-          <div class="detail-card detail-card-cols">
-            <h4>Where We're Going</h4>
-            <ul>
-              <li>By 2027, all high schools in the Louis Riel School Division will offer at least one International/Heritage Language option to students.</li>
-            </ul>
-            <img class="detail-card-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-493797345.jpg" alt="Pieces of paper with Thank You written in many different languages" />
-          </div>
-        </div>
-      </details>
-    </article>
+						<ul>
+							<li>Renovated the Ren&eacute; Deleurme Centre (RDC), adding a commercial-grade commissary kitchen to support nutrition programming for all 41 LRSD schools.</li>
+							<li>Formed a working committee with diverse stakeholders to assess programming and collect feedback from Windsor Park, Nelson McIntyre, and Coll&egrave;ge B&eacute;liveau communities.</li>
+							<li>Reviewed northern division spaces to identify opportunities for network expansion and new facilities.</li>
+							<li>Identified a satellite location and adopted Culturally and Linguistically Responsive Teaching to value multilingual learners and promote asset-based perspectives.</li>
+							<li>Established a new satellite Service Hub at Nelson McIntyre Collegiate, providing access to settlement services, food security, Manitoba Housing, and clothing/laundry resources.</li>
+						</ul><img class="detail-card-img fr-fil fr-dib" src="https://media.lrsd.net/media/Default/frl/0/image.jpeg" alt="Ramadan hamper at RDC"></div>
+					<div class="detail-card detail-card-cols">
 
-  </div><!-- /cards-list -->
-</div><!-- /sp1-wrapper -->
+						<h4>Where We&#39;re Going</h4>
 
+						<ul>
+							<li>Continue strengthening wraparound services for families through expanded partnerships and ongoing community engagement.</li>
+							<li>Use stakeholder and community feedback to guide the development of new programming and services as needs evolve.</li>
+							<li>Maintain our commitment to improving support for families and schools by fostering comprehensive resources and helping every student and family thrive.</li>
+						</ul><img class="detail-card-img fr-fil fr-dib" src="https://media.lrsd.net/media/Default/frl/0/Nelson-McIntyre-Collegiate-2-1.jpg" alt="Nelson McIntyre Collegiate"></div></div>
+			</details>
+		</article>
+		<!-- 1.2 — In Progress (yellow) -->
+		<article class="scorecard status-in-progress">
+			<div class="card-progress-bar">
+				<div class="seg seg-red">
+					<br>
+				</div>
+				<div class="seg seg-blue">
+					<br>
+				</div>
+				<div class="seg seg-yellow active">
+					<br>
+				</div>
+				<div class="seg seg-green">
+					<br>
+				</div></div>
+			<div class="card-header">
+				<div class="card-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.2-Comprehensive%20WSH%20Program-4.png" alt="Workplace Safety and Health Program icon" class="fr-fil fr-dib"></div>
+				<div class="card-number">1.2</div>
+
+				<p class="card-action-text">Create a comprehensive Workplace Safety and Health Program to promote and support employee wellness to better nurture student wellness.</p><span class="status-badge status-in-progress">&nbsp; In Progress&nbsp;</span></div>
+			<div class="card-body">
+
+				<p class="progress-label">Progress So Far</p>
+
+				<p class="card-summary">Refined the Workplace Safety &amp; Health Program, partnered with Well at Work by EdCan to survey 2,000+ staff, enhanced wellness resources, and moved incident reporting online.</p>
+			</div>
+			<details class="card-details">
+				<summary>View Details</summary>
+				<div class="details-inner">
+					<div class="context-row">
+						<div class="context-card">
+							<div class="context-card-header">Fostering a Culture of Well-being</div>
+							<div class="context-card-body">
+
+								<p>Our goal is to cultivate an environment where both the physical and psychological well-being of every staff member is paramount. By developing a robust, data-informed Workplace Safety and Health Program, we are taking proactive steps to ensure our schools and offices are safe, supportive, and healthy places to work. This commitment to employee wellness is foundational to creating a positive and nurturing atmosphere for our students.</p>
+							</div></div>
+						<div class="context-card">
+							<div class="context-card-header">Key Initiatives</div>
+							<div class="context-card-body">
+
+								<ul>
+									<li><strong>Well at Work by EdCan:</strong> Partnered to evaluate and improve staff psychological well-being using the Guarding Minds at Work survey.</li>
+									<li><strong>Online Incident Reporting:</strong> Launched a new system to increase access, transparency, and data analysis for safety incidents.</li>
+									<li><strong>Communication Policy:</strong> Drafted a new policy to support better work-life balance for all staff.</li>
+									<li><strong>Attendance Support Program:</strong> Created a program focused on early intervention to promote employee wellness.</li>
+								</ul>
+							</div></div></div>
+					<div class="detail-card detail-card-cols">
+
+						<h4>What We&#39;ve Accomplished</h4>
+
+						<ul>
+							<li>Refined the WSH Program structure and engaged the WSH committee for oversight and guidance.</li>
+							<li>Partnered with Well at Work by EdCan, surveying over 2,000 staff members to gather baseline wellness data.</li>
+							<li>Enhanced wellness resources and increased promotion of MFAP/EAP services across the division.</li>
+							<li>Moved incident reporting online, streamlining processes and improving data collection.</li>
+							<li>Drafted new Communication and Attendance Support policies.</li>
+						</ul><img class="detail-card-img fr-fil fr-dib" src="https://media.lrsd.net/media/Default/frl/0/iStock-2177746077.jpg" alt="Diverse group of staff"></div>
+					<div class="detail-card">
+
+						<h4>Where We&#39;re Going</h4>
+
+						<ul>
+							<li>Develop a robust, data-informed WSH Program that proactively addresses staff wellness needs.</li>
+							<li>Strengthen partnerships with Well at Work and benefits providers to expand resources.</li>
+							<li>Implement new Communication and Attendance Support policies division-wide.</li>
+							<li>Expand staff recognition programs and increase access to Staff Services.</li>
+						</ul>
+					</div></div>
+			</details>
+		</article>
+		<!-- 1.3 — Operational (green) -->
+		<article class="scorecard status-operational">
+			<div class="card-progress-bar">
+				<div class="seg seg-red">
+					<br>
+				</div>
+				<div class="seg seg-blue">
+					<br>
+				</div>
+				<div class="seg seg-yellow">
+					<br>
+				</div>
+				<div class="seg seg-green active">
+					<br>
+				</div></div>
+			<div class="card-header">
+				<div class="card-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.3-Trauma%20Responsive-1.png" alt="Trauma-responsive practices icon" class="fr-fil fr-dib"></div>
+				<div class="card-number">1.3</div>
+
+				<p class="card-action-text">Reinforce trauma-responsive practices.</p><span class="status-badge status-operational">&nbsp; Operational&nbsp;</span></div>
+			<div class="card-body">
+
+				<p class="progress-label">Progress So Far</p>
+
+				<p class="card-summary">Developed a professional learning framework for trauma-responsive practices, adopted the Therapeutic Crisis Intervention (TCI) model from Cornell University, and trained key staff.</p>
+			</div>
+			<details class="card-details" open="">
+				<summary>View Details</summary>
+				<div class="details-inner">
+					<div class="context-row">
+						<div class="context-card">
+							<div class="context-card-header">The Ethic of Hospitality</div>
+							<div class="context-card-body">
+
+								<p>To ensure all students and families&mdash;especially those new to our community&mdash;feel a true sense of belonging and safety, we have centered our work on the Ethic of Hospitality. This philosophy guides our efforts to create welcoming and inclusive spaces where every individual is valued and supported from the moment they connect with our schools.</p>
+							</div></div>
+						<div class="context-card">
+							<div class="context-card-header">A Deliberate Framework</div>
+							<div class="context-card-body">
+
+								<p>A dedicated committee of teachers, clinicians, and school leaders has been established to develop a comprehensive professional learning framework for trauma-responsive practices. This group is researching best practices and defining clear outcomes to ensure a unified and effective approach across the division.</p>
+							</div></div>
+						<div class="context-card">
+							<div class="context-card-header">Therapeutic Crisis Intervention</div>
+							<div class="context-card-body">
+
+								<p>In collaboration with Staff Services, we have adopted the TCI model from Cornell University as our division-wide, trauma-responsive intervention model. This evidence-based approach provides staff with the skills to prevent and de-escalate potential crisis situations, fostering a safer environment for everyone.</p>
+							</div></div></div>
+					<div class="detail-card detail-card-cols">
+
+						<h4>What We&#39;ve Accomplished</h4>
+
+						<ul>
+							<li>Began developing a professional learning framework for trauma-responsive practices across the division.</li>
+							<li>Adopted the Therapeutic Crisis Intervention (TCI) model from Cornell University as the division-wide approach.</li>
+							<li>Scheduled TCI trainer training for key staff for the 2024&ndash;2025 school year to build internal capacity.</li>
+						</ul><img class="detail-card-img fr-fil fr-dib" src="https://media.lrsd.net/media/Default/frl/0/iStock-2073485467-modified-01c7d6a6-e071-4885-8091-f257b43b24c8.jpg" alt="Hands of people working together"></div>
+					<div class="detail-card">
+
+						<h4>Where We&#39;re Going</h4>
+
+						<ul>
+							<li>Implement a comprehensive professional learning model division-wide.</li>
+							<li>Deliver TCI training to all school-based staff.</li>
+							<li>Establish a sustainability plan for TCI certifications and reviews.</li>
+						</ul>
+					</div></div>
+			</details>
+		</article>
+		<!-- 1.4 — In Progress (yellow) -->
+		<article class="scorecard status-in-progress">
+			<div class="card-progress-bar">
+				<div class="seg seg-red">
+					<br>
+				</div>
+				<div class="seg seg-blue">
+					<br>
+				</div>
+				<div class="seg seg-yellow active">
+					<br>
+				</div>
+				<div class="seg seg-green">
+					<br>
+				</div></div>
+			<div class="card-header">
+				<div class="card-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.4-Indigenous%20Language-1.png" alt="Indigenous Language Nests icon" class="fr-fil fr-dib"></div>
+				<div class="card-number">1.4</div>
+
+				<p class="card-action-text">Introduce Indigenous Language Nests for preschool-aged children in our family centres.
+					<br>Expand both the Kindergarten to Grade 3 Indigenous Language Exposure curriculum and Grades 9&ndash;12 Indigenous Language Options to all schools.</p><span class="status-badge status-in-progress">&nbsp; In Progress&nbsp;</span></div>
+			<div class="card-body">
+
+				<p class="progress-label">Progress So Far</p>
+
+				<p class="card-summary">Expanded K&ndash;3 Indigenous language curriculum, implemented language programs at two high schools, and trained staff on the &quot;Moe the Mouse&quot; framework for Language Nests in family centres.</p>
+			</div>
+			<details class="card-details">
+				<summary>View Details</summary>
+				<div class="details-inner">
+					<div class="context-row">
+						<div class="context-card">
+							<div class="context-card-header">Circle of Courage</div>
+							<div class="context-card-body">
+
+								<p>Inspired by the Circle of Courage, we are committed to a renewed relationship with Indigenous learners and families. We are embedding Indigenous worldviews, practices, and culture into our learning and activities to ensure a holistic educational journey.</p>
+							</div></div>
+						<div class="context-card">
+							<div class="context-card-header">Community Engagement</div>
+							<div class="context-card-body">
+
+								<p>Through our Indigenous Education Community Council and Indigenous Parent Program, we build strong partnerships with students, staff, and families. These programs provide safe, supportive spaces for guidance, cultural activities, and shared learning.</p>
+							</div></div>
+						<div class="context-card">
+							<div class="context-card-header">Innovative Learning</div>
+							<div class="context-card-body">
+
+								<p>We are proud to offer unique programs like the Manito Ahbee Aki Minecraft world, Powwow Clubs, and the Indigenous Youth Leadership Program. These initiatives provide engaging, authentic opportunities for students to connect with Indigenous culture and perspectives.</p>
+							</div></div></div>
+					<div class="detail-card detail-card-cols">
+
+						<h4>What We&#39;ve Accomplished</h4>
+
+						<ul>
+							<li>Expanded K&ndash;3 Indigenous language curriculum, providing language instruction to Kindergarten and Grade 1 classes.</li>
+							<li>Implemented Indigenous language programs at two high schools.</li>
+							<li>Trained staff on the &quot;Moe the Mouse&quot; framework for Language Nests in family centres.</li>
+						</ul><img class="detail-card-img fr-fil fr-dib" src="https://media.lrsd.net/media/Default/frl/0/DSC_2363.jpg" alt="Indigenous language learning outdoors"></div>
+					<div class="detail-card">
+
+						<h4>Where We&#39;re Going</h4>
+
+						<ul>
+							<li>Expand the language program to include all K&ndash;4 classes across the division.</li>
+							<li>Establish Indigenous language programs in all high schools.</li>
+							<li>Complete the introduction of Language Nests in all family centres.</li>
+						</ul>
+					</div></div>
+			</details>
+		</article>
+		<!-- 1.5 — Operational (green) -->
+		<article class="scorecard status-operational">
+			<div class="card-progress-bar">
+				<div class="seg seg-red">
+					<br>
+				</div>
+				<div class="seg seg-blue">
+					<br>
+				</div>
+				<div class="seg seg-yellow">
+					<br>
+				</div>
+				<div class="seg seg-green active">
+					<br>
+				</div></div>
+			<div class="card-header">
+				<div class="card-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.5-Indigenous%20Focus-1.png" alt="Indigenous literature and perspectives icon" class="fr-fil fr-dib"></div>
+				<div class="card-number">1.5</div>
+
+				<p class="card-action-text">Reframe the Grade 11 English Language Arts curriculum to focus on Indigenous literature and perspectives while ensuring the Grade 11 History curriculum thoroughly explores Indigenous histories and perspectives.</p><span class="status-badge status-operational">&nbsp; Operational&nbsp;</span></div>
+			<div class="card-body">
+
+				<p class="progress-label">Progress So Far</p>
+
+				<p class="card-summary">Began planning to reframe Grade 11 ELA curriculum for Indigenous literature; continued reframing Grade 11 History with a teacher committee and workshops.</p>
+			</div>
+			<details class="card-details">
+				<summary>View Details</summary>
+				<div class="details-inner">
+					<div class="context-row">
+						<div class="context-card">
+							<div class="context-card-header">A Renewed Relationship</div>
+							<div class="context-card-body">
+
+								<p>Inspired by the Circle of Courage, we are committed to a renewed relationship with Indigenous learners and families. We are embedding Indigenous worldviews, practices, and culture into our learning and activities to ensure a holistic educational journey.</p>
+							</div></div>
+						<div class="context-card">
+							<div class="context-card-header">Community Engagement</div>
+							<div class="context-card-body">
+
+								<p>Through our Indigenous Education Community Council and Indigenous Parent Program, we build strong partnerships with students, staff, and families. These programs provide safe, supportive spaces for guidance, cultural activities, and shared learning.</p>
+							</div></div>
+						<div class="context-card">
+							<div class="context-card-header">Innovative Learning</div>
+							<div class="context-card-body">
+
+								<p>We are proud to offer unique programs like the Manito Ahbee Aki Minecraft world, Powwow Clubs, and the Indigenous Youth Leadership Program. These initiatives provide engaging, authentic opportunities for students to connect with Indigenous culture and perspectives.</p>
+							</div></div></div>
+					<div class="detail-card detail-card-cols">
+
+						<h4>What We&#39;ve Accomplished</h4>
+
+						<ul>
+							<li>Began planning to reframe the Grade 11 ELA curriculum to focus on Indigenous literature and perspectives.</li>
+							<li>Continued reframing the Grade 11 History curriculum by forming a teacher committee and holding workshops focused on shifting practices that reflect harms of the past.</li>
+						</ul><img class="detail-card-img fr-fil fr-dib" src="https://media.lrsd.net/media/Default/frl/0/DSC_2699.jpg" alt="Closeup of hands building tipi"></div>
+					<div class="detail-card detail-card-cols">
+
+						<h4>Where We&#39;re Going</h4>
+
+						<ul>
+							<li>By 2025: Ensure the Grade 11 History curriculum thoroughly explores Indigenous histories and perspectives, framed with Indigenous pedagogies.</li>
+							<li>By 2027: Reframe the Grade 11 ELA curriculum to focus on Indigenous literature, authors, and storytelling traditions.</li>
+						</ul><img class="detail-card-img fr-fil fr-dib" src="https://media.lrsd.net/media/Default/frl/0/JUN_1491.jpg" alt="Dancers at LRSD Grad Powwow"></div></div>
+			</details>
+		</article>
+		<!-- 1.6 — In Progress (yellow) -->
+		<article class="scorecard status-in-progress">
+			<div class="card-progress-bar">
+				<div class="seg seg-red">
+					<br>
+				</div>
+				<div class="seg seg-blue">
+					<br>
+				</div>
+				<div class="seg seg-yellow active">
+					<br>
+				</div>
+				<div class="seg seg-green">
+					<br>
+				</div></div>
+			<div class="card-header">
+				<div class="card-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.6-Heritage%20Languages-1.png" alt="International and Heritage Languages icon" class="fr-fil fr-dib"></div>
+				<div class="card-number">1.6</div>
+
+				<p class="card-action-text">Expand International and Heritage Language options in high schools.</p><span class="status-badge status-in-progress">&nbsp; In Progress&nbsp;</span></div>
+			<div class="card-body">
+
+				<p class="progress-label">Progress So Far</p>
+
+				<p class="card-summary">Spanish is currently offered at Coll&egrave;ge B&eacute;liveau, Coll&egrave;ge Jeanne-Sauv&eacute;, and Dakota Collegiate across grades 9&ndash;12.</p>
+			</div>
+			<details class="card-details">
+				<summary>View Details</summary>
+				<div class="details-inner">
+					<div class="context-row">
+						<div class="context-card">
+							<div class="context-card-header">Celebrating Linguistic Diversity</div>
+							<div class="context-card-body">
+
+								<p>In LRSD, we are proud of the rich tapestry of languages spoken by our students and families. We are committed to creating an environment where this diversity is not only recognized but celebrated. By strengthening our International and Heritage Language programs, we provide students with the opportunity to connect with their heritage, develop valuable linguistic skills, and foster a greater appreciation for global cultures.</p>
+							</div></div>
+						<div class="context-card">
+							<div class="context-card-header">Enhancing Instruction</div>
+							<div class="context-card-body">
+
+								<p>We are dedicated to improving the quality and accessibility of our International and Heritage Language instruction. This involves a comprehensive review of our current programs, building stronger partnerships with community language organizations, and developing a clear framework to support our teachers and learners, ensuring a high-quality educational experience for all.</p>
+							</div></div></div>
+					<div class="detail-card detail-card-cols">
+
+						<h4>What We&#39;ve Accomplished</h4>
+
+						<ul>
+							<li>Spanish is offered at Coll&egrave;ge B&eacute;liveau, Coll&egrave;ge Jeanne-Sauv&eacute;, and Dakota Collegiate, with multiple sections across grades 9&ndash;12.</li>
+						</ul><img class="detail-card-img fr-fil fr-dib" src="https://media.lrsd.net/media/Default/frl/0/iStock-1218964474.jpg" alt="Hola and Hablas Español in word balloons on wall"></div>
+					<div class="detail-card detail-card-cols">
+
+						<h4>Where We&#39;re Going</h4>
+
+						<ul>
+							<li>By 2027, all high schools in the Louis Riel School Division will offer at least one International/Heritage Language option to students.</li>
+						</ul><img class="detail-card-img fr-fil fr-dib" src="https://media.lrsd.net/media/Default/frl/0/iStock-493797345.jpg" alt="Pieces of paper with Thank You written in many different languages"></div></div>
+			</details>
+		</article>
+	</div>
+	<!-- /cards-list -->
+</div>
+<!-- /sp1-wrapper -->
 <script>
-  (function () {
-    // Staggered fade-in for scorecard cards
-    // First hide them (so JS environments get the nice animation)
-    var cards = document.querySelectorAll('#cards-list .scorecard');
-    cards.forEach(function (card) {
-      card.classList.add('js-hidden');
-    });
-    cards.forEach(function (card, i) {
-      setTimeout(function () {
-        card.classList.remove('js-hidden');
-        card.classList.add('visible');
-      }, 120 + i * 110);
-    });
-  })();
+	(function()
+	{
+		// Staggered fade-in for scorecard cards
+		// First hide them (so JS environments get the nice animation)
+		var cards = document.querySelectorAll('#cards-list .scorecard');
+		cards.forEach(function(card)
+		{
+			card.classList.add('js-hidden');
+		});
+		cards.forEach(function(card, i)
+		{
+			setTimeout(function()
+			{
+				card.classList.remove('js-hidden');
+				card.classList.add('visible');
+			}, 120 + i * 110);
+		});
+	})();
+
 </script>
-</body>
-</html>
