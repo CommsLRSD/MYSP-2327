@@ -71,36 +71,46 @@
       display: flex;
       align-items: center;
       gap: 1.25rem;
-      padding: 1rem 1.25rem;
-      margin: 1rem 0 0.5rem;
-      background: rgba(38,78,116,0.04);
-      border-radius: 10px;
+      margin: 1rem 0 1.75rem;
     }
 
     .page-header-icon {
-      flex: 0 0 72px;
-      width: 72px;
-      height: 72px;
+      flex-shrink: 0;
+      height: 90px;
+      width: auto;
       opacity: 0;
       animation: flipIn 0.9s ease-out 0.1s forwards;
     }
     .page-header-icon img {
-      width: 100%; height: 100%; object-fit: contain;
+      height: 100%; width: auto; object-fit: contain;
     }
 
-    .page-header-text p {
-      margin: 0;
-      font-size: 0.9rem;
+    .page-header-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .page-priority-label {
+      font-family: var(--body-font);
+      font-size: 0.95rem;
+      font-weight: 600;
       color: #555;
+      line-height: 1.3;
+      margin: 0;
     }
-
     .page-title {
       font-family: var(--header-font);
-      font-size: 2.6rem;
+      font-size: 2.8rem;
       font-weight: 700;
       color: var(--primary);
-      margin: 1.25rem 0 0.4rem;
-      line-height: 1.15;
+      line-height: 1.05;
+      margin: 0;
+    }
+    .page-subtitle {
+      font-family: var(--body-font);
+      font-size: 0.8rem;
+      color: #777;
+      margin: 0.3rem 0 0;
     }
 
     /* ── Legend ── */
@@ -338,6 +348,42 @@
       clear: both;
     }
 
+    /* ── Two-column detail cards (Accomplished / Going) ── */
+    .detail-card-cols {
+      display: grid;
+      grid-template-columns: 1fr minmax(160px, 200px);
+      grid-template-rows: auto 1fr;
+      column-gap: 1.25rem;
+      row-gap: 0;
+    }
+    .detail-card-cols h4 {
+      grid-column: 1 / -1;
+    }
+    .detail-card-cols ul {
+      grid-column: 1;
+      grid-row: 2;
+      align-self: start;
+      margin: 0;
+    }
+    .detail-card-cols .detail-card-img {
+      grid-column: 2;
+      grid-row: 2;
+      float: none;
+      width: 100%;
+      height: 160px;
+      margin: 0;
+      align-self: start;
+    }
+
+    /* ── "About" / context cards — visually distinct, shown first ── */
+    .detail-card-about {
+      background: rgba(38,78,116,0.06);
+      border-color: rgba(38,78,116,0.2);
+    }
+    .detail-card-about h4 {
+      color: #1a3a58;
+    }
+
     /* ── Status colour classes ── */
     .status-operational  { --status-color: var(--green);  }
     .status-in-progress  { --status-color: var(--yellow); }
@@ -390,15 +436,25 @@
 
     /* ── Responsive ── */
     @media (max-width: 600px) {
-      .page-header { gap: 1rem; }
-      .page-header-icon { flex: 0 0 56px; width: 56px; height: 56px; }
-      .page-title { font-size: 1.8rem; }
+      .page-header { gap: 0.85rem; }
+      .page-header-icon { height: 64px; }
+      .page-title { font-size: 2rem; }
       .card-header { flex-direction: column; gap: 0.5rem; }
       .card-icon { width: 36px; height: 36px; }
       .card-number { font-size: 2rem; }
       .status-badge { align-self: flex-start; }
       .details-inner { max-width: 100%; }
-      .detail-card-img { width: 110px; height: 75px; }
+      .detail-card-cols {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+      }
+      .detail-card-cols h4 { grid-column: 1; }
+      .detail-card-cols ul { grid-column: 1; grid-row: 2; }
+      .detail-card-cols .detail-card-img {
+        grid-column: 1; grid-row: 3;
+        width: 100%; height: 160px;
+        margin-top: 0.75rem;
+      }
     }
   </style>
 </head>
@@ -414,13 +470,14 @@
   </a>
 
   <!-- Page header -->
-  <h1 class="page-title">Strategic Priority 1: Belonging</h1>
   <header class="page-header">
     <div class="page-header-icon">
       <img src="https://media.lrsd.net/media/Default/frl/0/Belonging-icononly@2x-8-2.png" alt="Belonging icon" />
     </div>
     <div class="page-header-text">
-      <p>Multi-Year Strategic Plan 2023–2027 &mdash; Louis Riel School Division</p>
+      <span class="page-priority-label">Strategic Priority 1:</span>
+      <h1 class="page-title">Belonging</h1>
+      <p class="page-subtitle">Multi-Year Strategic Plan 2023–2027 &mdash; Louis Riel School Division</p>
     </div>
   </header>
 
@@ -465,18 +522,7 @@
       <details class="card-details">
         <summary>View Details</summary>
         <div class="details-inner">
-          <div class="detail-card">
-            <h4>What We've Accomplished</h4>
-            <img class="detail-card-img" src="https://media.lrsd.net/media/Default/frl/0/image.jpeg" alt="Ramadan hamper at RDC" />
-            <ul>
-              <li>Renovated the René Deleurme Centre (RDC), adding a commercial-grade commissary kitchen to support nutrition programming for all 41 LRSD schools.</li>
-              <li>Formed a working committee with diverse stakeholders to assess programming and collect feedback from Windsor Park, Nelson McIntyre, and Collège Béliveau communities.</li>
-              <li>Reviewed northern division spaces to identify opportunities for network expansion and new facilities.</li>
-              <li>Identified a satellite location and adopted Culturally and Linguistically Responsive Teaching to value multilingual learners and promote asset-based perspectives.</li>
-              <li>Established a new satellite Service Hub at Nelson McIntyre Collegiate, providing access to settlement services, food security, Manitoba Housing, and clothing/laundry resources.</li>
-            </ul>
-          </div>
-          <div class="detail-card">
+          <div class="detail-card detail-card-about">
             <h4>About the Network</h4>
             <ul>
               <li>The René Deleurme Centre (RDC) provides equity-based programming tailored to meet the needs of the community, initially serving Lavallee, Victor Mager, and Victor Wyatt school communities, now expanded to include St. George School, Hastings School, and École Varennes.</li>
@@ -484,13 +530,25 @@
               <li>Core Network Schools: Lavallee, Victor Mager, Victor Wyatt, St. George, Hastings, École Varennes, Marion, Archwood, École Provencher, École Henri-Bergeron.</li>
             </ul>
           </div>
-          <div class="detail-card">
+          <div class="detail-card detail-card-cols">
+            <h4>What We've Accomplished</h4>
+            <ul>
+              <li>Renovated the René Deleurme Centre (RDC), adding a commercial-grade commissary kitchen to support nutrition programming for all 41 LRSD schools.</li>
+              <li>Formed a working committee with diverse stakeholders to assess programming and collect feedback from Windsor Park, Nelson McIntyre, and Collège Béliveau communities.</li>
+              <li>Reviewed northern division spaces to identify opportunities for network expansion and new facilities.</li>
+              <li>Identified a satellite location and adopted Culturally and Linguistically Responsive Teaching to value multilingual learners and promote asset-based perspectives.</li>
+              <li>Established a new satellite Service Hub at Nelson McIntyre Collegiate, providing access to settlement services, food security, Manitoba Housing, and clothing/laundry resources.</li>
+            </ul>
+            <img class="detail-card-img" src="https://media.lrsd.net/media/Default/frl/0/image.jpeg" alt="Ramadan hamper at RDC" />
+          </div>
+          <div class="detail-card detail-card-cols">
             <h4>Where We're Going</h4>
             <ul>
               <li>Continue strengthening wraparound services for families through expanded partnerships and ongoing community engagement.</li>
               <li>Use stakeholder and community feedback to guide the development of new programming and services as needs evolve.</li>
               <li>Maintain our commitment to improving support for families and schools by fostering comprehensive resources and helping every student and family thrive.</li>
             </ul>
+            <img class="detail-card-img" src="https://media.lrsd.net/media/Default/frl/0/Nelson-McIntyre-Collegiate-2-1.jpg" alt="Nelson McIntyre Collegiate" />
           </div>
         </div>
       </details>
@@ -524,9 +582,8 @@
       <details class="card-details">
         <summary>View Details</summary>
         <div class="details-inner">
-          <div class="detail-card">
+          <div class="detail-card detail-card-cols">
             <h4>What We've Accomplished</h4>
-            <img class="detail-card-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-2177746077.jpg" alt="Diverse group of staff" />
             <ul>
               <li>Refined the WSH Program structure and engaged the WSH committee for oversight and guidance.</li>
               <li>Partnered with Well at Work by EdCan, surveying over 2,000 staff members to gather baseline wellness data.</li>
@@ -534,6 +591,7 @@
               <li>Moved incident reporting online, streamlining processes and improving data collection.</li>
               <li>Drafted new Communication and Attendance Support policies.</li>
             </ul>
+            <img class="detail-card-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-2177746077.jpg" alt="Diverse group of staff" />
           </div>
           <div class="detail-card">
             <h4>Where We're Going</h4>
@@ -576,14 +634,14 @@
       <details class="card-details">
         <summary>View Details</summary>
         <div class="details-inner">
-          <div class="detail-card">
+          <div class="detail-card detail-card-cols">
             <h4>What We've Accomplished</h4>
-            <img class="detail-card-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-2073485467-modified-01c7d6a6-e071-4885-8091-f257b43b24c8.jpg" alt="Hands of people working together" />
             <ul>
               <li>Began developing a professional learning framework for trauma-responsive practices across the division.</li>
               <li>Adopted the Therapeutic Crisis Intervention (TCI) model from Cornell University as the division-wide approach.</li>
               <li>Scheduled TCI trainer training for key staff for the 2024–2025 school year to build internal capacity.</li>
             </ul>
+            <img class="detail-card-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-2073485467-modified-01c7d6a6-e071-4885-8091-f257b43b24c8.jpg" alt="Hands of people working together" />
           </div>
           <div class="detail-card">
             <h4>Where We're Going</h4>
@@ -626,14 +684,14 @@
       <details class="card-details">
         <summary>View Details</summary>
         <div class="details-inner">
-          <div class="detail-card">
+          <div class="detail-card detail-card-cols">
             <h4>What We've Accomplished</h4>
-            <img class="detail-card-img" src="https://media.lrsd.net/media/Default/frl/0/DSC_2363.jpg" alt="Indigenous language learning outdoors" />
             <ul>
               <li>Expanded K–3 Indigenous language curriculum, providing language instruction to Kindergarten and Grade 1 classes.</li>
               <li>Implemented Indigenous language programs at two high schools.</li>
               <li>Trained staff on the "Moe the Mouse" framework for Language Nests in family centres.</li>
             </ul>
+            <img class="detail-card-img" src="https://media.lrsd.net/media/Default/frl/0/DSC_2363.jpg" alt="Indigenous language learning outdoors" />
           </div>
           <div class="detail-card">
             <h4>Where We're Going</h4>
@@ -675,21 +733,21 @@
       <details class="card-details">
         <summary>View Details</summary>
         <div class="details-inner">
-          <div class="detail-card">
+          <div class="detail-card detail-card-cols">
             <h4>What We've Accomplished</h4>
-            <img class="detail-card-img" src="https://media.lrsd.net/media/Default/frl/0/DSC_2699.jpg" alt="Closeup of hands building tipi" />
             <ul>
               <li>Began planning to reframe the Grade 11 ELA curriculum to focus on Indigenous literature and perspectives.</li>
               <li>Continued reframing the Grade 11 History curriculum by forming a teacher committee and holding workshops focused on shifting practices that reflect harms of the past.</li>
             </ul>
+            <img class="detail-card-img" src="https://media.lrsd.net/media/Default/frl/0/DSC_2699.jpg" alt="Closeup of hands building tipi" />
           </div>
-          <div class="detail-card">
+          <div class="detail-card detail-card-cols">
             <h4>Where We're Going</h4>
-            <img class="detail-card-img" src="https://media.lrsd.net/media/Default/frl/0/JUN_1491.jpg" alt="Dancers at LRSD Grad Powwow" />
             <ul>
               <li>By 2025: Ensure the Grade 11 History curriculum thoroughly explores Indigenous histories and perspectives, framed with Indigenous pedagogies.</li>
               <li>By 2027: Reframe the Grade 11 ELA curriculum to focus on Indigenous literature, authors, and storytelling traditions.</li>
             </ul>
+            <img class="detail-card-img" src="https://media.lrsd.net/media/Default/frl/0/JUN_1491.jpg" alt="Dancers at LRSD Grad Powwow" />
           </div>
         </div>
       </details>
@@ -723,19 +781,19 @@
       <details class="card-details">
         <summary>View Details</summary>
         <div class="details-inner">
-          <div class="detail-card">
+          <div class="detail-card detail-card-cols">
             <h4>What We've Accomplished</h4>
-            <img class="detail-card-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-1218964474.jpg" alt="Hola and Hablas Español in word balloons on wall" />
             <ul>
               <li>Spanish is offered at Collège Béliveau, Collège Jeanne-Sauvé, and Dakota Collegiate, with multiple sections across grades 9–12.</li>
             </ul>
+            <img class="detail-card-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-1218964474.jpg" alt="Hola and Hablas Español in word balloons on wall" />
           </div>
-          <div class="detail-card">
+          <div class="detail-card detail-card-cols">
             <h4>Where We're Going</h4>
-            <img class="detail-card-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-493797345.jpg" alt="Pieces of paper with Thank You written in many different languages" />
             <ul>
               <li>By 2027, all high schools in the Louis Riel School Division will offer at least one International/Heritage Language option to students.</li>
             </ul>
+            <img class="detail-card-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-493797345.jpg" alt="Pieces of paper with Thank You written in many different languages" />
           </div>
         </div>
       </details>
