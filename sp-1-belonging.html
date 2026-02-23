@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Strategic Priority 1: Belonging — LRSD MYSP</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@400;500;600&display=swap');
+
+    :root {
+      --primary:    #264e74;
+      --accent:     #b23427;
+      --light-bg:   #f5f7fa;
+      --white:      #ffffff;
+      --text:       #222222;
+      --header-font: 'Montserrat', sans-serif;
+      --body-font:   'Poppins', sans-serif;
+      --shadow-light:  0 2px 6px rgba(34,60,80,0.08);
+      --shadow-medium: 0 8px 20px rgba(0,0,0,0.12), 0 3px 6px rgba(0,0,0,0.08);
+      /* status colours */
+      --green:  #2e7d32;
+      --yellow: #f9a825;
+      --blue:   #1565c0;
+      --red:    #c62828;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      margin: 0; padding: 0;
+      font-family: var(--body-font);
+      font-size: 16px;
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── Wrapper ── */
+    #sp1-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.25rem 3rem;
+    }
+
+    #sp1-wrapper h1, #sp1-wrapper h2, #sp1-wrapper h3 {
+      font-family: var(--header-font);
+      color: var(--primary);
+    }
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin: 1.5rem 0 0;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--primary);
+      text-decoration: none;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+    .back-link:hover { opacity: 1; text-decoration: underline; }
+    .back-link svg { flex-shrink: 0; }
+
+    /* ── Page header ── */
+    .page-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.75rem 0 2rem;
+      border-bottom: 2px solid rgba(38,78,116,0.12);
+      margin-bottom: 2rem;
+    }
+
+    .page-header-icon {
+      flex: 0 0 100px;
+      width: 100px;
+      height: 100px;
+      opacity: 0;
+      animation: flipIn 0.9s ease-out 0.1s forwards;
+    }
+    .page-header-icon img {
+      width: 100%; height: 100%; object-fit: contain;
+    }
+
+    .page-header-text h1 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin: 0 0 0.25rem;
+      line-height: 1.2;
+    }
+    .page-header-text p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    /* ── Legend ── */
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      background: var(--light-bg);
+      border-radius: 10px;
+      padding: 0.9rem 1.25rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-light);
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .legend-dot {
+      width: 13px; height: 13px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── Cards ── */
+    .cards-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .scorecard {
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: var(--shadow-medium);
+      border-left: 5px solid var(--primary); /* overridden per card */
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      /* animation applied by JS with stagger */
+    }
+    .scorecard.visible {
+      animation: fadeSlideIn 0.55s ease-out forwards;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem 0.75rem;
+    }
+
+    .card-number {
+      font-family: var(--header-font);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .card-action-text {
+      flex: 1;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #333;
+      margin: 0.2rem 0 0;
+      line-height: 1.5;
+    }
+
+    .status-badge {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      font-family: var(--body-font);
+      white-space: nowrap;
+    }
+
+    .card-body {
+      padding: 0 1.5rem 0.5rem;
+    }
+
+    .progress-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin: 0 0 0.4rem;
+    }
+
+    .card-body ul {
+      margin: 0 0 0.75rem;
+      padding-left: 1.35rem;
+    }
+    .card-body ul li {
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+      line-height: 1.55;
+    }
+
+    /* ── Details / expand ── */
+    .card-details {
+      border-top: 1px solid rgba(38,78,116,0.1);
+      margin: 0 1.5rem;
+    }
+
+    .card-details summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      padding: 0.65rem 0;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary);
+      user-select: none;
+      transition: color 0.2s;
+    }
+    .card-details summary::-webkit-details-marker { display: none; }
+    .card-details summary::before {
+      content: '';
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 7px solid var(--primary);
+      transition: transform 0.25s ease;
+      flex-shrink: 0;
+    }
+    .card-details[open] summary::before {
+      transform: rotate(90deg);
+    }
+    .card-details summary:hover { color: var(--accent); }
+    .card-details summary:hover::before { border-left-color: var(--accent); }
+
+    .details-inner {
+      padding: 0.25rem 0 1rem;
+    }
+    .details-inner h4 {
+      font-family: var(--header-font);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin: 0.75rem 0 0.35rem;
+    }
+    .details-inner ul {
+      margin: 0 0 0.5rem;
+      padding-left: 1.35rem;
+    }
+    .details-inner ul li {
+      font-size: 0.88rem;
+      margin-bottom: 0.3rem;
+      line-height: 1.55;
+    }
+
+    /* ── Status colour classes ── */
+    .status-operational  { --status-color: var(--green);  }
+    .status-in-progress  { --status-color: var(--yellow); }
+    .status-planned      { --status-color: var(--blue);   }
+    .status-at-risk      { --status-color: var(--red);    }
+
+    .scorecard.status-operational { border-left-color: var(--green);  }
+    .scorecard.status-in-progress { border-left-color: var(--yellow); }
+    .scorecard.status-planned     { border-left-color: var(--blue);   }
+    .scorecard.status-at-risk     { border-left-color: var(--red);    }
+
+    .legend-dot.status-operational { background: var(--green);  }
+    .legend-dot.status-in-progress { background: var(--yellow); }
+    .legend-dot.status-planned     { background: var(--blue);   }
+    .legend-dot.status-at-risk     { background: var(--red);    }
+
+    /* Badge: light text on dark bg for green/blue/red; dark text on yellow */
+    .status-badge.status-operational,
+    .status-badge.status-planned,
+    .status-badge.status-at-risk {
+      background: var(--status-color);
+      color: var(--white);
+    }
+    .status-badge.status-in-progress {
+      background: var(--status-color);
+      color: #333;
+    }
+    .status-badge .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.7);
+      flex-shrink: 0;
+    }
+    .status-badge.status-in-progress .dot {
+      background: rgba(0,0,0,0.2);
+    }
+
+    /* ── Animations ── */
+    @keyframes flipIn {
+      from { transform: perspective(900px) rotateY(90deg); opacity: 0; }
+      to   { transform: perspective(900px) rotateY(0deg);  opacity: 1; }
+    }
+
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .page-header { gap: 1rem; }
+      .page-header-icon { flex: 0 0 70px; width: 70px; height: 70px; }
+      .page-header-text h1 { font-size: 1.35rem; }
+      .card-header { flex-direction: column; gap: 0.5rem; }
+      .card-number { font-size: 1.6rem; }
+      .status-badge { align-self: flex-start; }
+      .legend { gap: 0.6rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+<div id="sp1-wrapper">
+
+  <!-- Back link -->
+  <a class="back-link" href="https://www.lrsd.net/page/26539/multi-year-strategic-plan-2023-2027">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M10.5 3L5.5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Back to MYSP Home
+  </a>
+
+  <!-- Page header -->
+  <header class="page-header">
+    <div class="page-header-icon">
+      <img src="https://media.lrsd.net/media/Default/frl/0/Belonging-icononly@2x-8-2.png" alt="Belonging icon" />
+    </div>
+    <div class="page-header-text">
+      <h1>Strategic Priority 1: Belonging</h1>
+      <p>Multi-Year Strategic Plan 2023–2027 &mdash; Louis Riel School Division</p>
+    </div>
+  </header>
+
+  <!-- Legend -->
+  <div class="legend" role="note" aria-label="Status legend">
+    <div class="legend-item">
+      <span class="legend-dot status-operational"></span>
+      Operational
+    </div>
+    <div class="legend-item">
+      <span class="legend-dot status-in-progress"></span>
+      In Progress
+    </div>
+    <div class="legend-item">
+      <span class="legend-dot status-planned"></span>
+      Planned
+    </div>
+    <div class="legend-item">
+      <span class="legend-dot status-at-risk"></span>
+      At Risk
+    </div>
+  </div>
+
+  <!-- Cards -->
+  <div class="cards-list" id="cards-list">
+
+    <!-- 1.1 — In Progress (yellow) -->
+    <article class="scorecard status-in-progress" aria-label="Strategic Action 1.1">
+      <div class="card-header">
+        <div class="card-number">1.1</div>
+        <p class="card-action-text">
+          Expand the LRSD Community Schools Network at the René Deleurme Centre to serve more schools and families.
+        </p>
+        <span class="status-badge status-in-progress">
+          <span class="dot"></span>
+          In Progress
+        </span>
+      </div>
+      <div class="card-body">
+        <p class="progress-label">Progress So Far</p>
+        <ul>
+          <li>Renovated the René Deleurme Centre (RDC), adding a commercial-grade commissary kitchen to support nutrition programming for all 41 LRSD schools.</li>
+          <li>Formed a working committee with diverse stakeholders to assess programming and collect feedback from Windsor Park, Nelson McIntyre, and Collège Béliveau communities.</li>
+          <li>Reviewed northern division spaces to identify opportunities for network expansion and new facilities.</li>
+          <li>Identified a satellite location and adopted Culturally and Linguistically Responsive Teaching to value multilingual learners and promote asset-based perspectives.</li>
+          <li>Established a new satellite Service Hub at Nelson McIntyre Collegiate, providing access to settlement services, food security, Manitoba Housing, and clothing/laundry resources.</li>
+        </ul>
+      </div>
+      <details class="card-details">
+        <summary>View Details</summary>
+        <div class="details-inner">
+          <h4>Where We're Going</h4>
+          <ul>
+            <li>Continue strengthening wraparound services for families through expanded partnerships and ongoing community engagement.</li>
+            <li>Use stakeholder and community feedback to guide the development of new programming and services as needs evolve.</li>
+            <li>Maintain our commitment to improving support for families and schools by fostering comprehensive resources and helping every student and family thrive.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+
+    <!-- 1.2 — In Progress (yellow) -->
+    <article class="scorecard status-in-progress" aria-label="Strategic Action 1.2">
+      <div class="card-header">
+        <div class="card-number">1.2</div>
+        <p class="card-action-text">
+          Create a comprehensive Workplace Safety and Health Program to promote and support employee wellness to better nurture student wellness.
+        </p>
+        <span class="status-badge status-in-progress">
+          <span class="dot"></span>
+          In Progress
+        </span>
+      </div>
+      <div class="card-body">
+        <p class="progress-label">Progress So Far</p>
+        <ul>
+          <li>Refined WSH Program and engaged WSH committee.</li>
+          <li>Partnered with Well at Work by EdCan, surveying over 2,000 staff.</li>
+          <li>Enhanced wellness resources and promotion of MFAP/EAP.</li>
+          <li>Moved incident reporting online and drafted new policies.</li>
+        </ul>
+      </div>
+      <details class="card-details">
+        <summary>View Details</summary>
+        <div class="details-inner">
+          <h4>Where We're Going</h4>
+          <ul>
+            <li>Develop a robust, data-informed WSH Program.</li>
+            <li>Strengthen partnerships with Well at Work and benefits providers.</li>
+            <li>Implement new Communication and Attendance Support policies.</li>
+            <li>Expand staff recognition and increase access to Staff Services.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+
+    <!-- 1.3 — Operational (green) -->
+    <article class="scorecard status-operational" aria-label="Strategic Action 1.3">
+      <div class="card-header">
+        <div class="card-number">1.3</div>
+        <p class="card-action-text">
+          Reinforce trauma-responsive practices.
+        </p>
+        <span class="status-badge status-operational">
+          <span class="dot"></span>
+          Operational
+        </span>
+      </div>
+      <div class="card-body">
+        <p class="progress-label">Progress So Far</p>
+        <ul>
+          <li>Began developing a professional learning framework for trauma-responsive practices.</li>
+          <li>Adopted the Therapeutic Crisis Intervention (TCI) model from Cornell University.</li>
+          <li>Scheduled TCI trainer training for key staff for the 2024–2025 school year.</li>
+        </ul>
+      </div>
+      <details class="card-details">
+        <summary>View Details</summary>
+        <div class="details-inner">
+          <h4>Where We're Going</h4>
+          <ul>
+            <li>Implement a comprehensive professional learning model division-wide.</li>
+            <li>Deliver TCI training to all school-based staff.</li>
+            <li>Establish a sustainability plan for TCI certifications and reviews.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+
+    <!-- 1.4 — In Progress (yellow) -->
+    <article class="scorecard status-in-progress" aria-label="Strategic Action 1.4">
+      <div class="card-header">
+        <div class="card-number">1.4</div>
+        <p class="card-action-text">
+          Introduce Indigenous Language Nests for preschool-aged children in our family centres.<br />
+          Expand both the Kindergarten to Grade 3 Indigenous Language Exposure curriculum and Grades 9–12 Indigenous Language Options to all schools.
+        </p>
+        <span class="status-badge status-in-progress">
+          <span class="dot"></span>
+          In Progress
+        </span>
+      </div>
+      <div class="card-body">
+        <p class="progress-label">Progress So Far</p>
+        <ul>
+          <li>Expanded K–3 curriculum, providing language instruction to K/1 classes.</li>
+          <li>Implemented language programs at two high schools.</li>
+          <li>Trained staff on the "Moe the Mouse" framework for Language Nests.</li>
+        </ul>
+      </div>
+      <details class="card-details">
+        <summary>View Details</summary>
+        <div class="details-inner">
+          <h4>Where We're Going</h4>
+          <ul>
+            <li>Expand the language program to include all K–4 classes.</li>
+            <li>Establish Indigenous language programs in all high schools.</li>
+            <li>Complete the introduction of Language Nests in family centres.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+
+    <!-- 1.5 — Operational (green) -->
+    <article class="scorecard status-operational" aria-label="Strategic Action 1.5">
+      <div class="card-header">
+        <div class="card-number">1.5</div>
+        <p class="card-action-text">
+          Reframe the Grade 11 English Language Arts curriculum to focus on Indigenous literature and perspectives while ensuring the Grade 11 History curriculum thoroughly explores Indigenous histories and perspectives.
+        </p>
+        <span class="status-badge status-operational">
+          <span class="dot"></span>
+          Operational
+        </span>
+      </div>
+      <div class="card-body">
+        <p class="progress-label">Progress So Far</p>
+        <ul>
+          <li>Began planning to reframe the Grade 11 ELA curriculum to focus on Indigenous literature and perspectives.</li>
+          <li>Continued reframing the Grade 11 History curriculum by forming a teacher committee and holding workshops focused on shifting practices that reflect harms of the past.</li>
+        </ul>
+      </div>
+      <details class="card-details">
+        <summary>View Details</summary>
+        <div class="details-inner">
+          <h4>Where We're Going</h4>
+          <ul>
+            <li>By 2025: Ensure the Grade 11 History curriculum thoroughly explores Indigenous histories and perspectives, framed with Indigenous pedagogies.</li>
+            <li>By 2027: Reframe the Grade 11 ELA curriculum to focus on Indigenous literature, authors, and storytelling traditions.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+
+    <!-- 1.6 — In Progress (yellow) -->
+    <article class="scorecard status-in-progress" aria-label="Strategic Action 1.6">
+      <div class="card-header">
+        <div class="card-number">1.6</div>
+        <p class="card-action-text">
+          Expand International and Heritage Language options in high schools.
+        </p>
+        <span class="status-badge status-in-progress">
+          <span class="dot"></span>
+          In Progress
+        </span>
+      </div>
+      <div class="card-body">
+        <p class="progress-label">Progress So Far</p>
+        <ul>
+          <li>Currently, Spanish is offered at Collège Béliveau, Collège Jeanne-Sauvé, and Dakota Collegiate, with multiple sections across grades 9–12.</li>
+        </ul>
+      </div>
+      <details class="card-details">
+        <summary>View Details</summary>
+        <div class="details-inner">
+          <h4>Where We're Going</h4>
+          <ul>
+            <li>By 2027, all high schools in the Louis Riel School Division will offer at least one International/Heritage Language option to students.</li>
+          </ul>
+        </div>
+      </details>
+    </article>
+
+  </div><!-- /cards-list -->
+</div><!-- /sp1-wrapper -->
+
+<script>
+  (function () {
+    // Staggered fade-in for scorecard cards
+    var cards = document.querySelectorAll('#cards-list .scorecard');
+    cards.forEach(function (card, i) {
+      setTimeout(function () {
+        card.classList.add('visible');
+      }, 120 + i * 110);
+    });
+  })();
+</script>
+</body>
+</html>
