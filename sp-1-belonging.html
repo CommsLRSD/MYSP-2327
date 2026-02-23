@@ -233,12 +233,18 @@
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      padding: 0.3rem 0.75rem;
-      border-radius: 999px;
+      padding: 0.45rem 0.95rem;
+      border-radius: 6px;
       font-size: 0.78rem;
       font-weight: 600;
       font-family: var(--body-font);
       white-space: nowrap;
+      background-image: linear-gradient(to bottom, rgba(255,255,255,0.24) 0%, rgba(0,0,0,0.12) 100%);
+      box-shadow:
+        0 3px 6px rgba(0,0,0,0.22),
+        0 1px 2px rgba(0,0,0,0.16),
+        inset 0 1px 0 rgba(255,255,255,0.32);
+      border-bottom: 1px solid rgba(0,0,0,0.2);
     }
 
     .card-body {
@@ -448,12 +454,12 @@
     /* Badge: light text on dark bg for blue/red; dark text on green/yellow */
     .status-badge.status-planned,
     .status-badge.status-at-risk {
-      background: var(--status-color);
+      background-color: var(--status-color);
       color: var(--white);
     }
     .status-badge.status-operational,
     .status-badge.status-in-progress {
-      background: var(--status-color);
+      background-color: var(--status-color);
       color: #333;
     }
     .status-badge .dot {
