@@ -221,11 +221,11 @@
 	}
 	
 	.card-band-icon {
-		flex-shrink: 0; width: 60px; height: 60px; background: rgba(255, 255, 255, 0.25); border-radius: 12px; display: flex; align-items: center; justify-content: center;
+		flex-shrink: 0; width: 60px; height: 60px; background: #ffffff; border-radius: 12px; display: flex; align-items: center; justify-content: center;
 	}
 	
 	.card-band-icon img {
-		width: 38px; height: 38px; object-fit: contain; filter: brightness(0) invert(1);
+		width: 38px; height: 38px; object-fit: contain;
 	}
 	
 	.card-band-info {
@@ -241,28 +241,29 @@
 		color: rgba(0, 0, 0, 0.65);
 	}
 	
-	.status-in-progress .card-band-icon,
-	.status-operational .card-band-icon {
-		background: rgba(0, 0, 0, 0.12);
-	}
-	
-	.status-in-progress .card-band-icon img,
-	.status-operational .card-band-icon img {
-		filter: brightness(0) invert(0); opacity: 0.75;
-	}
-	
 	.status-in-progress .card-band-number,
 	.status-operational .card-band-number {
 		color: #000;
 	}
 	
 	.card-status-badge {
-		flex-shrink: 0; align-self: flex-start; font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 999px; background: rgba(255, 255, 255, 0.25); color: #fff; text-transform: uppercase; letter-spacing: 0.05em; z-index: 1;
+		display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.75rem; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.5rem;
 	}
 	
-	.status-in-progress .card-status-badge,
 	.status-operational .card-status-badge {
-		background: rgba(0, 0, 0, 0.15); color: rgba(0, 0, 0, 0.75);
+		background: #a3b939; color: #fff;
+	}
+	
+	.status-in-progress .card-status-badge {
+		background: #fbad1c; color: rgba(0, 0, 0, 0.75);
+	}
+	
+	.status-planned .card-status-badge {
+		background: #3491cd; color: #fff;
+	}
+	
+	.status-at-risk .card-status-badge {
+		background: #b33528; color: #fff;
 	}
 	/* ── Card action title (neutral background) ── */
 	
@@ -498,9 +499,10 @@
 				<div class="card-band-info">
 
 					<p class="card-band-num-label">Action 1.1</p>
-				</div><span class="card-status-badge">In Progress</span> <span class="card-band-number">1.1</span></div>
+				</div><span class="card-band-number">1.1</span></div>
 			<div class="card-action-title">
 				<p class="card-action-title-text">Expand the LRSD Community Schools Network at the Ren&eacute; Deleurme Centre to serve more schools and families.</p>
+				<span class="card-status-badge">In Progress</span>
 			</div>
 			<div class="card-body"><span class="progress-tag">Progress So Far</span>
 
@@ -588,9 +590,10 @@
 				<div class="card-band-info">
 
 					<p class="card-band-num-label">Action 1.2</p>
-				</div><span class="card-status-badge">In Progress</span> <span class="card-band-number">1.2</span></div>
+				</div><span class="card-band-number">1.2</span></div>
 			<div class="card-action-title">
 				<p class="card-action-title-text">Create a comprehensive Workplace Safety and Health Program to promote and support employee wellness to better nurture student wellness.</p>
+				<span class="card-status-badge">In Progress</span>
 			</div>
 			<div class="card-body"><span class="progress-tag">Progress So Far</span>
 
@@ -654,9 +657,10 @@
 				<div class="card-band-info">
 
 					<p class="card-band-num-label">Action 1.3</p>
-				</div><span class="card-status-badge">Operational</span> <span class="card-band-number">1.3</span></div>
+				</div><span class="card-band-number">1.3</span></div>
 			<div class="card-action-title">
 				<p class="card-action-title-text">Reinforce trauma-responsive practices.</p>
+				<span class="card-status-badge">Operational</span>
 			</div>
 			<div class="card-body"><span class="progress-tag">Progress So Far</span>
 
@@ -718,9 +722,10 @@
 				<div class="card-band-info">
 
 					<p class="card-band-num-label">Action 1.4</p>
-				</div><span class="card-status-badge">In Progress</span> <span class="card-band-number">1.4</span></div>
+				</div><span class="card-band-number">1.4</span></div>
 			<div class="card-action-title">
 				<p class="card-action-title-text">Introduce Indigenous Language Nests for preschool-aged children in our family centres. Expand both the K&ndash;3 Indigenous Language Exposure curriculum and Grades 9&ndash;12 Indigenous Language Options to all schools.</p>
+				<span class="card-status-badge">In Progress</span>
 			</div>
 			<div class="card-body"><span class="progress-tag">Progress So Far</span>
 
@@ -782,9 +787,10 @@
 				<div class="card-band-info">
 
 					<p class="card-band-num-label">Action 1.5</p>
-				</div><span class="card-status-badge">Operational</span> <span class="card-band-number">1.5</span></div>
+				</div><span class="card-band-number">1.5</span></div>
 			<div class="card-action-title">
 				<p class="card-action-title-text">Reframe the Grade 11 English Language Arts curriculum to focus on Indigenous literature and perspectives while ensuring the Grade 11 History curriculum thoroughly explores Indigenous histories and perspectives.</p>
+				<span class="card-status-badge">Operational</span>
 			</div>
 			<div class="card-body"><span class="progress-tag">Progress So Far</span>
 
@@ -843,9 +849,10 @@
 				<div class="card-band-info">
 
 					<p class="card-band-num-label">Action 1.6</p>
-				</div><span class="card-status-badge">In Progress</span> <span class="card-band-number">1.6</span></div>
+				</div><span class="card-band-number">1.6</span></div>
 			<div class="card-action-title">
 				<p class="card-action-title-text">Expand International and Heritage Language options in high schools.</p>
+				<span class="card-status-badge">In Progress</span>
 			</div>
 			<div class="card-body"><span class="progress-tag">Progress So Far</span>
 
