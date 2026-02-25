@@ -51,13 +51,14 @@ margin: 0;
 padding: 0.4rem 0.85rem 0.4rem 0.6rem;
 font-size: 0.85rem;
 font-weight: 600;
-color: #264e74;
-text-decoration: none;
+color: #264e74 !important;
+text-decoration: none !important;
 background: rgba(38,78,116,0.07);
 border-radius: 6px;
 transition: background 0.2s, color 0.2s;
 }
-.back-link:hover { background: rgba(38,78,116,0.14); color: #1a3a58; text-decoration: none; }
+.back-link:visited { color: #264e74 !important; }
+.back-link:hover { background: rgba(38,78,116,0.14); color: #1a3a58 !important; text-decoration: none !important; }
 .back-link svg { flex-shrink: 0; }
 
 /* ── Hero banner ── */
@@ -240,8 +241,8 @@ display: flex;
 align-items: flex-start;
 gap: 0.85rem;
 }
-.status-operational .card-band { background: linear-gradient(120deg, #7a8f1a 0%, #a3b939 100%); }
-.status-in-progress .card-band { background: linear-gradient(120deg, #c98800 0%, #fbad1c 100%); }
+.status-operational .card-band { background: linear-gradient(120deg, #3d5a0e 0%, #536e14 100%); }
+.status-in-progress .card-band { background: linear-gradient(120deg, #7a5200 0%, #9e6a00 100%); }
 .status-planned .card-band     { background: linear-gradient(120deg, #1a6fa0 0%, #3491cd 100%); }
 .status-at-risk .card-band     { background: linear-gradient(120deg, #871f15 0%, #b33528 100%); }
 
@@ -262,13 +263,14 @@ letter-spacing: -0.02em;
 
 .card-band-icon {
 flex-shrink: 0;
-width: 44px; height: 44px;
+width: 56px; height: 56px;
 background: rgba(255,255,255,0.2);
 border-radius: 10px;
-display: flex; align-items: center; justify-content: center;
+/* !important guards prevent CMS global styles from breaking icon alignment */
+display: flex !important; align-items: center !important; justify-content: center !important;
 }
 .card-band-icon img {
-width: 28px; height: 28px;
+width: 40px; height: 40px;
 object-fit: contain;
 filter: brightness(0) invert(1);
 }
@@ -291,27 +293,6 @@ color: #fff;
 margin: 0;
 line-height: 1.35;
 }
-.status-in-progress .card-band-title,
-.status-operational .card-band-title {
-color: rgba(0,0,0,0.8);
-}
-.status-in-progress .card-band-num-label,
-.status-operational .card-band-num-label {
-color: rgba(0,0,0,0.55);
-}
-.status-in-progress .card-band-icon,
-.status-operational .card-band-icon {
-background: rgba(0,0,0,0.12);
-}
-.status-in-progress .card-band-icon img,
-.status-operational .card-band-icon img {
-filter: brightness(0) invert(0);
-opacity: 0.7;
-}
-.status-in-progress .card-band-number,
-.status-operational .card-band-number {
-color: #000;
-}
 
 .card-status-badge {
 flex-shrink: 0;
@@ -325,11 +306,6 @@ color: #fff;
 text-transform: uppercase;
 letter-spacing: 0.05em;
 z-index: 1;
-}
-.status-in-progress .card-status-badge,
-.status-operational .card-status-badge {
-background: rgba(0,0,0,0.15);
-color: rgba(0,0,0,0.75);
 }
 
 /* ── Card body ── */
