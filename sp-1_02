@@ -1,3 +1,4 @@
+
 <style>
 	@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@400;500;600&display=swap');:root {
 		--primary: #264e74; --accent: #b23427; --light-bg: #f5f7fa; --white: #ffffff; --text: #222222; --header-font: 'Montserrat', sans-serif; --body-font: 'Poppins', sans-serif; --shadow-light: 0 2px 6px rgba(34, 60, 80, 0.08); --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.13), 0 3px 8px rgba(0, 0, 0, 0.07);
@@ -221,11 +222,11 @@
 	}
 	
 	.card-band-icon {
-		flex-shrink: 0; width: 60px; height: 60px; background: #ffffff; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+		flex-shrink: 0; width: 120px; height: 120px; background: #ffffff; opacity: 0.95; border-radius: 12px; display: flex; align-items: center; justify-content: center;
 	}
 	
 	.card-band-icon img {
-		width: 38px; height: 38px; object-fit: contain;
+		width: 85px; height: 85px; object-fit: contain;
 	}
 	
 	.card-band-info {
@@ -490,7 +491,7 @@
 		<!-- 1.1 — In Progress -->
 		<article class="scorecard status-in-progress" data-status="in-progress">
 			<div class="card-band">
-				<div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/medialib/47478-lr-icons_1-1-community-schools-network.8f627b62151.png" alt="Community Schools Network icon" class="fr-fil fr-dib">
+				<div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/medialib/47478-lr-icons_1-1-community-schools-network.8f627b62151.png" alt="Community Schools Network icon" class="fr-dib">
 
 					<p>
 						<br>
@@ -501,14 +502,13 @@
 					<p class="card-band-num-label">Action 1.1</p>
 				</div><span class="card-band-number">1.1</span></div>
 			<div class="card-action-title">
-				<p class="card-action-title-text">Expand the LRSD Community Schools Network at the Ren&eacute; Deleurme Centre to serve more schools and families.</p>
-				<span class="card-status-badge">In Progress</span>
-			</div>
+
+				<p class="card-action-title-text">Expand the LRSD Community Schools Network at the Ren&eacute; Deleurme Centre to serve more schools and families.</p><span class="card-status-badge">In Progress</span></div>
 			<div class="card-body"><span class="progress-tag">Progress So Far</span>
 
 				<p class="card-summary">Renovated the Ren&eacute; Deleurme Centre with a commissary kitchen serving 41 schools, established a working committee with community stakeholders, and opened a new satellite Service Hub at Nelson McIntyre Collegiate.</p>
 			</div>
-			<details class="card-details" open="">
+			<details class="card-details">
 				<summary>View Details</summary>
 				<div class="details-inner">
 					<div class="detail-tabs">
@@ -581,7 +581,7 @@
 
 					<p>
 						<br>
-					</p><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.2-Comprehensive%20WSH%20Program-4.png" alt="Workplace Safety and Health Program icon" class="fr-fil fr-dib">
+					</p><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.2-Comprehensive%20WSH%20Program-4.png" alt="Workplace Safety and Health Program icon" class="fr-dib">
 
 					<p>
 						<br>
@@ -592,9 +592,8 @@
 					<p class="card-band-num-label">Action 1.2</p>
 				</div><span class="card-band-number">1.2</span></div>
 			<div class="card-action-title">
-				<p class="card-action-title-text">Create a comprehensive Workplace Safety and Health Program to promote and support employee wellness to better nurture student wellness.</p>
-				<span class="card-status-badge">In Progress</span>
-			</div>
+
+				<p class="card-action-title-text">Create a comprehensive Workplace Safety and Health Program to promote and support employee wellness to better nurture student wellness.</p><span class="card-status-badge">In Progress</span></div>
 			<div class="card-body"><span class="progress-tag">Progress So Far</span>
 
 				<p class="card-summary">Refined the Workplace Safety &amp; Health Program, partnered with Well at Work by EdCan to survey 2,000+ staff, enhanced wellness resources, and moved incident reporting online.</p>
@@ -653,15 +652,18 @@
 		<!-- 1.3 — Operational -->
 		<article class="scorecard status-operational" data-status="operational">
 			<div class="card-band">
-				<div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.3-Trauma%20Responsive-1.png" alt="Trauma-responsive practices icon" class="fr-fil fr-dib"></div>
+				<div class="card-band-icon">
+
+					<p>
+						<br>
+					</p><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.3-Trauma%20Responsive-1.png" alt="Trauma-responsive practices icon" class="fr-dib"></div>
 				<div class="card-band-info">
 
 					<p class="card-band-num-label">Action 1.3</p>
 				</div><span class="card-band-number">1.3</span></div>
 			<div class="card-action-title">
-				<p class="card-action-title-text">Reinforce trauma-responsive practices.</p>
-				<span class="card-status-badge">Operational</span>
-			</div>
+
+				<p class="card-action-title-text">Reinforce trauma-responsive practices.</p><span class="card-status-badge">Operational</span></div>
 			<div class="card-body"><span class="progress-tag">Progress So Far</span>
 
 				<p class="card-summary">Developed a professional learning framework for trauma-responsive practices, adopted the Therapeutic Crisis Intervention (TCI) model from Cornell University, and trained key staff.</p>
@@ -718,15 +720,14 @@
 		<!-- 1.4 — In Progress -->
 		<article class="scorecard status-in-progress" data-status="in-progress">
 			<div class="card-band">
-				<div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.4-Indigenous%20Language-1.png" alt="Indigenous Language Nests icon" class="fr-fil fr-dib"></div>
+				<div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.4-Indigenous%20Language-1.png" alt="Indigenous Language Nests icon" class="fr-dib"></div>
 				<div class="card-band-info">
 
 					<p class="card-band-num-label">Action 1.4</p>
 				</div><span class="card-band-number">1.4</span></div>
 			<div class="card-action-title">
-				<p class="card-action-title-text">Introduce Indigenous Language Nests for preschool-aged children in our family centres. Expand both the K&ndash;3 Indigenous Language Exposure curriculum and Grades 9&ndash;12 Indigenous Language Options to all schools.</p>
-				<span class="card-status-badge">In Progress</span>
-			</div>
+
+				<p class="card-action-title-text">Introduce Indigenous Language Nests for preschool-aged children in our family centres. Expand both the K&ndash;3 Indigenous Language Exposure curriculum and Grades 9&ndash;12 Indigenous Language Options to all schools.</p><span class="card-status-badge">In Progress</span></div>
 			<div class="card-body"><span class="progress-tag">Progress So Far</span>
 
 				<p class="card-summary">Expanded K&ndash;3 Indigenous language curriculum, implemented language programs at two high schools, and trained staff on the &quot;Moe the Mouse&quot; framework for Language Nests in family centres.</p>
@@ -783,15 +784,14 @@
 		<!-- 1.5 — Operational -->
 		<article class="scorecard status-operational" data-status="operational">
 			<div class="card-band">
-				<div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.5-Indigenous%20Focus-1.png" alt="Indigenous literature and perspectives icon" class="fr-fil fr-dib"></div>
+				<div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.5-Indigenous%20Focus-1.png" alt="Indigenous literature and perspectives icon" class="fr-dib"></div>
 				<div class="card-band-info">
 
 					<p class="card-band-num-label">Action 1.5</p>
 				</div><span class="card-band-number">1.5</span></div>
 			<div class="card-action-title">
-				<p class="card-action-title-text">Reframe the Grade 11 English Language Arts curriculum to focus on Indigenous literature and perspectives while ensuring the Grade 11 History curriculum thoroughly explores Indigenous histories and perspectives.</p>
-				<span class="card-status-badge">Operational</span>
-			</div>
+
+				<p class="card-action-title-text">Reframe the Grade 11 English Language Arts curriculum to focus on Indigenous literature and perspectives while ensuring the Grade 11 History curriculum thoroughly explores Indigenous histories and perspectives.</p><span class="card-status-badge">Operational</span></div>
 			<div class="card-body"><span class="progress-tag">Progress So Far</span>
 
 				<p class="card-summary">Began planning to reframe Grade 11 ELA curriculum for Indigenous literature; continued reframing Grade 11 History with a teacher committee and workshops.</p>
@@ -845,15 +845,14 @@
 		<!-- 1.6 — In Progress -->
 		<article class="scorecard status-in-progress" data-status="in-progress">
 			<div class="card-band">
-				<div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.6-Heritage%20Languages-1.png" alt="International and Heritage Languages icon" class="fr-fil fr-dib"></div>
+				<div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/47478-lr-icons_1-6-international-heritage-languages.75189877945.png" alt="International and Heritage Languages icon" class="fr-dib"></div>
 				<div class="card-band-info">
 
 					<p class="card-band-num-label">Action 1.6</p>
 				</div><span class="card-band-number">1.6</span></div>
 			<div class="card-action-title">
-				<p class="card-action-title-text">Expand International and Heritage Language options in high schools.</p>
-				<span class="card-status-badge">In Progress</span>
-			</div>
+
+				<p class="card-action-title-text">Expand International and Heritage Language options in high schools.</p><span class="card-status-badge">In Progress</span></div>
 			<div class="card-body"><span class="progress-tag">Progress So Far</span>
 
 				<p class="card-summary">Spanish is currently offered at Coll&egrave;ge B&eacute;liveau, Coll&egrave;ge Jeanne-Sauv&eacute;, and Dakota Collegiate across grades 9&ndash;12.</p>
