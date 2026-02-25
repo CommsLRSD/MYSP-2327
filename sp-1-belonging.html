@@ -213,11 +213,14 @@ box-shadow: var(--shadow-medium);
 overflow: hidden;
 display: flex;
 flex-direction: column;
-opacity: 0;
-transform: translateY(18px);
 transition: box-shadow 0.25s, transform 0.2s;
 }
-.scorecard.visible {
+/* Only animate when JS is active (js-ready class on wrapper) */
+.js-ready .scorecard {
+opacity: 0;
+transform: translateY(18px);
+}
+.js-ready .scorecard.visible {
 animation: fadeSlideIn 0.5s ease-out forwards;
 }
 .scorecard:hover {
@@ -412,8 +415,13 @@ transition: color 0.15s, border-color 0.15s;
 .detail-tab-btn:hover { color: var(--primary); }
 .detail-tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
 
-.detail-tab-pane { display: none; }
-.detail-tab-pane.active { display: block; }
+/* Tab panes visible by default (no-JS / page-builder); JS hides non-active ones */
+.detail-tab-pane { display: block; }
+.js-ready .detail-tab-pane { display: none; }
+.js-ready .detail-tab-pane.active { display: block; }
+/* Hide tab button bar until JS is ready (buttons do nothing without JS) */
+.detail-tabs { display: none; }
+.js-ready .detail-tabs { display: flex; }
 
 /* ── Context cards in tabs ── */
 .context-pill-row {
@@ -917,6 +925,10 @@ Back to MYSP Home
 
 <script>
 (function () {
+/* ── Mark wrapper as JS-active (enables animations & tab hiding) ── */
+var wrapper = document.getElementById('sp1-wrapper');
+if (wrapper) wrapper.classList.add('js-ready');
+
 /* ── Staggered card entrance ── */
 var cards = document.querySelectorAll('#cards-grid .scorecard');
 cards.forEach(function (card, i) {
@@ -927,6 +939,16 @@ card.classList.add('visible');
 
 /* ── Detail tabs ── */
 document.querySelectorAll('.card-details').forEach(function (details) {
+/* On open, activate the first tab pane so only one is shown */
+details.addEventListener('toggle', function () {
+if (details.open) {
+var inner = details.querySelector('.details-inner');
+if (!inner.querySelector('.detail-tab-pane.active')) {
+inner.querySelectorAll('.detail-tab-pane')[0].classList.add('active');
+inner.querySelectorAll('.detail-tab-btn')[0].classList.add('active');
+}
+}
+});
 details.addEventListener('click', function (e) {
 var btn = e.target.closest('.detail-tab-btn');
 if (!btn) return;
