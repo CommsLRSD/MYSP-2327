@@ -1,0 +1,2061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Strategic Priorities — LRSD MYSP 2023–2027</title>
+  <style>
+
+	@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@400;500;600&display=swap');:root {
+		--primary: #264e74; --accent: #b23427; --light-bg: #f5f7fa; --white: #ffffff; --text: #222222; --header-font: 'Montserrat', sans-serif; --body-font: 'Poppins', sans-serif; --shadow-light: 0 2px 6px rgba(34, 60, 80, 0.08); --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.13), 0 3px 8px rgba(0, 0, 0, 0.07);
+		/* status colours */
+		--green: #a3b939; --yellow: #fbad1c; --blue: #3491cd; --red: #b33528;
+	}
+	
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+	
+	html,
+	body {
+		margin: 0; padding: 0; font-family: var(--body-font); font-size: 16px; background: var(--white); color: var(--text); line-height: 1.6; overflow-x: hidden;
+	}
+	/* ── Outer wrapper ── */
+	
+	#sp1-wrapper {
+		max-width: 1180px; margin: 0 auto; padding: 0 1.25rem 4rem;
+	}
+	
+	#sp1-wrapper h1,
+	#sp1-wrapper h2,
+	#sp1-wrapper h3 {
+		font-family: var(--header-font); color: var(--primary);
+	}
+	/* ── Back link ── */
+	
+	.back-link {
+		display: inline-flex; align-items: center; gap: 0.4rem; margin: 0; padding: 0.4rem 0.85rem 0.4rem 0.6rem; font-size: 0.85rem; font-weight: 600; color: #264e74; text-decoration: none; background: rgba(38, 78, 116, 0.07); border-radius: 6px; transition: background 0.2s, color 0.2s;
+	}
+	
+	.back-link:hover {
+		background: rgba(38, 78, 116, 0.14); color: #1a3a58; text-decoration: none;
+	}
+	
+	.back-link svg {
+		flex-shrink: 0;
+	}
+	/* ── Hero banner ── */
+	
+	.sp1-hero {
+		position: relative; background: linear-gradient(135deg, #1a3a58 0%, #264e74 55%, #2d6494 100%); border-radius: 16px; overflow: hidden; margin: 1rem 0 2rem; padding: 2.5rem 2.5rem 2.5rem 2.5rem; color: #fff; display: flex; align-items: center; gap: 2rem;
+	}
+	
+	.sp1-hero::before {
+		content: ''; position: absolute; top: -40px; right: -40px; width: 280px; height: 280px; border-radius: 50%; background: rgba(255, 255, 255, 0.05); pointer-events: none;
+	}
+	
+	.sp1-hero::after {
+		content: ''; position: absolute; bottom: -60px; left: 30%; width: 200px; height: 200px; border-radius: 50%; background: rgba(255, 255, 255, 0.04); pointer-events: none;
+	}
+	
+	.hero-icon-wrap {
+		flex-shrink: 0; width: 110px; height: 110px; background: rgba(255, 255, 255, 0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; opacity: 0; animation: flipIn 0.9s ease-out 0.15s forwards; z-index: 1;
+	}
+	
+	.hero-icon-wrap img {
+		width: 72px; height: 72px; object-fit: contain; filter: brightness(0) invert(1);
+	}
+	
+	.hero-text {
+		z-index: 1;
+	}
+	
+	.hero-label {
+		font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255, 255, 255, 0.7); margin: 0 0 0.25rem;
+	}
+	
+	.hero-title {
+		font-family: var(--header-font); font-size: 3rem; font-weight: 700; color: #fff; margin: 0 0 0.4rem; line-height: 1;
+	}
+	
+	.hero-sub {
+		font-size: 0.85rem; color: rgba(255, 255, 255, 0.6); margin: 0;
+	}
+	/* ── Filter chips / legend ── */
+	
+	.filter-bar {
+		display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-bottom: 2rem;
+	}
+	
+	.filter-label {
+		font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: #666; margin-right: 0.25rem;
+	}
+	
+	.filter-chip {
+		display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.3rem 0.9rem 0.3rem 0.65rem; border-radius: 999px; border: 2px solid transparent; font-size: 0.82rem; font-weight: 600; font-family: var(--body-font); cursor: pointer; transition: all 0.18s ease; user-select: none;
+	}
+	
+	.filter-chip .chip-dot {
+		width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+	}
+	
+	.filter-chip[data-status="all"] {
+		background: #edf1f7; color: #264e74; border-color: #c5d0df;
+	}
+	
+	.filter-chip[data-status="at-risk"] {
+		background: rgba(179, 53, 40, 0.1); color: #b33528; border-color: rgba(179, 53, 40, 0.25);
+	}
+	
+	.filter-chip[data-status="planned"] {
+		background: rgba(52, 145, 205, 0.1); color: #2270a0; border-color: rgba(52, 145, 205, 0.25);
+	}
+	
+	.filter-chip[data-status="in-progress"] {
+		background: rgba(251, 173, 28, 0.12); color: #8a5e00; border-color: rgba(251, 173, 28, 0.35);
+	}
+	
+	.filter-chip[data-status="operational"] {
+		background: rgba(163, 185, 57, 0.12); color: #5a6c0a; border-color: rgba(163, 185, 57, 0.35);
+	}
+	
+	.filter-chip[data-status="all"] .chip-dot {
+		background: #264e74;
+	}
+	
+	.filter-chip[data-status="at-risk"] .chip-dot {
+		background: #b33528;
+	}
+	
+	.filter-chip[data-status="planned"] .chip-dot {
+		background: #3491cd;
+	}
+	
+	.filter-chip[data-status="in-progress"] .chip-dot {
+		background: #fbad1c;
+	}
+	
+	.filter-chip[data-status="operational"] .chip-dot {
+		background: #a3b939;
+	}
+	
+	.filter-chip.active,
+	.filter-chip:hover {
+		opacity: 1; transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+	}
+	
+	.filter-chip[data-status="all"].active,
+	.filter-chip[data-status="all"]:hover {
+		background: #264e74; color: #fff; border-color: #264e74;
+	}
+	
+	.filter-chip[data-status="at-risk"].active,
+	.filter-chip[data-status="at-risk"]:hover {
+		background: #b33528; color: #fff; border-color: #b33528;
+	}
+	
+	.filter-chip[data-status="planned"].active,
+	.filter-chip[data-status="planned"]:hover {
+		background: #3491cd; color: #fff; border-color: #3491cd;
+	}
+	
+	.filter-chip[data-status="in-progress"].active,
+	.filter-chip[data-status="in-progress"]:hover {
+		background: #fbad1c; color: #333; border-color: #fbad1c;
+	}
+	
+	.filter-chip[data-status="operational"].active,
+	.filter-chip[data-status="operational"]:hover {
+		background: #a3b939; color: #333; border-color: #a3b939;
+	}
+	
+	.filter-chip .chip-dot.invert {
+		background: rgba(255, 255, 255, 0.65);
+	}
+	/* ── Card grid ── */
+	
+	.cards-grid {
+		display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
+	}
+	/* ── Scorecard ── */
+	
+	.scorecard {
+		background: var(--white); border-radius: 14px; box-shadow: var(--shadow-medium); overflow: hidden; display: flex; flex-direction: column; transition: box-shadow 0.25s, transform 0.2s;
+	}
+	/* Only animate when JS is active (js-ready class on wrapper) */
+	
+	.js-ready .scorecard {
+		opacity: 0; transform: translateY(18px);
+	}
+	
+	.js-ready .scorecard.visible {
+		animation: fadeSlideIn 0.5s ease-out forwards;
+	}
+	
+	.scorecard:hover {
+		box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16), 0 4px 10px rgba(0, 0, 0, 0.1); transform: translateY(-2px);
+	}
+	
+	.scorecard.js-filtered-out {
+		display: none;
+	}
+	/* ── Card header band ── */
+	
+	.card-band {
+		position: relative; overflow: hidden; padding: 1.75rem 1.75rem 1.5rem; display: flex; align-items: center; gap: 1rem;
+	}
+	
+	.status-operational .card-band {
+		background: #a3b939;
+	}
+	
+	.status-in-progress .card-band {
+		background: #fbad1c;
+	}
+	
+	.status-planned .card-band {
+		background: #3491cd;
+	}
+	
+	.status-at-risk .card-band {
+		background: #b33528;
+	}
+	
+	.card-band-number {
+		position: absolute; right: -0.1rem; top: 50%; transform: translateY(-50%); font-family: var(--header-font); font-size: 7rem; font-weight: 700; line-height: 1; opacity: 0.15; color: #fff; pointer-events: none; user-select: none; letter-spacing: -0.02em;
+	}
+	
+	.card-band-icon {
+		flex-shrink: 0; width: 120px; height: 120px; background: #ffffff; opacity: 0.95; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+	}
+	
+	.card-band-icon img {
+		width: 85px; height: 85px; object-fit: contain;
+	}
+	
+	.card-band-info {
+		flex: 1; z-index: 1;
+	}
+	
+	.card-band-num-label {
+		font-family: var(--header-font); font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255, 255, 255, 0.9); margin: 0;
+	}
+	
+	.status-in-progress .card-band-num-label,
+	.status-operational .card-band-num-label {
+		color: rgba(0, 0, 0, 0.65);
+	}
+	
+	.status-in-progress .card-band-number,
+	.status-operational .card-band-number {
+		color: #000;
+	}
+	
+	.card-status-badge {
+		display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.75rem; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.5rem;
+	}
+	
+	.status-operational .card-status-badge {
+		background: #a3b939; color: #fff;
+	}
+	
+	.status-in-progress .card-status-badge {
+		background: #fbad1c; color: rgba(0, 0, 0, 0.75);
+	}
+	
+	.status-planned .card-status-badge {
+		background: #3491cd; color: #fff;
+	}
+	
+	.status-at-risk .card-status-badge {
+		background: #b33528; color: #fff;
+	}
+	/* ── Card action title (neutral background) ── */
+	
+	.card-action-title {
+		padding: 1rem 1.75rem 0.9rem; background: #f5f7fa; border-bottom: 1px solid rgba(38, 78, 116, 0.1);
+	}
+	
+	.status-operational .card-action-title {
+		border-left: 5px solid #a3b939;
+	}
+	
+	.status-in-progress .card-action-title {
+		border-left: 5px solid #fbad1c;
+	}
+	
+	.status-planned .card-action-title {
+		border-left: 5px solid #3491cd;
+	}
+	
+	.status-at-risk .card-action-title {
+		border-left: 5px solid #b33528;
+	}
+	
+	.card-action-title-text {
+		font-family: var(--header-font); font-size: 1.05rem; font-weight: 700; color: #222; margin: 0; line-height: 1.4;
+	}
+	/* ── Card body ── */
+	
+	.card-body {
+		padding: 1.1rem 1.4rem 0.6rem; flex: 1;
+	}
+	
+	.card-summary {
+		font-size: 0.93rem; line-height: 1.65; color: #444; margin: 0;
+	}
+	
+	.progress-tag {
+		display: inline-block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary); background: rgba(38, 78, 116, 0.08); border-radius: 4px; padding: 0.15rem 0.5rem; margin: 0 0 0.5rem;
+	}
+	/* ── Expand / Details ── */
+	
+	.card-details {
+		border-top: 1px solid rgba(38, 78, 116, 0.08); margin-top: 0.75rem;
+	}
+	
+	.card-details summary {
+		list-style: none; display: flex; align-items: center; gap: 0.45rem; cursor: pointer; padding: 0.7rem 1.4rem; font-size: 0.88rem; font-weight: 600; color: var(--primary); user-select: none; transition: background 0.15s;
+	}
+	
+	.card-details summary::-webkit-details-marker {
+		display: none;
+	}
+	
+	.card-details summary:hover {
+		background: rgba(38, 78, 116, 0.04);
+	}
+	
+	.card-details summary::before {
+		content: ''; display: inline-block; width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 6px solid var(--primary); transition: transform 0.22s; flex-shrink: 0;
+	}
+	
+	.card-details[open] summary::before {
+		transform: rotate(90deg);
+	}
+	
+	.details-inner {
+		padding: 0 1.4rem 1.25rem;
+	}
+	/* ── Detail tabs ── */
+	
+	.detail-tabs {
+		display: flex; gap: 0; border-bottom: 2px solid rgba(38, 78, 116, 0.1); margin-bottom: 1rem;
+	}
+	
+	.detail-tab-btn {
+		background: none; border: none; padding: 0.5rem 1rem; font-size: 0.82rem; font-weight: 600; font-family: var(--body-font); color: #777; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: color 0.15s, border-color 0.15s;
+	}
+	
+	.detail-tab-btn:hover {
+		color: var(--primary);
+	}
+	
+	.detail-tab-btn.active {
+		color: var(--primary); border-bottom-color: var(--primary);
+	}
+	/* Tab panes visible by default (no-JS / page-builder); JS hides non-active ones */
+	
+	.detail-tab-pane {
+		display: block;
+	}
+	
+	.js-ready .detail-tab-pane {
+		display: none;
+	}
+	
+	.js-ready .detail-tab-pane.active {
+		display: block;
+	}
+	/* Hide tab button bar until JS is ready (buttons do nothing without JS) */
+	
+	.detail-tabs {
+		display: none;
+	}
+	
+	.js-ready .detail-tabs {
+		display: flex;
+	}
+	/* ── Context cards in tabs ── */
+	
+	.context-pill-row {
+		display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 0.5rem;
+	}
+	
+	.context-pill {
+		border-radius: 8px; overflow: hidden; border: 1px solid rgba(38, 78, 116, 0.12);
+	}
+	
+	.context-pill-hd {
+		background: var(--primary); color: #fff; padding: 0.45rem 0.85rem; font-family: var(--header-font); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+	}
+	
+	.context-pill-bd {
+		background: rgba(38, 78, 116, 0.03); padding: 0.7rem 0.85rem;
+	}
+	
+	.context-pill-bd p {
+		font-size: 0.88rem; line-height: 1.6; color: #333; margin: 0;
+	}
+	
+	.context-pill-bd ul {
+		margin: 0; padding-left: 1.15rem;
+	}
+	
+	.context-pill-bd ul li {
+		font-size: 0.88rem; line-height: 1.6; margin-bottom: 0.2rem; color: #333;
+	}
+	/* ── Accomplished / Going tabs ── */
+	
+	.detail-section-title {
+		font-family: var(--header-font); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--primary); margin: 0 0 0.4rem;
+	}
+	
+	.detail-list {
+		margin: 0 0 0.75rem; padding-left: 1.2rem;
+	}
+	
+	.detail-list li {
+		font-size: 0.9rem; line-height: 1.65; margin-bottom: 0.3rem; color: #333;
+	}
+	
+	.detail-img {
+		display: block; width: 100%; max-height: 200px; object-fit: cover; border-radius: 8px; margin-top: 0.75rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+	}
+	/* ── Animations ── */
+	
+	@keyframes flipIn {
+		from {
+			transform: perspective(900px) rotateY(90deg); opacity: 0;
+		}
+		to {
+			transform: perspective(900px) rotateY(0deg); opacity: 1;
+		}
+	}
+	
+	@keyframes fadeSlideIn {
+		from {
+			opacity: 0; transform: translateY(18px);
+		}
+		to {
+			opacity: 1; transform: translateY(0);
+		}
+	}
+	/* ── Responsive ── */
+	
+	@media (max-width: 860px) {
+		.cards-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+	
+	@media (max-width: 600px) {
+		.sp1-hero {
+			flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1.75rem 1.5rem;
+		}
+		.hero-title {
+			font-size: 2.2rem;
+		}
+		.hero-icon-wrap {
+			width: 80px; height: 80px;
+		}
+		.hero-icon-wrap img {
+			width: 52px; height: 52px;
+		}
+		.card-action-title-text {
+			font-size: 0.95rem;
+		}
+	}
+
+
+
+/* ── Accordion ── */
+.sp-section { margin-bottom: 2rem; }
+.sp-accordion { border-radius: 16px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.10); }
+.sp-accordion-summary {
+  list-style: none;
+  background: linear-gradient(135deg, #1a3a58 0%, #264e74 55%, #2d6494 100%);
+  padding: 1.5rem 2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+.sp-accordion-summary::-webkit-details-marker { display: none; }
+.sp-accordion-summary::marker { display: none; }
+.sp-summary-inner {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex: 1;
+}
+.sp-summary-icon {
+  width: 60px; height: 60px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.sp-summary-icon img { width: 38px; height: 38px; object-fit: contain; filter: brightness(0) invert(1); }
+.sp-summary-text { color: #fff; }
+.sp-summary-label { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.7); margin: 0; }
+.sp-summary-title { font-family: var(--header-font); font-size: 1.8rem; font-weight: 700; color: #fff; margin: 0; line-height: 1.1; }
+.sp-summary-chevron {
+  margin-left: auto;
+  width: 0; height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 10px solid rgba(255,255,255,0.7);
+  transition: transform 0.25s;
+  flex-shrink: 0;
+}
+.sp-accordion[open] .sp-summary-chevron { transform: rotate(90deg); }
+.sp-accordion-body {
+  padding: 1.5rem 0 0;
+  background: var(--white);
+}
+.page-title-area { margin: 1.5rem 0 2rem; }
+.page-title-area h1 { font-family: var(--header-font); font-size: 2rem; color: var(--primary); margin: 0 0 0.5rem; }
+.page-title-area p { color: #555; margin: 0; }
+
+/* ── Detail pane extras ── */
+.detail-ctx-text { font-size: 0.9rem; color: var(--text); margin: 0 0 0.75rem; }
+.detail-list { padding-left: 1.25rem; margin: 0 0 0.75rem; }
+.detail-list li { font-size: 0.88rem; color: var(--text); margin-bottom: 0.35rem; }
+.detail-img { width: 100%; border-radius: 8px; margin-top: 0.75rem; object-fit: cover; max-height: 220px; }
+.detail-section-title { font-weight: 700; color: var(--primary); margin: 0 0 0.5rem; font-size: 0.92rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* ── Accordion body filter-bar & grid padding ── */
+.sp-accordion-body .filter-bar { padding: 0 1.5rem; }
+.sp-accordion-body .cards-grid { padding: 0 1.5rem 1.5rem; }
+
+  </style>
+</head>
+<body>
+<div id="sp1-wrapper">
+  <a class="back-link" href="https://www.lrsd.net/page/26539/multi-year-strategic-plan-2023-2027">&#8592; Back to MYSP Home</a>
+
+  <div class="page-title-area">
+    <h1>All Strategic Priorities</h1>
+    <p>Multi-Year Strategic Plan 2023&#8211;2027 &mdash; Louis Riel School Division</p>
+  </div>
+
+  <section class="sp-section" id="sp-belonging">
+    <details class="sp-accordion" open>
+      <summary class="sp-accordion-summary">
+        <div class="sp-summary-inner">
+          <div class="sp-summary-icon"><img src="https://media.lrsd.net/media/Default/frl/0/Belonging-icononly@2x-8-2.png" alt="Belonging"></div>
+          <div class="sp-summary-text">
+            <p class="sp-summary-label">Strategic Priority 1</p>
+            <h2 class="sp-summary-title">Belonging</h2>
+          </div>
+        </div>
+        <span class="sp-summary-chevron"></span>
+      </summary>
+      <div class="sp-accordion-body">
+        <div class="filter-bar" id="filter-bar-1">
+          <span class="filter-label">Filter:</span>
+          <button class="filter-chip active" data-status="all">All</button>
+          <button class="filter-chip" data-status="at-risk"><span class="chip-dot"></span>At Risk</button>
+          <button class="filter-chip" data-status="planned"><span class="chip-dot"></span>Planned</button>
+          <button class="filter-chip" data-status="in-progress"><span class="chip-dot"></span>In Progress</button>
+          <button class="filter-chip" data-status="operational"><span class="chip-dot"></span>Operational</button>
+        </div>
+        <div class="cards-grid" id="cards-grid-1">
+<article class="scorecard status-in-progress" data-status="in-progress">
+<div class="card-band">
+<div class="card-band-icon"><img alt="Community Schools Network icon" class="fr-dib" src="https://media.lrsd.net/media/Default/medialib/47478-lr-icons_1-1-community-schools-network.8f627b62151.png"/>
+<p>
+<br/>
+</p>
+</div>
+<div class="card-band-info">
+<p class="card-band-num-label">Action 1.1</p>
+</div><span class="card-band-number">1.1</span></div>
+<div class="card-action-title">
+<p class="card-action-title-text">Expand the LRSD Community Schools Network at the René Deleurme Centre to serve more schools and families.</p><span class="card-status-badge">In Progress</span></div>
+<div class="card-body"><span class="progress-tag">Progress So Far</span>
+<p class="card-summary">Renovated the René Deleurme Centre with a commissary kitchen serving 41 schools, established a working committee with community stakeholders, and opened a new satellite Service Hub at Nelson McIntyre Collegiate.</p>
+</div>
+<details class="card-details">
+<summary>View Details</summary>
+<div class="details-inner">
+<div class="detail-tabs">
+<button class="detail-tab-btn active" data-tab="ctx">Context</button>
+<button class="detail-tab-btn" data-tab="done">Accomplished</button>
+<button class="detail-tab-btn" data-tab="next">Where We're Going</button>
+</div>
+<div class="detail-tab-pane active" data-pane="ctx">
+<div class="context-pill-row">
+<div class="context-pill">
+<div class="context-pill-hd">About the René Deleurme Centre</div>
+<div class="context-pill-bd">
+<p>The René Deleurme Centre (RDC) provides equity-based programming tailored to meet the needs of the community. Initially serving the Lavallee, Victor Mager, and Victor Wyatt school communities, RDC has since expanded its reach to include St. George School, Hastings School, and École Varennes, as well as schools in the northern part of our division. There is now consideration for establishing a satellite location in the northern part of LRSD.</p>
+</div></div>
+<div class="context-pill">
+<div class="context-pill-hd">Community Stakeholders</div>
+<div class="context-pill-bd">
+<ul>
+<li><strong>Newcomer Settlement Services Team:</strong> Federally funded to support newcomers.</li>
+<li><strong>School &amp; Family Community Connector:</strong> Provincially funded through the Community Schools mandate.</li>
+<li><strong>Morrow Avenue Early Childhood Learning Centre:</strong> A private childcare provider.</li>
+<li><strong>EDGE:</strong> A non-profit organization offering literacy and adult EAL programs, leasing space at RDC.</li>
+</ul>
+</div></div>
+<div class="context-pill">
+<div class="context-pill-hd">Core Network Schools</div>
+<div class="context-pill-bd">
+<ul>
+<li>Lavallee School</li>
+<li>Victor Mager School</li>
+<li>Victor Wyatt School</li>
+<li>St. George School</li>
+<li>Hastings School</li>
+<li>École Varennes</li>
+<li>Marion School</li>
+<li>Archwood School</li>
+<li>École Provencher</li>
+<li>École Henri-Bergeron</li>
+</ul>
+</div></div></div></div>
+<div class="detail-tab-pane" data-pane="done">
+<p class="detail-section-title">What We've Accomplished</p>
+<ul class="detail-list">
+<li>Renovated the René Deleurme Centre (RDC), adding a commercial-grade commissary kitchen to support nutrition programming for all 41 LRSD schools.</li>
+<li>Formed a working committee with diverse stakeholders to assess programming and collect feedback from Windsor Park, Nelson McIntyre, and Collège Béliveau communities.</li>
+<li>Reviewed northern division spaces to identify opportunities for network expansion and new facilities.</li>
+<li>Identified a satellite location and adopted Culturally and Linguistically Responsive Teaching to value multilingual learners and promote asset-based perspectives.</li>
+<li>Established a new satellite Service Hub at Nelson McIntyre Collegiate, providing access to settlement services, food security, Manitoba Housing, and clothing/laundry resources.</li>
+</ul><img alt="Ramadan hamper at RDC" class="detail-img fr-fil fr-dib" src="https://media.lrsd.net/media/Default/frl/0/image.jpeg"/></div>
+<div class="detail-tab-pane" data-pane="next">
+<p class="detail-section-title">Where We're Going</p>
+<ul class="detail-list">
+<li>Continue strengthening wraparound services for families through expanded partnerships and ongoing community engagement.</li>
+<li>Use stakeholder and community feedback to guide the development of new programming and services as needs evolve.</li>
+<li>Maintain our commitment to improving support for families and schools by fostering comprehensive resources and helping every student and family thrive.</li>
+</ul><img alt="Nelson McIntyre Collegiate" class="detail-img fr-fil fr-dib" src="https://media.lrsd.net/media/Default/frl/0/Nelson-McIntyre-Collegiate-2-1.jpg"/></div></div>
+</details>
+</article>
+<article class="scorecard status-in-progress" data-status="in-progress">
+<div class="card-band">
+<div class="card-band-icon">
+<p>
+<br/>
+</p><img alt="Workplace Safety and Health Program icon" class="fr-dib" src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.2-Comprehensive%20WSH%20Program-4.png"/>
+<p>
+<br/>
+</p>
+</div>
+<div class="card-band-info">
+<p class="card-band-num-label">Action 1.2</p>
+</div><span class="card-band-number">1.2</span></div>
+<div class="card-action-title">
+<p class="card-action-title-text">Create a comprehensive Workplace Safety and Health Program to promote and support employee wellness to better nurture student wellness.</p><span class="card-status-badge">In Progress</span></div>
+<div class="card-body"><span class="progress-tag">Progress So Far</span>
+<p class="card-summary">Refined the Workplace Safety &amp; Health Program, partnered with Well at Work by EdCan to survey 2,000+ staff, enhanced wellness resources, and moved incident reporting online.</p>
+</div>
+<details class="card-details">
+<summary>View Details</summary>
+<div class="details-inner">
+<div class="detail-tabs">
+<button class="detail-tab-btn active" data-tab="ctx">Context</button>
+<button class="detail-tab-btn" data-tab="done">Accomplished</button>
+<button class="detail-tab-btn" data-tab="next">Where We're Going</button>
+</div>
+<div class="detail-tab-pane active" data-pane="ctx">
+<div class="context-pill-row">
+<div class="context-pill">
+<div class="context-pill-hd">Fostering a Culture of Well-being</div>
+<div class="context-pill-bd">
+<p>Our goal is to cultivate an environment where both the physical and psychological well-being of every staff member is paramount. By developing a robust, data-informed Workplace Safety and Health Program, we are taking proactive steps to ensure our schools and offices are safe, supportive, and healthy places to work. This commitment to employee wellness is foundational to creating a positive and nurturing atmosphere for our students.</p>
+</div></div>
+<div class="context-pill">
+<div class="context-pill-hd">Key Initiatives</div>
+<div class="context-pill-bd">
+<ul>
+<li><strong>Well at Work by EdCan:</strong> Partnered to evaluate and improve staff psychological well-being using the Guarding Minds at Work survey.</li>
+<li><strong>Online Incident Reporting:</strong> Launched a new system to increase access, transparency, and data analysis for safety incidents.</li>
+<li><strong>Communication Policy:</strong> Drafted a new policy to support better work-life balance for all staff.</li>
+<li><strong>Attendance Support Program:</strong> Created a program focused on early intervention to promote employee wellness.</li>
+</ul>
+</div></div></div></div>
+<div class="detail-tab-pane" data-pane="done">
+<p class="detail-section-title">What We've Accomplished</p>
+<ul class="detail-list">
+<li>Refined the WSH Program structure and engaged the WSH committee for oversight and guidance.</li>
+<li>Partnered with Well at Work by EdCan, surveying over 2,000 staff members to gather baseline wellness data.</li>
+<li>Enhanced wellness resources and increased promotion of MFAP/EAP services across the division.</li>
+<li>Moved incident reporting online, streamlining processes and improving data collection.</li>
+<li>Drafted new Communication and Attendance Support policies.</li>
+</ul><img alt="Diverse group of staff" class="detail-img fr-fil fr-dib" src="https://media.lrsd.net/media/Default/frl/0/iStock-2177746077.jpg"/></div>
+<div class="detail-tab-pane" data-pane="next">
+<p class="detail-section-title">Where We're Going</p>
+<ul class="detail-list">
+<li>Develop a robust, data-informed WSH Program that proactively addresses staff wellness needs.</li>
+<li>Strengthen partnerships with Well at Work and benefits providers to expand resources.</li>
+<li>Implement new Communication and Attendance Support policies division-wide.</li>
+<li>Expand staff recognition programs and increase access to Staff Services.</li>
+</ul>
+</div></div>
+</details>
+</article>
+<article class="scorecard status-operational" data-status="operational">
+<div class="card-band">
+<div class="card-band-icon">
+<p>
+<br/>
+</p><img alt="Trauma-responsive practices icon" class="fr-dib" src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.3-Trauma%20Responsive-1.png"/></div>
+<div class="card-band-info">
+<p class="card-band-num-label">Action 1.3</p>
+</div><span class="card-band-number">1.3</span></div>
+<div class="card-action-title">
+<p class="card-action-title-text">Reinforce trauma-responsive practices.</p><span class="card-status-badge">Operational</span></div>
+<div class="card-body"><span class="progress-tag">Progress So Far</span>
+<p class="card-summary">Developed a professional learning framework for trauma-responsive practices, adopted the Therapeutic Crisis Intervention (TCI) model from Cornell University, and trained key staff.</p>
+</div>
+<details class="card-details">
+<summary>View Details</summary>
+<div class="details-inner">
+<div class="detail-tabs">
+<button class="detail-tab-btn active" data-tab="ctx">Context</button>
+<button class="detail-tab-btn" data-tab="done">Accomplished</button>
+<button class="detail-tab-btn" data-tab="next">Where We're Going</button>
+</div>
+<div class="detail-tab-pane active" data-pane="ctx">
+<div class="context-pill-row">
+<div class="context-pill">
+<div class="context-pill-hd">The Ethic of Hospitality</div>
+<div class="context-pill-bd">
+<p>To ensure all students and families—especially those new to our community—feel a true sense of belonging and safety, we have centered our work on the Ethic of Hospitality. This philosophy guides our efforts to create welcoming and inclusive spaces where every individual is valued and supported from the moment they connect with our schools.</p>
+</div></div>
+<div class="context-pill">
+<div class="context-pill-hd">A Deliberate Framework</div>
+<div class="context-pill-bd">
+<p>A dedicated committee of teachers, clinicians, and school leaders has been established to develop a comprehensive professional learning framework for trauma-responsive practices. This group is researching best practices and defining clear outcomes to ensure a unified and effective approach across the division.</p>
+</div></div>
+<div class="context-pill">
+<div class="context-pill-hd">Therapeutic Crisis Intervention</div>
+<div class="context-pill-bd">
+<p>In collaboration with Staff Services, we have adopted the TCI model from Cornell University as our division-wide, trauma-responsive intervention model. This evidence-based approach provides staff with the skills to prevent and de-escalate potential crisis situations, fostering a safer environment for everyone.</p>
+</div></div></div></div>
+<div class="detail-tab-pane" data-pane="done">
+<p class="detail-section-title">What We've Accomplished</p>
+<ul class="detail-list">
+<li>Began developing a professional learning framework for trauma-responsive practices across the division.</li>
+<li>Adopted the Therapeutic Crisis Intervention (TCI) model from Cornell University as the division-wide approach.</li>
+<li>Scheduled TCI trainer training for key staff for the 2024–2025 school year to build internal capacity.</li>
+</ul><img alt="Hands of people working together" class="detail-img fr-fil fr-dib" src="https://media.lrsd.net/media/Default/frl/0/iStock-2073485467-modified-01c7d6a6-e071-4885-8091-f257b43b24c8.jpg"/></div>
+<div class="detail-tab-pane" data-pane="next">
+<p class="detail-section-title">Where We're Going</p>
+<ul class="detail-list">
+<li>Implement a comprehensive professional learning model division-wide.</li>
+<li>Deliver TCI training to all school-based staff.</li>
+<li>Establish a sustainability plan for TCI certifications and reviews.</li>
+</ul>
+</div></div>
+</details>
+</article>
+<article class="scorecard status-in-progress" data-status="in-progress">
+<div class="card-band">
+<div class="card-band-icon"><img alt="Indigenous Language Nests icon" class="fr-dib" src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.4-Indigenous%20Language-1.png"/></div>
+<div class="card-band-info">
+<p class="card-band-num-label">Action 1.4</p>
+</div><span class="card-band-number">1.4</span></div>
+<div class="card-action-title">
+<p class="card-action-title-text">Introduce Indigenous Language Nests for preschool-aged children in our family centres. Expand both the K–3 Indigenous Language Exposure curriculum and Grades 9–12 Indigenous Language Options to all schools.</p><span class="card-status-badge">In Progress</span></div>
+<div class="card-body"><span class="progress-tag">Progress So Far</span>
+<p class="card-summary">Expanded K–3 Indigenous language curriculum, implemented language programs at two high schools, and trained staff on the "Moe the Mouse" framework for Language Nests in family centres.</p>
+</div>
+<details class="card-details">
+<summary>View Details</summary>
+<div class="details-inner">
+<div class="detail-tabs">
+<button class="detail-tab-btn active" data-tab="ctx">Context</button>
+<button class="detail-tab-btn" data-tab="done">Accomplished</button>
+<button class="detail-tab-btn" data-tab="next">Where We're Going</button>
+</div>
+<div class="detail-tab-pane active" data-pane="ctx">
+<div class="context-pill-row">
+<div class="context-pill">
+<div class="context-pill-hd">Circle of Courage</div>
+<div class="context-pill-bd">
+<p>Inspired by the Circle of Courage, we are committed to a renewed relationship with Indigenous learners and families. We are embedding Indigenous worldviews, practices, and culture into our learning and activities to ensure a holistic educational journey.</p>
+</div></div>
+<div class="context-pill">
+<div class="context-pill-hd">Community Engagement</div>
+<div class="context-pill-bd">
+<p>Through our Indigenous Education Community Council and Indigenous Parent Program, we build strong partnerships with students, staff, and families. These programs provide safe, supportive spaces for guidance, cultural activities, and shared learning.</p>
+</div></div>
+<div class="context-pill">
+<div class="context-pill-hd">Innovative Learning</div>
+<div class="context-pill-bd">
+<p>We are proud to offer unique programs like the Manito Ahbee Aki Minecraft world, Powwow Clubs, and the Indigenous Youth Leadership Program. These initiatives provide engaging, authentic opportunities for students to connect with Indigenous culture and perspectives.</p>
+</div></div></div></div>
+<div class="detail-tab-pane" data-pane="done">
+<p class="detail-section-title">What We've Accomplished</p>
+<ul class="detail-list">
+<li>Expanded K–3 Indigenous language curriculum, providing language instruction to Kindergarten and Grade 1 classes.</li>
+<li>Implemented Indigenous language programs at two high schools.</li>
+<li>Trained staff on the "Moe the Mouse" framework for Language Nests in family centres.</li>
+</ul><img alt="Indigenous language learning outdoors" class="detail-img fr-fil fr-dib" src="https://media.lrsd.net/media/Default/frl/0/DSC_2363.jpg"/></div>
+<div class="detail-tab-pane" data-pane="next">
+<p class="detail-section-title">Where We're Going</p>
+<ul class="detail-list">
+<li>Expand the language program to include all K–4 classes across the division.</li>
+<li>Establish Indigenous language programs in all high schools.</li>
+<li>Complete the introduction of Language Nests in all family centres.</li>
+</ul>
+</div></div>
+</details>
+</article>
+<article class="scorecard status-operational" data-status="operational">
+<div class="card-band">
+<div class="card-band-icon"><img alt="Indigenous literature and perspectives icon" class="fr-dib" src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.5-Indigenous%20Focus-1.png"/></div>
+<div class="card-band-info">
+<p class="card-band-num-label">Action 1.5</p>
+</div><span class="card-band-number">1.5</span></div>
+<div class="card-action-title">
+<p class="card-action-title-text">Reframe the Grade 11 English Language Arts curriculum to focus on Indigenous literature and perspectives while ensuring the Grade 11 History curriculum thoroughly explores Indigenous histories and perspectives.</p><span class="card-status-badge">Operational</span></div>
+<div class="card-body"><span class="progress-tag">Progress So Far</span>
+<p class="card-summary">Began planning to reframe Grade 11 ELA curriculum for Indigenous literature; continued reframing Grade 11 History with a teacher committee and workshops.</p>
+</div>
+<details class="card-details">
+<summary>View Details</summary>
+<div class="details-inner">
+<div class="detail-tabs">
+<button class="detail-tab-btn active" data-tab="ctx">Context</button>
+<button class="detail-tab-btn" data-tab="done">Accomplished</button>
+<button class="detail-tab-btn" data-tab="next">Where We're Going</button>
+</div>
+<div class="detail-tab-pane active" data-pane="ctx">
+<div class="context-pill-row">
+<div class="context-pill">
+<div class="context-pill-hd">A Renewed Relationship</div>
+<div class="context-pill-bd">
+<p>Inspired by the Circle of Courage, we are committed to a renewed relationship with Indigenous learners and families. We are embedding Indigenous worldviews, practices, and culture into our learning and activities to ensure a holistic educational journey.</p>
+</div></div>
+<div class="context-pill">
+<div class="context-pill-hd">Community Engagement</div>
+<div class="context-pill-bd">
+<p>Through our Indigenous Education Community Council and Indigenous Parent Program, we build strong partnerships with students, staff, and families. These programs provide safe, supportive spaces for guidance, cultural activities, and shared learning.</p>
+</div></div>
+<div class="context-pill">
+<div class="context-pill-hd">Innovative Learning</div>
+<div class="context-pill-bd">
+<p>We are proud to offer unique programs like the Manito Ahbee Aki Minecraft world, Powwow Clubs, and the Indigenous Youth Leadership Program. These initiatives provide engaging, authentic opportunities for students to connect with Indigenous culture and perspectives.</p>
+</div></div></div></div>
+<div class="detail-tab-pane" data-pane="done">
+<p class="detail-section-title">What We've Accomplished</p>
+<ul class="detail-list">
+<li>Began planning to reframe the Grade 11 ELA curriculum to focus on Indigenous literature and perspectives.</li>
+<li>Continued reframing the Grade 11 History curriculum by forming a teacher committee and holding workshops focused on shifting practices that reflect harms of the past.</li>
+</ul><img alt="Closeup of hands building tipi" class="detail-img fr-fil fr-dib" src="https://media.lrsd.net/media/Default/frl/0/DSC_2699.jpg"/></div>
+<div class="detail-tab-pane" data-pane="next">
+<p class="detail-section-title">Where We're Going</p>
+<ul class="detail-list">
+<li>By 2025: Ensure the Grade 11 History curriculum thoroughly explores Indigenous histories and perspectives, framed with Indigenous pedagogies.</li>
+<li>By 2027: Reframe the Grade 11 ELA curriculum to focus on Indigenous literature, authors, and storytelling traditions.</li>
+</ul><img alt="Dancers at LRSD Grad Powwow" class="detail-img fr-fil fr-dib" src="https://media.lrsd.net/media/Default/frl/0/JUN_1491.jpg"/></div></div>
+</details>
+</article>
+<article class="scorecard status-in-progress" data-status="in-progress">
+<div class="card-band">
+<div class="card-band-icon"><img alt="International and Heritage Languages icon" class="fr-dib" src="https://media.lrsd.net/media/Default/frl/47478-lr-icons_1-6-international-heritage-languages.75189877945.png"/></div>
+<div class="card-band-info">
+<p class="card-band-num-label">Action 1.6</p>
+</div><span class="card-band-number">1.6</span></div>
+<div class="card-action-title">
+<p class="card-action-title-text">Expand International and Heritage Language options in high schools.</p><span class="card-status-badge">In Progress</span></div>
+<div class="card-body"><span class="progress-tag">Progress So Far</span>
+<p class="card-summary">Spanish is currently offered at Collège Béliveau, Collège Jeanne-Sauvé, and Dakota Collegiate across grades 9–12.</p>
+</div>
+<details class="card-details">
+<summary>View Details</summary>
+<div class="details-inner">
+<div class="detail-tabs">
+<button class="detail-tab-btn active" data-tab="ctx">Context</button>
+<button class="detail-tab-btn" data-tab="done">Accomplished</button>
+<button class="detail-tab-btn" data-tab="next">Where We're Going</button>
+</div>
+<div class="detail-tab-pane active" data-pane="ctx">
+<div class="context-pill-row">
+<div class="context-pill">
+<div class="context-pill-hd">Celebrating Linguistic Diversity</div>
+<div class="context-pill-bd">
+<p>In LRSD, we are proud of the rich tapestry of languages spoken by our students and families. We are committed to creating an environment where this diversity is not only recognized but celebrated. By strengthening our International and Heritage Language programs, we provide students with the opportunity to connect with their heritage, develop valuable linguistic skills, and foster a greater appreciation for global cultures.</p>
+</div></div>
+<div class="context-pill">
+<div class="context-pill-hd">Enhancing Instruction</div>
+<div class="context-pill-bd">
+<p>We are dedicated to improving the quality and accessibility of our International and Heritage Language instruction. This involves a comprehensive review of our current programs, building stronger partnerships with community language organizations, and developing a clear framework to support our teachers and learners, ensuring a high-quality educational experience for all.</p>
+</div></div></div></div>
+<div class="detail-tab-pane" data-pane="done">
+<p class="detail-section-title">What We've Accomplished</p>
+<ul class="detail-list">
+<li>Spanish is offered at Collège Béliveau, Collège Jeanne-Sauvé, and Dakota Collegiate, with multiple sections across grades 9–12.</li>
+</ul><img alt="Hola and Hablas Español in word balloons on wall" class="detail-img fr-fil fr-dib" src="https://media.lrsd.net/media/Default/frl/0/iStock-1218964474.jpg"/></div>
+<div class="detail-tab-pane" data-pane="next">
+<p class="detail-section-title">Where We're Going</p>
+<ul class="detail-list">
+<li>By 2027, all high schools in the Louis Riel School Division will offer at least one International/Heritage Language option to students.</li>
+</ul><img alt="Pieces of paper with Thank You written in many different languages" class="detail-img fr-fil fr-dib" src="https://media.lrsd.net/media/Default/frl/0/iStock-493797345.jpg"/></div></div>
+</details>
+</article>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <section class="sp-section" id="sp-mastery">
+    <details class="sp-accordion" >
+      <summary class="sp-accordion-summary">
+        <div class="sp-summary-inner">
+          <div class="sp-summary-icon"><img src="https://media.lrsd.net/media/Default/frl/0/Mastery-icononly@2x-8-1.png" alt="Mastery"></div>
+          <div class="sp-summary-text">
+            <p class="sp-summary-label">Strategic Priority 2</p>
+            <h2 class="sp-summary-title">Mastery</h2>
+          </div>
+        </div>
+        <span class="sp-summary-chevron"></span>
+      </summary>
+      <div class="sp-accordion-body">
+        <div class="filter-bar" id="filter-bar-2">
+          <span class="filter-label">Filter:</span>
+          <button class="filter-chip active" data-status="all">All</button>
+          <button class="filter-chip" data-status="at-risk"><span class="chip-dot"></span>At Risk</button>
+          <button class="filter-chip" data-status="planned"><span class="chip-dot"></span>Planned</button>
+          <button class="filter-chip" data-status="in-progress"><span class="chip-dot"></span>In Progress</button>
+          <button class="filter-chip" data-status="operational"><span class="chip-dot"></span>Operational</button>
+        </div>
+        <div class="cards-grid" id="cards-grid-2">
+  <article class="scorecard status-planned" data-status="planned">
+    <div class="card-band">
+      <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/Mastery-icononly@2x-8-1.png" alt="Mastery icon"></div>
+      <div class="card-band-info">
+        <p class="card-band-num-label">Action 2.1</p>
+      </div>
+      <span class="card-band-number">2.1</span>
+    </div>
+    <div class="card-action-title">
+      <p class="card-action-title-text">Strengthen a learner-centred and holistic approach to ensure instruction is tailored to meet and build on the unique needs, interests, aptitudes, and abilities of each student.</p>
+      <span class="card-status-badge">Planned</span>
+    </div>
+    <div class="card-body">
+      <span class="progress-tag">Planned</span>
+      <p class="card-summary">This strategic action is planned for future implementation.</p>
+    </div>
+  </article>
+  <article class="scorecard status-in-progress" data-status="in-progress">
+    <div class="card-band">
+      <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/medialib/47478-lr-icons_2-2-neurodiversity.09221a62158.png" alt="Action 2.2 icon"></div>
+      <div class="card-band-info">
+        <p class="card-band-num-label">Action 2.2</p>
+      </div>
+      <span class="card-band-number">2.2</span>
+    </div>
+    <div class="card-action-title">
+      <p class="card-action-title-text">Develop a framework to assist staff in supporting neurodiversity and diverse abilities in our classrooms.</p>
+      <span class="card-status-badge">In Progress</span>
+    </div>
+    <div class="card-body">
+      <span class="progress-tag">In Progress</span>
+      <p class="card-summary">Developing a framework to embrace neurodiversity and support the diverse abilities of all learners in our classrooms.</p>
+    </div>
+    <details class="card-details">
+      <summary>View Details</summary>
+      <div class="details-inner">
+        <div class="detail-tabs">
+          <button class="detail-tab-btn active" data-tab="ctx">Context</button>
+          <button class="detail-tab-btn" data-tab="done">Accomplished</button>
+          <button class="detail-tab-btn" data-tab="next">Where We're Going</button>
+        </div>
+        <div class="detail-tab-pane active" data-pane="ctx">
+<p class="detail-ctx-text">An Inclusive Vision LRSD is committed to an inclusive programming model where nearly all students, regardless of their needs or abilities, can learn and thrive in their community school. We have developed and presented a new vision for supporting diverse learners, including those who are neurodiverse or have complex needs, to ensure every student has the opportunity to succeed.</p>
+<p class="detail-ctx-text">A Multi-faceted Approach To bring our vision to life, we are taking a comprehensive approach that includes strategic resource allocation, creating sensory-friendly spaces, providing targeted professional development for staff, and enhancing our collaboration with families and community partners. Every action is designed to build our capacity to support the diverse needs of our students.</p>
+        </div>
+        <div class="detail-tab-pane" data-pane="done">
+          <p class="detail-section-title">What We've Accomplished</p>
+      <ul class="detail-list">
+        <li>Developed and presented a new vision to the school board for supporting diverse and neurodiverse learners.</li>
+        <li>Implemented a Student Support Resource Allocation Framework to prioritize student needs.</li>
+        <li>Increased divisional Occupational Therapy (OT) and Physiotherapy time.</li>
+        <li>Assigned clinical time to the School and Classroom Support Team to build school capacity.</li>
+        <li>Assigned divisional Speech-Language Pathologist (SLP) time to build capacity for Augmentative and Alternative Communication (AAC).</li>
+        <li>Established a priority hierarchy for OT, SLP, and Physiotherapy services.</li>
+        <li>Increased full-time equivalent (FTE) for divisional developmental music and gym.</li>
+        <li>Created a database to prioritize clinical service distribution based on student needs.</li>
+        <li>Developed movement, sensory, and developmental spaces in 19 schools.</li>
+        <li>Added four ceiling-mounted indoor swings to support student regulation.</li>
+        <li>Integrated professional development for supporting neurodiverse learners into mandatory Student Services Teacher PD.</li>
+        <li>Trained additional staff in PATH/MAPS to support students transitioning to adulthood.</li>
+        <li>Began supporting clinical services to build school capacity around executive functioning.</li>
+        <li>Established collaboration between middle and high schools to improve transition practices.</li>
+        <li>Collaborated with Jordan&#x27;s Principle to expedite applications for AAC devices.</li>
+        <li>Hosted community information eveningsfor caregivers of children who use AAC devices.</li>
+        <li>Created Playground Communication Boardsto promote accessible communication for all.</li>
+        <li>Added 30 trial iPads to support communication for non-speaking students.</li>
+        <li>Added 40 laptops to help students with learning disabilities access Microsoft Learning Tools.</li>
+        <li>Established a working group with parents and staff to create and refine transition protocols for students with additional needs.</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-1458700712-2.jpg" alt="" loading="lazy">
+        </div>
+        <div class="detail-tab-pane" data-pane="next">
+          <p class="detail-section-title">Where We're Going</p>
+      <ul class="detail-list">
+        <li>Finalize a framework that articulates the vision, best practices, and resources for supporting neurodiverse students.</li>
+        <li>Equip all elementary schools with movement, sensory, and developmental spaces, including required staff training.</li>
+        <li>Begin adding FM systems to all kindergarten classes to support learning and regulation.</li>
+        <li>Fully implement Augmentative and Alternative Communication (AAC) devices for all non-speaking students where appropriate.</li>
+        <li>Standardize the Individualized Education Plan (IEP) process to align with the resource allocation model.</li>
+        <li>Ensure a comprehensive programming approach for all students up to age 21.</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-2162383464.jpg" alt="" loading="lazy">
+        </div>
+      </div>
+    </details>
+  </article>
+  <article class="scorecard status-in-progress" data-status="in-progress">
+    <div class="card-band">
+      <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_2.3%20Universal%20Early%20Screening%20and%20Monitoring-1.png" alt="Action 2.3 icon"></div>
+      <div class="card-band-info">
+        <p class="card-band-num-label">Action 2.3</p>
+      </div>
+      <span class="card-band-number">2.3</span>
+    </div>
+    <div class="card-action-title">
+      <p class="card-action-title-text">Implement universal early screening and monitoring to ensure a preventive and proactive approach to teaching and systemic interventions.</p>
+      <span class="card-status-badge">In Progress</span>
+    </div>
+    <div class="card-body">
+      <span class="progress-tag">In Progress</span>
+      <p class="card-summary">Implementing universal early screening and monitoring to ensure a preventive and proactive approach to teaching and systemic interventions.</p>
+    </div>
+    <details class="card-details">
+      <summary>View Details</summary>
+      <div class="details-inner">
+        <div class="detail-tabs">
+          <button class="detail-tab-btn active" data-tab="ctx">Context</button>
+          <button class="detail-tab-btn" data-tab="done">Accomplished</button>
+          <button class="detail-tab-btn" data-tab="next">Where We're Going</button>
+        </div>
+        <div class="detail-tab-pane active" data-pane="ctx">
+<p class="detail-ctx-text">Foundations in Literacy Reading is fundamental to a student&#x27;s success. We have taken major steps to improve literacy by enhancing early screening and monitoring, ensuring every student receives the support they need. This includes universal screening for K-1 students and progress monitoring for K-8, supported by robust professional development and data analysis tools to inform instruction.</p>
+<p class="detail-ctx-text">Building Blocks of Numeracy Numeracy is another essential skill for lifelong success. LRSD promotes numeracy through universal screening in K-4, a comprehensive professional learning model, and play-based approaches in Kindergarten. We have also developed classroom assessment tools and implemented targeted interventions for students who need extra help.</p>
+        </div>
+        <div class="detail-tab-pane" data-pane="done">
+          <p class="detail-section-title">What We've Accomplished</p>
+      <ul class="detail-list">
+        <li>Implemented universal literacy screening for K-1 students (CTOPP-2).</li>
+        <li>Adopted universal progress monitoring for K-8 in English (DIBELS).</li>
+        <li>Developed a universal progress monitoring tool for K-2 in French Immersion (THaFoL).</li>
+        <li>Established a robust professional development program for school teams.</li>
+        <li>Created a literacy skills scope and sequence aligned with the curriculum.</li>
+        <li>Developed a data collection system for staff to analyze screening results.</li>
+        <li>Refined the systematic approach for supporting students with assistive technology.</li>
+        <li>Implemented universal numeracy screening for K-4 using the Early Math Assessment tool.</li>
+        <li>Developed a comprehensive professional learning model for numeracy instruction.</li>
+        <li>Developed classroom numeracy assessment tools for Grades 1-9 to inform practice.</li>
+        <li>Implemented a play-based, evidence-based approach for Kindergarten numeracy (NyKK-5).</li>
+        <li>Implemented intervention resources for learners who do not meet screening benchmarks.</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/LRSD%20March11%202025_0417%20Windsor.jpg" alt="" loading="lazy">
+        </div>
+        <div class="detail-tab-pane" data-pane="next">
+          <p class="detail-section-title">Where We're Going</p>
+      <ul class="detail-list">
+        <li>Provide screening results in easy-to-navigate visual reports for staff.</li>
+        <li>Ensure classroom practices consistently reflect screening results and influence planning.</li>
+        <li>Establish systematic, tiered intervention processes in all schools.</li>
+        <li>Develop common protocols to inform parents about screening practices and results.</li>
+        <li>Implement a universal screening tool for graphomotor (writing) skills in kindergarten.</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/LRSD%20March11%202025_0332.JPG" alt="" loading="lazy">
+        </div>
+      </div>
+    </details>
+  </article>
+  <article class="scorecard status-planned" data-status="planned">
+    <div class="card-band">
+      <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/Mastery-icononly@2x-8-1.png" alt="Mastery icon"></div>
+      <div class="card-band-info">
+        <p class="card-band-num-label">Action 2.4</p>
+      </div>
+      <span class="card-band-number">2.4</span>
+    </div>
+    <div class="card-action-title">
+      <p class="card-action-title-text">Create and implement a social and emotional learning curriculum in all classrooms.</p>
+      <span class="card-status-badge">Planned</span>
+    </div>
+    <div class="card-body">
+      <span class="progress-tag">Planned</span>
+      <p class="card-summary">This strategic action is planned for future implementation.</p>
+    </div>
+  </article>
+  <article class="scorecard status-in-progress" data-status="in-progress">
+    <div class="card-band">
+      <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_2.5%20Access%20to%20French%20Immersion-1.png" alt="Action 2.5 icon"></div>
+      <div class="card-band-info">
+        <p class="card-band-num-label">Action 2.5</p>
+      </div>
+      <span class="card-band-number">2.5</span>
+    </div>
+    <div class="card-action-title">
+      <p class="card-action-title-text">Make the French Immersion program easier to access by introducing new entry points and meeting the needs of all learners.</p>
+      <span class="card-status-badge">In Progress</span>
+    </div>
+    <div class="card-body">
+      <span class="progress-tag">In Progress</span>
+      <p class="card-summary">Make the French Immersion program easier to access by introducing new entry points and meeting the needs of all learners.</p>
+    </div>
+    <details class="card-details">
+      <summary>View Details</summary>
+      <div class="details-inner">
+        <div class="detail-tabs">
+          <button class="detail-tab-btn active" data-tab="ctx">Context</button>
+          <button class="detail-tab-btn" data-tab="done">Accomplished</button>
+          <button class="detail-tab-btn" data-tab="next">Where We're Going</button>
+        </div>
+        <div class="detail-tab-pane active" data-pane="ctx">
+<p class="detail-ctx-text">Reflective &amp; Responsive Guided by student voice and provincial policy, we are committed to enhancing our French Immersion program. In November 2023, all French Immersion staff participated in a professional learning session centered on the new provincial policy, featuring inspiring insights from a student panel. This reflective process helps us celebrate our strengths and identify areas for growth, ensuring our program remains vibrant and effective.</p>
+<p class="detail-ctx-text">Creating New Opportunities To increase accessibility, we are excited to introduce new entry points. Beginning in September 2025, École Sage Creek School will offer a Middle Immersion (Grade 4 entry) and a Late Immersion (Grade 6 entry) program. This expansion creates more pathways for students, including newcomers, to embark on their French language journey.</p>
+        </div>
+        <div class="detail-tab-pane" data-pane="done">
+          <p class="detail-section-title">What We've Accomplished</p>
+      <ul class="detail-list">
+        <li>Attended comprehensive professional learning sessionin November 2023 focusing onThe French Immersion Policy in Manitoba(Manitoba Education, May 2023)Engaged with student panel sharing lived experiences in LRSD French Immersion schoolsConducted personal and collective reflection on instructional practicesCelebrated existing strengths and successful strategiesIdentified areas requiring fine-tuning and improvementDetermined new approaches and practices to adoptRecognized outdated methods and practices to abandon</li>
+        <li>Engaged with student panel sharing lived experiences in LRSD French Immersion schools</li>
+        <li>Conducted personal and collective reflection on instructional practices</li>
+        <li>Celebrated existing strengths and successful strategies</li>
+        <li>Identified areas requiring fine-tuning and improvement</li>
+        <li>Determined new approaches and practices to adopt</li>
+        <li>Recognized outdated methods and practices to abandon</li>
+        <li>Developed analytic tool to examine retention rates by school, grade, and over time</li>
+        <li>Presented detailed report to trustees at the December 17, 2024, Board meeting</li>
+        <li>Introduced Middle Immersion (Grade 4 entry)in September 2025, boosting spaces by 50 per cent.</li>
+        <li>Launched Late Immersion (Grade 6 entry)to provide access for students—particularly newcomers—who missed earlier entry points.</li>
+        <li>Adopted single-track modelacross all LRSD French Immersion schools.</li>
+        <li>Implemented Recommendation 4.2.1ofThe French Immersion Policy in Manitoba.</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/LRSD_March12_2025_0002%20CJS.jpg" alt="" loading="lazy">
+        </div>
+        <div class="detail-tab-pane" data-pane="next">
+          <p class="detail-section-title">Where We're Going</p>
+      <ul class="detail-list">
+        <li>Principals and vice-principals will use the analytic tool to better understand current French Immersion retention rates and to develop a plan for enhancing them over time.</li>
+        <li>Middle Immersion and Late Immersion will be offered in multiple sites throughout the Division.</li>
+        <li>Implementation of a framework to support neurodiversity and diverse abilities in our classrooms (see MYSP strategic action 2.2) will lead to: a greater number of students feeling successful in the French Immersion program, contributing to higher retention rates, and a growing number of families viewing the French Immersion program as a good fit for their children, thus increasing access to the program.</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-1313070791.jpg" alt="" loading="lazy">
+        </div>
+      </div>
+    </details>
+  </article>
+  <article class="scorecard status-in-progress" data-status="in-progress">
+    <div class="card-band">
+      <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_2.6%20Early%20Start%20French%20in%20English%20Program%20Schools-1.png" alt="Action 2.6 icon"></div>
+      <div class="card-band-info">
+        <p class="card-band-num-label">Action 2.6</p>
+      </div>
+      <span class="card-band-number">2.6</span>
+    </div>
+    <div class="card-action-title">
+      <p class="card-action-title-text">Enhance French Language teaching and learning in English program schools.</p>
+      <span class="card-status-badge">In Progress</span>
+    </div>
+    <div class="card-body">
+      <span class="progress-tag">In Progress</span>
+      <p class="card-summary">Enhance French Language teaching and learning in English program schools.</p>
+    </div>
+    <details class="card-details">
+      <summary>View Details</summary>
+      <div class="details-inner">
+        <div class="detail-tabs">
+          <button class="detail-tab-btn active" data-tab="ctx">Context</button>
+          <button class="detail-tab-btn" data-tab="done">Accomplished</button>
+          <button class="detail-tab-btn" data-tab="next">Where We're Going</button>
+        </div>
+        <div class="detail-tab-pane active" data-pane="ctx">
+<p class="detail-ctx-text">Empowering Educators We believe in building a strong foundation by empowering our educators. Currently, we ensure all staff are consistently made aware of professional learning opportunities related to teaching French in the English program. This is the first step toward creating a more unified, robust, and collaborative teaching environment across the division.</p>
+<p class="detail-ctx-text">A Connected Community Our vision is to build a connected professional learning community for our French teachers. By fostering collaboration and developing a cohesive instructional model, we aim to enhance teaching practices, deepen student engagement, and ultimately inspire more students to pursue French language studies through high school.</p>
+        </div>
+        <div class="detail-tab-pane" data-pane="done">
+          <p class="detail-section-title">What We've Accomplished</p>
+      <ul class="detail-list">
+        <li>Communicated professional learning opportunities related to teaching French in the English program to all staff.</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-1124997464.jpg" alt="" loading="lazy">
+        </div>
+        <div class="detail-tab-pane" data-pane="next">
+          <p class="detail-section-title">Where We're Going</p>
+      <ul class="detail-list">
+        <li>Connect teachers of French in the English program with one another to create opportunities for collaboration and professional learning.</li>
+        <li>Develop a comprehensive approach to teacher learning to support a more cohesive instructional model for the teaching of French in the English program throughout the division.</li>
+        <li>Enhance teaching practices at elementary will lead to increased numbers of students choosing French as an option course in high school.</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-2195032872.jpg" alt="" loading="lazy">
+        </div>
+      </div>
+    </details>
+  </article>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <section class="sp-section" id="sp-independence">
+    <details class="sp-accordion" >
+      <summary class="sp-accordion-summary">
+        <div class="sp-summary-inner">
+          <div class="sp-summary-icon"><img src="https://media.lrsd.net/media/Default/frl/0/Independence-icononly@2x-8-1.png" alt="Independence"></div>
+          <div class="sp-summary-text">
+            <p class="sp-summary-label">Strategic Priority 3</p>
+            <h2 class="sp-summary-title">Independence</h2>
+          </div>
+        </div>
+        <span class="sp-summary-chevron"></span>
+      </summary>
+      <div class="sp-accordion-body">
+        <div class="filter-bar" id="filter-bar-3">
+          <span class="filter-label">Filter:</span>
+          <button class="filter-chip active" data-status="all">All</button>
+          <button class="filter-chip" data-status="at-risk"><span class="chip-dot"></span>At Risk</button>
+          <button class="filter-chip" data-status="planned"><span class="chip-dot"></span>Planned</button>
+          <button class="filter-chip" data-status="in-progress"><span class="chip-dot"></span>In Progress</button>
+          <button class="filter-chip" data-status="operational"><span class="chip-dot"></span>Operational</button>
+        </div>
+        <div class="cards-grid" id="cards-grid-3">
+  <article class="scorecard status-in-progress" data-status="in-progress">
+    <div class="card-band">
+      <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_3.1%20Learner%20Assessment-1.png" alt="Action 3.1 icon"></div>
+      <div class="card-band-info">
+        <p class="card-band-num-label">Action 3.1</p>
+      </div>
+      <span class="card-band-number">3.1</span>
+    </div>
+    <div class="card-action-title">
+      <p class="card-action-title-text">Promote learner agency and potential, as well as more accurate grading through the ongoing development of more formative and dynamic learner assessments.</p>
+      <span class="card-status-badge">In Progress</span>
+    </div>
+    <div class="card-body">
+      <span class="progress-tag">In Progress</span>
+      <p class="card-summary">Promote learner agency and potential through dynamic assessments.</p>
+    </div>
+    <details class="card-details">
+      <summary>View Details</summary>
+      <div class="details-inner">
+        <div class="detail-tabs">
+          <button class="detail-tab-btn active" data-tab="ctx">Context</button>
+          <button class="detail-tab-btn" data-tab="done">Accomplished</button>
+          <button class="detail-tab-btn" data-tab="next">Where We're Going</button>
+        </div>
+        <div class="detail-tab-pane active" data-pane="ctx">
+<p class="detail-ctx-text">Enhancing Assessment Practices LRSD teachers are leveraging PowerSchool Gradebook to enhance assessment and better capture learner potential. This implementation fosters focused discussions on dynamic, formative, and summative assessments, ensuring that evaluations are fair, valid, and reliable measures of learning.</p>
+<p class="detail-ctx-text">Aligning with Best Practices A working group of principals and vice-principals is reviewing and revising LRSD Policy IK (Academic Achievement) to align with current best practices in assessment. This ensures our policies support dynamic, outcomes-based formative assessment and accurately reflect student learning across the division.</p>
+        </div>
+        <div class="detail-tab-pane" data-pane="done">
+          <p class="detail-section-title">What We've Accomplished</p>
+      <ul class="detail-list">
+        <li>Implemented PowerSchool Gradebook in all high schools with train-the-trainer professional learning and support resources</li>
+        <li>Piloted Gradebook in eight elementary schools (Grades 1–6) and eight middle schools (Grades 7–8) in selected subjects</li>
+        <li>Surveyed 15 schools to commit to Gradebook use and established formal expectations for four schools in Grades 1–8</li>
+        <li>Convened principals and vice-principals to review Policy IK on Assessment and Evaluation and formed a working group for policy alignment</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-1396570590.jpg" alt="" loading="lazy">
+        </div>
+        <div class="detail-tab-pane" data-pane="next">
+          <p class="detail-section-title">Where We're Going</p>
+      <ul class="detail-list">
+        <li>Implement PowerSchool Gradebook K–12 in all subjects across all schools to support dynamic formative assessment practices</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-944043026.jpg" alt="" loading="lazy">
+        </div>
+      </div>
+    </details>
+  </article>
+  <article class="scorecard status-in-progress" data-status="in-progress">
+    <div class="card-band">
+      <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_3.2%20Student%20Voice%20and%20Agency.png" alt="Action 3.2 icon"></div>
+      <div class="card-band-info">
+        <p class="card-band-num-label">Action 3.2</p>
+      </div>
+      <span class="card-band-number">3.2</span>
+    </div>
+    <div class="card-action-title">
+      <p class="card-action-title-text">Enhance student voice and agency to put students&#x27; experiences at the heart of decision-making in classrooms, schools, and divisional systems.</p>
+      <span class="card-status-badge">In Progress</span>
+    </div>
+    <div class="card-body">
+      <span class="progress-tag">In Progress</span>
+      <p class="card-summary">Enhance student voice and agency to put students&#x27; experiences at the heart of decision-making in classrooms, schools, and divisional systems.</p>
+    </div>
+    <details class="card-details">
+      <summary>View Details</summary>
+      <div class="details-inner">
+        <div class="detail-tabs">
+          <button class="detail-tab-btn active" data-tab="ctx">Context</button>
+          <button class="detail-tab-btn" data-tab="done">Accomplished</button>
+          <button class="detail-tab-btn" data-tab="next">Where We're Going</button>
+        </div>
+        <div class="detail-tab-pane active" data-pane="ctx">
+<p class="detail-ctx-text">Empowering Student Input LRSD is committed to embedding student voice at every level. Through divisional committees like the GSA and Student Advisory, students regularly provide feedback on key policies, sharing their experiences to shape a more inclusive and responsive educational system. This ensures that decisions reflect the needs of those they impact most.</p>
+<p class="detail-ctx-text">Co-creating Success We are centering student voice in individualized planning by actively involving students in conferences with their caregivers. This collaborative approach focuses on celebrating accomplishments and co-creating growth plans, making students partners in their own educational journey and fostering a sense of ownership and agency.</p>
+        </div>
+        <div class="detail-tab-pane" data-pane="done">
+          <p class="detail-section-title">What We've Accomplished</p>
+      <ul class="detail-list">
+        <li>Established GSA and Student Advisory committees that meet regularly to discuss issues, share experiences, and provide policy feedback</li>
+        <li>Appointed students to sit on the divisional Accessibility Committee to share lived experiences</li>
+        <li>Centered student voice in individualized planning conferences with caregivers</li>
+        <li>Co-created growth plans with students and families</li>
+        <li>Formed leadership teams, clubs, and advisories in each school</li>
+        <li>Integrated student voice into school planning processes</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/_0005825.jpg" alt="" loading="lazy">
+        </div>
+        <div class="detail-tab-pane" data-pane="next">
+          <p class="detail-section-title">Where We're Going</p>
+      <ul class="detail-list">
+        <li>Implement a consistent division-wide planning process embedding student voice</li>
+        <li>Engage students in goal-setting, reflection, and learning journey planning</li>
+        <li>Expand diverse student representation on all divisional committees</li>
+        <li>Prioritize inclusion of underrepresented student groups</li>
+        <li>Enhance student leadership roles in decision-making at school and division levels</li>
+        <li>Support students to lead policy feedback, strategic planning, and program development</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/LRSD%20March11%202025_1115.JPG" alt="" loading="lazy">
+        </div>
+      </div>
+    </details>
+  </article>
+  <article class="scorecard status-in-progress" data-status="in-progress">
+    <div class="card-band">
+      <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_3.3%20Information%20Literacy.png" alt="Action 3.3 icon"></div>
+      <div class="card-band-info">
+        <p class="card-band-num-label">Action 3.3</p>
+      </div>
+      <span class="card-band-number">3.3</span>
+    </div>
+    <div class="card-action-title">
+      <p class="card-action-title-text">Create and teach an Information Literacy Continuum and Curriculum for all students that includes a focus on discerning, safe and healthy behaviours when using and creating information, especially online.</p>
+      <span class="card-status-badge">In Progress</span>
+    </div>
+    <div class="card-body">
+      <span class="progress-tag">In Progress</span>
+      <p class="card-summary">Create an Information Literacy continuum.</p>
+    </div>
+    <details class="card-details">
+      <summary>View Details</summary>
+      <div class="details-inner">
+        <div class="detail-tabs">
+          <button class="detail-tab-btn active" data-tab="ctx">Context</button>
+          <button class="detail-tab-btn" data-tab="done">Accomplished</button>
+          <button class="detail-tab-btn" data-tab="next">Where We're Going</button>
+        </div>
+        <div class="detail-tab-pane active" data-pane="ctx">
+<p class="detail-ctx-text">Defining Information Literacy A cohort of 12 teacher-librarians is defining essential K–12 information literacy competencies by analyzing current research and aligning insights with provincial curricula. This foundational work will ensure students develop the critical skills needed to navigate today’s complex information landscape safely and effectively.</p>
+<p class="detail-ctx-text">Fostering Collaboration We are positioning teacher-librarians as key instructional partners who will embed information literacy skills into classroom teaching. By advocating for these essential skills and addressing the challenges of misinformation, our teacher-librarians will empower both students and staff across the division.</p>
+        </div>
+        <div class="detail-tab-pane" data-pane="done">
+          <p class="detail-section-title">What We've Accomplished</p>
+      <ul class="detail-list">
+        <li>Created and implementedPolicy JICI/GBEF - Use of Cell Phones in Schoolsto support learning environments.</li>
+        <li>Developed a high school mentorship framework addressing AI integration and online safety (Kids in the Know, C3P).</li>
+        <li>Engaged 12 teacher-librarians to define K–12 information literacy competencies.</li>
+        <li>Delivered AI-focused professional learning on innovation, content evaluation, and ethical citation.</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-658486984.jpg" alt="" loading="lazy">
+        </div>
+        <div class="detail-tab-pane" data-pane="next">
+          <p class="detail-section-title">Where We're Going</p>
+      <ul class="detail-list">
+        <li>Draft a preliminary K–12 Information Literacy continuum for feedback from Library Services.</li>
+        <li>Establish teacher-librarians as instructional partners embedding literacy skills into teaching.</li>
+        <li>Advocate division-wide for information literacy amid misinformation challenges.</li>
+      </ul>
+        </div>
+      </div>
+    </details>
+  </article>
+  <article class="scorecard status-in-progress" data-status="in-progress">
+    <div class="card-band">
+      <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_3.4%20Multilingual%20Learners-1.png" alt="Action 3.4 icon"></div>
+      <div class="card-band-info">
+        <p class="card-band-num-label">Action 3.4</p>
+      </div>
+      <span class="card-band-number">3.4</span>
+    </div>
+    <div class="card-action-title">
+      <p class="card-action-title-text">Develop a framework to assist staff in supporting multilingual learners in becoming proficient in English – and French in the context of French Immersion schools – by valuing and developing their first language.</p>
+      <span class="card-status-badge">In Progress</span>
+    </div>
+    <div class="card-body">
+      <span class="progress-tag">In Progress</span>
+      <p class="card-summary">Develop a framework to assist staff in supporting multilingual learners in becoming proficient in English – and French in the context of French Immersion schools – by valuing and developing their first language.</p>
+    </div>
+    <details class="card-details">
+      <summary>View Details</summary>
+      <div class="details-inner">
+        <div class="detail-tabs">
+          <button class="detail-tab-btn active" data-tab="ctx">Context</button>
+          <button class="detail-tab-btn" data-tab="done">Accomplished</button>
+          <button class="detail-tab-btn" data-tab="next">Where We're Going</button>
+        </div>
+        <div class="detail-tab-pane active" data-pane="ctx">
+<p class="detail-ctx-text">An Ethic of Hospitality LRSD is committed to creating a culture of diversity, equity, and inclusion. By centering our work on an &quot;Ethic of Hospitality,&quot; we ensure that all newcomer students and their families feel a sense of belonging and safety, valuing their unique experiences and linguistic backgrounds.</p>
+<p class="detail-ctx-text">Empowering Our Educators We are building teacher capacity through annual professional learning, culturally sustaining pedagogy sessions, and a comprehensive EAL portal with extensive resources. By equipping our staff with evidence-based practices, we are shifting to an asset-based perspective that celebrates our multilingual learners.</p>
+        </div>
+        <div class="detail-tab-pane" data-pane="done">
+          <p class="detail-section-title">What We've Accomplished</p>
+      <ul class="detail-list">
+        <li>Launched EAL section on Teaching &amp; Learning Portal with principles, procedures, and aligned Manitoba EAL/LAL resources</li>
+        <li>Centered newcomer support on Ethic of Hospitality to ensure belonging and safety for students and families</li>
+        <li>Delivered annual SCST sessions on MLL support</li>
+        <li>Hosted division-wide culturally sustaining pedagogy sessions with Dr. Nadia Prokopchuk</li>
+        <li>Adopted culturally and linguistically responsive teaching to value MLLs’ experiences and shift mindsets</li>
+        <li>Created FAQs, support guides, assessment documents, and transition-options resources for MLLs and 18+ learners</li>
+        <li>Hosted four René Deleurme Centre information sessions covering procedures and curriculum</li>
+        <li>Formed MLL committees (2022–25) and secured an MTS grant for equity and anti-racism practice exploration</li>
+        <li>Expanded Monterey’s EAL library with robust multilingual learner resources</li>
+        <li>Used Power BI diversity dashboard to tailor supports based on language and origin data</li>
+        <li>Published monthly Learning Circle articles on immigration, translanguaging, and culturally responsive pedagogy</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-1890364178.jpg" alt="" loading="lazy">
+        </div>
+        <div class="detail-tab-pane" data-pane="next">
+          <p class="detail-section-title">Where We're Going</p>
+      <ul class="detail-list">
+        <li>Launch Middle Years LAL program (Grades 7–8) in 2025–26 for students with disrupted schooling</li>
+        <li>Assign MLL teacher-leader in every school to guide processes and pedagogy</li>
+        <li>Establish a resource-sharing system for effective practice exchange</li>
+        <li>Ensure all school families host newcomer information sessions</li>
+        <li>Integrate MLL support training into “Teachers New to LRSD” sessions</li>
+        <li>Collaborate provincially for French Immersion newcomer framework including Grade 2 English introduction</li>
+        <li>Implement new provincial EAL and LAL literacy and numeracy courses in all high schools</li>
+        <li>Continue partnership with Metro EAL Team and SCST support for teacher-leaders</li>
+        <li>Regularly update EAL portal with current, evidence-based MLL resources</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-2184848824.jpg" alt="" loading="lazy">
+        </div>
+      </div>
+    </details>
+  </article>
+  <article class="scorecard status-in-progress" data-status="in-progress">
+    <div class="card-band">
+      <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_3.5%20Alternate%20Learning%20Spaces.png" alt="Action 3.5 icon"></div>
+      <div class="card-band-info">
+        <p class="card-band-num-label">Action 3.5</p>
+      </div>
+      <span class="card-band-number">3.5</span>
+    </div>
+    <div class="card-action-title">
+      <p class="card-action-title-text">Create a flexible, short-term learning and therapeutic space for students needing to be away from their home school to support their successful return to a classroom.</p>
+      <span class="card-status-badge">In Progress</span>
+    </div>
+    <div class="card-body">
+      <span class="progress-tag">In Progress</span>
+      <p class="card-summary">Create a flexible, short-term learning and therapeutic space for students needing to be away from their home school to support their successful return to a classroom.</p>
+    </div>
+    <details class="card-details">
+      <summary>View Details</summary>
+      <div class="details-inner">
+        <div class="detail-tabs">
+          <button class="detail-tab-btn active" data-tab="ctx">Context</button>
+          <button class="detail-tab-btn" data-tab="done">Accomplished</button>
+          <button class="detail-tab-btn" data-tab="next">Where We're Going</button>
+        </div>
+        <div class="detail-tab-pane active" data-pane="ctx">
+<p class="detail-ctx-text">Land-Based Learning We have launched an afternoon enrichment program for Grade 6-8 students, focusing on Indigenous Land-based learning and experiences. This holistic program centers on reciprocity, relationality, identity, and community, providing a unique educational path grounded in positive relationships and wellness.</p>
+<p class="detail-ctx-text">A Path to Re-engagement Our goal is to create in-division alternate spaces for students who are currently outplaced. By establishing a working group and identifying key resources, we are defining a targeted approach to provide specialized, short-term support that helps students successfully return to their home schools.</p>
+        </div>
+        <div class="detail-tab-pane" data-pane="done">
+          <p class="detail-section-title">What We've Accomplished</p>
+      <ul class="detail-list">
+        <li>Engaged 13 Grade 6–8 students in land-based reciprocal learning focused on identity and community</li>
+        <li>Provided holistic programming centered on relationships and wellness</li>
+        <li>Established a working group and identified external resources for in-division alternate spaces</li>
+        <li>Defined target audience as division–outplaced students needing specialized support</li>
+        <li>Launched first project phase by September</li>
+        <li>Implemented land-based programming for student enrichment</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/DSC_2405.jpg" alt="" loading="lazy">
+        </div>
+        <div class="detail-tab-pane" data-pane="next">
+          <p class="detail-section-title">Where We're Going</p>
+      <ul class="detail-list">
+        <li>Create wrap-around family support approach</li>
+        <li>Provide holistic student support including after-school programs, meals, and family activities</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-2152206402.jpg" alt="" loading="lazy">
+        </div>
+      </div>
+    </details>
+  </article>
+  <article class="scorecard status-in-progress" data-status="in-progress">
+    <div class="card-band">
+      <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_3.6%20Hands-on%20Learning%20and%20Career%20Development-1.png" alt="Action 3.6 icon"></div>
+      <div class="card-band-info">
+        <p class="card-band-num-label">Action 3.6</p>
+      </div>
+      <span class="card-band-number">3.6</span>
+    </div>
+    <div class="card-action-title">
+      <p class="card-action-title-text">Enhance Project-Based Learning, Arts Education, Practical Arts, Active Healthy Living, Technical Vocational Education, Apprenticeship, Adult Education, and Career Development offerings, their connection to each other and to all classrooms.</p>
+      <span class="card-status-badge">In Progress</span>
+    </div>
+    <div class="card-body">
+      <span class="progress-tag">In Progress</span>
+      <p class="card-summary">Enhance Project-Based Learning, Arts Education, Practical Arts, Active Healthy Living, Technical Vocational Education, Apprenticeship, Adult Education, and Career Development offerings, their connection to each other and to all classrooms.</p>
+    </div>
+    <details class="card-details">
+      <summary>View Details</summary>
+      <div class="details-inner">
+        <div class="detail-tabs">
+          <button class="detail-tab-btn active" data-tab="ctx">Context</button>
+          <button class="detail-tab-btn" data-tab="done">Accomplished</button>
+          <button class="detail-tab-btn" data-tab="next">Where We're Going</button>
+        </div>
+        <div class="detail-tab-pane active" data-pane="ctx">
+<p class="detail-ctx-text">Award-Winning PBL Our award-winning Propel program offers an interdisciplinary, project-based learning environment where students earn multiple credits while pursuing their interests. Now expanded to French sites, Propel exemplifies our commitment to innovative, student-driven education that fosters real-world skills and engagement.</p>
+<p class="detail-ctx-text">Informed Investments To enhance our hands-on learning opportunities, we are conducting a comprehensive analysis of our current project-based learning, arts, and vocational assets. The insights gained will guide strategic infrastructure investments, ensuring our programs align with industry trends and provide students with relevant, future-ready skills.</p>
+        </div>
+        <div class="detail-tab-pane" data-pane="done">
+          <p class="detail-section-title">What We've Accomplished</p>
+      <ul class="detail-list">
+        <li>Launched Propel for interdisciplinary PBL credits in English, ICT, Career Development, and PE</li>
+        <li>Won Premier’s Award (2020) and expanded Propel to French sites in 2024</li>
+        <li>Expanded Industrial Arts and Human Ecology programs to Grades 5–6 through Middle Years Exploration</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/JUN_1918.jpg" alt="" loading="lazy">
+        </div>
+        <div class="detail-tab-pane" data-pane="next">
+          <p class="detail-section-title">Where We're Going</p>
+      <ul class="detail-list">
+        <li>Conduct RFP to assess current PBL, arts, vocational, and career assets</li>
+        <li>Use insights to guide infrastructure investments aligned with industry trends</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/IMG_4057.JPG" alt="" loading="lazy">
+        </div>
+      </div>
+    </details>
+  </article>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <section class="sp-section" id="sp-generosity">
+    <details class="sp-accordion" >
+      <summary class="sp-accordion-summary">
+        <div class="sp-summary-inner">
+          <div class="sp-summary-icon"><img src="https://media.lrsd.net/media/Default/frl/0/Generosity-icononly@2x-8-1.png" alt="Generosity"></div>
+          <div class="sp-summary-text">
+            <p class="sp-summary-label">Strategic Priority 4</p>
+            <h2 class="sp-summary-title">Generosity</h2>
+          </div>
+        </div>
+        <span class="sp-summary-chevron"></span>
+      </summary>
+      <div class="sp-accordion-body">
+        <div class="filter-bar" id="filter-bar-4">
+          <span class="filter-label">Filter:</span>
+          <button class="filter-chip active" data-status="all">All</button>
+          <button class="filter-chip" data-status="at-risk"><span class="chip-dot"></span>At Risk</button>
+          <button class="filter-chip" data-status="planned"><span class="chip-dot"></span>Planned</button>
+          <button class="filter-chip" data-status="in-progress"><span class="chip-dot"></span>In Progress</button>
+          <button class="filter-chip" data-status="operational"><span class="chip-dot"></span>Operational</button>
+        </div>
+        <div class="cards-grid" id="cards-grid-4">
+  <article class="scorecard status-in-progress" data-status="in-progress">
+    <div class="card-band">
+      <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_4.1%20Safe,%20Modern,%20%20Accessible%20Spaces-1.png" alt="Action 4.1 icon"></div>
+      <div class="card-band-info">
+        <p class="card-band-num-label">Action 4.1</p>
+      </div>
+      <span class="card-band-number">4.1</span>
+    </div>
+    <div class="card-action-title">
+      <p class="card-action-title-text">Build safe, modern, and accessible spaces for learning and work in all schools and workplaces, both indoors and outdoors.</p>
+      <span class="card-status-badge">In Progress</span>
+    </div>
+    <div class="card-body">
+      <span class="progress-tag">In Progress</span>
+      <p class="card-summary">Building safe, modern, and accessible spaces for learning and work in all schools and workplaces, both indoors and outdoors.</p>
+    </div>
+    <details class="card-details">
+      <summary>View Details</summary>
+      <div class="details-inner">
+        <div class="detail-tabs">
+          <button class="detail-tab-btn active" data-tab="ctx">Context</button>
+          <button class="detail-tab-btn" data-tab="done">Accomplished</button>
+          <button class="detail-tab-btn" data-tab="next">Where We're Going</button>
+        </div>
+        <div class="detail-tab-pane active" data-pane="ctx">
+<p class="detail-ctx-text">A Data-Driven Approach We are constantly striving to improve our learning spaces. To keep our community informed, our Annual School Building Review Dashboard provides a comprehensive look at the condition of and demands upon our buildings. This data helps guide decisions on everything from painting a classroom to planning for major capital projects with the provincial government.</p>
+<p class="detail-ctx-text">A Vision for the Future Our work is guided by two key documents: LRSD 2034, our 10-year infrastructure plan for growth and modernization, and our Accessibility Plan. Together, these roadmaps ensure we are making significant steps towards expanding and improving our spaces to meet the needs of a growing student population and making our schools more accessible for all.</p>
+        </div>
+        <div class="detail-tab-pane" data-pane="done">
+          <p class="detail-section-title">What We've Accomplished</p>
+      <ul class="detail-list">
+        <li>Annual School BuildingReview: This dashboard provides a comprehensive collection of data relating to the condition of and demands upon buildings within the school division.</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/School-building-Review-image.png" alt="" loading="lazy">
+        </div>
+        <div class="detail-tab-pane" data-pane="next">
+          <p class="detail-section-title">Where We're Going</p>
+      <ul class="detail-list">
+        <li>LRSD2034: Our 10-year infrastructure plan for growth, maintenance, and modernization of schools, reviewed annually to meet evolving needs.</li>
+        <li>AccessibilityPlan: This plan guides our work in making our indoor and outdoor school spaces safe, modern, and equitable for all students, staff, and community members.</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/JHBRUNS.jpg" alt="" loading="lazy">
+        </div>
+      </div>
+    </details>
+  </article>
+  <article class="scorecard status-in-progress" data-status="in-progress">
+    <div class="card-band">
+      <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_4.2%20Transportation%20Equity-1.png" alt="Action 4.2 icon"></div>
+      <div class="card-band-info">
+        <p class="card-band-num-label">Action 4.2</p>
+      </div>
+      <span class="card-band-number">4.2</span>
+    </div>
+    <div class="card-action-title">
+      <p class="card-action-title-text">Expand safe, active, and equitable transportation to and from school.</p>
+      <span class="card-status-badge">In Progress</span>
+    </div>
+    <div class="card-body">
+      <span class="progress-tag">In Progress</span>
+      <p class="card-summary">Expand safe, active, and equitable transportation to and from school.</p>
+    </div>
+    <details class="card-details">
+      <summary>View Details</summary>
+      <div class="details-inner">
+        <div class="detail-tabs">
+          <button class="detail-tab-btn active" data-tab="ctx">Context</button>
+          <button class="detail-tab-btn" data-tab="done">Accomplished</button>
+          <button class="detail-tab-btn" data-tab="next">Where We're Going</button>
+        </div>
+        <div class="detail-tab-pane active" data-pane="ctx">
+<p class="detail-ctx-text">Connecting our Communities We&#x27;ve added new school bus routes to connect growing neighbourhoods with their designated high schools and to transport students to Practical Arts facilities.</p>
+<p class="detail-ctx-text">Infrastructure &amp; Safety We&#x27;re making it safer to walk and bike to school by installing new crosswalks, adding flashing beacons, and running traffic awareness campaigns. We also continue to support our crossing guard and walking school bus programs, and ensure bike storage is available at every school.</p>
+        </div>
+        <div class="detail-tab-pane" data-pane="done">
+          <p class="detail-section-title">What We've Accomplished</p>
+      <ul class="detail-list">
+        <li>Added new school bus routes in 2024-2025 to connect neighbourhoods with limited or no transit service to designated high schools:Bonavista to J. H. Bruns Collegiate &amp; Collège BéliveauSage Creek to J. H. Bruns Collegiate &amp; Collège BéliveauWaterside Estates to Nelson McIntyre Collegiate</li>
+        <li>Bonavista to J. H. Bruns Collegiate &amp; Collège Béliveau</li>
+        <li>Sage Creek to J. H. Bruns Collegiate &amp; Collège Béliveau</li>
+        <li>Waterside Estates to Nelson McIntyre Collegiate</li>
+        <li>Added several bus routes to transport students to Practical Arts facilities located beyond walking distance</li>
+        <li>Provided information to assist Winnipeg Transit with anticipating route demand to and from schools with Grade 7 to 12 students as they implement new primary transit network</li>
+        <li>Maintained crossing guards and walking school buses to support safe transportation to and from school</li>
+        <li>Provided bike storage infrastructure available at each school</li>
+        <li>Installed crosswalks near École Sage Creek School, Highbury School and Minnetonka School</li>
+        <li>Installed flashing beacon crosswalk near École Varennes and École Van Belleghem</li>
+        <li>Implemented traffic signage changes and awareness campaigns on Beaverhill Blvd. (Shamrock School), Island Shore Blvd. (Island Lakes Community School), Sage Creek Blvd. (École Sage Creek School), Autumnwood Road (Frontenac School)</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-1139224311.jpg" alt="" loading="lazy">
+        </div>
+        <div class="detail-tab-pane" data-pane="next">
+          <p class="detail-section-title">Where We're Going</p>
+      <ul class="detail-list">
+        <li>Identify and reduce barriers to active transportation by working with community partners and families and promoting successful strategies implemented in various schools</li>
+        <li>Expand walking school bus, bike bus, and bike rider safety training programs</li>
+        <li>Add bike storage infrastructure (bike racks, bike cages)</li>
+        <li>Improve signage</li>
+        <li>Review drop-off and pick-up routines</li>
+        <li>Install traffic-calming measures</li>
+        <li>Add crossing guards and/or school patrols at key crossings</li>
+        <li>Conduct awareness campaigns</li>
+        <li>Highlight connection between safe, equitable, and active transportation and UN Sustainable Development Goals</li>
+        <li>Expand school bus service to provide safe, reliable, and equitable transportation for students in Grades 7 to 12 where convenient transit service is not available</li>
+        <li>Work with families to identify solutions when transportation challenges impact school attendance</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-1304589690.jpg" alt="" loading="lazy">
+        </div>
+      </div>
+    </details>
+  </article>
+  <article class="scorecard status-in-progress" data-status="in-progress">
+    <div class="card-band">
+      <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_4.3%20Full-Day%20Kindergarten-1.png" alt="Action 4.3 icon"></div>
+      <div class="card-band-info">
+        <p class="card-band-num-label">Action 4.3</p>
+      </div>
+      <span class="card-band-number">4.3</span>
+    </div>
+    <div class="card-action-title">
+      <p class="card-action-title-text">Implement universal full-day Kindergarten and enhance access to before-and-after school care.</p>
+      <span class="card-status-badge">In Progress</span>
+    </div>
+    <div class="card-body">
+      <span class="progress-tag">In Progress</span>
+      <p class="card-summary">Implement universal full-day Kindergarten and enhance access to before-and-after school care.</p>
+    </div>
+    <details class="card-details">
+      <summary>View Details</summary>
+      <div class="details-inner">
+        <div class="detail-tabs">
+          <button class="detail-tab-btn active" data-tab="ctx">Context</button>
+          <button class="detail-tab-btn" data-tab="done">Accomplished</button>
+          <button class="detail-tab-btn" data-tab="next">Where We're Going</button>
+        </div>
+        <div class="detail-tab-pane active" data-pane="ctx">
+<p class="detail-ctx-text">A Strong Start for Every Student Thanks to a local taxpayer investment, Full-Day, Every-Day Kindergarten has been expanded to all 30 LRSD schools that offer Kindergarten. This gives students a stronger foundation, extends learning time, and supports working families with nurturing, engaging, and full-day programming.</p>
+<p class="detail-ctx-text">Partnering to Expand Care We are collaborating with childcare partners and the provincial government to expand licensed before- and after-school spaces, open new centres, and discuss adding prefabricated facilities. This ensures we are creating more options for families and meeting community needs.</p>
+        </div>
+        <div class="detail-tab-pane" data-pane="done">
+          <p class="detail-section-title">What We've Accomplished</p>
+      <ul class="detail-list">
+        <li>Launched Full-Day, Every-Day Kindergarten in full swing as of September 2024</li>
+        <li>Completed classroom configurations to accommodate full-day classes</li>
+        <li>Purchased necessary materials and equipment</li>
+        <li>Conducted community consultation, particularly focusing on space concerns in École Sage Creek School, Island Lakes Community School, and École Van Belleghem</li>
+        <li>Ensured that no childcare spaces were lost due to implementation of Full-Day, Every-Day Kindergarten</li>
+        <li>Consulted with childcare partners and Department of Education&#x27;s Early Childhood Learning division to create more spaces</li>
+        <li>Expanded before- and after-school licensed childcare spaces at three schools—École Henri-Bergeron, École Provencher, and Samuel Burland School</li>
+        <li>Opened childcare centre in new school serving neighbourhood of Sage Creek Bonavista with childcare provider</li>
+        <li>Began discussions about adding prefabricated childcare facilities, with plans for two 104-space centres and two 40-space centres</li>
+        <li>Brought together partners to incorporate land-based education in early childhood learning, including licensed childcare</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/LRSD%20March11%202025_0780.JPG" alt="" loading="lazy">
+        </div>
+        <div class="detail-tab-pane" data-pane="next">
+          <p class="detail-section-title">Where We're Going</p>
+      <ul class="detail-list">
+        <li>Partner with third-party researcher to complete review of Full-Day, Every-Day Kindergarten outcomes (qualitative and quantitative), including lived experiences of families and teachers</li>
+        <li>Bring together Kindergarten teachers to share best practices and enhance capacity</li>
+        <li>Improve access to childcare centres</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/LRSD%20March11%202025_0871.jpg" alt="" loading="lazy">
+        </div>
+      </div>
+    </details>
+  </article>
+  <article class="scorecard status-in-progress" data-status="in-progress">
+    <div class="card-band">
+      <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_4.4%20Healthy%20Foods%20and%20Beverages%20Program.png" alt="Action 4.4 icon"></div>
+      <div class="card-band-info">
+        <p class="card-band-num-label">Action 4.4</p>
+      </div>
+      <span class="card-band-number">4.4</span>
+    </div>
+    <div class="card-action-title">
+      <p class="card-action-title-text">Implement a universal nutrition program.</p>
+      <span class="card-status-badge">In Progress</span>
+    </div>
+    <div class="card-body">
+      <span class="progress-tag">In Progress</span>
+      <p class="card-summary">Implement a universal nutrition program.</p>
+    </div>
+    <details class="card-details">
+      <summary>View Details</summary>
+      <div class="details-inner">
+        <div class="detail-tabs">
+          <button class="detail-tab-btn active" data-tab="ctx">Context</button>
+          <button class="detail-tab-btn" data-tab="done">Accomplished</button>
+          <button class="detail-tab-btn" data-tab="next">Where We're Going</button>
+        </div>
+        <div class="detail-tab-pane active" data-pane="ctx">
+<p class="detail-ctx-text">Nourishing Our Community In September, we launched the Universal Nutrition Program across all LRSD schools. We began with a menu of healthy, pre-packaged items and have since expanded our offerings by leveraging the commissary kitchen at the René Deleurme Centre, which now delivers fresh food to 27 schools.</p>
+<p class="detail-ctx-text">Scaling Up for Success We&#x27;ve reviewed our infrastructure, hired a delivery driver, and increased the number of schools with food permits from 10% to over 50%. This allows us to serve thousands of nutritious items weekly, including sandwiches, muffins, and Bannock, with a focus on local sourcing and sustainability.</p>
+        </div>
+        <div class="detail-tab-pane" data-pane="done">
+          <p class="detail-section-title">What We've Accomplished</p>
+      <ul class="detail-list">
+        <li>Conducted school site visits starting in February 2024 to inventory available equipment and resources for Universally Accessible Nutrition Program (UNP)</li>
+        <li>Conducted school site visits from September to November 2024 to determine needs and desired outcomes for food programming and assisted schools in obtaining food permits to expand nutritious food options</li>
+        <li>Hired divisional delivery driver to transport food prepared at René Deleurme Centre&#x27;s Commissary Kitchen to schools</li>
+        <li>Identified schools requiring greater access to nutritious meals and began designing and scheduling kitchen upgrades and renovations</li>
+        <li>Implemented menus aligned with provincial dietary guidelines, incorporating fresh, locally sourced ingredients to accommodate diverse dietary needs</li>
+        <li>Operated commissary kitchen at René Deleurme Centre with streamlined logistics, delivering food to 27 schools through delivery driver</li>
+        <li>Expanded from initial four-school pilot program resulting in weekly preparation averages of 1,000 sandwiches, 3,000 muffins, 500 pieces of Bannock, 300 breakfast sandwiches, and vegetable platters for 500 students</li>
+        <li>Increased schools with food permits from 10 per cent in September to over 50 per cent by Dec. 1, 2024</li>
+        <li>Partnered with local farms and businesses to support and enhance program</li>
+        <li>Began using eggs from Manitoba-based producer offering omega-3-rich eggs from Swiss free-run aviary system, prioritizing animal welfare and sustainability</li>
+        <li>Trained LRSD high school students at René Deleurme Centre&#x27;s Commissary Kitchen to gain hands-on food preparation experience and enhance employment readiness</li>
+        <li>Engaged community volunteers in commissary kitchen to develop English language skills and employment readiness</li>
+        <li>Integrated lessons on sustainability, agriculture, and nutrition into curriculum</li>
+        <li>Highlighted banana-themed learning week at Frontenac School, where Grade 7/8 student leaders collaborated with Teacher-Librarian Elena Stangherlin to create educational experiences on food literacy exploring journey of bananas from farms to schools, health benefits of bananas, and food waste</li>
+        <li>Installed commercial dishwashers in 11 schools, with 13 more planned this school year, to minimize single-use plastics and reduce landfill waste</li>
+        <li>Introduced biodegradable or recyclable packaging for schools without commercial dishwashers</li>
+        <li>Reduced packing waste through bulk ingredient purchasing and installing milk machines in several schools</li>
+        <li>Developed reliable supply chain to ensure timely delivery of food items to schools</li>
+        <li>Implemented centralized ordering system with twice-weekly deliveries and food traceability from factory to school for quick recall responses</li>
+        <li>Increased food orders from 905 cases in September to 2,973 cases in October, reflecting more than 200 per cent growth</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/JUN_1836.jpg" alt="" loading="lazy">
+        </div>
+        <div class="detail-tab-pane" data-pane="next">
+          <p class="detail-section-title">Where We're Going</p>
+      <ul class="detail-list">
+        <li>Train staff in food safety and meal service protocols, ensuring at least two staff per school are certified in WHMIS and Food Handling by January 2025</li>
+        <li>Upgrade identified school kitchens to enhance food service capabilities</li>
+        <li>Enhance menus and service quality based on feedback from students, parents, and staff</li>
+        <li>Optimize logistics and inventory processes using feedback collected</li>
+        <li>Increase student satisfaction and participation, measured through data collection</li>
+        <li>Expand food literacy and sustainability education</li>
+        <li>Engage parents through feedback, volunteer opportunities, and education sessions</li>
+        <li>Develop and regularly update culturally diverse menus that reflect student population</li>
+        <li>Use nutritional assessments and focus groups to demonstrate positive impacts on health and learning outcomes</li>
+        <li>Achieve target of 65 per cent of schools with food permits</li>
+        <li>Monitor long-term outcomes on student health, attendance, and academic performance</li>
+        <li>Complete kitchen renovations in targeted schools</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-1203599923.jpg" alt="" loading="lazy">
+        </div>
+      </div>
+    </details>
+  </article>
+  <article class="scorecard status-in-progress" data-status="in-progress">
+    <div class="card-band">
+      <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_4.5%20UN%E2%80%99s%20Sustainable%20Development%20Goals.png" alt="Action 4.5 icon"></div>
+      <div class="card-band-info">
+        <p class="card-band-num-label">Action 4.5</p>
+      </div>
+      <span class="card-band-number">4.5</span>
+    </div>
+    <div class="card-action-title">
+      <p class="card-action-title-text">Involve the whole school in learning and teaching about the United Nations&#x27; Sustainable Development Goals and the United Nations Declaration on the Rights of Indigenous Peoples, with an emphasis on Indigenous worldviews and land-based education.</p>
+      <span class="card-status-badge">In Progress</span>
+    </div>
+    <div class="card-body">
+      <span class="progress-tag">In Progress</span>
+      <p class="card-summary">Involve the whole school in learning and teaching about the United Nations&#x27; Sustainable Development Goals and the United Nations Declaration on the Rights of Indigenous Peoples.</p>
+    </div>
+    <details class="card-details">
+      <summary>View Details</summary>
+      <div class="details-inner">
+        <div class="detail-tabs">
+          <button class="detail-tab-btn active" data-tab="ctx">Context</button>
+          <button class="detail-tab-btn" data-tab="done">Accomplished</button>
+          <button class="detail-tab-btn" data-tab="next">Where We're Going</button>
+        </div>
+        <div class="detail-tab-pane active" data-pane="ctx">
+<p class="detail-ctx-text">Rooted in Respect &amp; Experience We have launched an Indigenous Land-Based Education Course at Windsor Park Collegiate, rooted in the framework of UNDRIP. This work is supported by a divisional SharePoint page with resources for educators and experiential land-based programming for middle years students.</p>
+<p class="detail-ctx-text">Local Action, Global Goals Our schools are actively engaged with the UN&#x27;s Sustainable Development Goals through participation in International Development Week, school-level recycling and food security initiatives, and the &quot;GO FOR THE GOALS&quot; challenge, where a Nordale student won a provincial contest.</p>
+        </div>
+        <div class="detail-tab-pane" data-pane="done">
+          <p class="detail-section-title">What We've Accomplished</p>
+      <ul class="detail-list">
+        <li>Initiated pilot program Indigenous Land-Based Education Course at Windsor Park Collegiate, rooted in framework of UNDRIP and centered on Indigenous pedagogies, worldviews, and experiential learning</li>
+        <li>Created divisional SharePoint page focused on UNDRIP resources, including materials to support educators in integrating UNDRIP into their teaching practices</li>
+        <li>Developed Indigenous land-based experiential programming for Grade 6-8 students, focusing on land-based activities and student wellness</li>
+        <li>Initiated discussions with various learning communities across school division to enhance awareness and understanding of UNDRIP</li>
+        <li>Participated in International Development Week activities, aligned with United Nations&#x27; Sustainable Development Goals 1, 4, and 17</li>
+        <li>Implemented several school-level recycling and food security initiatives, aligned with goals 1, 2, 4, and 12</li>
+        <li>Participated in &quot;GO FOR THE GOALS&quot; challenge in January 2024, with Grade 8 student from Nordale School winning provincial contest and being honored at legislative building in presence of Lieutenant Governor of MB and Premier as part of International Development Week, Feb 4-10, 2024, sponsored by Manitoba Council for International Cooperation, aligning with goals 4, 8, 11, 12, 16, and 17</li>
+        <li>Made connections with Education Specialist Amanda Benson of MCIC in 2024, who provided Global Goals materials and PD presentation at St. George staff meeting to further develop Global Goals awareness and school-led initiative</li>
+        <li>Recognized importance of water and electricity resources in current LRSD land acknowledgement, which are drawn from areas inside and outside Treaty One, aligning with goals 4, 6, 7, 8, 11, and 16</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/DSC_2232.jpg" alt="" loading="lazy">
+        </div>
+        <div class="detail-tab-pane" data-pane="next">
+          <p class="detail-section-title">Where We're Going</p>
+      <ul class="detail-list">
+        <li>Expand and extend land-based education programs beyond pilot initiatives to include more schools and grade levels</li>
+        <li>Collaborate with School and Classroom Support Team (SCST) teachers to integrate principles of UNDRIP into their work across entire school division</li>
+        <li>Continue to build and maintain divisional SharePoint page with robust collection of UNDRIP-related and land-based facilitator resources</li>
+        <li>Expand dialogue with learning communities on how to implement land-based and experiential learning tied to UNDRIP principles</li>
+        <li>Work toward shared understanding and application of reconciliation in daily operations and long-term planning</li>
+        <li>Strengthen and clarify connections between land-based learning and lens of Global Goals; for example, goals 4, 11, 12, 13 14 and 15 are connected to land-based learning, but these connections could be made explicit and strengthened</li>
+        <li>Ask schools to complete survey of current activities/programs connected to goals 12, 13, 14 and 15, including all local recycling efforts, school level land based learning, and ways we are teaching children about life on land, and life in the water</li>
+        <li>Bring together high-school student leaders who are doing work of Global Goals in their schools to share ideas for ½ day, with goal being clearer shared understanding of goals, and LRSD work that is ongoing</li>
+        <li>Conduct &quot;Voluntary Local Review of Progress&quot; to understand more fully ways that LRSD works to achieve Global Goals, following guidelines from United Nations</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/DSC_2998.jpg" alt="" loading="lazy">
+        </div>
+      </div>
+    </details>
+  </article>
+  <article class="scorecard status-in-progress" data-status="in-progress">
+    <div class="card-band">
+      <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_4.6%20Employment%20Equity-1.png" alt="Action 4.6 icon"></div>
+      <div class="card-band-info">
+        <p class="card-band-num-label">Action 4.6</p>
+      </div>
+      <span class="card-band-number">4.6</span>
+    </div>
+    <div class="card-action-title">
+      <p class="card-action-title-text">Fulfil the aspirations, protocols, and practices of the Employment Equity Policy.</p>
+      <span class="card-status-badge">In Progress</span>
+    </div>
+    <div class="card-body">
+      <span class="progress-tag">In Progress</span>
+      <p class="card-summary">Fulfil the aspirations, protocols, and practices of the Employment Equity Policy.</p>
+    </div>
+    <details class="card-details">
+      <summary>View Details</summary>
+      <div class="details-inner">
+        <div class="detail-tabs">
+          <button class="detail-tab-btn active" data-tab="ctx">Context</button>
+          <button class="detail-tab-btn" data-tab="done">Accomplished</button>
+          <button class="detail-tab-btn" data-tab="next">Where We're Going</button>
+        </div>
+        <div class="detail-tab-pane active" data-pane="ctx">
+<p class="detail-ctx-text">Building an Inclusive Foundation We&#x27;ve created a new Employment Equity Policy and provided mandatory training for our leadership team on bias in hiring. By standardizing interview questions and refining job posting language, we are embedding diversity, equity, and inclusion into our employment practices.</p>
+<p class="detail-ctx-text">Collaborating for Change We are actively partnering with organizations like the Canadian Centre for Diversity and Inclusion (CCDI) and the Centre for Aboriginal Human Resource Development (CAHRD) while advocating at the provincial level to remove barriers for internationally educated teachers.</p>
+        </div>
+        <div class="detail-tab-pane" data-pane="done">
+          <p class="detail-section-title">What We've Accomplished</p>
+      <ul class="detail-list">
+        <li>Hosted accessibility forum to engage community in ongoing dialogue</li>
+        <li>Advocated and participated in provincial committees to address barriers to employment for internationally educated teachers</li>
+        <li>Removed barriers for employees who are educational assistants in division but also internationally educated teachers, both with and without permanent Manitoba certification</li>
+        <li>Mandated training for leadership team specifically around bias and hiring in spring 2024</li>
+        <li>Offered optional staff learning opportunities for leadership team on antiracism through Shelley and Izzedin&#x27;s &quot;Polarizing Conversations&quot; workshop</li>
+        <li>Trained staff and implemented accessibility measures (e.g., tools on website)</li>
+        <li>Created Policy GBA – Employment Practices: Diversity, Equity, and Inclusion and Employment Practices – Admin Protocol in collaboration with community and various employee groups through working group</li>
+        <li>Standardized teacher interview questions to draw on indicators identified in policy, division&#x27;s mission and vision, and 2023-2027 MYSP</li>
+        <li>Refined language on job postings to make them more inclusive and reflective of divisional values</li>
+        <li>Developed, implemented, and revised policies through equity lens</li>
+        <li>Partnered with Canadian Centre for Diversity and Inclusion (CCDI) to strengthen divisional practices and provide resources</li>
+        <li>Partnered and consulted with religious bodies to broaden divisional perspectives around religious leaves and accommodations (e.g., Manitoba Islamic Association and prayer spaces)</li>
+        <li>Partnered with Centre for Aboriginal Human Resource Development (CAHRD) and Community-based Aboriginal Teacher Education Program (CATEP)</li>
+        <li>Completed feasibility study with Université de Saint-Boniface and Bureau de l&#x27;éducation française on in-service French Educational Assistant training program</li>
+        <li>Hired on-staff Knowledge Keeper to support Indigenous initiatives</li>
+        <li>Published &quot;Creating a Culture of Diversity, Equity, Inclusion and Anti-Racism in the Louis Riel School Division,&quot; which explores ways staff are coming to strengthening equity and inclusion practices</li>
+        <li>Developed voluntary employee Ethnocultural Survey in consultation with staff, members of racialized communities, and division&#x27;s various unions</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-2170640511.jpg" alt="" loading="lazy">
+        </div>
+        <div class="detail-tab-pane" data-pane="next">
+          <p class="detail-section-title">Where We're Going</p>
+      <ul class="detail-list">
+        <li>Attach ethnocultural data to employee profiles and/or applications to remove barriers to self-identifying</li>
+        <li>Implement Employee Centre that allows staff to update their own information e.g. gender identity or add demographic information e.g. ethnocultural identity, thus removing barriers presented by current HRIF</li>
+        <li>Include self-declaration as part of recruitment process</li>
+        <li>Launch public Staff Diversity Dashboard that emulates Student Diversity Dashboard</li>
+        <li>Gather data re: school based PD related to anti-racism, equity, decolonization, inclusion</li>
+        <li>Implement strategic plan that addresses recruitment (language in new teacher collective agreement)</li>
+        <li>Have staff be better representation of student population they serve</li>
+        <li>Establish yearly review committee for Policy GBA</li>
+        <li>Relaunch ITEP</li>
+        <li>Provide ongoing professional development for leaders</li>
+        <li>Implement mentorship programming</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-2200128716.jpg" alt="" loading="lazy">
+        </div>
+      </div>
+    </details>
+  </article>
+  <article class="scorecard status-in-progress" data-status="in-progress">
+    <div class="card-band">
+      <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_4.7%20Teacher%20Development%20Program-1.png" alt="Action 4.7 icon"></div>
+      <div class="card-band-info">
+        <p class="card-band-num-label">Action 4.7</p>
+      </div>
+      <span class="card-band-number">4.7</span>
+    </div>
+    <div class="card-action-title">
+      <p class="card-action-title-text">Implement a program that supports students from historically oppressed, marginalized, and underrepresented groups to complete two post-secondary degrees and start their teaching career in LRSD.</p>
+      <span class="card-status-badge">In Progress</span>
+    </div>
+    <div class="card-body">
+      <span class="progress-tag">In Progress</span>
+      <p class="card-summary">Implement a program that supports students from historically oppressed, marginalized, and underrepresented groups to complete two post-secondary degrees and start their teaching career in LRSD.</p>
+    </div>
+    <details class="card-details">
+      <summary>View Details</summary>
+      <div class="details-inner">
+        <div class="detail-tabs">
+          <button class="detail-tab-btn active" data-tab="ctx">Context</button>
+          <button class="detail-tab-btn" data-tab="done">Accomplished</button>
+          <button class="detail-tab-btn" data-tab="next">Where We're Going</button>
+        </div>
+        <div class="detail-tab-pane active" data-pane="ctx">
+<p class="detail-ctx-text">Securing Funding &amp; Research We have successfully applied for and received a federal grant from the French Second Language Revitalization Program. This funding allowed us to hire consultants to conduct a feasibility study on creating a pathway for French-speaking educational assistants to earn their teaching certification.</p>
+<p class="detail-ctx-text">Forging Key Partnerships The findings from our feasibility study have been shared with key partners, including the Division scolaire franco-manitobaine, Université de Saint-Boniface, and the Bureau de l&#x27;éducation française, to begin collaborating on program development and creating clear pathways for aspiring educators.</p>
+        </div>
+        <div class="detail-tab-pane" data-pane="done">
+          <p class="detail-section-title">What We've Accomplished</p>
+      <ul class="detail-list">
+        <li>Applied for and received federal grant from French Second Language Revitalization Program</li>
+        <li>Hired consultants to conduct study on post-secondary program for French-speaking educational assistants to earn professional teaching certification</li>
+        <li>Shared findings with Division scolaire franco-manitobaine, Université de Saint-Boniface, and Bureau de l&#x27;éducation française</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/LRSD_March12_2025_0035%20CJS.jpg" alt="" loading="lazy">
+        </div>
+        <div class="detail-tab-pane" data-pane="next">
+          <p class="detail-section-title">Where We're Going</p>
+      <ul class="detail-list">
+        <li>Launch post-secondary program for French-speaking educational assistants in partnership with Université de Saint-Boniface and Bureau de l&#x27;éducation française</li>
+        <li>Collaborate with Université de Saint-Boniface to offer Grade 11 and 12 students opportunity to obtain their Educational Assistant Diploma</li>
+        <li>Host annual information evenings to engage and encourage high school students to pursue studies in Faculty of Education</li>
+        <li>Establish formal system to track LRSD alumni&#x27;s post-secondary choices and trends</li>
+        <li>Connect Indigenous Youth Leadership students with CATEP program at University of Winnipeg</li>
+      </ul>
+      <img class="detail-img" src="https://media.lrsd.net/media/Default/frl/0/iStock-1215280342.jpg" alt="" loading="lazy">
+        </div>
+      </div>
+    </details>
+  </article>
+        </div>
+      </div>
+    </details>
+  </section>
+
+</div>
+<script>
+(function() {
+  var wrapper = document.getElementById('sp1-wrapper');
+  if (wrapper) wrapper.classList.add('js-ready');
+
+  // Staggered card entrance for all grids
+  document.querySelectorAll('.cards-grid').forEach(function(grid) {
+    grid.querySelectorAll('.scorecard').forEach(function(card, i) {
+      setTimeout(function() { card.classList.add('visible'); }, 80 + i * 90);
+    });
+  });
+
+  // Detail tabs
+  document.querySelectorAll('.card-details').forEach(function(details) {
+    details.addEventListener('toggle', function() {
+      if (details.open) {
+        var inner = details.querySelector('.details-inner');
+        if (!inner.querySelector('.detail-tab-pane.active')) {
+          inner.querySelectorAll('.detail-tab-pane')[0].classList.add('active');
+          inner.querySelectorAll('.detail-tab-btn')[0].classList.add('active');
+        }
+      }
+    });
+    details.addEventListener('click', function(e) {
+      var btn = e.target.closest('.detail-tab-btn');
+      if (!btn) return;
+      var tabKey = btn.getAttribute('data-tab');
+      var inner = details.querySelector('.details-inner');
+      inner.querySelectorAll('.detail-tab-btn').forEach(function(b) { b.classList.remove('active'); });
+      inner.querySelectorAll('.detail-tab-pane').forEach(function(p) { p.classList.remove('active'); });
+      btn.classList.add('active');
+      inner.querySelector('[data-pane="' + tabKey + '"]').classList.add('active');
+    });
+  });
+
+  // Per-grid filter chips
+  document.querySelectorAll('.filter-bar').forEach(function(filterBar) {
+    var barId = filterBar.id;
+    var gridNum = barId.replace('filter-bar-', '');
+    var grid = document.getElementById('cards-grid-' + gridNum);
+    if (!grid) return;
+    var allCards = grid.querySelectorAll('.scorecard');
+    filterBar.addEventListener('click', function(e) {
+      var chip = e.target.closest('.filter-chip');
+      if (!chip) return;
+      filterBar.querySelectorAll('.filter-chip').forEach(function(c) { c.classList.remove('active'); });
+      chip.classList.add('active');
+      var status = chip.getAttribute('data-status');
+      allCards.forEach(function(card) {
+        if (status === 'all' || card.getAttribute('data-status') === status) {
+          card.classList.remove('js-filtered-out');
+        } else {
+          card.classList.add('js-filtered-out');
+        }
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
