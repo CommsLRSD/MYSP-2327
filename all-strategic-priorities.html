@@ -521,6 +521,35 @@
 .sp-accordion-body .filter-bar { padding: 0 1.5rem; }
 .sp-accordion-body .cards-grid { padding: 0 1.5rem 1.5rem; }
 
+  /* ── Global filter bar ── */
+.global-filter-bar {
+  background: var(--light-bg);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-light);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.global-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+.filter-row-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #555;
+  min-width: 52px;
+  flex-shrink: 0;
+}
+/* Also ensure sp-accordion-body doesn't add extra filter-bar padding since we removed per-section bars */
+.sp-accordion-body .filter-bar { display: none; }
+
   </style>
 </head>
 <body>
@@ -530,6 +559,26 @@
   <div class="page-title-area">
     <h1>All Strategic Priorities</h1>
     <p>Multi-Year Strategic Plan 2023–2027 — Louis Riel School Division</p>
+  </div>
+  <div class="global-filter-bar" id="global-filter-bar">
+    <div class="global-filter-row">
+      <span class="filter-row-label">Status:</span>
+      <button class="filter-chip active" data-filter-type="status" data-status="all">All</button>
+      <button class="filter-chip" data-filter-type="status" data-status="at-risk"><span class="chip-dot"></span>At Risk</button>
+      <button class="filter-chip" data-filter-type="status" data-status="planned"><span class="chip-dot"></span>Planned</button>
+      <button class="filter-chip" data-filter-type="status" data-status="in-progress"><span class="chip-dot"></span>In Progress</button>
+      <button class="filter-chip" data-filter-type="status" data-status="operational"><span class="chip-dot"></span>Operational</button>
+    </div>
+    <div class="global-filter-row">
+      <span class="filter-row-label">Topic:</span>
+      <button class="filter-chip active" data-filter-type="topic" data-topic="all">All</button>
+      <button class="filter-chip" data-filter-type="topic" data-topic="language">🌐 Language</button>
+      <button class="filter-chip" data-filter-type="topic" data-topic="indigenous">🦅 Indigenous Education</button>
+      <button class="filter-chip" data-filter-type="topic" data-topic="equity">⚖️ Equity &amp; Inclusion</button>
+      <button class="filter-chip" data-filter-type="topic" data-topic="academic">📚 Academic Performance</button>
+      <button class="filter-chip" data-filter-type="topic" data-topic="wellbeing">💛 Student Wellbeing</button>
+      <button class="filter-chip" data-filter-type="topic" data-topic="career">🎓 Career &amp; Community</button>
+    </div>
   </div>
 
   <section class="sp-section" id="sp-belonging">
@@ -545,16 +594,8 @@
         <span class="sp-summary-chevron"></span>
       </summary>
       <div class="sp-accordion-body">
-        <div class="filter-bar" id="filter-bar-1">
-          <span class="filter-label">Filter:</span>
-          <button class="filter-chip active" data-status="all">All</button>
-          <button class="filter-chip" data-status="at-risk"><span class="chip-dot"></span>At Risk</button>
-          <button class="filter-chip" data-status="planned"><span class="chip-dot"></span>Planned</button>
-          <button class="filter-chip" data-status="in-progress"><span class="chip-dot"></span>In Progress</button>
-          <button class="filter-chip" data-status="operational"><span class="chip-dot"></span>Operational</button>
-        </div>
         <div class="cards-grid" id="cards-grid-1">
-<article class="scorecard status-in-progress" data-status="in-progress">
+<article class="scorecard status-in-progress" data-status="in-progress" data-topics="equity community">
 <div class="card-band">
 <div class="card-band-icon"><img alt="Community Schools Network icon" class="fr-dib" src="https://media.lrsd.net/media/Default/medialib/47478-lr-icons_1-1-community-schools-network.8f627b62151.png"/>
 <p>
@@ -628,7 +669,7 @@
 </ul><img alt="Nelson McIntyre Collegiate" class="detail-img fr-fil fr-dib" src="https://media.lrsd.net/media/Default/frl/0/Nelson-McIntyre-Collegiate-2-1.jpg"/></div></div>
 </details>
 </article>
-<article class="scorecard status-in-progress" data-status="in-progress">
+<article class="scorecard status-in-progress" data-status="in-progress" data-topics="wellbeing staff">
 <div class="card-band">
 <div class="card-band-icon">
 <p>
@@ -691,7 +732,7 @@
 </div></div>
 </details>
 </article>
-<article class="scorecard status-operational" data-status="operational">
+<article class="scorecard status-operational" data-status="operational" data-topics="wellbeing">
 <div class="card-band">
 <div class="card-band-icon">
 <p>
@@ -747,7 +788,7 @@
 </div></div>
 </details>
 </article>
-<article class="scorecard status-in-progress" data-status="in-progress">
+<article class="scorecard status-in-progress" data-status="in-progress" data-topics="language indigenous">
 <div class="card-band">
 <div class="card-band-icon"><img alt="Indigenous Language Nests icon" class="fr-dib" src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.4-Indigenous%20Language-1.png"/></div>
 <div class="card-band-info">
@@ -800,7 +841,7 @@
 </div></div>
 </details>
 </article>
-<article class="scorecard status-operational" data-status="operational">
+<article class="scorecard status-operational" data-status="operational" data-topics="indigenous academic">
 <div class="card-band">
 <div class="card-band-icon"><img alt="Indigenous literature and perspectives icon" class="fr-dib" src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.5-Indigenous%20Focus-1.png"/></div>
 <div class="card-band-info">
@@ -850,7 +891,7 @@
 </ul><img alt="Dancers at LRSD Grad Powwow" class="detail-img fr-fil fr-dib" src="https://media.lrsd.net/media/Default/frl/0/JUN_1491.jpg"/></div></div>
 </details>
 </article>
-<article class="scorecard status-in-progress" data-status="in-progress">
+<article class="scorecard status-in-progress" data-status="in-progress" data-topics="language">
 <div class="card-band">
 <div class="card-band-icon"><img alt="International and Heritage Languages icon" class="fr-dib" src="https://media.lrsd.net/media/Default/frl/47478-lr-icons_1-6-international-heritage-languages.75189877945.png"/></div>
 <div class="card-band-info">
@@ -911,16 +952,8 @@
         <span class="sp-summary-chevron"></span>
       </summary>
       <div class="sp-accordion-body">
-        <div class="filter-bar" id="filter-bar-2">
-          <span class="filter-label">Filter:</span>
-          <button class="filter-chip active" data-status="all">All</button>
-          <button class="filter-chip" data-status="at-risk"><span class="chip-dot"></span>At Risk</button>
-          <button class="filter-chip" data-status="planned"><span class="chip-dot"></span>Planned</button>
-          <button class="filter-chip" data-status="in-progress"><span class="chip-dot"></span>In Progress</button>
-          <button class="filter-chip" data-status="operational"><span class="chip-dot"></span>Operational</button>
-        </div>
         <div class="cards-grid" id="cards-grid-2">
-  <article class="scorecard status-planned" data-status="planned">
+  <article class="scorecard status-in-progress" data-status="in-progress" data-topics="academic">
     <div class="card-band">
       <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/Mastery-icononly@2x-8-1.png" alt="icon"></div>
       <div class="card-band-info">
@@ -930,14 +963,46 @@
     </div>
     <div class="card-action-title">
       <p class="card-action-title-text">Strengthen a learner-centred and holistic approach to ensure instruction is tailored to meet and build on the unique needs, interests, aptitudes, and abilities of each student.</p>
-      <span class="card-status-badge">Planned</span>
+      <span class="card-status-badge">In Progress</span>
     </div>
     <div class="card-body">
-      <span class="progress-tag">Planned</span>
-      <p class="card-summary">This strategic action is planned for future implementation.</p>
+      <span class="progress-tag">In Progress</span>
+      <p class="card-summary">Advancing a learner-centred and holistic approach to instruction that is tailored to the unique needs, interests, aptitudes, and abilities of each student across LRSD classrooms.</p>
     </div>
+      <details class="card-details">
+      <summary>View Details</summary>
+      <div class="details-inner">
+        <div class="detail-tabs">
+          <button class="detail-tab-btn active" data-tab="ctx">Context</button>
+          <button class="detail-tab-btn" data-tab="done">Accomplished</button>
+          <button class="detail-tab-btn" data-tab="next">Where We're Going</button>
+        </div>
+        <div class="detail-tab-pane active" data-pane="ctx">
+<div class="context-pill-row">
+<div class="context-pill"><div class="context-pill-hd">Personalizing Learning</div><div class="context-pill-bd"><p>LRSD is committed to shifting from a one-size-fits-all model to one that recognizes and responds to the unique needs, interests, aptitudes, and abilities of every student. A learner-centred approach puts the student at the heart of instructional planning, ensuring that teaching practices are flexible, responsive, and grounded in deep knowledge of each learner.</p></div></div>
+<div class="context-pill"><div class="context-pill-hd">Building on Strengths</div><div class="context-pill-bd"><p>Rather than focusing solely on deficits, a holistic approach to instruction helps teachers identify and build on students' existing strengths and interests. This asset-based perspective fosters engagement, motivation, and a stronger sense of identity and belonging for every learner in LRSD classrooms.</p></div></div>
+</div>
+        </div>
+        <div class="detail-tab-pane" data-pane="done">
+          <p class="detail-section-title">What We've Accomplished</p>
+      <ul class="detail-list">
+        <li>Engaged staff in professional learning focused on understanding and responding to the diverse learning profiles of students.</li>
+        <li>Developed a divisional framework for differentiated and personalized instruction to guide classroom practice.</li>
+        <li>Piloted learner-centred instructional models in select schools and gathered feedback to inform broader implementation.</li>
+      </ul>
+        </div>
+        <div class="detail-tab-pane" data-pane="next">
+          <p class="detail-section-title">Where We're Going</p>
+      <ul class="detail-list">
+        <li>Expand professional learning opportunities for all staff on learner-centred and holistic instructional approaches.</li>
+        <li>Embed learner-centred practices into divisional curriculum frameworks and instructional resources.</li>
+        <li>Establish clear indicators to monitor progress toward personalized, responsive instruction across all classrooms.</li>
+      </ul>
+        </div>
+      </div>
+    </details>
   </article>
-  <article class="scorecard status-in-progress" data-status="in-progress">
+  <article class="scorecard status-in-progress" data-status="in-progress" data-topics="academic wellbeing equity">
     <div class="card-band">
       <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/medialib/47478-lr-icons_2-2-neurodiversity.09221a62158.png" alt="Action 2.2 icon"></div>
       <div class="card-band-info">
@@ -1008,7 +1073,7 @@
       </div>
     </details>
   </article>
-  <article class="scorecard status-in-progress" data-status="in-progress">
+  <article class="scorecard status-operational" data-status="operational" data-topics="academic">
     <div class="card-band">
       <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_2.3%20Universal%20Early%20Screening%20and%20Monitoring-1.png" alt="Action 2.3 icon"></div>
       <div class="card-band-info">
@@ -1018,10 +1083,10 @@
     </div>
     <div class="card-action-title">
       <p class="card-action-title-text">Implement universal early screening and monitoring to ensure a preventive and proactive approach to teaching and systemic interventions.</p>
-      <span class="card-status-badge">In Progress</span>
+      <span class="card-status-badge">Operational</span>
     </div>
     <div class="card-body">
-      <span class="progress-tag">In Progress</span>
+      <span class="progress-tag">Operational</span>
       <p class="card-summary">Implementing universal early screening and monitoring to ensure a preventive and proactive approach to teaching and systemic interventions.</p>
     </div>
     <details class="card-details">
@@ -1070,9 +1135,9 @@
       </div>
     </details>
   </article>
-  <article class="scorecard status-planned" data-status="planned">
+  <article class="scorecard status-planned" data-status="planned" data-topics="academic wellbeing">
     <div class="card-band">
-      <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/Mastery-icononly@2x-8-1.png" alt="icon"></div>
+      <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_2.4%20Social%20and%20Emotional%20Learning-1.png" alt="icon"></div>
       <div class="card-band-info">
         <p class="card-band-num-label">Action 2.4</p>
       </div>
@@ -1084,10 +1149,43 @@
     </div>
     <div class="card-body">
       <span class="progress-tag">Planned</span>
-      <p class="card-summary">This strategic action is planned for future implementation.</p>
+      <p class="card-summary">Developing and implementing a comprehensive social and emotional learning (SEL) curriculum in all LRSD classrooms to support students\' emotional regulation, relationship-building, and decision-making skills.</p>
     </div>
+      <details class="card-details">
+      <summary>View Details</summary>
+      <div class="details-inner">
+        <div class="detail-tabs">
+          <button class="detail-tab-btn active" data-tab="ctx">Context</button>
+          <button class="detail-tab-btn" data-tab="done">Accomplished</button>
+          <button class="detail-tab-btn" data-tab="next">Where We're Going</button>
+        </div>
+        <div class="detail-tab-pane active" data-pane="ctx">
+<div class="context-pill-row">
+<div class="context-pill"><div class="context-pill-hd">Why Social-Emotional Learning Matters</div><div class="context-pill-bd"><p>Research consistently shows that students who develop strong social-emotional skills — including self-awareness, empathy, responsible decision-making, and positive relationship skills — achieve better academic outcomes and are better prepared for life beyond school. LRSD is committed to embedding SEL into daily classroom life for every student.</p></div></div>
+<div class="context-pill"><div class="context-pill-hd">A Whole-School Approach</div><div class="context-pill-bd"><p>Effective SEL is not just a program or an add-on — it is a way of being in school. LRSD's approach will integrate SEL into existing curricula and routines, ensuring that students experience consistent, supportive relationships and develop the emotional and social competencies they need to thrive in school and in their communities.</p></div></div>
+</div>
+        </div>
+        <div class="detail-tab-pane" data-pane="done">
+          <p class="detail-section-title">What We've Accomplished</p>
+      <ul class="detail-list">
+        <li>Conducted a divisional review of evidence-based SEL frameworks to identify an approach aligned with LRSD's values and student needs.</li>
+        <li>Engaged staff and community stakeholders in consultations about SEL priorities and approaches.</li>
+        <li>Begun integrating SEL principles into existing professional learning and wellness initiatives across the division.</li>
+      </ul>
+        </div>
+        <div class="detail-tab-pane" data-pane="next">
+          <p class="detail-section-title">Where We're Going</p>
+      <ul class="detail-list">
+        <li>Select and adopt a comprehensive, evidence-based SEL curriculum for all LRSD classrooms.</li>
+        <li>Provide professional development for all educators on delivering SEL instruction with fidelity.</li>
+        <li>Develop assessment tools to monitor students' social-emotional growth alongside academic progress.</li>
+        <li>Establish a divisional SEL framework that aligns with trauma-responsive practices, Indigenous ways of knowing, and equity-focused approaches.</li>
+      </ul>
+        </div>
+      </div>
+    </details>
   </article>
-  <article class="scorecard status-in-progress" data-status="in-progress">
+  <article class="scorecard status-operational" data-status="operational" data-topics="language academic">
     <div class="card-band">
       <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_2.5%20Access%20to%20French%20Immersion-1.png" alt="Action 2.5 icon"></div>
       <div class="card-band-info">
@@ -1097,10 +1195,10 @@
     </div>
     <div class="card-action-title">
       <p class="card-action-title-text">Make the French Immersion program easier to access by introducing new entry points and meeting the needs of all learners.</p>
-      <span class="card-status-badge">In Progress</span>
+      <span class="card-status-badge">Operational</span>
     </div>
     <div class="card-body">
-      <span class="progress-tag">In Progress</span>
+      <span class="progress-tag">Operational</span>
       <p class="card-summary">Make the French Immersion program easier to access by introducing new entry points and meeting the needs of all learners.</p>
     </div>
     <details class="card-details">
@@ -1148,7 +1246,7 @@
       </div>
     </details>
   </article>
-  <article class="scorecard status-in-progress" data-status="in-progress">
+  <article class="scorecard status-planned" data-status="planned" data-topics="language academic">
     <div class="card-band">
       <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_2.6%20Early%20Start%20French%20in%20English%20Program%20Schools-1.png" alt="Action 2.6 icon"></div>
       <div class="card-band-info">
@@ -1158,10 +1256,10 @@
     </div>
     <div class="card-action-title">
       <p class="card-action-title-text">Enhance French Language teaching and learning in English program schools.</p>
-      <span class="card-status-badge">In Progress</span>
+      <span class="card-status-badge">Planned</span>
     </div>
     <div class="card-body">
-      <span class="progress-tag">In Progress</span>
+      <span class="progress-tag">Planned</span>
       <p class="card-summary">Enhance French Language teaching and learning in English program schools.</p>
     </div>
     <details class="card-details">
@@ -1215,16 +1313,8 @@
         <span class="sp-summary-chevron"></span>
       </summary>
       <div class="sp-accordion-body">
-        <div class="filter-bar" id="filter-bar-3">
-          <span class="filter-label">Filter:</span>
-          <button class="filter-chip active" data-status="all">All</button>
-          <button class="filter-chip" data-status="at-risk"><span class="chip-dot"></span>At Risk</button>
-          <button class="filter-chip" data-status="planned"><span class="chip-dot"></span>Planned</button>
-          <button class="filter-chip" data-status="in-progress"><span class="chip-dot"></span>In Progress</button>
-          <button class="filter-chip" data-status="operational"><span class="chip-dot"></span>Operational</button>
-        </div>
         <div class="cards-grid" id="cards-grid-3">
-  <article class="scorecard status-in-progress" data-status="in-progress">
+  <article class="scorecard status-in-progress" data-status="in-progress" data-topics="academic">
     <div class="card-band">
       <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_3.1%20Learner%20Assessment-1.png" alt="Action 3.1 icon"></div>
       <div class="card-band-info">
@@ -1274,7 +1364,7 @@
       </div>
     </details>
   </article>
-  <article class="scorecard status-in-progress" data-status="in-progress">
+  <article class="scorecard status-in-progress" data-status="in-progress" data-topics="academic wellbeing">
     <div class="card-band">
       <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_3.2%20Student%20Voice%20and%20Agency.png" alt="Action 3.2 icon"></div>
       <div class="card-band-info">
@@ -1331,7 +1421,7 @@
       </div>
     </details>
   </article>
-  <article class="scorecard status-in-progress" data-status="in-progress">
+  <article class="scorecard status-in-progress" data-status="in-progress" data-topics="academic">
     <div class="card-band">
       <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_3.3%20Information%20Literacy.png" alt="Action 3.3 icon"></div>
       <div class="card-band-info">
@@ -1382,7 +1472,7 @@
       </div>
     </details>
   </article>
-  <article class="scorecard status-in-progress" data-status="in-progress">
+  <article class="scorecard status-operational" data-status="operational" data-topics="language equity">
     <div class="card-band">
       <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_3.4%20Multilingual%20Learners-1.png" alt="Action 3.4 icon"></div>
       <div class="card-band-info">
@@ -1392,10 +1482,10 @@
     </div>
     <div class="card-action-title">
       <p class="card-action-title-text">Develop a framework to assist staff in supporting multilingual learners in becoming proficient in English – and French in the context of French Immersion schools – by valuing and developing their first language.</p>
-      <span class="card-status-badge">In Progress</span>
+      <span class="card-status-badge">Operational</span>
     </div>
     <div class="card-body">
-      <span class="progress-tag">In Progress</span>
+      <span class="progress-tag">Operational</span>
       <p class="card-summary">Develop a framework to assist staff in supporting multilingual learners in becoming proficient in English – and French in the context of French Immersion schools – by valuing and developing their first language.</p>
     </div>
     <details class="card-details">
@@ -1447,7 +1537,7 @@
       </div>
     </details>
   </article>
-  <article class="scorecard status-in-progress" data-status="in-progress">
+  <article class="scorecard status-operational" data-status="operational" data-topics="wellbeing equity">
     <div class="card-band">
       <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_3.5%20Alternate%20Learning%20Spaces.png" alt="Action 3.5 icon"></div>
       <div class="card-band-info">
@@ -1457,10 +1547,10 @@
     </div>
     <div class="card-action-title">
       <p class="card-action-title-text">Create a flexible, short-term learning and therapeutic space for students needing to be away from their home school to support their successful return to a classroom.</p>
-      <span class="card-status-badge">In Progress</span>
+      <span class="card-status-badge">Operational</span>
     </div>
     <div class="card-body">
-      <span class="progress-tag">In Progress</span>
+      <span class="progress-tag">Operational</span>
       <p class="card-summary">Create a flexible, short-term learning and therapeutic space for students needing to be away from their home school to support their successful return to a classroom.</p>
     </div>
     <details class="card-details">
@@ -1500,7 +1590,7 @@
       </div>
     </details>
   </article>
-  <article class="scorecard status-in-progress" data-status="in-progress">
+  <article class="scorecard status-operational" data-status="operational" data-topics="academic career">
     <div class="card-band">
       <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_3.6%20Hands-on%20Learning%20and%20Career%20Development-1.png" alt="Action 3.6 icon"></div>
       <div class="card-band-info">
@@ -1510,10 +1600,10 @@
     </div>
     <div class="card-action-title">
       <p class="card-action-title-text">Enhance Project-Based Learning, Arts Education, Practical Arts, Active Healthy Living, Technical Vocational Education, Apprenticeship, Adult Education, and Career Development offerings, their connection to each other and to all classrooms.</p>
-      <span class="card-status-badge">In Progress</span>
+      <span class="card-status-badge">Operational</span>
     </div>
     <div class="card-body">
-      <span class="progress-tag">In Progress</span>
+      <span class="progress-tag">Operational</span>
       <p class="card-summary">Enhance Project-Based Learning, Arts Education, Practical Arts, Active Healthy Living, Technical Vocational Education, Apprenticeship, Adult Education, and Career Development offerings, their connection to each other and to all classrooms.</p>
     </div>
     <details class="card-details">
@@ -1568,16 +1658,8 @@
         <span class="sp-summary-chevron"></span>
       </summary>
       <div class="sp-accordion-body">
-        <div class="filter-bar" id="filter-bar-4">
-          <span class="filter-label">Filter:</span>
-          <button class="filter-chip active" data-status="all">All</button>
-          <button class="filter-chip" data-status="at-risk"><span class="chip-dot"></span>At Risk</button>
-          <button class="filter-chip" data-status="planned"><span class="chip-dot"></span>Planned</button>
-          <button class="filter-chip" data-status="in-progress"><span class="chip-dot"></span>In Progress</button>
-          <button class="filter-chip" data-status="operational"><span class="chip-dot"></span>Operational</button>
-        </div>
         <div class="cards-grid" id="cards-grid-4">
-  <article class="scorecard status-in-progress" data-status="in-progress">
+  <article class="scorecard status-operational" data-status="operational" data-topics="equity">
     <div class="card-band">
       <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_4.1%20Safe,%20Modern,%20%20Accessible%20Spaces-1.png" alt="Action 4.1 icon"></div>
       <div class="card-band-info">
@@ -1587,10 +1669,10 @@
     </div>
     <div class="card-action-title">
       <p class="card-action-title-text">Build safe, modern, and accessible spaces for learning and work in all schools and workplaces, both indoors and outdoors.</p>
-      <span class="card-status-badge">In Progress</span>
+      <span class="card-status-badge">Operational</span>
     </div>
     <div class="card-body">
-      <span class="progress-tag">In Progress</span>
+      <span class="progress-tag">Operational</span>
       <p class="card-summary">Building safe, modern, and accessible spaces for learning and work in all schools and workplaces, both indoors and outdoors.</p>
     </div>
     <details class="card-details">
@@ -1625,7 +1707,7 @@
       </div>
     </details>
   </article>
-  <article class="scorecard status-in-progress" data-status="in-progress">
+  <article class="scorecard status-in-progress" data-status="in-progress" data-topics="equity wellbeing">
     <div class="card-band">
       <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_4.2%20Transportation%20Equity-1.png" alt="Action 4.2 icon"></div>
       <div class="card-band-info">
@@ -1692,7 +1774,7 @@
       </div>
     </details>
   </article>
-  <article class="scorecard status-in-progress" data-status="in-progress">
+  <article class="scorecard status-operational" data-status="operational" data-topics="equity wellbeing">
     <div class="card-band">
       <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_4.3%20Full-Day%20Kindergarten-1.png" alt="Action 4.3 icon"></div>
       <div class="card-band-info">
@@ -1702,10 +1784,10 @@
     </div>
     <div class="card-action-title">
       <p class="card-action-title-text">Implement universal full-day Kindergarten and enhance access to before-and-after school care.</p>
-      <span class="card-status-badge">In Progress</span>
+      <span class="card-status-badge">Operational</span>
     </div>
     <div class="card-body">
-      <span class="progress-tag">In Progress</span>
+      <span class="progress-tag">Operational</span>
       <p class="card-summary">Implement universal full-day Kindergarten and enhance access to before-and-after school care.</p>
     </div>
     <details class="card-details">
@@ -1750,7 +1832,7 @@
       </div>
     </details>
   </article>
-  <article class="scorecard status-in-progress" data-status="in-progress">
+  <article class="scorecard status-operational" data-status="operational" data-topics="equity wellbeing">
     <div class="card-band">
       <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_4.4%20Healthy%20Foods%20and%20Beverages%20Program.png" alt="Action 4.4 icon"></div>
       <div class="card-band-info">
@@ -1760,10 +1842,10 @@
     </div>
     <div class="card-action-title">
       <p class="card-action-title-text">Implement a universal nutrition program.</p>
-      <span class="card-status-badge">In Progress</span>
+      <span class="card-status-badge">Operational</span>
     </div>
     <div class="card-body">
-      <span class="progress-tag">In Progress</span>
+      <span class="progress-tag">Operational</span>
       <p class="card-summary">Implement a universal nutrition program.</p>
     </div>
     <details class="card-details">
@@ -1827,7 +1909,7 @@
       </div>
     </details>
   </article>
-  <article class="scorecard status-in-progress" data-status="in-progress">
+  <article class="scorecard status-operational" data-status="operational" data-topics="indigenous equity">
     <div class="card-band">
       <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_4.5%20UN%E2%80%99s%20Sustainable%20Development%20Goals.png" alt="Action 4.5 icon"></div>
       <div class="card-band-info">
@@ -1837,10 +1919,10 @@
     </div>
     <div class="card-action-title">
       <p class="card-action-title-text">Involve the whole school in learning and teaching about the United Nations&#x27; Sustainable Development Goals and the United Nations Declaration on the Rights of Indigenous Peoples, with an emphasis on Indigenous worldviews and land-based education.</p>
-      <span class="card-status-badge">In Progress</span>
+      <span class="card-status-badge">Operational</span>
     </div>
     <div class="card-body">
-      <span class="progress-tag">In Progress</span>
+      <span class="progress-tag">Operational</span>
       <p class="card-summary">Involve the whole school in learning and teaching about the United Nations&#x27; Sustainable Development Goals and the United Nations Declaration on the Rights of Indigenous Peoples.</p>
     </div>
     <details class="card-details">
@@ -1890,7 +1972,7 @@
       </div>
     </details>
   </article>
-  <article class="scorecard status-in-progress" data-status="in-progress">
+  <article class="scorecard status-operational" data-status="operational" data-topics="equity">
     <div class="card-band">
       <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_4.6%20Employment%20Equity-1.png" alt="Action 4.6 icon"></div>
       <div class="card-band-info">
@@ -1900,10 +1982,10 @@
     </div>
     <div class="card-action-title">
       <p class="card-action-title-text">Fulfil the aspirations, protocols, and practices of the Employment Equity Policy.</p>
-      <span class="card-status-badge">In Progress</span>
+      <span class="card-status-badge">Operational</span>
     </div>
     <div class="card-body">
-      <span class="progress-tag">In Progress</span>
+      <span class="progress-tag">Operational</span>
       <p class="card-summary">Fulfil the aspirations, protocols, and practices of the Employment Equity Policy.</p>
     </div>
     <details class="card-details">
@@ -1963,7 +2045,7 @@
       </div>
     </details>
   </article>
-  <article class="scorecard status-in-progress" data-status="in-progress">
+  <article class="scorecard status-planned" data-status="planned" data-topics="equity career indigenous">
     <div class="card-band">
       <div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_4.7%20Teacher%20Development%20Program-1.png" alt="Action 4.7 icon"></div>
       <div class="card-band-info">
@@ -1973,10 +2055,10 @@
     </div>
     <div class="card-action-title">
       <p class="card-action-title-text">Implement a program that supports students from historically oppressed, marginalized, and underrepresented groups to complete two post-secondary degrees and start their teaching career in LRSD.</p>
-      <span class="card-status-badge">In Progress</span>
+      <span class="card-status-badge">Planned</span>
     </div>
     <div class="card-body">
-      <span class="progress-tag">In Progress</span>
+      <span class="progress-tag">Planned</span>
       <p class="card-summary">Implement a program that supports students from historically oppressed, marginalized, and underrepresented groups to complete two post-secondary degrees and start their teaching career in LRSD.</p>
     </div>
     <details class="card-details">
@@ -2057,28 +2139,58 @@
     });
   });
 
-  // Per-grid filter chips
-  document.querySelectorAll('.filter-bar').forEach(function(filterBar) {
-    var barId = filterBar.id;
-    var gridNum = barId.replace('filter-bar-', '');
-    var grid = document.getElementById('cards-grid-' + gridNum);
-    if (!grid) return;
-    var allCards = grid.querySelectorAll('.scorecard');
-    filterBar.addEventListener('click', function(e) {
+  // Global filter
+  var activeStatus = 'all';
+  var activeTopic = 'all';
+
+  function applyFilters() {
+    var allCards = document.querySelectorAll('.cards-grid .scorecard');
+    allCards.forEach(function(card) {
+      var statusMatch = (activeStatus === 'all') || (card.getAttribute('data-status') === activeStatus);
+      var topics = (card.getAttribute('data-topics') || '').split(' ');
+      var topicMatch = (activeTopic === 'all') || topics.indexOf(activeTopic) !== -1;
+      if (statusMatch && topicMatch) {
+        card.classList.remove('js-filtered-out');
+      } else {
+        card.classList.add('js-filtered-out');
+      }
+    });
+
+    // Auto-open sections that have visible cards when filtering; auto-collapse empty sections
+    document.querySelectorAll('.sp-section').forEach(function(section) {
+      var accordion = section.querySelector('.sp-accordion');
+      var visibleCards = section.querySelectorAll('.scorecard:not(.js-filtered-out)');
+      if (activeStatus === 'all' && activeTopic === 'all') {
+        // Reset: collapse all
+        if (accordion) accordion.removeAttribute('open');
+      } else {
+        if (visibleCards.length > 0) {
+          if (accordion) accordion.setAttribute('open', '');
+        } else {
+          if (accordion) accordion.removeAttribute('open');
+        }
+      }
+    });
+  }
+
+  var globalFilterBar = document.getElementById('global-filter-bar');
+  if (globalFilterBar) {
+    globalFilterBar.addEventListener('click', function(e) {
       var chip = e.target.closest('.filter-chip');
       if (!chip) return;
-      filterBar.querySelectorAll('.filter-chip').forEach(function(c) { c.classList.remove('active'); });
-      chip.classList.add('active');
-      var status = chip.getAttribute('data-status');
-      allCards.forEach(function(card) {
-        if (status === 'all' || card.getAttribute('data-status') === status) {
-          card.classList.remove('js-filtered-out');
-        } else {
-          card.classList.add('js-filtered-out');
-        }
-      });
+      var filterType = chip.getAttribute('data-filter-type');
+      if (filterType === 'status') {
+        activeStatus = chip.getAttribute('data-status');
+        globalFilterBar.querySelectorAll('[data-filter-type="status"]').forEach(function(c) { c.classList.remove('active'); });
+        chip.classList.add('active');
+      } else if (filterType === 'topic') {
+        activeTopic = chip.getAttribute('data-topic');
+        globalFilterBar.querySelectorAll('[data-filter-type="topic"]').forEach(function(c) { c.classList.remove('active'); });
+        chip.classList.add('active');
+      }
+      applyFilters();
     });
-  });
+  }
 })();
 </script>
 </body>
