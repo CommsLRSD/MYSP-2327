@@ -230,7 +230,7 @@
 	}
 	
 	.card-band-info {
-		flex: 1; z-index: 1;
+		flex: 1; z-index: 1; min-width: 0;
 	}
 	
 	.card-band-num-label {
@@ -266,6 +266,33 @@
 	.status-at-risk .card-status-badge {
 		background: #b33528; color: #fff;
 	}
+	/* ── Gauge overlay ── */
+
+	.gauge-wrap {
+		display: flex; align-items: center; gap: 0.5rem; margin-top: 0.65rem; position: relative; z-index: 2;
+	}
+
+	.gauge-track {
+		flex: 1; position: relative; height: 7px; border-radius: 4px; background: linear-gradient(to right, #b33528 0%, #b33528 10%, #3491cd 10%, #3491cd 30%, #fbad1c 30%, #fbad1c 90%, #a3b939 90%, #a3b939 100%); box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2); overflow: visible;
+	}
+
+	.gauge-dim {
+		position: absolute; top: 0; right: 0; height: 100%; background: rgba(0, 0, 0, 0.38); border-radius: 0 4px 4px 0; pointer-events: none;
+	}
+
+	.gauge-pip {
+		position: absolute; top: 50%; width: 14px; height: 14px; background: #fff; border-radius: 50%; transform: translate(-50%, -50%); box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.28), 0 2px 4px rgba(0, 0, 0, 0.3); z-index: 3; pointer-events: none;
+	}
+
+	.gauge-pct-label {
+		font-size: 0.75rem; font-weight: 700; color: rgba(255, 255, 255, 0.95); white-space: nowrap; font-family: var(--body-font); min-width: 2.4rem; text-align: right;
+	}
+
+	.status-in-progress .gauge-pct-label,
+	.status-operational .gauge-pct-label {
+		color: rgba(0, 0, 0, 0.65);
+	}
+
 	/* ── Card action title (neutral background) ── */
 	
 	.card-action-title {
@@ -489,7 +516,7 @@
 	<!-- Cards grid -->
 	<div class="cards-grid" id="cards-grid">
 		<!-- 1.1 — In Progress -->
-		<article class="scorecard status-in-progress" data-status="in-progress">
+		<article class="scorecard status-in-progress" data-status="in-progress" data-progress="65">
 			<div class="card-band">
 				<div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/medialib/47478-lr-icons_1-1-community-schools-network.8f627b62151.png" alt="Community Schools Network icon" class="fr-dib">
 
@@ -575,7 +602,7 @@
 			</details>
 		</article>
 		<!-- 1.2 — In Progress -->
-		<article class="scorecard status-in-progress" data-status="in-progress">
+		<article class="scorecard status-in-progress" data-status="in-progress" data-progress="50">
 			<div class="card-band">
 				<div class="card-band-icon">
 
@@ -650,7 +677,7 @@
 			</details>
 		</article>
 		<!-- 1.3 — Operational -->
-		<article class="scorecard status-operational" data-status="operational">
+		<article class="scorecard status-operational" data-status="operational" data-progress="95">
 			<div class="card-band">
 				<div class="card-band-icon">
 
@@ -718,7 +745,7 @@
 			</details>
 		</article>
 		<!-- 1.4 — In Progress -->
-		<article class="scorecard status-in-progress" data-status="in-progress">
+		<article class="scorecard status-in-progress" data-status="in-progress" data-progress="58">
 			<div class="card-band">
 				<div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.4-Indigenous%20Language-1.png" alt="Indigenous Language Nests icon" class="fr-dib"></div>
 				<div class="card-band-info">
@@ -782,7 +809,7 @@
 			</details>
 		</article>
 		<!-- 1.5 — Operational -->
-		<article class="scorecard status-operational" data-status="operational">
+		<article class="scorecard status-operational" data-status="operational" data-progress="92">
 			<div class="card-band">
 				<div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/0/47478-LR-Icons_1.5-Indigenous%20Focus-1.png" alt="Indigenous literature and perspectives icon" class="fr-dib"></div>
 				<div class="card-band-info">
@@ -843,7 +870,7 @@
 			</details>
 		</article>
 		<!-- 1.6 — In Progress -->
-		<article class="scorecard status-in-progress" data-status="in-progress">
+		<article class="scorecard status-in-progress" data-status="in-progress" data-progress="40">
 			<div class="card-band">
 				<div class="card-band-icon"><img src="https://media.lrsd.net/media/Default/frl/47478-lr-icons_1-6-international-heritage-languages.75189877945.png" alt="International and Heritage Languages icon" class="fr-dib"></div>
 				<div class="card-band-info">
@@ -902,6 +929,32 @@
 <script>
 	(function()
 	{
+		/* ── Gauge rendering ── */
+		document.querySelectorAll('#cards-grid .scorecard[data-progress]').forEach(function(card)
+		{
+			var pct = parseInt(card.getAttribute('data-progress'), 10);
+			var info = card.querySelector('.card-band-info');
+			if (!info || isNaN(pct) || pct < 0 || pct > 100) return;
+			var wrap = document.createElement('div');
+			wrap.className = 'gauge-wrap';
+			var track = document.createElement('div');
+			track.className = 'gauge-track';
+			var dim = document.createElement('div');
+			dim.className = 'gauge-dim';
+			dim.style.left = pct + '%';
+			var pip = document.createElement('div');
+			pip.className = 'gauge-pip';
+			pip.style.left = pct + '%';
+			track.appendChild(dim);
+			track.appendChild(pip);
+			var label = document.createElement('span');
+			label.className = 'gauge-pct-label';
+			label.textContent = pct + '%';
+			wrap.appendChild(track);
+			wrap.appendChild(label);
+			info.appendChild(wrap);
+		});
+
 		/* ── Mark wrapper as JS-active (enables animations & tab hiding) ── */
 		var wrapper = document.getElementById('sp1-wrapper');
 		if (wrapper) wrapper.classList.add('js-ready');
