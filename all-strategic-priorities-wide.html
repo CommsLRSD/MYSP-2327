@@ -323,46 +323,24 @@ background: #eef1f6;
 padding: 0 0 4rem;
 }
 
-/* ── Hero banner ── */
+/* ── Hero banner (light theme) ── */
 .wide-hero {
-position: relative;
-background: linear-gradient(135deg, #1a3a58 0%, #264e74 55%, #2d6494 100%);
-padding: 3rem 3rem 3rem;
-color: #fff;
+background: var(--white);
+border-bottom: 1px solid rgba(38,78,116,0.1);
+padding: 2.25rem 3rem;
 display: flex;
 align-items: center;
 gap: 2rem;
-overflow: hidden;
 margin-bottom: 2.5rem;
-}
-
-.wide-hero::before {
-content: '';
-position: absolute;
-top: -50px; right: -50px;
-width: 300px; height: 300px;
-border-radius: 50%;
-background: rgba(255,255,255,0.05);
-pointer-events: none;
-}
-
-.wide-hero::after {
-content: '';
-position: absolute;
-bottom: -70px; left: 35%;
-width: 250px; height: 250px;
-border-radius: 50%;
-background: rgba(255,255,255,0.04);
-pointer-events: none;
 }
 
 .wide-hero-icon {
 flex-shrink: 0;
-width: 100px; height: 100px;
-background: rgba(255,255,255,0.12);
+width: 90px; height: 90px;
+background: rgba(38,78,116,0.06);
+border: 1.5px solid rgba(38,78,116,0.12);
 border-radius: 50%;
 display: flex; align-items: center; justify-content: center;
-z-index: 1;
 opacity: 0;
 animation: flipIn 0.9s ease-out 0.2s forwards;
 }
@@ -370,32 +348,31 @@ animation: flipIn 0.9s ease-out 0.2s forwards;
 .wide-hero-icon img {
 width: 64px; height: 64px;
 object-fit: contain;
-filter: brightness(0) invert(1);
 }
 
-.wide-hero-text { z-index: 1; }
+.wide-hero-text { flex: 1; }
 
 .wide-hero-label {
-font-size: 0.82rem;
+font-size: 0.8rem;
 font-weight: 700;
 text-transform: uppercase;
 letter-spacing: 0.12em;
-color: rgba(255,255,255,0.65);
+color: rgba(38,78,116,0.6);
 margin: 0 0 0.2rem;
 }
 
 .wide-hero-title {
 font-family: var(--header-font);
-font-size: 2.6rem;
+font-size: 2.4rem;
 font-weight: 700;
-color: #fff;
-margin: 0 0 0.3rem;
+color: var(--primary);
+margin: 0 0 0.2rem;
 line-height: 1.1;
 }
 
 .wide-hero-sub {
-font-size: 0.92rem;
-color: rgba(255,255,255,0.65);
+font-size: 0.9rem;
+color: #666;
 margin: 0;
 }
 
@@ -551,11 +528,20 @@ background: #ffffff;
 opacity: 0.95;
 border-radius: 10px;
 display: flex; align-items: center; justify-content: center;
+overflow: hidden;
+}
+
+/* Suppress stray paragraph/break nodes CMS may inject inside icon wrapper */
+.card-band-icon p,
+.card-band-icon br {
+display: none;
 }
 
 .card-band-icon img {
 width: 56px; height: 56px;
 object-fit: contain;
+display: block;
+flex-shrink: 0;
 }
 
 .card-band-info { flex: 1; z-index: 1; }
@@ -797,6 +783,28 @@ font-size: 0.95rem;
 }
 .no-results-msg.visible { display: block; }
 
+/* ── Priority-filtered section visibility ── */
+.wide-section.priority-hidden {
+display: none;
+}
+
+/* ── "All Priorities" nav item (no icon) ── */
+.pnav-item-all {
+display: flex;
+align-items: center;
+gap: 0.7rem;
+padding: 0.5rem 0.75rem;
+border-radius: 10px;
+text-decoration: none;
+transition: background 0.18s;
+border: 1px solid transparent;
+cursor: pointer;
+margin-bottom: 0.4rem;
+}
+.pnav-item-all:hover { background: rgba(38,78,116,0.06); text-decoration: none; }
+.pnav-item-all.active { background: rgba(38,78,116,0.08); border-color: rgba(38,78,116,0.15); }
+.pnav-item-all .pnav-title { font-size: 0.85rem; }
+
 /* ── Responsive ── */
 @media (max-width: 1500px) {
 .cards-grid { grid-template-columns: repeat(3, 1fr); }
@@ -847,7 +855,13 @@ Back to MYSP Home
 <div>
 <p class="priority-nav-label">Strategic Priorities</p>
 <nav class="priority-nav" id="priority-nav">
-<a href="#section-belonging" class="pnav-item active" data-section="belonging">
+<button class="pnav-item-all active" data-section="all" type="button">
+<div class="pnav-text">
+<p class="pnav-title">All Priorities</p>
+</div>
+<span class="pnav-badge" id="badge-all">25</span>
+</button>
+<button class="pnav-item" data-section="belonging" type="button">
 <div class="pnav-icon">
 <img src="https://media.lrsd.net/media/Default/frl/0/Belonging-icononly@2x-8-2.png" alt="Belonging">
 </div>
@@ -856,8 +870,8 @@ Back to MYSP Home
 <p class="pnav-title">Belonging</p>
 </div>
 <span class="pnav-badge">6</span>
-</a>
-<a href="#section-mastery" class="pnav-item" data-section="mastery">
+</button>
+<button class="pnav-item" data-section="mastery" type="button">
 <div class="pnav-icon">
 <img src="https://media.lrsd.net/media/Default/frl/0/Mastery-icononly@2x-8-1.png" alt="Mastery">
 </div>
@@ -866,8 +880,8 @@ Back to MYSP Home
 <p class="pnav-title">Mastery</p>
 </div>
 <span class="pnav-badge">6</span>
-</a>
-<a href="#section-independence" class="pnav-item" data-section="independence">
+</button>
+<button class="pnav-item" data-section="independence" type="button">
 <div class="pnav-icon">
 <img src="https://media.lrsd.net/media/Default/frl/0/Independence-icononly@2x-8-1.png" alt="Independence">
 </div>
@@ -876,8 +890,8 @@ Back to MYSP Home
 <p class="pnav-title">Independence</p>
 </div>
 <span class="pnav-badge">6</span>
-</a>
-<a href="#section-generosity" class="pnav-item" data-section="generosity">
+</button>
+<button class="pnav-item" data-section="generosity" type="button">
 <div class="pnav-icon">
 <img src="https://media.lrsd.net/media/Default/frl/0/Generosity-icononly@2x-8-1.png" alt="Generosity">
 </div>
@@ -886,7 +900,7 @@ Back to MYSP Home
 <p class="pnav-title">Generosity</p>
 </div>
 <span class="pnav-badge">7</span>
-</a>
+</button>
 </nav>
 </div>
 
@@ -2667,34 +2681,63 @@ inner.querySelector('[data-pane="' + tabKey + '"]').classList.add('active');
 });
 });
 
-// Global filter
+// Filters
+var activePriority = 'all';
 var activeStatus = 'all';
 var activeTopic = 'all';
 
 function applyFilters() {
-document.querySelectorAll('.cards-grid .scorecard').forEach(function(card) {
+// 1. Show/hide entire sections based on priority filter
+document.querySelectorAll('.wide-section').forEach(function(section) {
+var sectionId = section.id.replace('section-', '');
+var priorityMatch = (activePriority === 'all') || (sectionId === activePriority);
+section.classList.toggle('priority-hidden', !priorityMatch);
+});
+
+// 2. Filter individual cards by status + topic within visible sections
+document.querySelectorAll('.wide-section:not(.priority-hidden) .scorecard').forEach(function(card) {
 var statusMatch = (activeStatus === 'all') || (card.getAttribute('data-status') === activeStatus);
 var topics = (card.getAttribute('data-topics') || '').split(' ');
 var topicMatch = (activeTopic === 'all') || topics.indexOf(activeTopic) !== -1;
-if (statusMatch && topicMatch) {
-card.classList.remove('js-filtered-out');
-} else {
-card.classList.add('js-filtered-out');
-}
+card.classList.toggle('js-filtered-out', !(statusMatch && topicMatch));
 });
 
-// Update nav badges with visible card counts
+// 3. Update nav badges with visible card counts per section
+var totalVisible = 0;
 document.querySelectorAll('.wide-section').forEach(function(section) {
 var sectionId = section.id.replace('section-', '');
-var visibleCards = section.querySelectorAll('.scorecard:not(.js-filtered-out)').length;
+var visibleCards = section.classList.contains('priority-hidden')
+? 0
+: section.querySelectorAll('.scorecard:not(.js-filtered-out)').length;
+totalVisible += visibleCards;
 var navItem = document.querySelector('.pnav-item[data-section="' + sectionId + '"]');
 if (navItem) {
 var badge = navItem.querySelector('.pnav-badge');
 if (badge) badge.textContent = visibleCards;
 }
 });
+var badgeAll = document.getElementById('badge-all');
+if (badgeAll) badgeAll.textContent = totalVisible;
 }
 
+// Priority nav click
+var priorityNav = document.getElementById('priority-nav');
+if (priorityNav) {
+priorityNav.addEventListener('click', function(e) {
+var item = e.target.closest('.pnav-item, .pnav-item-all');
+if (!item) return;
+activePriority = item.getAttribute('data-section');
+priorityNav.querySelectorAll('.pnav-item, .pnav-item-all').forEach(function(i) { i.classList.remove('active'); });
+item.classList.add('active');
+applyFilters();
+// Scroll main content back to top when switching priority
+var content = document.getElementById('wide-content');
+if (content) content.scrollTop = 0;
+window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+}
+
+// Status / Topic filter chips
 var globalFilterBar = document.getElementById('global-filter-bar');
 if (globalFilterBar) {
 globalFilterBar.addEventListener('click', function(e) {
@@ -2713,39 +2756,6 @@ chip.classList.add('active');
 applyFilters();
 });
 }
-
-// Active nav item on scroll (IntersectionObserver)
-var sections = document.querySelectorAll('.wide-section');
-var navItems = document.querySelectorAll('.pnav-item');
-
-if ('IntersectionObserver' in window) {
-var observer = new IntersectionObserver(function(entries) {
-entries.forEach(function(entry) {
-if (entry.isIntersecting) {
-var sectionId = entry.target.id.replace('section-', '');
-navItems.forEach(function(item) {
-item.classList.toggle('active', item.getAttribute('data-section') === sectionId);
-});
-}
-});
-}, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
-
-sections.forEach(function(section) { observer.observe(section); });
-}
-
-// Smooth scroll for nav links
-document.querySelectorAll('.pnav-item[href]').forEach(function(link) {
-link.addEventListener('click', function(e) {
-var href = link.getAttribute('href');
-if (href && href.startsWith('#')) {
-e.preventDefault();
-var target = document.querySelector(href);
-if (target) {
-target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-}
-});
-});
 
 })();
 </script>
