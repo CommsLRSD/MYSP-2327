@@ -177,6 +177,10 @@
 	.scorecard {
 		background: var(--white); border-radius: 14px; box-shadow: var(--shadow-medium); overflow: hidden; display: flex; flex-direction: column; transition: box-shadow 0.25s, transform 0.2s;
 	}
+	
+	.scorecard::before {
+		content: ''; display: block; height: 5px; background: linear-gradient(90deg, #a3b939 25%, #fbad1c 25% 50%, #3491cd 50% 75%, #b33528 75%); flex-shrink: 0;
+	}
 	/* Only animate when JS is active (js-ready class on wrapper) */
 	
 	.js-ready .scorecard {
@@ -201,28 +205,38 @@
 	}
 	
 	.status-operational .card-band {
-		background: #a3b939;
+		background: linear-gradient(135deg, rgba(163, 185, 57, 0.08) 0%, #fff 60%);
 	}
 	
 	.status-in-progress .card-band {
-		background: #fbad1c;
+		background: linear-gradient(135deg, rgba(251, 173, 28, 0.08) 0%, #fff 60%);
 	}
 	
 	.status-planned .card-band {
-		background: #3491cd;
+		background: linear-gradient(135deg, rgba(52, 145, 205, 0.08) 0%, #fff 60%);
 	}
 	
 	.status-at-risk .card-band {
-		background: #b33528;
+		background: linear-gradient(135deg, rgba(179, 53, 40, 0.08) 0%, #fff 60%);
 	}
 	
 	.card-band-number {
-		position: absolute; right: -0.1rem; top: 50%; transform: translateY(-50%); font-family: var(--header-font); font-size: 7rem; font-weight: 700; line-height: 1; opacity: 0.15; color: #fff; pointer-events: none; user-select: none; letter-spacing: -0.02em;
+		position: absolute; right: -0.1rem; top: 50%; transform: translateY(-50%); font-family: var(--header-font); font-size: 7rem; font-weight: 700; line-height: 1; pointer-events: none; user-select: none; letter-spacing: -0.02em;
 	}
 	
+	.status-operational .card-band-number { color: #a3b939; opacity: 0.22; }
+	.status-in-progress .card-band-number { color: #fbad1c; opacity: 0.45; }
+	.status-planned .card-band-number { color: #3491cd; opacity: 0.22; }
+	.status-at-risk .card-band-number { color: #b33528; opacity: 0.22; }
+	
 	.card-band-icon {
-		flex-shrink: 0; width: 120px; height: 120px; background: #ffffff; opacity: 0.95; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+		flex-shrink: 0; width: 120px; height: 120px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
 	}
+	
+	.status-operational .card-band-icon { background: rgba(163, 185, 57, 0.13); }
+	.status-in-progress .card-band-icon { background: rgba(251, 173, 28, 0.13); }
+	.status-planned .card-band-icon { background: rgba(52, 145, 205, 0.13); }
+	.status-at-risk .card-band-icon { background: rgba(179, 53, 40, 0.09); }
 	
 	.card-band-icon img {
 		width: 85px; height: 85px; object-fit: contain;
@@ -233,18 +247,13 @@
 	}
 	
 	.card-band-num-label {
-		font-family: var(--header-font); font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255, 255, 255, 0.9); margin: 0;
+		font-family: var(--header-font); font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin: 0;
 	}
 	
-	.status-in-progress .card-band-num-label,
-	.status-operational .card-band-num-label {
-		color: rgba(0, 0, 0, 0.65);
-	}
-	
-	.status-in-progress .card-band-number,
-	.status-operational .card-band-number {
-		color: #000;
-	}
+	.status-operational .card-band-num-label { color: #5a6c0a; }
+	.status-in-progress .card-band-num-label { color: #7a5200; }
+	.status-planned .card-band-num-label { color: #1e6190; }
+	.status-at-risk .card-band-num-label { color: #b33528; }
 	
 	.card-status-badge {
 		display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.75rem; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.5rem;
@@ -457,6 +466,18 @@
 		.hero-icon-wrap img {
 			width: 52px; height: 52px;
 		}
+		.mysp-page-header {
+			flex-direction: column; align-items: flex-start; gap: 1.25rem; padding: 2rem 1.5rem 2rem;
+		}
+		.mysp-header-logo {
+			height: 90px;
+		}
+		.mysp-header-divider {
+			display: none;
+		}
+		.mysp-header-title {
+			font-size: 1.9rem;
+		}
 		.card-action-title-text {
 			font-size: 0.95rem;
 		}
@@ -488,11 +509,11 @@
 	}
 	
 	.sp-summary-icon {
-		width: 60px; height: 60px; background: rgba(255, 255, 255, 0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+		width: 60px; height: 60px; background: rgba(255, 255, 255, 0.95); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 	}
 	
 	.sp-summary-icon img {
-		width: 38px; height: 38px; object-fit: contain; filter: brightness(0) invert(1);
+		width: 38px; height: 38px; object-fit: contain;
 	}
 	
 	.sp-summary-text {
@@ -519,16 +540,40 @@
 		padding: 1.5rem 0 0; background: var(--white);
 	}
 	
-	.page-title-area {
-		margin: 1.5rem 0 2rem;
+	.mysp-page-header {
+		position: relative; background: #fff; border-radius: 16px; padding: 2.5rem 2.5rem 2.75rem; margin: 1rem 0 2rem; box-shadow: 0 6px 28px rgba(38, 78, 116, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06); display: flex; align-items: center; gap: 2.5rem; overflow: hidden;
 	}
 	
-	.page-title-area h1 {
-		font-family: var(--header-font); font-size: 2rem; color: var(--primary); margin: 0 0 0.5rem;
+	.mysp-page-header::before {
+		content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, #a3b939 25%, #fbad1c 25% 50%, #3491cd 50% 75%, #b33528 75%);
 	}
 	
-	.page-title-area p {
-		color: #555; margin: 0;
+	.mysp-page-header::after {
+		content: ''; position: absolute; top: -80px; right: -80px; width: 260px; height: 260px; border-radius: 50%; background: rgba(38, 78, 116, 0.04); pointer-events: none;
+	}
+	
+	.mysp-header-logo {
+		height: 150px; width: auto; object-fit: contain; flex-shrink: 0; z-index: 1;
+	}
+	
+	.mysp-header-divider {
+		width: 1px; height: 100px; background: rgba(38, 78, 116, 0.15); flex-shrink: 0; z-index: 1;
+	}
+	
+	.mysp-header-content {
+		flex: 1; z-index: 1;
+	}
+	
+	.mysp-header-eyebrow {
+		font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--primary); opacity: 0.65; margin: 0 0 0.3rem;
+	}
+	
+	.mysp-header-title {
+		font-family: var(--header-font); font-size: 2.75rem; font-weight: 700; color: var(--primary); margin: 0 0 0.4rem; line-height: 1.1;
+	}
+	
+	.mysp-header-subtitle {
+		font-size: 0.95rem; color: #666; margin: 0.35rem 0 0;
 	}
 	/* ── Detail pane extras ── */
 	
@@ -581,11 +626,14 @@
 
 </style>
 <div id="sp1-wrapper"><a class="back-link" href="https://www.lrsd.net/page/26539/multi-year-strategic-plan-2023-2027">&larr; Back to MYSP Home</a>
-	<div class="page-title-area">
-
-		<h1>Multi-Year Strategic Plan 2023-2027</h1>
-
-		<p>Louis Riel School Division</p>
+	<div class="mysp-page-header">
+		<img src="https://media.lrsd.net/media/Default/medialib/lrsd-v-4c.96402163385.png" alt="Louis Riel School Division" class="mysp-header-logo">
+		<div class="mysp-header-divider"></div>
+		<div class="mysp-header-content">
+			<p class="mysp-header-eyebrow">Louis Riel School Division</p>
+			<h1 class="mysp-header-title">Multi-Year Strategic Plan 2023–2027</h1>
+			<p class="mysp-header-subtitle">All Strategic Priorities &amp; Progress</p>
+		</div>
 	</div>
 	<div class="global-filter-bar" id="global-filter-bar">
 		<div class="global-filter-row"><span class="filter-row-label">Status:</span>
