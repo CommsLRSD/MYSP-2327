@@ -177,6 +177,7 @@
 	.scorecard {
 		background: var(--white); border-radius: 14px; box-shadow: var(--shadow-medium); overflow: hidden; display: flex; flex-direction: column; transition: box-shadow 0.25s, transform 0.2s;
 	}
+	
 	/* Only animate when JS is active (js-ready class on wrapper) */
 	
 	.js-ready .scorecard {
@@ -220,6 +221,11 @@
 		position: absolute; right: -0.1rem; top: 50%; transform: translateY(-50%); font-family: var(--header-font); font-size: 7rem; font-weight: 700; line-height: 1; opacity: 0.15; color: #fff; pointer-events: none; user-select: none; letter-spacing: -0.02em;
 	}
 	
+	.status-in-progress .card-band-number,
+	.status-operational .card-band-number {
+		color: #000;
+	}
+	
 	.card-band-icon {
 		flex-shrink: 0; width: 120px; height: 120px; background: #ffffff; opacity: 0.95; border-radius: 12px; display: flex; align-items: center; justify-content: center;
 	}
@@ -239,11 +245,6 @@
 	.status-in-progress .card-band-num-label,
 	.status-operational .card-band-num-label {
 		color: rgba(0, 0, 0, 0.65);
-	}
-	
-	.status-in-progress .card-band-number,
-	.status-operational .card-band-number {
-		color: #000;
 	}
 	
 	.card-status-badge {
@@ -457,6 +458,18 @@
 		.hero-icon-wrap img {
 			width: 52px; height: 52px;
 		}
+		.mysp-page-header {
+			flex-direction: column; align-items: flex-start; gap: 1.25rem; padding: 2rem 1.5rem 2rem;
+		}
+		.mysp-header-logo {
+			height: 90px;
+		}
+		.mysp-header-divider {
+			display: none;
+		}
+		.mysp-header-title {
+			font-size: 1.9rem;
+		}
 		.card-action-title-text {
 			font-size: 0.95rem;
 		}
@@ -472,7 +485,11 @@
 	}
 	
 	.sp-accordion-summary {
-		list-style: none; background: linear-gradient(135deg, #1a3a58 0%, #264e74 55%, #2d6494 100%); padding: 1.5rem 2rem; cursor: pointer; display: flex; align-items: center; user-select: none;
+		list-style: none; background: #fff; border-bottom: 1px solid rgba(38, 78, 116, 0.08); padding: 1.8125rem 2rem 1.5rem; cursor: pointer; display: flex; align-items: center; user-select: none; position: relative;
+	}
+	
+	.sp-accordion-summary::before {
+		content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, #b33528 25%, #3491cd 25% 50%, #fbad1c 50% 75%, #a3b939 75%);
 	}
 	
 	.sp-accordion-summary::-webkit-details-marker {
@@ -488,27 +505,27 @@
 	}
 	
 	.sp-summary-icon {
-		width: 60px; height: 60px; background: rgba(255, 255, 255, 0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+		width: 60px; height: 60px; background: rgba(38, 78, 116, 0.07); border: 2px solid rgba(38, 78, 116, 0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 	}
 	
 	.sp-summary-icon img {
-		width: 38px; height: 38px; object-fit: contain; filter: brightness(0) invert(1);
+		width: 38px; height: 38px; object-fit: contain;
 	}
 	
 	.sp-summary-text {
-		color: #fff;
+		color: var(--primary);
 	}
 	
 	.sp-summary-label {
-		font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255, 255, 255, 0.7); margin: 0;
+		font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(38, 78, 116, 0.6); margin: 0;
 	}
 	
 	.sp-summary-title {
-		font-family: var(--header-font); font-size: 2.4rem; font-weight: 700; color: #fff; margin: 0; line-height: 1.1;
+		font-family: var(--header-font); font-size: 2.4rem; font-weight: 700; color: var(--primary); margin: 0; line-height: 1.1;
 	}
 	
 	.sp-summary-chevron {
-		margin-left: auto; width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 10px solid rgba(255, 255, 255, 0.7); transition: transform 0.25s; flex-shrink: 0;
+		margin-left: auto; width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 10px solid rgba(38, 78, 116, 0.45); transition: transform 0.25s; flex-shrink: 0;
 	}
 	
 	.sp-accordion[open] .sp-summary-chevron {
@@ -519,16 +536,32 @@
 		padding: 1.5rem 0 0; background: var(--white);
 	}
 	
-	.page-title-area {
-		margin: 1.5rem 0 2rem;
+	.mysp-page-header {
+		display: flex; align-items: center; gap: 2.5rem; padding: 1.5rem 0 2rem; margin: 0 0 2rem;
 	}
 	
-	.page-title-area h1 {
-		font-family: var(--header-font); font-size: 2rem; color: var(--primary); margin: 0 0 0.5rem;
+	.mysp-header-logo {
+		height: 150px; width: auto; object-fit: contain; flex-shrink: 0; z-index: 1;
 	}
 	
-	.page-title-area p {
-		color: #555; margin: 0;
+	.mysp-header-divider {
+		width: 1px; height: 100px; background: rgba(38, 78, 116, 0.15); flex-shrink: 0; z-index: 1;
+	}
+	
+	.mysp-header-content {
+		flex: 1; z-index: 1;
+	}
+	
+	.mysp-header-eyebrow {
+		font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--primary); opacity: 0.65; margin: 0 0 0.3rem;
+	}
+	
+	.mysp-header-title {
+		font-family: var(--header-font); font-size: 2.75rem; font-weight: 700; color: var(--primary); margin: 0 0 0.4rem; line-height: 1.1;
+	}
+	
+	.mysp-header-subtitle {
+		font-size: 0.95rem; color: #666; margin: 0.35rem 0 0;
 	}
 	/* ── Detail pane extras ── */
 	
@@ -581,11 +614,14 @@
 
 </style>
 <div id="sp1-wrapper"><a class="back-link" href="https://www.lrsd.net/page/26539/multi-year-strategic-plan-2023-2027">&larr; Back to MYSP Home</a>
-	<div class="page-title-area">
-
-		<h1>Multi-Year Strategic Plan 2023-2027</h1>
-
-		<p>Louis Riel School Division</p>
+	<div class="mysp-page-header">
+		<img src="https://media.lrsd.net/media/Default/medialib/lrsd-v-4c.96402163385.png" alt="Louis Riel School Division" class="mysp-header-logo">
+		<div class="mysp-header-divider"></div>
+		<div class="mysp-header-content">
+			<p class="mysp-header-eyebrow">Louis Riel School Division</p>
+			<h1 class="mysp-header-title">Multi-Year Strategic Plan 2023–2027</h1>
+			<p class="mysp-header-subtitle">All Strategic Priorities &amp; Progress</p>
+		</div>
 	</div>
 	<div class="global-filter-bar" id="global-filter-bar">
 		<div class="global-filter-row"><span class="filter-row-label">Status:</span>
@@ -613,7 +649,7 @@
 
 						<p class="sp-summary-label">Strategic Priority 1</p>
 
-						<h2 class="sp-summary-title"><span style="color: rgb(255, 255, 255);">Belonging</span></h2>
+						<h2 class="sp-summary-title"><span>Belonging</span></h2>
 					</div></div>&nbsp;</summary>
 			<div class="sp-accordion-body">
 				<div class="cards-grid" id="cards-grid-1">
@@ -1030,7 +1066,7 @@
 
 						<p class="sp-summary-label">Strategic Priority 2</p>
 
-						<h2 class="sp-summary-title"><span style="color: rgb(255, 255, 255);">Mastery</span></h2>
+						<h2 class="sp-summary-title"><span>Mastery</span></h2>
 					</div></div>&nbsp;</summary>
 			<div class="sp-accordion-body">
 				<div class="cards-grid" id="cards-grid-2">
@@ -1426,7 +1462,7 @@
 
 						<p class="sp-summary-label">Strategic Priority 3</p>
 
-						<h2 class="sp-summary-title"><span style="color: rgb(255, 255, 255);">Independence</span></h2>
+						<h2 class="sp-summary-title"><span>Independence</span></h2>
 					</div></div>&nbsp;</summary>
 			<div class="sp-accordion-body">
 				<div class="cards-grid" id="cards-grid-3">
@@ -1800,7 +1836,7 @@
 
 						<p class="sp-summary-label">Strategic Priority 4</p>
 
-						<h2 class="sp-summary-title"><span style="color: rgb(255, 255, 255);">Generosity</span></h2>
+						<h2 class="sp-summary-title"><span>Generosity</span></h2>
 					</div></div>&nbsp;</summary>
 			<div class="sp-accordion-body">
 				<div class="cards-grid" id="cards-grid-4">
