@@ -17,7 +17,7 @@
 	/* ── Outer wrapper ── */
 	
 	#sp1-wrapper {
-		max-width: 1180px; margin: 0 auto; padding: 0 1.25rem 4rem;
+		max-width: 1480px; margin: 0 auto; padding: 0 2.5rem 4rem;
 	}
 	
 	#sp1-wrapper h1,
@@ -443,6 +443,13 @@
 		}
 	}
 	
+	/* Use the extra width of the full-page format for a third column */
+	@media (min-width: 1200px) {
+		.cards-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+	
 	@media (max-width: 600px) {
 		.sp1-hero {
 			flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1.75rem 1.5rem;
@@ -593,8 +600,12 @@
 	}
 	/* ── Global filter bar ── */
 	
+	.mysp-controls {
+		background: var(--light-bg); border-radius: 14px; padding: 1.25rem 1.5rem; margin-bottom: 2rem; box-shadow: var(--shadow-light); display: flex; flex-direction: column; gap: 1rem;
+	}
+	
 	.global-filter-bar {
-		background: var(--light-bg); border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; box-shadow: var(--shadow-light); display: flex; flex-direction: column; gap: 0.6rem;
+		background: none; border-radius: 0; padding: 0; margin: 0; box-shadow: none; display: flex; flex-direction: column; gap: 0.6rem;
 	}
 	
 	.global-filter-row {
@@ -614,7 +625,7 @@
 /* ── Standalone app toolbar (search · controls · result count) ── */
 
 .sp-toolbar {
-display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1rem; margin: 0 0 1.5rem;
+display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1rem; margin: 0;
 }
 
 .sp-search {
@@ -685,5 +696,28 @@ display: none;
 @media (min-width: 720px) {
 .sp-result-count {
 flex: 0 0 auto; margin-left: auto; text-align: right;
+}
+}
+
+/* On wider screens, place the filters and the search/controls side by side so
+   the full-page format reads as one cohesive control panel. */
+@media (min-width: 1024px) {
+.mysp-controls {
+flex-direction: row; align-items: flex-start; gap: 2.5rem;
+}
+.global-filter-bar {
+flex: 1 1 auto; min-width: 0;
+}
+.sp-toolbar {
+flex: 0 0 320px; flex-direction: column; align-items: stretch; gap: 0.75rem;
+}
+.sp-toolbar .sp-search {
+flex: 1 1 auto; min-width: 0;
+}
+.sp-toolbar .sp-toolbar-actions {
+justify-content: flex-start;
+}
+.sp-result-count {
+flex: 0 0 auto; margin: 0; text-align: left;
 }
 }

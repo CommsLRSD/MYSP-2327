@@ -1,10 +1,12 @@
-# All Strategic Priorities — Web App
+# MYSP — All Strategic Priorities Web App
 
 A standalone, self-contained web app version of `all-strategic-priorities.html`
 for the Louis Riel School Division **Multi-Year Strategic Plan 2023–2027**.
 
 This folder is intentionally isolated so it can be **exported and deployed
-separately** from the other `.html` files in the repository.
+separately** from the other `.html` files in the repository. It is designed to
+be served at the `/mysp` path as a full-page web app, rather than embedded
+inside a pagebuilder layout.
 
 ## Contents
 
@@ -22,13 +24,14 @@ vanilla JavaScript. Open `index.html` directly in a browser, or serve the
 folder with any static file server, e.g.:
 
 ```bash
-cd all-strategic-priorities-app
+cd mysp
 python3 -m http.server 8000
 # then open http://localhost:8000/
 ```
 
-To deploy, copy the entire `all-strategic-priorities-app/` folder to any static
-host (GitHub Pages, Netlify, an LRSD web server, etc.).
+To deploy, copy the entire `mysp/` folder to any static
+host (GitHub Pages, Netlify, an LRSD web server, etc.) so it is served at the
+`/mysp` path.
 
 ## What changed vs. the original embed
 
