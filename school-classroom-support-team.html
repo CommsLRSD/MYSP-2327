@@ -1,0 +1,1368 @@
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@400;500;600&display=swap');
+
+	:root {
+		--primary: #264e74;
+		--accent: #b23427;
+		--light-bg: #f5f7fa;
+		--white: #ffffff;
+		--text: #222222;
+		--header-font: 'Montserrat', sans-serif;
+		--body-font: 'Poppins', sans-serif;
+		--shadow-light: 0 2px 6px rgba(34, 60, 80, 0.08);
+		--shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.13), 0 3px 8px rgba(0, 0, 0, 0.07);
+	}
+
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+
+	html,
+	body {
+		margin: 0;
+		padding: 0;
+		font-family: var(--body-font);
+		font-size: 16px;
+		background: var(--white);
+		color: var(--text);
+		line-height: 1.6;
+		overflow-x: hidden;
+	}
+
+	/* ── Outer wrapper ── */
+	#scst-wrapper {
+		max-width: 1180px;
+		margin: 0 auto;
+		padding: 0 1.25rem 4rem;
+	}
+
+	#scst-wrapper h1,
+	#scst-wrapper h2,
+	#scst-wrapper h3,
+	#scst-wrapper h4 {
+		font-family: var(--header-font);
+		color: var(--primary);
+	}
+
+	/* ── Back link ── */
+	.back-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		margin: 0;
+		padding: 0.4rem 0.85rem 0.4rem 0.6rem;
+		font-size: 0.85rem;
+		font-weight: 600;
+		color: #264e74 !important;
+		text-decoration: none;
+		background: rgba(38, 78, 116, 0.07);
+		border-radius: 6px;
+		transition: background 0.2s, color 0.2s;
+	}
+
+	.back-link:hover {
+		background: rgba(38, 78, 116, 0.14);
+		color: #1a3a58;
+		text-decoration: none;
+	}
+
+	/* ── Page header ── */
+	.mysp-page-header {
+		display: flex;
+		align-items: center;
+		gap: 2.5rem;
+		padding: 1.5rem 0 2rem;
+		margin: 0 0 2rem;
+	}
+
+	.mysp-header-logo {
+		height: 150px;
+		width: auto;
+		object-fit: contain;
+		flex-shrink: 0;
+	}
+
+	.mysp-header-divider {
+		width: 1px;
+		height: 100px;
+		background: rgba(38, 78, 116, 0.15);
+		flex-shrink: 0;
+	}
+
+	.mysp-header-content {
+		flex: 1;
+	}
+
+	.mysp-header-eyebrow {
+		font-size: 0.82rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		color: var(--primary);
+		opacity: 0.65;
+		margin: 0 0 0.3rem;
+	}
+
+	.mysp-header-title {
+		font-family: var(--header-font);
+		font-size: 2.75rem;
+		font-weight: 700;
+		color: var(--primary);
+		margin: 0 0 0.4rem;
+		line-height: 1.1;
+	}
+
+	.mysp-header-subtitle {
+		font-size: 0.95rem;
+		color: #666;
+		margin: 0.35rem 0 0;
+	}
+
+	/* ── Hero banner ── */
+	.scst-hero {
+		position: relative;
+		background: linear-gradient(135deg, #1a3a58 0%, #264e74 55%, #2d6494 100%);
+		border-radius: 16px;
+		overflow: hidden;
+		margin: 0 0 2.5rem;
+		padding: 2.5rem;
+		color: #fff;
+		display: flex;
+		align-items: center;
+		gap: 2rem;
+	}
+
+	.scst-hero::before {
+		content: '';
+		position: absolute;
+		top: -40px;
+		right: -40px;
+		width: 280px;
+		height: 280px;
+		border-radius: 50%;
+		background: rgba(255, 255, 255, 0.05);
+		pointer-events: none;
+	}
+
+	.scst-hero::after {
+		content: '';
+		position: absolute;
+		bottom: -60px;
+		left: 30%;
+		width: 200px;
+		height: 200px;
+		border-radius: 50%;
+		background: rgba(255, 255, 255, 0.04);
+		pointer-events: none;
+	}
+
+	.hero-icon-wrap {
+		flex-shrink: 0;
+		width: 110px;
+		height: 110px;
+		background: rgba(255, 255, 255, 0.12);
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		z-index: 1;
+	}
+
+	.hero-icon-wrap svg {
+		width: 60px;
+		height: 60px;
+		fill: rgba(255, 255, 255, 0.9);
+	}
+
+	.hero-text {
+		z-index: 1;
+	}
+
+	.hero-label {
+		font-size: 0.9rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: rgba(255, 255, 255, 0.7);
+		margin: 0 0 0.25rem;
+	}
+
+	.hero-title {
+		font-family: var(--header-font);
+		font-size: 2.6rem;
+		font-weight: 700;
+		color: #fff;
+		margin: 0 0 0.5rem;
+		line-height: 1.1;
+	}
+
+	.hero-tagline {
+		font-size: 1rem;
+		color: rgba(255, 255, 255, 0.8);
+		margin: 0;
+		font-style: italic;
+	}
+
+	/* ── Info sections ── */
+	.info-section {
+		margin-bottom: 2.5rem;
+	}
+
+	.info-section h2 {
+		font-size: 1.6rem;
+		margin: 0 0 1rem;
+		padding-bottom: 0.5rem;
+		border-bottom: 3px solid var(--primary);
+		display: inline-block;
+	}
+
+	.info-section p {
+		font-size: 0.97rem;
+		color: #444;
+		margin: 0 0 0.75rem;
+	}
+
+	.info-section ul {
+		padding-left: 1.4rem;
+		margin: 0 0 0.75rem;
+	}
+
+	.info-section ul li {
+		font-size: 0.93rem;
+		color: #444;
+		margin-bottom: 0.3rem;
+	}
+
+	/* ── Pillars grid ── */
+	.pillars-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+		margin: 1.25rem 0;
+	}
+
+	.pillar-card {
+		background: var(--light-bg);
+		border-radius: 12px;
+		padding: 1.25rem;
+		border-left: 4px solid var(--primary);
+	}
+
+	.pillar-card h4 {
+		font-size: 0.9rem;
+		margin: 0 0 0.4rem;
+		color: var(--primary);
+	}
+
+	.pillar-card p {
+		font-size: 0.85rem;
+		margin: 0;
+		color: #555;
+	}
+
+	/* ── Tier grid ── */
+	.tier-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+		margin: 1.25rem 0;
+	}
+
+	.tier-card {
+		background: var(--white);
+		border-radius: 12px;
+		box-shadow: var(--shadow-medium);
+		overflow: hidden;
+	}
+
+	.tier-card-header {
+		padding: 0.85rem 1.1rem;
+		font-family: var(--header-font);
+		font-size: 0.95rem;
+		font-weight: 700;
+		color: #fff;
+	}
+
+	.tier-card-header.tier-1 { background: #a3b939; }
+	.tier-card-header.tier-2 { background: #3491cd; }
+	.tier-card-header.tier-3 { background: #264e74; }
+
+	.tier-card ul {
+		list-style: disc;
+		padding: 0.9rem 1rem 0.9rem 1.6rem;
+		margin: 0;
+	}
+
+	.tier-card ul li {
+		font-size: 0.85rem;
+		color: #444;
+		margin-bottom: 0.3rem;
+	}
+
+	/* ── Team section ── */
+	.team-section {
+		margin-bottom: 3rem;
+	}
+
+	.team-section-header {
+		display: flex;
+		align-items: center;
+		gap: 1.25rem;
+		background: linear-gradient(135deg, #1a3a58 0%, #264e74 100%);
+		border-radius: 14px 14px 0 0;
+		padding: 1.5rem 1.75rem;
+		color: #fff;
+	}
+
+	.team-section-num {
+		font-family: var(--header-font);
+		font-size: 3rem;
+		font-weight: 700;
+		opacity: 0.2;
+		line-height: 1;
+		flex-shrink: 0;
+	}
+
+	.team-section-info h3 {
+		font-family: var(--header-font);
+		font-size: 1.4rem;
+		font-weight: 700;
+		color: #fff;
+		margin: 0 0 0.2rem;
+	}
+
+	.team-section-info p {
+		font-size: 0.88rem;
+		color: rgba(255, 255, 255, 0.75);
+		margin: 0;
+	}
+
+	.team-section-body {
+		background: var(--light-bg);
+		border-radius: 0 0 14px 14px;
+		padding: 1.5rem;
+		box-shadow: var(--shadow-medium);
+	}
+
+	.team-purpose {
+		margin-bottom: 1.5rem;
+		padding: 1rem 1.25rem;
+		background: var(--white);
+		border-radius: 10px;
+		border-left: 4px solid var(--primary);
+	}
+
+	.team-purpose h4 {
+		font-size: 0.8rem;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--primary);
+		margin: 0 0 0.4rem;
+	}
+
+	.team-purpose p {
+		font-size: 0.9rem;
+		color: #444;
+		margin: 0;
+	}
+
+	.team-key-work {
+		margin-bottom: 1.5rem;
+		padding: 1rem 1.25rem;
+		background: var(--white);
+		border-radius: 10px;
+		border-left: 4px solid #3491cd;
+	}
+
+	.team-key-work h4 {
+		font-size: 0.8rem;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: #3491cd;
+		margin: 0 0 0.4rem;
+	}
+
+	.team-key-work ul {
+		padding-left: 1.2rem;
+		margin: 0;
+	}
+
+	.team-key-work ul li {
+		font-size: 0.88rem;
+		color: #444;
+		margin-bottom: 0.25rem;
+	}
+
+	/* ── Person cards grid ── */
+	.person-cards-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+		gap: 1.25rem;
+	}
+
+	.person-card {
+		background: var(--white);
+		border-radius: 12px;
+		box-shadow: var(--shadow-medium);
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+		transition: box-shadow 0.25s, transform 0.2s;
+	}
+
+	.js-ready .person-card {
+		opacity: 0;
+		transform: translateY(18px);
+	}
+
+	.js-ready .person-card.visible {
+		animation: fadeSlideIn 0.5s ease-out forwards;
+	}
+
+	.person-card:hover {
+		box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16), 0 4px 10px rgba(0, 0, 0, 0.1);
+		transform: translateY(-2px);
+	}
+
+	.person-photo {
+		width: 100%;
+		aspect-ratio: 1 / 1;
+		background: linear-gradient(135deg, #d0dae6 0%, #b8c8d8 100%);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+	}
+
+	.person-photo svg {
+		width: 60px;
+		height: 60px;
+		fill: rgba(38, 78, 116, 0.25);
+	}
+
+	.person-info {
+		padding: 1rem 1.1rem 1.1rem;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.person-name {
+		font-family: var(--header-font);
+		font-size: 0.95rem;
+		font-weight: 700;
+		color: var(--primary);
+		margin: 0 0 0.2rem;
+		line-height: 1.2;
+	}
+
+	.person-title {
+		font-size: 0.78rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: #3491cd;
+		margin: 0 0 0.65rem;
+	}
+
+	.person-bio {
+		font-size: 0.82rem;
+		color: #555;
+		line-height: 1.55;
+		margin: 0;
+		flex: 1;
+	}
+
+	/* ── Sub-team label ── */
+	.sub-team-label {
+		font-family: var(--header-font);
+		font-size: 0.85rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.07em;
+		color: var(--primary);
+		margin: 1.5rem 0 0.75rem;
+		padding-bottom: 0.3rem;
+		border-bottom: 2px solid rgba(38, 78, 116, 0.15);
+	}
+
+	/* ── Info box ── */
+	.info-box {
+		background: var(--white);
+		border-radius: 12px;
+		box-shadow: var(--shadow-medium);
+		padding: 1.5rem 1.75rem;
+		margin-bottom: 2rem;
+	}
+
+	.info-box h3 {
+		font-size: 1.2rem;
+		margin: 0 0 0.75rem;
+	}
+
+	.info-box p {
+		font-size: 0.93rem;
+		color: #444;
+		margin: 0 0 0.75rem;
+	}
+
+	.info-box ul {
+		padding-left: 1.3rem;
+		margin: 0 0 0.5rem;
+	}
+
+	.info-box ul li {
+		font-size: 0.9rem;
+		color: #444;
+		margin-bottom: 0.3rem;
+	}
+
+	.info-box h4 {
+		font-size: 0.92rem;
+		color: var(--primary);
+		margin: 1rem 0 0.4rem;
+	}
+
+	/* ── Equity tier cards ── */
+	.equity-tier-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.25rem;
+		margin-top: 1.5rem;
+	}
+
+	.equity-tier-card {
+		background: var(--white);
+		border-radius: 12px;
+		box-shadow: var(--shadow-medium);
+		overflow: hidden;
+	}
+
+	.equity-tier-hd {
+		padding: 1rem 1.2rem;
+		font-family: var(--header-font);
+		font-size: 0.95rem;
+		font-weight: 700;
+		color: #fff;
+	}
+
+	.equity-tier-hd.t3 { background: #264e74; }
+	.equity-tier-hd.t2 { background: #3491cd; }
+	.equity-tier-hd.t1 { background: #a3b939; color: #2a3500; }
+
+	.equity-tier-bd {
+		padding: 1rem 1.2rem;
+	}
+
+	.equity-tier-bd p {
+		font-size: 0.88rem;
+		color: #444;
+		margin: 0 0 0.6rem;
+	}
+
+	.equity-tier-bd ul {
+		padding-left: 1.2rem;
+		margin: 0;
+	}
+
+	.equity-tier-bd ul li {
+		font-size: 0.85rem;
+		color: #444;
+		margin-bottom: 0.25rem;
+	}
+
+	/* ── Looking ahead ── */
+	.looking-ahead {
+		background: linear-gradient(135deg, #1a3a58 0%, #264e74 100%);
+		border-radius: 14px;
+		padding: 2rem 2.25rem;
+		color: #fff;
+		margin-top: 2.5rem;
+	}
+
+	.looking-ahead h2 {
+		font-family: var(--header-font);
+		color: #fff;
+		font-size: 1.6rem;
+		margin: 0 0 1rem;
+	}
+
+	.looking-ahead ul {
+		padding-left: 1.3rem;
+		margin: 0;
+		columns: 2;
+		column-gap: 2rem;
+	}
+
+	.looking-ahead ul li {
+		font-size: 0.9rem;
+		color: rgba(255, 255, 255, 0.85);
+		margin-bottom: 0.5rem;
+		break-inside: avoid;
+	}
+
+	/* ── Animations ── */
+	@keyframes fadeSlideIn {
+		from { opacity: 0; transform: translateY(18px); }
+		to { opacity: 1; transform: translateY(0); }
+	}
+
+	/* ── Responsive ── */
+	@media (max-width: 860px) {
+		.pillars-grid,
+		.tier-grid,
+		.equity-tier-grid {
+			grid-template-columns: 1fr;
+		}
+		.looking-ahead ul {
+			columns: 1;
+		}
+	}
+
+	@media (max-width: 600px) {
+		.scst-hero {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 1rem;
+			padding: 1.75rem 1.5rem;
+		}
+		.hero-title {
+			font-size: 1.9rem;
+		}
+		.mysp-page-header {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 1.25rem;
+			padding: 2rem 1.5rem 2rem;
+		}
+		.mysp-header-logo {
+			height: 90px;
+		}
+		.mysp-header-divider {
+			display: none;
+		}
+		.mysp-header-title {
+			font-size: 1.9rem;
+		}
+		.person-cards-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (max-width: 400px) {
+		.person-cards-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
+
+<div id="scst-wrapper">
+	<a class="back-link" href="https://www.lrsd.net/page/26539/multi-year-strategic-plan-2023-2027">&larr; Back to MYSP Home</a>
+
+	<div class="mysp-page-header">
+		<img src="https://media.lrsd.net/media/Default/medialib/lrsd-v-4c.96402163385.png" alt="Louis Riel School Division" class="mysp-header-logo">
+		<div class="mysp-header-divider"></div>
+		<div class="mysp-header-content">
+			<p class="mysp-header-eyebrow">Louis Riel School Division</p>
+			<h1 class="mysp-header-title">School and Classroom Support Team</h1>
+			<p class="mysp-header-subtitle">Supporting Every School. Strengthening Every Classroom. Ensuring Every Student Thrives.</p>
+		</div>
+	</div>
+
+	<!-- Hero -->
+	<div class="scst-hero">
+		<div class="hero-icon-wrap">
+			<!-- Person/group icon -->
+			<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+				<path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+			</svg>
+		</div>
+		<div class="hero-text">
+			<p class="hero-label">Louis Riel School Division</p>
+			<h2 class="hero-title">School &amp; Classroom Support Team</h2>
+			<p class="hero-tagline">Supporting Every School. Strengthening Every Classroom. Ensuring Every Student Thrives.</p>
+		</div>
+	</div>
+
+	<!-- Who We Are -->
+	<div class="info-section">
+		<h2>Who We Are</h2>
+		<p>The School and Classroom Support Team (SCST) partners with schools across the Louis Riel School Division to strengthen student learning, well-being, and belonging.</p>
+		<p>Our work is grounded in:</p>
+		<div class="pillars-grid">
+			<div class="pillar-card">
+				<h4>Equity &amp; Reconciliation</h4>
+				<p>Centering Indigenous student success and closing opportunity gaps for all learners.</p>
+			</div>
+			<div class="pillar-card">
+				<h4>Evidence-Informed Practice</h4>
+				<p>Using data and research to guide responsive, effective support.</p>
+			</div>
+			<div class="pillar-card">
+				<h4>Relational Partnerships</h4>
+				<p>Working alongside school teams and communities through trust and collaboration.</p>
+			</div>
+		</div>
+		<p>We work alongside schools to build instructional and system capacity, respond to identified student and school needs, and close opportunity gaps&mdash;particularly for Indigenous students and learners experiencing barriers.</p>
+		<p>SCST is a coordinated, system-level team that integrates leadership, instructional support, clinical services, Indigenous education, and specialized supports into one aligned model.</p>
+	</div>
+
+	<!-- Why This Work Matters -->
+	<div class="info-section">
+		<h2>Why This Work Matters</h2>
+		<p>Divisional data&mdash;including literacy and numeracy screening, progress monitoring, attendance, and well-being indicators&mdash;continues to highlight:</p>
+		<ul>
+			<li>Persistent achievement gaps across schools</li>
+			<li>Disproportionate impact on Indigenous students</li>
+			<li>Students with multiple indicators of risk (academic, engagement, attendance)</li>
+		</ul>
+		<p>This data informs how SCST prioritizes support: schools with the greatest need receive more intensive and coordinated support, and supports are constantly monitored and adjusted based on impact.</p>
+		<p>This work directly advances the LRSD Multi-Year Strategic Plan through closing opportunity gaps, strengthening responsive instruction, supporting belonging and well-being, and embedding Indigenous education and reconciliation.</p>
+	</div>
+
+	<!-- How We Support Schools -->
+	<div class="info-section">
+		<h2>How We Support Schools</h2>
+		<p>SCST collaborates with schools to analyze data, strengthen instructional practice, support professional learning, mentor staff, and build inclusive and culturally responsive environments.</p>
+		<div class="tier-grid">
+			<div class="tier-card">
+				<div class="tier-card-header tier-1">Universal (Tier 1)</div>
+				<ul>
+					<li>Divisional frameworks and tools</li>
+					<li>Professional learning</li>
+					<li>Mentorship and capacity building</li>
+				</ul>
+			</div>
+			<div class="tier-card">
+				<div class="tier-card-header tier-2">Targeted (Tier 2)</div>
+				<ul>
+					<li>Coaching and co-planning</li>
+					<li>Data analysis and intervention planning</li>
+					<li>Support for identified groups of students and educators</li>
+				</ul>
+			</div>
+			<div class="tier-card">
+				<div class="tier-card-header tier-3">Intensive (Tier 3)</div>
+				<ul>
+					<li>Embedded, in-school support</li>
+					<li>Ongoing collaboration with school leadership and teams</li>
+					<li>Coordinated instructional, clinical, and Indigenous education supports</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<!-- ── TEAM SECTIONS ── -->
+
+	<!-- 1. Leadership -->
+	<div class="team-section" id="section-leadership">
+		<div class="team-section-header">
+			<div class="team-section-num">1</div>
+			<div class="team-section-info">
+				<h3>Leadership</h3>
+				<p>System coherence, strategic alignment, and coordinated support across all SCST areas.</p>
+			</div>
+		</div>
+		<div class="team-section-body">
+			<div class="team-purpose">
+				<h4>Purpose</h4>
+				<p>Leadership ensures system coherence, alignment to the Multi-Year Strategic Plan, and coordinated support across all SCST areas. The leadership team aligns supports to divisional priorities and data, coordinates cross-team collaboration, responds to emerging school needs, and ensures equity-driven decision-making.</p>
+			</div>
+			<div class="person-cards-grid" id="cards-leadership">
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Nicholas Kelly</p>
+						<p class="person-title">Director of School and Classroom Support</p>
+						<p class="person-bio">Nicholas provides overall leadership for the School and Classroom Support Team, ensuring coordinated, responsive, and equity-focused support across the division. He works closely with school and divisional leaders to align services, strengthen system coherence, and improve outcomes for all students.</p>
+					</div>
+				</div>
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Nicole Mager</p>
+						<p class="person-title">Divisional Principal &ndash; Instructional &amp; Indigenous Education</p>
+						<p class="person-bio">Nicole leads instructional and Indigenous education supports across the division. She partners with schools to strengthen teaching practices, advance culturally responsive learning, and support meaningful, engaging learning experiences for all students.</p>
+					</div>
+				</div>
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Megan Vankoughnett</p>
+						<p class="person-title">Divisional Principal &ndash; Clinical &amp; Student Services</p>
+						<p class="person-bio">Megan provides leadership for clinical and student services, supporting inclusive and responsive learning environments. She works collaboratively with schools to ensure student needs are met through coordinated, evidence-informed approaches.</p>
+					</div>
+				</div>
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Lisa Tymchuk</p>
+						<p class="person-title">Assistant Director, Clinical Services</p>
+						<p class="person-bio">Lisa supports the delivery of clinical services across the division, helping to coordinate interdisciplinary supports for students. She works with school teams to strengthen practices that support student learning, communication, regulation, and well-being.</p>
+					</div>
+				</div>
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Kelsey Lenaghan</p>
+						<p class="person-title">Divisional Indigenous Leader</p>
+						<p class="person-bio">Kelsey leads Indigenous education and intercultural understandings across the division. She works alongside schools to strengthen relationships, support Indigenous Education School-based Action Planning, and embed Indigenous perspectives, identities, and ways of knowing into learning.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 2. Instructional Support -->
+	<div class="team-section" id="section-instructional">
+		<div class="team-section-header">
+			<div class="team-section-num">2</div>
+			<div class="team-section-info">
+				<h3>Instructional Support (Literacy &amp; Numeracy)</h3>
+				<p>Strengthening classroom practice, improving student achievement, and building teacher capacity.</p>
+			</div>
+		</div>
+		<div class="team-section-body">
+			<div class="team-purpose">
+				<h4>Purpose</h4>
+				<p>Instructional support strengthens classroom practice, improves student achievement, and builds teacher capacity.</p>
+			</div>
+			<div class="team-key-work">
+				<h4>Key Work</h4>
+				<ul>
+					<li>Early screening and progress monitoring</li>
+					<li>Structured literacy and numeracy practices</li>
+					<li>Intervention planning</li>
+					<li>Co-planning and co-teaching</li>
+					<li>Instructional coaching and mentorship</li>
+					<li>Data-informed instructional decision-making</li>
+				</ul>
+			</div>
+			<div class="person-cards-grid" id="cards-instructional">
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Kristyn Artibise</p>
+						<p class="person-title">Instructional Support Teacher (Numeracy)</p>
+						<p class="person-bio">Kristyn supports schools in strengthening numeracy instruction through data-informed practices, targeted intervention planning, and collaborative problem solving. She works alongside educators to build confidence and capacity in teaching mathematics so all students can experience success.</p>
+					</div>
+				</div>
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Kristen McDowell</p>
+						<p class="person-title">Instructional Support Teacher (Literacy)</p>
+						<p class="person-bio">Kristen partners with schools to strengthen literacy instruction using structured, evidence-informed approaches. She supports educators through coaching, co-planning, and the use of data to guide responsive instruction and improve student outcomes.</p>
+					</div>
+				</div>
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Genevi&egrave;ve Shyiak</p>
+						<p class="person-title">Instructional Support Teacher (Literacy)</p>
+						<p class="person-bio">Genevi&egrave;ve works collaboratively with school teams to enhance literacy learning and instructional practice. She supports teachers in using data to inform instruction, monitor progress, and create responsive learning environments that meet the needs of all students.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 3. Student Support Services -->
+	<div class="team-section" id="section-student-support">
+		<div class="team-section-header">
+			<div class="team-section-num">3</div>
+			<div class="team-section-info">
+				<h3>Student Support Services</h3>
+				<p>Creating inclusive, responsive environments that address academic, behavioural, and social-emotional needs.</p>
+			</div>
+		</div>
+		<div class="team-section-body">
+			<div class="team-purpose">
+				<h4>Purpose</h4>
+				<p>Student Support Services creates inclusive, responsive environments that address academic, behavioural, and social-emotional needs.</p>
+			</div>
+			<div class="team-key-work">
+				<h4>Key Work</h4>
+				<ul>
+					<li>MEECL, RAF, and TCIS frameworks</li>
+					<li>Mentor support for new teachers</li>
+					<li>Transitions planning</li>
+					<li>Student-centered data use</li>
+					<li>Support for multilingual learners</li>
+				</ul>
+			</div>
+			<div class="person-cards-grid" id="cards-student-support">
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Kerri Bush</p>
+						<p class="person-title">Instructional Support / Student Services</p>
+						<p class="person-bio">Kerri supports schools in creating inclusive and responsive learning environments that meet the diverse needs of students. She works alongside educators to strengthen classroom practices, support social-emotional learning, and build strategies that enhance student well-being and engagement.</p>
+					</div>
+				</div>
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Rose Pagtakhan</p>
+						<p class="person-title">Instructional Support / Student Services</p>
+						<p class="person-bio">Rose specializes in supporting multilingual learners across the division. She partners with teachers to design inclusive, language-rich instruction that supports both academic achievement and language development, helping students feel confident, capable, and connected in their learning.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 4. Indigenous Education -->
+	<div class="team-section" id="section-indigenous">
+		<div class="team-section-header">
+			<div class="team-section-num">4</div>
+			<div class="team-section-info">
+				<h3>Indigenous Education</h3>
+				<p>Advancing Indigenous student success through culture, identity, and relationship.</p>
+			</div>
+		</div>
+		<div class="team-section-body">
+			<div class="team-purpose">
+				<h4>Purpose</h4>
+				<p>The Indigenous Education Team partners with schools to advance Indigenous student success through culture, identity, and relationship.</p>
+			</div>
+			<div class="team-key-work">
+				<h4>Key Work</h4>
+				<ul>
+					<li>Indigenous Education School-Based Action Plans (IESAP)</li>
+					<li>Data analysis and goal setting</li>
+					<li>Cultural teachings and land-based learning</li>
+					<li>Language programming</li>
+					<li>Connection to Elders and Knowledge Keepers</li>
+				</ul>
+			</div>
+
+			<p class="sub-team-label">Indigenous Education Team</p>
+			<div class="person-cards-grid" id="cards-indigenous">
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Sean Oliver</p>
+						<p class="person-title">Indigenous Education</p>
+						<p class="person-bio">Sean supports schools through land-based learning, cultural teachings, and Indigenous Education School-based Action Planning. He works alongside students and staff to strengthen connection to culture, identity, and community, helping create meaningful learning experiences rooted in relationship.</p>
+					</div>
+				</div>
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Rose Bird</p>
+						<p class="person-title">Indigenous Education</p>
+						<p class="person-bio">Rose partners with schools to support Indigenous language, culture, identity and Indigenous Education School-based Action Planning. She works with educators and students to deepen understanding, strengthen belonging, and create inclusive learning environments grounded in respect and connection.</p>
+					</div>
+				</div>
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Judith Saunders-McKay</p>
+						<p class="person-title">Indigenous Education</p>
+						<p class="person-bio">Judith supports Indigenous education in schools through language, cultural learning, relationship-building and Indigenous Education School-based Action Planning. She works collaboratively with staff and students to foster understanding, respect, and a strong sense of identity and belonging.</p>
+					</div>
+				</div>
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Sam Flamand</p>
+						<p class="person-title">Indigenous Education</p>
+						<p class="person-bio">Sam supports Indigenous language and cultural learning across schools and Indigenous Education School-based Action Planning. She works alongside educators to strengthen culturally responsive practices and helps create spaces where students feel seen, valued, and connected.</p>
+					</div>
+				</div>
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Trish Wilson</p>
+						<p class="person-title">Indigenous Education</p>
+						<p class="person-bio">Trish works with schools to support Indigenous education through cultural programming, relationship-building, student engagement and Indigenous Education School-based Action Planning. She also supports staff learning and contributes to creating inclusive and welcoming school environments.</p>
+					</div>
+				</div>
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Tammy Bruce</p>
+						<p class="person-title">Community Liaison &ndash; Indigenous Academic Support</p>
+						<p class="person-bio">Tammy connects students, families, schools, and community supports. She plays a key role in strengthening relationships, supporting student well-being, and ensuring that schools are responsive to the needs and strengths of the communities they serve.</p>
+					</div>
+				</div>
+			</div>
+
+			<p class="sub-team-label">Indigenous Language Team</p>
+			<div class="person-cards-grid" id="cards-language">
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Alice McKay</p>
+						<p class="person-title">Ojibwe Teacher</p>
+						<p class="person-bio">Alice teaches Ojibwe language and supports students in developing strong connections to language, culture, and identity. Her work helps create meaningful opportunities for students to learn through language and deepen their understanding of Indigenous ways of knowing.</p>
+					</div>
+				</div>
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Courtney Pranteau</p>
+						<p class="person-title">Cree Teacher</p>
+						<p class="person-bio">Courtney teaches Cree language and works with students to build confidence and connection through language learning. She supports cultural understanding and helps create spaces where students can explore identity and belonging.</p>
+					</div>
+				</div>
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Maxine Lavitt</p>
+						<p class="person-title">Michif Instructor</p>
+						<p class="person-bio">Maxine teaches Michif, supporting language revitalization and cultural connection for students. Her work strengthens identity, pride, and understanding of M&eacute;tis culture through meaningful learning experiences.</p>
+					</div>
+				</div>
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Cub Spring</p>
+						<p class="person-title">Ojibwe Instructor</p>
+						<p class="person-bio">Cub supports students in learning Ojibwe language while fostering connection to culture and community. He works alongside schools to create engaging and meaningful language learning opportunities.</p>
+					</div>
+				</div>
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Rhea Paul</p>
+						<p class="person-title">Ojibwe Instructor</p>
+						<p class="person-bio">Rhea supports Ojibwe language learning across schools, helping students develop communication skills and cultural understanding. Her work contributes to strengthening identity and belonging through language.</p>
+					</div>
+				</div>
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Alyssa Guimond</p>
+						<p class="person-title">Ojibwe Instructor</p>
+						<p class="person-bio">Alyssa supports students in learning Ojibwe language in ways that are engaging and responsive. She works with school teams to support language development and cultural connection.</p>
+					</div>
+				</div>
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Hailey McKay</p>
+						<p class="person-title">Cree Instructor</p>
+						<p class="person-bio">Hailey supports Cree language learning and works with students to build connection, confidence, and cultural understanding. She helps create inclusive learning environments where language and identity are valued.</p>
+					</div>
+				</div>
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Destanee Ducharme</p>
+						<p class="person-title">Cree Instructor</p>
+						<p class="person-bio">Destanee supports Cree language instruction and works with students to strengthen their understanding of culture, identity, and community. Her work helps create meaningful and connected learning experiences.</p>
+					</div>
+				</div>
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Rose McKay</p>
+						<p class="person-title">Cree Instructor</p>
+						<p class="person-bio">Rose supports Cree language learning through relationship, storytelling, and cultural connection. She works with students to build confidence and pride in language and identity.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 5. Clinical Services -->
+	<div class="team-section" id="section-clinical">
+		<div class="team-section-header">
+			<div class="team-section-num">5</div>
+			<div class="team-section-info">
+				<h3>Clinical Services</h3>
+				<p>Supporting communication, regulation, and well-being through interdisciplinary collaboration.</p>
+			</div>
+		</div>
+		<div class="team-section-body">
+			<div class="team-purpose">
+				<h4>Purpose</h4>
+				<p>Clinical Services supports communication, regulation, and well-being through interdisciplinary collaboration.</p>
+			</div>
+			<div class="team-key-work">
+				<h4>Key Work</h4>
+				<ul>
+					<li>Occupational Therapy</li>
+					<li>Psychology</li>
+					<li>Speech Language Pathology</li>
+					<li>Social Work</li>
+					<li>Social-emotional and regulation support</li>
+					<li>Transition planning</li>
+					<li>Professional learning for staff</li>
+				</ul>
+			</div>
+			<div class="person-cards-grid" id="cards-clinical">
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Robert George</p>
+						<p class="person-title">Psychologist</p>
+						<p class="person-bio">Robert supports schools through assessment, consultation, and collaborative problem solving. He works alongside educators to better understand student learning and well-being needs, helping to guide effective, data-informed supports and interventions.</p>
+					</div>
+				</div>
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Travis Hoare</p>
+						<p class="person-title">Occupational Therapist</p>
+						<p class="person-bio">Travis supports students in developing skills related to self-regulation, independence, and participation in learning. He works with school teams to design inclusive, responsive strategies that help students succeed in their daily classroom environments.</p>
+					</div>
+				</div>
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Karla Guiterrez</p>
+						<p class="person-title">Speech Language Pathologist</p>
+						<p class="person-bio">Karla supports students and educators in strengthening communication, language development, and literacy foundations. She collaborates with school teams to implement strategies that support student learning, engagement, and participation across all areas of the classroom.</p>
+					</div>
+				</div>
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Kim Mackey</p>
+						<p class="person-title">Social Worker</p>
+						<p class="person-bio">Kim supports students&rsquo; social-emotional well-being, mental health, and overall sense of belonging within the school community. She collaborates with educators, families and caregivers, and community partners to provide responsive supports that help students navigate challenges, build resilience, and engage fully in their learning.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 6. Specialized Supports -->
+	<div class="team-section" id="section-specialized">
+		<div class="team-section-header">
+			<div class="team-section-num">6</div>
+			<div class="team-section-info">
+				<h3>Specialized Supports</h3>
+				<p>Enhancing school programming, engagement, and discipline-specific instruction.</p>
+			</div>
+		</div>
+		<div class="team-section-body">
+			<div class="team-purpose">
+				<h4>Purpose</h4>
+				<p>Specialized supports enhance school programming, engagement, and discipline-specific instruction.</p>
+			</div>
+			<div class="team-key-work">
+				<h4>Key Areas</h4>
+				<ul>
+					<li>Library Services</li>
+					<li>Physical Education &amp; Healthy Living</li>
+					<li>Extra-Curricular Athletics</li>
+					<li>LRSD Arts (Music, Visual Arts, Drama)</li>
+					<li>Applied Technology and Human Ecology</li>
+				</ul>
+			</div>
+			<div class="person-cards-grid" id="cards-specialized">
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Kathy Atkin</p>
+						<p class="person-title">Divisional Teacher Librarian</p>
+						<p class="person-bio">Kathy supports school libraries across the division, helping to create welcoming, literacy-rich environments that foster a love of reading and inquiry. She partners with educators to enhance access to diverse resources and strengthen teaching and learning through library programming.</p>
+					</div>
+				</div>
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Shaemus Campbell</p>
+						<p class="person-title">Physical Education &amp; Healthy Living</p>
+						<p class="person-bio">Shaemus supports high-quality physical education and promotes active, healthy lifestyles for students. He works alongside teachers to strengthen physical education programming, mentor educators, and coordinate divisional events that engage students in physical activity and well-being.</p>
+					</div>
+				</div>
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Jordana Milne</p>
+						<p class="person-title">Manager of Athletics and Healthy Living</p>
+						<p class="person-bio">Jordana leads and coordinates divisional extra-curricular athletics, supporting schools in offering inclusive and engaging sport opportunities. She works with staff to build strong school-based programs and helps create positive experiences for students through athletics and teamwork.</p>
+					</div>
+				</div>
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Ryan Sabourin</p>
+						<p class="person-title">Applied Technology / Human Ecology</p>
+						<p class="person-bio">Ryan supports applied technology and human ecology programming across the division. He works with schools to create safe, innovative, and engaging learning experiences that prepare students with practical skills and real-world connections.</p>
+					</div>
+				</div>
+				<div class="person-card">
+					<div class="person-photo">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+					</div>
+					<div class="person-info">
+						<p class="person-name">Allan Suban</p>
+						<p class="person-title">LRSD Arts (Music, Visual Arts, Drama)</p>
+						<p class="person-bio">Allan supports arts programming in schools, helping to foster creativity, expression, and student engagement. He works with educators to strengthen music, visual arts and drama experiences that enrich learning and build student confidence.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- School-Based Support -->
+	<div class="info-box">
+		<h3>School-Based Support</h3>
+		<p>The School and Classroom Support Team (SCST) provides supports based on a combination of divisional data, school-level context, and identified student and staff needs. This responsive approach ensures that resources are aligned to where they will have the greatest impact, while also building long-term capacity across all schools.</p>
+		<p>SCST works in partnership with school teams to analyze data (e.g., achievement, well-being, attendance, and engagement) and to co-develop plans that are strengths-based, culturally responsive, and focused on improving outcomes for all learners.</p>
+		<h4>Embedded Support Rationale</h4>
+		<p>Staff are assigned to schools based on:</p>
+		<ul>
+			<li>Indigenous student opportunity gaps</li>
+			<li>Attendance and engagement indicators</li>
+			<li>Literacy and numeracy data</li>
+			<li>Number of students with multiple risk factors</li>
+			<li>Need for sustained relational support</li>
+		</ul>
+		<h4>Instructional Support &ndash; Current Direction</h4>
+		<p><strong>Literacy (2026&ndash;2027):</strong> Wave-based support model across priority schools, focused on highest-need schools identified through data.</p>
+		<p><strong>Numeracy (2026&ndash;2027):</strong> Wave-based support model across priority schools, focused on highest-need schools identified through data.</p>
+	</div>
+
+	<!-- Equity Support School Model -->
+	<div class="info-box">
+		<h3>Equity Support School Model</h3>
+		<p>SCST uses a tiered model to differentiate levels of support across schools. This model allows for targeted allocation of time, expertise, and resources while maintaining a strong focus on equity, inclusion, and capacity building.</p>
+		<div class="equity-tier-grid">
+			<div class="equity-tier-card">
+				<div class="equity-tier-hd t3">Tier 3 &ndash; Intensive Support</div>
+				<div class="equity-tier-bd">
+					<p>Schools identified for Tier 3 support receive the highest level of involvement from SCST. Support is frequent, collaborative, and responsive to complex or urgent needs.</p>
+					<ul>
+						<li>Ongoing, embedded support from multidisciplinary team members</li>
+						<li>Regular in-school presence to co-plan, co-teach, and model practices</li>
+						<li>Intensive data analysis and progress monitoring</li>
+						<li>Support with comprehensive school-based action planning</li>
+						<li>Coordination with external agencies and specialized services</li>
+						<li>Focused efforts to address significant gaps in student achievement, well-being, or engagement</li>
+					</ul>
+				</div>
+			</div>
+			<div class="equity-tier-card">
+				<div class="equity-tier-hd t2">Tier 2 &ndash; Targeted Support</div>
+				<div class="equity-tier-bd">
+					<p>Schools in Tier 2 receive targeted, short- to medium-term support focused on specific areas of need identified through data and school context.</p>
+					<ul>
+						<li>Planned cycles of support (e.g., coaching, consultation, or collaborative inquiry)</li>
+						<li>Support with implementing evidence-informed strategies</li>
+						<li>Joint problem-solving with school teams and leadership</li>
+						<li>Professional learning tailored to identified priorities</li>
+						<li>Check-ins to monitor progress and adjust supports as needed</li>
+					</ul>
+				</div>
+			</div>
+			<div class="equity-tier-card">
+				<div class="equity-tier-hd t1">Tier 1 &ndash; Universal Support</div>
+				<div class="equity-tier-bd">
+					<p>All schools receive universal support focused on building strong, inclusive, and responsive learning environments.</p>
+					<ul>
+						<li>Access to divisional professional learning opportunities</li>
+						<li>Universal resources, tools, and frameworks to support teaching and learning</li>
+						<li>Consultation upon request</li>
+						<li>Support for implementing divisional priorities (e.g., literacy, numeracy, well-being, Indigenous education)</li>
+						<li>Opportunities for networking and collaboration across schools</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Looking Ahead -->
+	<div class="looking-ahead">
+		<h2>Looking Ahead</h2>
+		<ul>
+			<li>Increase embedded, in-school support</li>
+			<li>Strengthen collaboration across teams</li>
+			<li>Refine data-informed decision-making</li>
+			<li>Expand impact through tiered instructional models</li>
+			<li>Improve outcomes for students, particularly those experiencing barriers</li>
+			<li>Specialized Teacher Mentorship (Library, Phys. Ed, Music, Applied Technology, Human Ecology, Student Services, Teachers New To LRSD)</li>
+		</ul>
+	</div>
+
+</div>
+
+<script>
+	(function () {
+		var wrapper = document.getElementById('scst-wrapper');
+		if (wrapper) wrapper.classList.add('js-ready');
+
+		// Staggered card entrance
+		document.querySelectorAll('.person-cards-grid').forEach(function (grid) {
+			grid.querySelectorAll('.person-card').forEach(function (card, i) {
+				setTimeout(function () {
+					card.classList.add('visible');
+				}, 80 + i * 80);
+			});
+		});
+	})();
+</script>
