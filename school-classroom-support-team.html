@@ -45,28 +45,6 @@
 		font-family: 'Poppins', sans-serif !important;
 	}
 
-	/* ── Back link ── */
-	#scst-wrapper .back-link {
-		display: inline-flex !important;
-		align-items: center !important;
-		gap: 0.4rem !important;
-		margin: 0 !important;
-		padding: 0.4rem 0.85rem 0.4rem 0.6rem !important;
-		font-size: 0.85rem !important;
-		font-weight: 600 !important;
-		color: #264e74 !important;
-		text-decoration: none !important;
-		background: rgba(38, 78, 116, 0.07) !important;
-		border-radius: 6px !important;
-		transition: background 0.2s, color 0.2s !important;
-	}
-
-	#scst-wrapper .back-link:hover {
-		background: rgba(38, 78, 116, 0.14) !important;
-		color: #1a3a58 !important;
-		text-decoration: none !important;
-	}
-
 	/* ── Page header ── */
 	#scst-wrapper .mysp-page-header {
 		display: flex !important;
@@ -117,91 +95,6 @@
 		font-size: 0.95rem !important;
 		color: #666 !important;
 		margin: 0.35rem 0 0 !important;
-	}
-
-	/* ── Hero banner ── */
-	#scst-wrapper .scst-hero {
-		position: relative !important;
-		background: linear-gradient(135deg, #1a3a58 0%, #264e74 55%, #2d6494 100%) !important;
-		border-radius: 16px !important;
-		overflow: hidden !important;
-		margin: 0 0 2.5rem !important;
-		padding: 2.5rem !important;
-		color: #fff !important;
-		display: flex !important;
-		align-items: center !important;
-		gap: 2rem !important;
-	}
-
-	#scst-wrapper .scst-hero::before {
-		content: '' !important;
-		position: absolute !important;
-		top: -40px !important;
-		right: -40px !important;
-		width: 280px !important;
-		height: 280px !important;
-		border-radius: 50% !important;
-		background: rgba(255, 255, 255, 0.05) !important;
-		pointer-events: none !important;
-	}
-
-	#scst-wrapper .scst-hero::after {
-		content: '' !important;
-		position: absolute !important;
-		bottom: -60px !important;
-		left: 30% !important;
-		width: 200px !important;
-		height: 200px !important;
-		border-radius: 50% !important;
-		background: rgba(255, 255, 255, 0.04) !important;
-		pointer-events: none !important;
-	}
-
-	#scst-wrapper .hero-icon-wrap {
-		flex-shrink: 0 !important;
-		width: 110px !important;
-		height: 110px !important;
-		background: rgba(255, 255, 255, 0.12) !important;
-		border-radius: 50% !important;
-		display: flex !important;
-		align-items: center !important;
-		justify-content: center !important;
-		z-index: 1 !important;
-	}
-
-	#scst-wrapper .hero-icon-wrap svg {
-		width: 60px !important;
-		height: 60px !important;
-		fill: rgba(255, 255, 255, 0.9) !important;
-	}
-
-	#scst-wrapper .hero-text {
-		z-index: 1 !important;
-	}
-
-	#scst-wrapper .hero-label {
-		font-size: 0.9rem !important;
-		font-weight: 600 !important;
-		text-transform: uppercase !important;
-		letter-spacing: 0.1em !important;
-		color: rgba(255, 255, 255, 0.7) !important;
-		margin: 0 0 0.25rem !important;
-	}
-
-	#scst-wrapper .hero-title {
-		font-family: 'Montserrat', sans-serif !important;
-		font-size: 2.6rem !important;
-		font-weight: 700 !important;
-		color: #fff !important;
-		margin: 0 0 0.5rem !important;
-		line-height: 1.1 !important;
-	}
-
-	#scst-wrapper .hero-tagline {
-		font-size: 1rem !important;
-		color: rgba(255, 255, 255, 0.8) !important;
-		margin: 0 !important;
-		font-style: italic !important;
 	}
 
 	/* ── Info sections ── */
@@ -657,11 +550,67 @@
 			grid-template-columns: 1fr !important;
 		}
 	}
+
+	/* ── Team filter bar ── */
+	#scst-team-filter {
+		display: flex !important;
+		flex-wrap: wrap !important;
+		gap: 0.5rem !important;
+		margin: 0 0 2rem !important;
+		padding: 1rem 1.25rem !important;
+		background: #f5f7fa !important;
+		border-radius: 12px !important;
+		align-items: center !important;
+	}
+
+	#scst-team-filter .filter-label {
+		font-family: 'Montserrat', sans-serif !important;
+		font-size: 0.78rem !important;
+		font-weight: 700 !important;
+		text-transform: uppercase !important;
+		letter-spacing: 0.08em !important;
+		color: #264e74 !important;
+		margin-right: 0.5rem !important;
+		white-space: nowrap !important;
+	}
+
+	#scst-team-filter .filter-btn {
+		display: inline-flex !important;
+		align-items: center !important;
+		padding: 0.35rem 0.9rem !important;
+		border-radius: 20px !important;
+		border: 2px solid rgba(38, 78, 116, 0.25) !important;
+		background: #ffffff !important;
+		color: #264e74 !important;
+		font-family: 'Poppins', sans-serif !important;
+		font-size: 0.82rem !important;
+		font-weight: 500 !important;
+		cursor: pointer !important;
+		transition: background 0.2s, border-color 0.2s, color 0.2s !important;
+		white-space: nowrap !important;
+	}
+
+	#scst-team-filter .filter-btn:hover {
+		background: rgba(38, 78, 116, 0.08) !important;
+		border-color: #264e74 !important;
+	}
+
+	#scst-team-filter .filter-btn.active {
+		background: #264e74 !important;
+		color: #ffffff !important;
+		border-color: #264e74 !important;
+	}
+
+	.team-section.scst-hidden {
+		display: none !important;
+	}
+
+	.person-card.scst-hidden {
+		display: none !important;
+	}
 </style>
 
 <div id="scst-wrapper">
-	<a class="back-link" href="https://www.lrsd.net/page/26539/multi-year-strategic-plan-2023-2027">&larr; Back to MYSP Home</a>
-
 	<div class="mysp-page-header">
 		<img src="https://media.lrsd.net/media/Default/medialib/lrsd-v-4c.96402163385.png" alt="Louis Riel School Division" class="mysp-header-logo">
 		<div class="mysp-header-divider"></div>
@@ -669,21 +618,6 @@
 			<p class="mysp-header-eyebrow">Louis Riel School Division</p>
 			<h1 class="mysp-header-title">School and Classroom Support Team</h1>
 			<p class="mysp-header-subtitle">Supporting Every School. Strengthening Every Classroom. Ensuring Every Student Thrives.</p>
-		</div>
-	</div>
-
-	<!-- Hero -->
-	<div class="scst-hero">
-		<div class="hero-icon-wrap">
-			<!-- Person/group icon -->
-			<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-				<path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
-			</svg>
-		</div>
-		<div class="hero-text">
-			<p class="hero-label">Louis Riel School Division</p>
-			<h2 class="hero-title">School &amp; Classroom Support Team</h2>
-			<p class="hero-tagline">Supporting Every School. Strengthening Every Classroom. Ensuring Every Student Thrives.</p>
 		</div>
 	</div>
 
@@ -755,6 +689,18 @@
 		</div>
 	</div>
 
+	<!-- Team filter -->
+	<div id="scst-team-filter">
+		<span class="filter-label">Filter by team:</span>
+		<button class="filter-btn active" data-filter="all">All</button>
+		<button class="filter-btn" data-filter="leadership">Leadership</button>
+		<button class="filter-btn" data-filter="instructional">Instructional Support</button>
+		<button class="filter-btn" data-filter="student-support">Student Support Services</button>
+		<button class="filter-btn" data-filter="indigenous">Indigenous Education</button>
+		<button class="filter-btn" data-filter="clinical">Clinical Services</button>
+		<button class="filter-btn" data-filter="specialized">Specialized Supports</button>
+	</div>
+
 	<!-- ── TEAM SECTIONS ── -->
 
 	<!-- 1. Leadership -->
@@ -772,7 +718,7 @@
 				<p>Leadership ensures system coherence, alignment to the Multi-Year Strategic Plan, and coordinated support across all SCST areas. The leadership team aligns supports to divisional priorities and data, coordinates cross-team collaboration, responds to emerging school needs, and ensures equity-driven decision-making.</p>
 			</div>
 			<div class="person-cards-grid" id="cards-leadership">
-				<div class="person-card">
+				<div class="person-card" data-team="leadership">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Nicholas Kelly" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -782,7 +728,7 @@
 						<p class="person-bio">Nicholas provides overall leadership for the School and Classroom Support Team, ensuring coordinated, responsive, and equity-focused support across the division. He works closely with school and divisional leaders to align services, strengthen system coherence, and improve outcomes for all students.</p>
 					</div>
 				</div>
-				<div class="person-card">
+				<div class="person-card" data-team="leadership">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicole-mager.4513e789138.jpg" alt="Nicole Mager" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -792,7 +738,7 @@
 						<p class="person-bio">Nicole leads instructional and Indigenous education supports across the division. She partners with schools to strengthen teaching practices, advance culturally responsive learning, and support meaningful, engaging learning experiences for all students.</p>
 					</div>
 				</div>
-				<div class="person-card">
+				<div class="person-card" data-team="leadership">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/megan-vankoughnett.64b74d89139.jpg" alt="Megan Vankoughnett" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -802,7 +748,7 @@
 						<p class="person-bio">Megan provides leadership for clinical and student services, supporting inclusive and responsive learning environments. She works collaboratively with schools to ensure student needs are met through coordinated, evidence-informed approaches.</p>
 					</div>
 				</div>
-				<div class="person-card">
+				<div class="person-card" data-team="leadership">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -812,7 +758,7 @@
 						<p class="person-bio">Lisa supports the delivery of clinical services across the division, helping to coordinate interdisciplinary supports for students. She works with school teams to strengthen practices that support student learning, communication, regulation, and well-being.</p>
 					</div>
 				</div>
-				<div class="person-card">
+				<div class="person-card" data-team="leadership">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -852,7 +798,7 @@
 				</ul>
 			</div>
 			<div class="person-cards-grid" id="cards-instructional">
-				<div class="person-card">
+				<div class="person-card" data-team="instructional">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -862,7 +808,7 @@
 						<p class="person-bio">Kristyn supports schools in strengthening numeracy instruction through data-informed practices, targeted intervention planning, and collaborative problem solving. She works alongside educators to build confidence and capacity in teaching mathematics so all students can experience success.</p>
 					</div>
 				</div>
-				<div class="person-card">
+				<div class="person-card" data-team="instructional">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -872,7 +818,7 @@
 						<p class="person-bio">Kristen partners with schools to strengthen literacy instruction using structured, evidence-informed approaches. She supports educators through coaching, co-planning, and the use of data to guide responsive instruction and improve student outcomes.</p>
 					</div>
 				</div>
-				<div class="person-card">
+				<div class="person-card" data-team="instructional">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -911,7 +857,7 @@
 				</ul>
 			</div>
 			<div class="person-cards-grid" id="cards-student-support">
-				<div class="person-card">
+				<div class="person-card" data-team="student-support">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -921,7 +867,7 @@
 						<p class="person-bio">Kerri supports schools in creating inclusive and responsive learning environments that meet the diverse needs of students. She works alongside educators to strengthen classroom practices, support social-emotional learning, and build strategies that enhance student well-being and engagement.</p>
 					</div>
 				</div>
-				<div class="person-card">
+				<div class="person-card" data-team="student-support">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -962,7 +908,7 @@
 
 			<p class="sub-team-label">Indigenous Education Team</p>
 			<div class="person-cards-grid" id="cards-indigenous">
-				<div class="person-card">
+				<div class="person-card" data-team="indigenous">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -972,7 +918,7 @@
 						<p class="person-bio">Sean supports schools through land-based learning, cultural teachings, and Indigenous Education School-based Action Planning. He works alongside students and staff to strengthen connection to culture, identity, and community, helping create meaningful learning experiences rooted in relationship.</p>
 					</div>
 				</div>
-				<div class="person-card">
+				<div class="person-card" data-team="indigenous">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -982,7 +928,7 @@
 						<p class="person-bio">Rose partners with schools to support Indigenous language, culture, identity and Indigenous Education School-based Action Planning. She works with educators and students to deepen understanding, strengthen belonging, and create inclusive learning environments grounded in respect and connection.</p>
 					</div>
 				</div>
-				<div class="person-card">
+				<div class="person-card" data-team="indigenous">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -992,7 +938,7 @@
 						<p class="person-bio">Judith supports Indigenous education in schools through language, cultural learning, relationship-building and Indigenous Education School-based Action Planning. She works collaboratively with staff and students to foster understanding, respect, and a strong sense of identity and belonging.</p>
 					</div>
 				</div>
-				<div class="person-card">
+				<div class="person-card" data-team="indigenous">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -1002,7 +948,7 @@
 						<p class="person-bio">Sam supports Indigenous language and cultural learning across schools and Indigenous Education School-based Action Planning. She works alongside educators to strengthen culturally responsive practices and helps create spaces where students feel seen, valued, and connected.</p>
 					</div>
 				</div>
-				<div class="person-card">
+				<div class="person-card" data-team="indigenous">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -1012,7 +958,7 @@
 						<p class="person-bio">Trish works with schools to support Indigenous education through cultural programming, relationship-building, student engagement and Indigenous Education School-based Action Planning. She also supports staff learning and contributes to creating inclusive and welcoming school environments.</p>
 					</div>
 				</div>
-				<div class="person-card">
+				<div class="person-card" data-team="indigenous">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -1026,7 +972,7 @@
 
 			<p class="sub-team-label">Indigenous Language Team</p>
 			<div class="person-cards-grid" id="cards-language">
-				<div class="person-card">
+				<div class="person-card" data-team="indigenous">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -1036,7 +982,7 @@
 						<p class="person-bio">Alice teaches Ojibwe language and supports students in developing strong connections to language, culture, and identity. Her work helps create meaningful opportunities for students to learn through language and deepen their understanding of Indigenous ways of knowing.</p>
 					</div>
 				</div>
-				<div class="person-card">
+				<div class="person-card" data-team="indigenous">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -1046,7 +992,7 @@
 						<p class="person-bio">Courtney teaches Cree language and works with students to build confidence and connection through language learning. She supports cultural understanding and helps create spaces where students can explore identity and belonging.</p>
 					</div>
 				</div>
-				<div class="person-card">
+				<div class="person-card" data-team="indigenous">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -1056,7 +1002,7 @@
 						<p class="person-bio">Maxine teaches Michif, supporting language revitalization and cultural connection for students. Her work strengthens identity, pride, and understanding of M&eacute;tis culture through meaningful learning experiences.</p>
 					</div>
 				</div>
-				<div class="person-card">
+				<div class="person-card" data-team="indigenous">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -1066,7 +1012,7 @@
 						<p class="person-bio">Cub supports students in learning Ojibwe language while fostering connection to culture and community. He works alongside schools to create engaging and meaningful language learning opportunities.</p>
 					</div>
 				</div>
-				<div class="person-card">
+				<div class="person-card" data-team="indigenous">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -1076,7 +1022,7 @@
 						<p class="person-bio">Rhea supports Ojibwe language learning across schools, helping students develop communication skills and cultural understanding. Her work contributes to strengthening identity and belonging through language.</p>
 					</div>
 				</div>
-				<div class="person-card">
+				<div class="person-card" data-team="indigenous">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -1086,7 +1032,7 @@
 						<p class="person-bio">Alyssa supports students in learning Ojibwe language in ways that are engaging and responsive. She works with school teams to support language development and cultural connection.</p>
 					</div>
 				</div>
-				<div class="person-card">
+				<div class="person-card" data-team="indigenous">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -1096,7 +1042,7 @@
 						<p class="person-bio">Hailey supports Cree language learning and works with students to build connection, confidence, and cultural understanding. She helps create inclusive learning environments where language and identity are valued.</p>
 					</div>
 				</div>
-				<div class="person-card">
+				<div class="person-card" data-team="indigenous">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -1106,7 +1052,7 @@
 						<p class="person-bio">Destanee supports Cree language instruction and works with students to strengthen their understanding of culture, identity, and community. Her work helps create meaningful and connected learning experiences.</p>
 					</div>
 				</div>
-				<div class="person-card">
+				<div class="person-card" data-team="indigenous">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -1147,7 +1093,7 @@
 				</ul>
 			</div>
 			<div class="person-cards-grid" id="cards-clinical">
-				<div class="person-card">
+				<div class="person-card" data-team="clinical">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -1157,7 +1103,7 @@
 						<p class="person-bio">Robert supports schools through assessment, consultation, and collaborative problem solving. He works alongside educators to better understand student learning and well-being needs, helping to guide effective, data-informed supports and interventions.</p>
 					</div>
 				</div>
-				<div class="person-card">
+				<div class="person-card" data-team="clinical">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -1167,7 +1113,7 @@
 						<p class="person-bio">Travis supports students in developing skills related to self-regulation, independence, and participation in learning. He works with school teams to design inclusive, responsive strategies that help students succeed in their daily classroom environments.</p>
 					</div>
 				</div>
-				<div class="person-card">
+				<div class="person-card" data-team="clinical">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -1177,7 +1123,7 @@
 						<p class="person-bio">Karla supports students and educators in strengthening communication, language development, and literacy foundations. She collaborates with school teams to implement strategies that support student learning, engagement, and participation across all areas of the classroom.</p>
 					</div>
 				</div>
-				<div class="person-card">
+				<div class="person-card" data-team="clinical">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -1216,7 +1162,7 @@
 				</ul>
 			</div>
 			<div class="person-cards-grid" id="cards-specialized">
-				<div class="person-card">
+				<div class="person-card" data-team="specialized">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -1226,7 +1172,7 @@
 						<p class="person-bio">Kathy supports school libraries across the division, helping to create welcoming, literacy-rich environments that foster a love of reading and inquiry. She partners with educators to enhance access to diverse resources and strengthen teaching and learning through library programming.</p>
 					</div>
 				</div>
-				<div class="person-card">
+				<div class="person-card" data-team="specialized">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -1236,7 +1182,7 @@
 						<p class="person-bio">Shaemus supports high-quality physical education and promotes active, healthy lifestyles for students. He works alongside teachers to strengthen physical education programming, mentor educators, and coordinate divisional events that engage students in physical activity and well-being.</p>
 					</div>
 				</div>
-				<div class="person-card">
+				<div class="person-card" data-team="specialized">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -1246,7 +1192,7 @@
 						<p class="person-bio">Jordana leads and coordinates divisional extra-curricular athletics, supporting schools in offering inclusive and engaging sport opportunities. She works with staff to build strong school-based programs and helps create positive experiences for students through athletics and teamwork.</p>
 					</div>
 				</div>
-				<div class="person-card">
+				<div class="person-card" data-team="specialized">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -1256,7 +1202,7 @@
 						<p class="person-bio">Ryan supports applied technology and human ecology programming across the division. He works with schools to create safe, innovative, and engaging learning experiences that prepare students with practical skills and real-world connections.</p>
 					</div>
 				</div>
-				<div class="person-card">
+				<div class="person-card" data-team="specialized">
 					<div class="person-photo">
 						<img src="https://media.lrsd.net/media/Default/frl/nicholas-kelly.17c60a89137.jpg" alt="Photo placeholder" style="width:100%;height:100%;object-fit:cover;">
 					</div>
@@ -1357,7 +1303,46 @@
 		var wrapper = document.getElementById('scst-wrapper');
 		if (wrapper) wrapper.classList.add('js-ready');
 
-		// Staggered card entrance
+		// ── Team filter ──────────────────────────────────────────────────
+		var filterBar = document.getElementById('scst-team-filter');
+		if (filterBar) {
+			filterBar.addEventListener('click', function (e) {
+				var btn = e.target.closest('.filter-btn');
+				if (!btn) return;
+				// Update active button
+				filterBar.querySelectorAll('.filter-btn').forEach(function (b) {
+					b.classList.remove('active');
+				});
+				btn.classList.add('active');
+				var filter = btn.getAttribute('data-filter');
+				// Show/hide team sections and their cards
+				document.querySelectorAll('.team-section').forEach(function (sec) {
+					if (filter === 'all') {
+						sec.classList.remove('scst-hidden');
+						sec.querySelectorAll('.person-card').forEach(function (c) {
+							c.classList.remove('scst-hidden');
+						});
+					} else {
+						var hasMatch = false;
+						sec.querySelectorAll('.person-card').forEach(function (c) {
+							if (c.getAttribute('data-team') === filter) {
+								c.classList.remove('scst-hidden');
+								hasMatch = true;
+							} else {
+								c.classList.add('scst-hidden');
+							}
+						});
+						if (hasMatch) {
+							sec.classList.remove('scst-hidden');
+						} else {
+							sec.classList.add('scst-hidden');
+						}
+					}
+				});
+			});
+		}
+
+		// ── Staggered card entrance ───────────────────────────────────────
 		document.querySelectorAll('.person-cards-grid').forEach(function (grid) {
 			grid.querySelectorAll('.person-card').forEach(function (card, i) {
 				setTimeout(function () {
