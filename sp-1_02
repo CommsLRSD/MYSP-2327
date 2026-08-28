@@ -30,52 +30,40 @@
 	/* ── Back link ── */
 	
 	.back-link {
-		display: inline-flex; align-items: center; gap: 0.4rem; margin: 0; padding: 0.4rem 0.85rem 0.4rem 0.6rem; font-size: 0.85rem; font-weight: 600; color: #264e74; text-decoration: none; background: rgba(38, 78, 116, 0.07); border-radius: 6px; transition: background 0.2s, color 0.2s;
+		display: inline-flex; align-items: center; gap: 0.4rem; margin: 0; padding: 0.4rem 0.85rem 0.4rem 0.6rem; font-size: 0.85rem; font-weight: 600; color: #264e74 !important; text-decoration: none; background: rgba(38, 78, 116, 0.07); border-radius: 6px; transition: background 0.2s, color 0.2s;
 	}
 	
 	.back-link:hover {
-		background: rgba(38, 78, 116, 0.14); color: #1a3a58; text-decoration: none;
+		background: rgba(38, 78, 116, 0.14); color: #1a3a58 !important; text-decoration: none;
 	}
 	
 	.back-link svg {
 		flex-shrink: 0;
 	}
-	/* ── Hero banner ── */
+	/* ── Hero header ── */
 	
 	.sp1-hero {
-		position: relative; background: linear-gradient(135deg, #1a3a58 0%, #264e74 55%, #2d6494 100%); border-radius: 16px; overflow: hidden; margin: 1rem 0 2rem; padding: 2.5rem 2.5rem 2.5rem 2.5rem; color: #fff; display: flex; align-items: center; gap: 2rem;
-	}
-	
-	.sp1-hero::before {
-		content: ''; position: absolute; top: -40px; right: -40px; width: 280px; height: 280px; border-radius: 50%; background: rgba(255, 255, 255, 0.05); pointer-events: none;
-	}
-	
-	.sp1-hero::after {
-		content: ''; position: absolute; bottom: -60px; left: 30%; width: 200px; height: 200px; border-radius: 50%; background: rgba(255, 255, 255, 0.04); pointer-events: none;
+		display: flex; align-items: center; gap: 2rem; margin: 1rem 0 2rem; padding: 0.5rem 0;
 	}
 	
 	.hero-icon-wrap {
-		flex-shrink: 0; width: 110px; height: 110px; background: rgba(255, 255, 255, 0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; opacity: 0; animation: flipIn 0.9s ease-out 0.15s forwards; z-index: 1;
+		flex-shrink: 0; width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; opacity: 0; animation: flipIn 0.9s ease-out 0.15s forwards;
 	}
 	
 	.hero-icon-wrap img {
-		width: 72px; height: 72px; object-fit: contain; filter: brightness(0) invert(1);
-	}
-	
-	.hero-text {
-		z-index: 1;
+		width: 100%; height: 100%; object-fit: contain;
 	}
 	
 	.hero-label {
-		font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255, 255, 255, 0.7); margin: 0 0 0.25rem;
+		font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #666; margin: 0 0 0.25rem;
 	}
 	
 	.hero-title {
-		font-family: var(--header-font); font-size: 3rem; font-weight: 700; color: #fff; margin: 0 0 0.4rem; line-height: 1;
+		font-family: var(--header-font); font-size: 3.5rem; font-weight: 700; color: var(--primary); margin: 0 0 0.4rem; line-height: 1;
 	}
 	
 	.hero-sub {
-		font-size: 0.85rem; color: rgba(255, 255, 255, 0.6); margin: 0;
+		font-size: 0.85rem; color: #777; margin: 0;
 	}
 	/* ── Filter chips / legend ── */
 	
@@ -418,6 +406,19 @@
 	.detail-img {
 		display: block; width: 100%; max-height: 200px; object-fit: cover; border-radius: 8px; margin-top: 0.75rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 	}
+	/* ── No results message ── */
+	
+	.no-results-msg {
+		display: none; text-align: center; padding: 3rem 1rem; color: #666;
+	}
+	
+	.no-results-msg.visible {
+		display: block;
+	}
+	
+	.no-results-msg p {
+		font-size: 1rem; margin: 0;
+	}
 	/* ── Animations ── */
 	
 	@keyframes flipIn {
@@ -447,16 +448,13 @@
 	
 	@media (max-width: 600px) {
 		.sp1-hero {
-			flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1.75rem 1.5rem;
+			flex-direction: column; align-items: flex-start; gap: 1rem;
 		}
 		.hero-title {
-			font-size: 2.2rem;
+			font-size: 2.4rem;
 		}
 		.hero-icon-wrap {
-			width: 80px; height: 80px;
-		}
-		.hero-icon-wrap img {
-			width: 52px; height: 52px;
+			width: 88px; height: 88px;
 		}
 		.card-action-title-text {
 			font-size: 0.95rem;
@@ -473,9 +471,9 @@
 
 			<p class="hero-label">Strategic Priority 1</p>
 
-			<h1 class="hero-title"><span style="color: rgb(255, 255, 255);">Belonging</span></h1>
+			<h1 class="hero-title">Belonging</h1>
 
-			<p class="hero-sub"><span style="color: rgb(255, 255, 255);">Multi-Year Strategic Plan 2023&ndash;2027 &mdash; Louis Riel School Division</span></p>
+			<p class="hero-sub">Multi-Year Strategic Plan 2023&ndash;2027 &mdash; Louis Riel School Division</p>
 		</div>
 	</header>
 	<!-- Filter chips / legend -->
@@ -897,6 +895,9 @@
 		</article>
 	</div>
 	<!-- /cards-grid -->
+	<div class="no-results-msg" id="no-results-msg" aria-live="polite">
+		<p>No actions match the selected filter. Please choose a different status to view results.</p>
+	</div>
 </div>
 <!-- /sp1-wrapper -->
 <script>
@@ -954,6 +955,7 @@
 		/* ── Filter chips ── */
 		var filterBar = document.getElementById('filter-bar');
 		var allCards = document.querySelectorAll('#cards-grid .scorecard');
+		var noResultsMsg = document.getElementById('no-results-msg');
 		if (filterBar)
 		{
 			filterBar.addEventListener('click', function(e)
@@ -966,17 +968,30 @@
 				});
 				chip.classList.add('active');
 				var status = chip.getAttribute('data-status');
+				var visibleCount = 0;
 				allCards.forEach(function(card)
 				{
 					if (status === 'all' || card.getAttribute('data-status') === status)
 					{
 						card.classList.remove('js-filtered-out');
+						visibleCount++;
 					}
 					else
 					{
 						card.classList.add('js-filtered-out');
 					}
 				});
+				if (noResultsMsg)
+				{
+					if (visibleCount === 0)
+					{
+						noResultsMsg.classList.add('visible');
+					}
+					else
+					{
+						noResultsMsg.classList.remove('visible');
+					}
+				}
 			});
 		}
 	})();
